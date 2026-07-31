@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# PlatformIO / Arduino build output
+.pio/
+**/.pio/
+build/
+dist/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Blender backup/autosave
+*.blend1
+*.blend2
+*.blend@
+
+# Temporary and local files
+*.tmp
+*.bak
+*.log
+.env
+.env.*
+
+# Transfer packages should not be committed into the repository
+*_package.zip
+*_handoff.zip

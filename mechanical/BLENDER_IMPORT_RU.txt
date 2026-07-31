@@ -1,0 +1,12 @@
+BLENDER
+
+Вариант 1:
+Файл -> Импортировать -> glTF 2.0 -> flagpole_finial_v0_5_assembly.glb
+
+Вариант 2:
+1. Открыть рабочее пространство Scripting.
+2. Открыть create_blend_file.py.
+3. Нажать Run Script.
+4. Рядом будет создан flagpole_finial_v0_5.blend.
+
+GLB хранит размеры в метрах по стандарту glTF, но физический размер деталей соответствует миллиметровым STL.

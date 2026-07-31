@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210">
+<defs>
+<style>
+.t1{font:700 7px 'DejaVu Sans',Arial,sans-serif;fill:#111}.t2{font:700 4.5px 'DejaVu Sans',Arial,sans-serif;fill:#111}.t{font:3.6px 'DejaVu Sans',Arial,sans-serif;fill:#111}.s{font:3.1px 'DejaVu Sans',Arial,sans-serif;fill:#333}.box{fill:#f8fafc;stroke:#334155;stroke-width:.7;rx:2}.head{fill:#e2e8f0;stroke:#334155;stroke-width:.7;rx:2}.line{stroke:#64748b;stroke-width:.5}.warn{fill:#fff7ed;stroke:#c2410c;stroke-width:.6;rx:2}.ok{fill:#f0fdf4;stroke:#15803d;stroke-width:.6;rx:2}
+</style>
+</defs>
+<rect width="297" height="210" fill="white"/><rect x="3" y="3" width="291" height="204" fill="none" stroke="#94a3b8" stroke-width=".5"/>
+<text x="10" y="13" class="t1">Таблица соединений и назначение контактов</text>
+<text x="10" y="19" class="s">Дополнение к функциональной схеме. Названия клемм MOSFET-модуля требуется сверить по его фактической маркировке.</text>
+
+<!-- ESP table -->
+<rect x="10" y="28" width="83" height="68" class="box"/><rect x="10" y="28" width="83" height="10" class="head"/>
+<text x="14" y="35" class="t2">ESP32-C3 SuperMini Plus</text>
+<line x1="10" y1="48" x2="93" y2="48" class="line"/><line x1="10" y1="60" x2="93" y2="60" class="line"/><line x1="10" y1="72" x2="93" y2="72" class="line"/><line x1="10" y1="84" x2="93" y2="84" class="line"/>
+<line x1="38" y1="38" x2="38" y2="96" class="line"/>
+<text x="14" y="44" class="t">Контакт</text><text x="42" y="44" class="t">Куда подключить</text>
+<text x="14" y="56" class="t">5V / VBUS</text><text x="42" y="56" class="t">+5 В с выхода DC-DC</text>
+<text x="14" y="68" class="t">GND</text><text x="42" y="68" class="t">GND STAR</text>
+<text x="14" y="80" class="t">GPIO3</text><text x="42" y="80" class="t">IN/SIG MOSFET-модуля</text>
+<text x="14" y="92" class="t">GPIO4 / GPIO5</text><text x="42" y="92" class="t">SDA / SCL VEML7700</text>
+
+<!-- VEML table -->
+<rect x="104" y="28" width="83" height="68" class="box"/><rect x="104" y="28" width="83" height="10" class="head"/>
+<text x="108" y="35" class="t2">VEML7700</text>
+<line x1="104" y1="48" x2="187" y2="48" class="line"/><line x1="104" y1="60" x2="187" y2="60" class="line"/><line x1="104" y1="72" x2="187" y2="72" class="line"/><line x1="104" y1="84" x2="187" y2="84" class="line"/>
+<line x1="132" y1="38" x2="132" y2="96" class="line"/>
+<text x="108" y="44" class="t">Контакт</text><text x="136" y="44" class="t">Куда подключить</text>
+<text x="108" y="56" class="t">VCC / VIN</text><text x="136" y="56" class="t">3V3 платы ESP</text>
+<text x="108" y="68" class="t">GND</text><text x="136" y="68" class="t">GND платы ESP</text>
+<text x="108" y="80" class="t">SDA</text><text x="136" y="80" class="t">GPIO4</text>
+<text x="108" y="92" class="t">SCL</text><text x="136" y="92" class="t">GPIO5</text>
+
+<!-- M12 table -->
+<rect x="198" y="28" width="89" height="68" class="box"/><rect x="198" y="28" width="89" height="10" class="head"/>
+<text x="202" y="35" class="t2">M12 A-coded, 3 pin</text>
+<line x1="198" y1="48" x2="287" y2="48" class="line"/><line x1="198" y1="62" x2="287" y2="62" class="line"/><line x1="198" y1="76" x2="287" y2="76" class="line"/>
+<line x1="224" y1="38" x2="224" y2="96" class="line"/>
+<text x="202" y="44" class="t">Контакт</text><text x="228" y="44" class="t">Назначение</text>
+<text x="202" y="58" class="t">Pin 1</text><text x="228" y="58" class="t">+12 В на неон</text>
+<text x="202" y="72" class="t">Pin 3</text><text x="228" y="72" class="t">коммутируемый GND</text>
+<text x="202" y="86" class="t">Pin 4</text><text x="228" y="86" class="t">резерв, изолировать</text>
+<text x="202" y="92" class="s">Панельная часть на навершии: контакты утоплены.</text>
+
+<!-- MOSF functional map -->
+<rect x="10" y="110" width="177" height="73" class="warn"/><text x="14" y="119" class="t2">PC817 + LR7843: функциональная схема подключения</text>
+<rect x="18" y="129" width="55" height="37" class="box"/><text x="22" y="137" class="t2">Управляющая сторона</text>
+<text x="22" y="145" class="t">IN / SIG ← GPIO3</text><text x="22" y="152" class="t">IN− / GND ← GND ESP</text><text x="22" y="159" class="s">Если есть VCC входа — по</text><text x="22" y="164" class="s">маркировке платы: 3V3 или 5V.</text>
+<rect x="82" y="129" width="95" height="37" class="box"/><text x="86" y="137" class="t2">Силовая сторона, низкобоковой ключ</text>
+<text x="86" y="145" class="t">силовой GND / DC− → GND STAR</text><text x="86" y="152" class="t">LOAD− / OUT− → M12 Pin 3</text><text x="86" y="159" class="t">+12 В ленты не коммутируется:</text><text x="86" y="164" class="t">+12 В STAR → M12 Pin 1 напрямую</text>
+<text x="14" y="176" class="s">Клеммы у разных продавцов подписаны по-разному: сверить маркировку конкретной платы.</text>
+
+<!-- power map -->
+<rect x="198" y="110" width="89" height="73" class="ok"/><text x="202" y="119" class="t2">Питание и земля</text>
+<text x="202" y="129" class="t">+12 В после токосъёмника:</text><text x="206" y="136" class="t">• DC-DC VIN+</text><text x="206" y="143" class="t">• M12 Pin 1</text><text x="206" y="150" class="t">• C1 «+»</text>
+<text x="202" y="159" class="t">GND STAR:</text><text x="206" y="166" class="t">• DC-DC VIN−</text><text x="206" y="173" class="t">• MOSFET силовой GND</text><text x="206" y="180" class="t">• C1 «−»</text>
+
+<text x="10" y="198" class="s">Перед USB-программированием: выключить внешние 12 В либо разомкнуть провод +5 В между DC-DC и ESP.</text>
+</svg>

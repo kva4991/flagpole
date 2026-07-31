@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="297.0mm" height="210.0mm" viewBox="0 0 297.0 210.0">
+  <defs>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#2b6cb0"/>
+    </marker>
+    <style>
+      .base { fill:none; stroke:black; }
+      .thick { stroke-width:16.0; stroke-linecap:butt; stroke-linejoin:miter; stroke-miterlimit:10; }
+      .thin { stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+      .dim { fill:none; stroke:#2b6cb0; stroke-width:0.8; }
+      .ext { fill:none; stroke:#94a3b8; stroke-width:0.5; stroke-dasharray:2 2; }
+      .txt { font-family:Arial,Helvetica,sans-serif; font-size:5px; fill:#1e3a5f; }
+      .note { font-family:Arial,Helvetica,sans-serif; font-size:4.2px; fill:#222; }
+      .title { font-family:Arial,Helvetica,sans-serif; font-size:6px; font-weight:bold; fill:#111; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="297.0" height="210.0" fill="white"/>
+  <rect x="3" y="3" width="291.0" height="204.0" fill="none" stroke="#888" stroke-width="0.5"/>
+  <text x="10" y="14" class="title">Шаблон рыбы (ихтис), A4, альбомная ориентация</text>
+
+  <!-- Geometry -->
+  <path d="M 71.0 105.0 C 118 54, 220 54, 272.0 105.0 C 220 156, 118 156, 71.0 105.0"
+        class="base thick"/>
+  <path d="M 71.0 105.0 L 23.0 52.0" class="base thick"/>
+  <path d="M 71.0 105.0 L 23.0 158.0" class="base thick"/>
+  <path d="M 84.0 105.0 C 122 70, 213 70, 257.0 105.0 C 213 140, 122 140, 84.0 105.0"
+        class="base thin"/>
+  <path d="M 30.0 67.0 L 60.0 105.0 L 30.0 143.0 Z"
+        class="base thin"/>
+  <circle cx="235.0" cy="105.0" r="8.0" class="base thin"/>
+
+  <!-- Overall length -->
+  <line x1="23.0" y1="36" x2="272.0" y2="36" class="dim" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <line x1="23.0" y1="40" x2="23.0" y2="52.0" class="ext"/>
+  <line x1="272.0" y1="40" x2="272.0" y2="105.0" class="ext"/>
+  <text x="131.5" y="32" class="txt">общая длина ≈ 249 мм</text>
+
+  <!-- Overall height -->
+  <line x1="286" y1="52.0" x2="286" y2="158.0" class="dim" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <line x1="272.0" y1="52.0" x2="282" y2="52.0" class="ext"/>
+  <line x1="272.0" y1="158.0" x2="282" y2="158.0" class="ext"/>
+  <text x="255" y="102.0" class="txt" transform="rotate(90 255 105.0)">высота ≈ 106 мм</text>
+
+  <!-- Body max height -->
+  <line x1="248" y1="62" x2="248" y2="148" class="dim" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="226" y="58" class="txt">высота тела ≈ 86 мм</text>
+
+  <!-- Thick line width -->
+  <line x1="162" y1="170" x2="178" y2="170" class="dim" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="139" y="176" class="txt">ширина ленты / неона = 16 мм</text>
+
+  <!-- Eye -->
+  <line x1="227.0" y1="123.0" x2="243.0" y2="123.0" class="dim" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <line x1="227.0" y1="119.0" x2="227.0" y2="113.0" class="ext"/>
+  <line x1="243.0" y1="119.0" x2="243.0" y2="113.0" class="ext"/>
+  <text x="213.0" y="133.0" class="txt">глаз Ø 16 мм</text>
+
+  <!-- Notes -->
+  <text x="10" y="184" class="note">Толстый чёрный контур — путь для 16-мм светящейся ленты.</text>
+  <text x="10" y="190" class="note">Тонкий внутренний контур в теле — отдельная вставка из светоотражающей ткани.</text>
+  <text x="10" y="196" class="note">Тонкий треугольник в хвосте — отдельная вставка из светоотражающей ткани для хвоста.</text>
+  <text x="10" y="202" class="note">Тонкий круг — глаз, вырезается насквозь.</text>
+</svg>

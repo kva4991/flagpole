@@ -1,0 +1,549 @@
+{
+  "version": "0.5 PETG+TPU provisional",
+  "design_status": "Print coupons first; pole OD/ID, carbon rod and purchased modules not yet measured",
+  "parameters_mm": {
+    "flag_width": 300.0,
+    "flag_height": 250.0,
+    "pole_outer_diameter": 20.0,
+    "pole_inner_diameter_provisional": 16.0,
+    "pole_top_z": 58.0,
+    "m125_body_diameter": 12.5,
+    "m125_body_length": 13.5,
+    "m125_stem_diameter": 5.0,
+    "m125_stem_length": 3.0,
+    "bearing_id": 20.0,
+    "bearing_od": 32.0,
+    "bearing_width": 7.0,
+    "bearing_seat_diameter": 32.36,
+    "lower_bearing_center_z": 10.0,
+    "upper_bearing_center_z": 44.0,
+    "lower_bearing_seat_width": 7.3,
+    "upper_bearing_seat_width": 7.8,
+    "inner_spacer_id": 20.3,
+    "inner_spacer_od": 24.0,
+    "inner_spacer_length": 27.0,
+    "spacer_cavity_diameter": 24.8,
+    "spoke_diameter": 5.0,
+    "spoke_liner_inner_diameter": 5.2,
+    "spoke_liner_outer_diameter": 7.5,
+    "spoke_liner_flange_diameter": 9.0,
+    "spoke_insert_x_min": 15.0,
+    "spoke_insert_x_max": 66.0,
+    "spoke_center_z": 27.0,
+    "spoke_visible_length": 310.0,
+    "body_radius": 21.5,
+    "body_z_min": 0.0,
+    "body_z_max": 56.0,
+    "tower_z_min": 52.0,
+    "tower_z_max": 74.0,
+    "tower_top_radius": 16.0,
+    "tower_cavity_radius": 15.0,
+    "skirt_radius": 23.0,
+    "skirt_z_min": -8.0,
+    "skirt_z_max": 10.0,
+    "skirt_inner_radius": 16.8,
+    "arm_x_min": 8.0,
+    "arm_x_max": 72.0,
+    "arm_z_min": 14.0,
+    "arm_z_max": 48.0,
+    "arm_half_width": 12.5,
+    "arm_corner_radius": 4.0,
+    "clamp_gap_total": 0.7,
+    "clamp_gap_x_min": 24.0,
+    "flag_cable_inner_diameter": 4.4,
+    "flag_cable_grommet_body_diameter": 9.4,
+    "flag_cable_grommet_flange_diameter": 12.0,
+    "flag_cable_center_z": 40.5,
+    "flag_cable_x_min": 55.0,
+    "flag_cable_x_max": 72.0,
+    "pod_x_min": -72.0,
+    "pod_x_max": -10.0,
+    "pod_y_half": 19.0,
+    "pod_z_min": 12.0,
+    "pod_z_max": 50.0,
+    "pod_inner_x_min": -66.0,
+    "pod_inner_x_max": -16.0,
+    "pod_inner_y_half": 14.5,
+    "pod_inner_z_min": 17.0,
+    "pod_inner_z_max": 54.0,
+    "lid_x_min": -74.0,
+    "lid_x_max": -8.0,
+    "lid_y_half": 21.0,
+    "lid_z_min": 47.0,
+    "lid_z_max": 54.5,
+    "gasket_outer_x_half": 29.0,
+    "gasket_outer_y_half": 17.0,
+    "gasket_inner_x_half": 26.1,
+    "gasket_inner_y_half": 14.1,
+    "gasket_thickness": 1.8,
+    "gasket_groove_depth": 1.45,
+    "gasket_center_x": -41.0,
+    "photo_tunnel_body_diameter": 10.0,
+    "photo_tunnel_flange_diameter": 15.0,
+    "photo_tunnel_height": 26.0,
+    "photo_tunnel_mount_hole_diameter": 10.6,
+    "photo_tunnel_center_x": -50.0,
+    "body_bolt_clearance_diameter": 4.5,
+    "body_bolt_boss_diameter": 13.0,
+    "body_bolt_boss_half_length": 14.0,
+    "body_bolt_positions": [
+      [
+        -22.0,
+        10.0
+      ],
+      [
+        22.0,
+        10.0
+      ],
+      [
+        -22.0,
+        44.0
+      ],
+      [
+        22.0,
+        44.0
+      ],
+      [
+        -68.0,
+        22.0
+      ],
+      [
+        -68.0,
+        40.0
+      ]
+    ],
+    "clamp_bolt_positions": [
+      [
+        50.0,
+        19.0
+      ],
+      [
+        50.0,
+        35.0
+      ]
+    ],
+    "lid_screw_diameter": 3.5,
+    "lid_screw_positions": [
+      [
+        -69.0,
+        -16.5
+      ],
+      [
+        -69.0,
+        16.5
+      ],
+      [
+        -13.0,
+        -16.5
+      ],
+      [
+        -13.0,
+        16.5
+      ]
+    ],
+    "collar_outer_diameter": 29.0,
+    "collar_tpu_cavity_diameter": 21.9,
+    "collar_height": 14.0,
+    "collar_lower_height": 8.0,
+    "collar_m125_hole_diameter": 13.3,
+    "collar_bolt_diameter": 3.6,
+    "pole_liner_inner_diameter": 20.1,
+    "pole_liner_outer_diameter": 21.65,
+    "pole_liner_flange_diameter": 24.0,
+    "pole_liner_length": 8.0,
+    "m125_sleeve_inner_diameter": 12.7,
+    "m125_sleeve_outer_diameter": 15.8,
+    "m125_sleeve_length": 16.0,
+    "m125_sleeve_flange_diameter": 19.0,
+    "bundle_grommet_inner_diameter": 4.6,
+    "bundle_grommet_body_diameter": 8.2,
+    "bundle_grommet_flange_diameter": 10.6,
+    "bundle_grommet_x_min": -22.0,
+    "bundle_grommet_x_max": -11.0,
+    "bundle_grommet_center_z": 47.0,
+    "rotor_voxel": 0.36,
+    "part_voxel": 0.28,
+    "tpu_voxel": 0.22,
+    "coupon_voxel": 0.28
+  },
+  "derived_mm": {
+    "bearing_center_spacing": 34.0,
+    "spoke_to_lower_bearing": 17.0,
+    "spoke_to_upper_bearing": 17.0,
+    "spoke_engagement_length": 51.0,
+    "lid_gasket_nominal_compression": 0.3500000000000001,
+    "lid_gasket_compression_percent": 19.444444444444446,
+    "m125_sleeve_radial_wall": 1.5500000000000007,
+    "pole_liner_radial_wall": 0.7749999999999986
+  },
+  "meshes": {
+    "rotor_half_A": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -24,
+      "volume_mm3": 65613.6566622004,
+      "faces": 476744,
+      "vertices": 238348,
+      "bounds_mm": [
+        [
+          -74.4998779296875,
+          -4.00543212890625e-05,
+          -7.999998092651367
+        ],
+        [
+          71.999755859375,
+          22.99988555908203,
+          74.00008392333984
+        ]
+      ],
+      "components": 1
+    },
+    "rotor_half_B": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -18,
+      "volume_mm3": 65604.05139986686,
+      "faces": 475496,
+      "vertices": 237730,
+      "bounds_mm": [
+        [
+          -74.4998779296875,
+          -22.999967575073242,
+          -7.999998092651367
+        ],
+        [
+          71.999755859375,
+          -4.00543212890625e-05,
+          74.00008392333984
+        ]
+      ],
+      "components": 1
+    },
+    "service_lid": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -18,
+      "volume_mm3": 9453.28897165994,
+      "faces": 251448,
+      "vertices": 125706,
+      "bounds_mm": [
+        [
+          -73.35139465332031,
+          -20.351421356201172,
+          46.048240661621094
+        ],
+        [
+          -8.648338317871094,
+          20.351150512695312,
+          54.50004196166992
+        ]
+      ],
+      "components": 1
+    },
+    "photo_tunnel": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 0,
+      "volume_mm3": 1748.4847912938856,
+      "faces": 49200,
+      "vertices": 24600,
+      "bounds_mm": [
+        [
+          -7.499891757965088,
+          -7.499891757965088,
+          0.0
+        ],
+        [
+          7.499908447265625,
+          7.499908447265625,
+          26.000001907348633
+        ]
+      ],
+      "components": 1
+    },
+    "stationary_collar_A": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -2,
+      "volume_mm3": 3924.5342924306074,
+      "faces": 81924,
+      "vertices": 40960,
+      "bounds_mm": [
+        [
+          -16.600004196166992,
+          -4.57763671875e-05,
+          -1.5999994277954102
+        ],
+        [
+          16.59991455078125,
+          16.999916076660156,
+          14.000001907348633
+        ]
+      ],
+      "components": 1
+    },
+    "stationary_collar_B": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -2,
+      "volume_mm3": 3926.2332486984596,
+      "faces": 82668,
+      "vertices": 41332,
+      "bounds_mm": [
+        [
+          -16.600004196166992,
+          -17.000001907348633,
+          -1.5999994277954102
+        ],
+        [
+          16.59991455078125,
+          -4.57763671875e-05,
+          14.000001907348633
+        ]
+      ],
+      "components": 1
+    },
+    "spoke_liner_A": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 688.0345160399999,
+      "faces": 64512,
+      "vertices": 32258,
+      "bounds_mm": [
+        [
+          14.999996185302734,
+          6.67572021484375e-06,
+          22.50018310546875
+        ],
+        [
+          65.99993896484375,
+          5.850011825561523,
+          31.492511749267578
+        ]
+      ],
+      "components": 1
+    },
+    "spoke_liner_B": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 686.8168161156269,
+      "faces": 63180,
+      "vertices": 31592,
+      "bounds_mm": [
+        [
+          14.999996185302734,
+          -5.849998950958252,
+          22.50360679626465
+        ],
+        [
+          65.99993896484375,
+          6.67572021484375e-06,
+          31.496429443359375
+        ]
+      ],
+      "components": 1
+    },
+    "flag_cable_grommet_A": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 610.8457324118559,
+      "faces": 31956,
+      "vertices": 15980,
+      "bounds_mm": [
+        [
+          54.9999885559082,
+          7.62939453125e-06,
+          34.501625061035156
+        ],
+        [
+          71.99989318847656,
+          6.200014114379883,
+          46.498291015625
+        ]
+      ],
+      "components": 1
+    },
+    "flag_cable_grommet_B": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 611.1969484016785,
+      "faces": 32036,
+      "vertices": 16020,
+      "bounds_mm": [
+        [
+          54.9999885559082,
+          -6.199997901916504,
+          34.500526428222656
+        ],
+        [
+          71.99989318847656,
+          7.62939453125e-06,
+          46.4993896484375
+        ]
+      ],
+      "components": 1
+    },
+    "bundle_grommet_A": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 275.918453244923,
+      "faces": 19116,
+      "vertices": 9560,
+      "bounds_mm": [
+        [
+          -21.99999237060547,
+          6.67572021484375e-06,
+          41.70637512207031
+        ],
+        [
+          -10.999959945678711,
+          5.299860954284668,
+          52.293548583984375
+        ]
+      ],
+      "components": 1
+    },
+    "bundle_grommet_B": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 275.60080036150504,
+      "faces": 18728,
+      "vertices": 9366,
+      "bounds_mm": [
+        [
+          -21.99999237060547,
+          -5.29984712600708,
+          41.70304870605469
+        ],
+        [
+          -10.999959945678711,
+          6.67572021484375e-06,
+          52.29496765136719
+        ]
+      ],
+      "components": 1
+    },
+    "lid_gasket": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 0,
+      "volume_mm3": 649.8811169294153,
+      "faces": 73696,
+      "vertices": 36848,
+      "bounds_mm": [
+        [
+          -72.70000457763672,
+          -19.699993133544922,
+          -2.384185791015625e-07
+        ],
+        [
+          -9.300361633300781,
+          19.70012664794922,
+          1.799999713897705
+        ]
+      ],
+      "components": 1
+    },
+    "m125_sleeve": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 0,
+      "volume_mm3": 1415.6821322839742,
+      "faces": 94608,
+      "vertices": 47304,
+      "bounds_mm": [
+        [
+          -9.500001907348633,
+          -9.500001907348633,
+          -2.384185791015625e-07
+        ],
+        [
+          9.470365524291992,
+          9.499975204467773,
+          16.999996185302734
+        ]
+      ],
+      "components": 1
+    },
+    "pole_liner_A": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 314.7114824733391,
+      "faces": 37116,
+      "vertices": 18560,
+      "bounds_mm": [
+        [
+          -11.99625015258789,
+          -1.71661376953125e-05,
+          -1.1920928955078125e-07
+        ],
+        [
+          11.999700546264648,
+          11.999700546264648,
+          8.79999828338623
+        ]
+      ],
+      "components": 1
+    },
+    "pole_liner_B": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": 2,
+      "volume_mm3": 314.6182856548085,
+      "faces": 37048,
+      "vertices": 18526,
+      "bounds_mm": [
+        [
+          -11.994600296020508,
+          -11.999734878540039,
+          -1.1920928955078125e-07
+        ],
+        [
+          11.999151229858398,
+          -1.71661376953125e-05,
+          8.79999828338623
+        ]
+      ],
+      "components": 1
+    }
+  },
+  "files": [
+    "stl_petg/rotor_half_A_print_flat.stl",
+    "stl_petg/rotor_half_B_print_flat.stl",
+    "stl_petg/stationary_collar_A_print_flat.stl",
+    "stl_petg/stationary_collar_B_print_flat.stl",
+    "stl_petg/service_lid_top_face_down.stl",
+    "stl_petg/photo_tunnel_upright.stl",
+    "stl_tpu/spoke_liner_A_split_face_down.stl",
+    "stl_tpu/spoke_liner_B_split_face_down.stl",
+    "stl_tpu/flag_cable_grommet_A_split_face_down.stl",
+    "stl_tpu/flag_cable_grommet_B_split_face_down.stl",
+    "stl_tpu/M125_bundle_grommet_A_split_face_down.stl",
+    "stl_tpu/M125_bundle_grommet_B_split_face_down.stl",
+    "stl_tpu/lid_gasket_flat.stl",
+    "stl_tpu/M125_pole_sleeve_upright.stl",
+    "stl_tpu/pole_collar_liner_A_split_face_down.stl",
+    "stl_tpu/pole_collar_liner_B_split_face_down.stl",
+    "test_coupons/bearing_seat_32.20_half_A.stl",
+    "test_coupons/bearing_seat_32.20_half_B.stl",
+    "test_coupons/bearing_seat_32.35_half_A.stl",
+    "test_coupons/bearing_seat_32.35_half_B.stl",
+    "test_coupons/bearing_seat_32.50_half_A.stl",
+    "test_coupons/bearing_seat_32.50_half_B.stl",
+    "test_coupons/PETG_lid_gasket_groove_coupon.stl",
+    "test_coupons/TPU_lid_gasket_coupon.stl",
+    "test_coupons/TPU_M125_sleeve_OD_15.60.stl",
+    "test_coupons/TPU_M125_sleeve_OD_15.80.stl",
+    "test_coupons/TPU_M125_sleeve_OD_16.00.stl",
+    "flagpole_finial_v0_5_assembly.glb",
+    "flagpole_finial_v0_5_print_layout_PETG.glb",
+    "flagpole_finial_v0_5_print_layout_TPU.glb"
+  ]
+}

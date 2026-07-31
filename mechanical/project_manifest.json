@@ -1,0 +1,39 @@
+{
+  "version": "0.5",
+  "materials": {
+    "structural": "orange PETG",
+    "gaskets": "white TPU 95A"
+  },
+  "generated_files": [
+    "stl_petg/rotor_half_A_print_flat.stl",
+    "stl_petg/rotor_half_B_print_flat.stl",
+    "stl_petg/stationary_collar_A_print_flat.stl",
+    "stl_petg/stationary_collar_B_print_flat.stl",
+    "stl_petg/service_lid_top_face_down.stl",
+    "stl_petg/photo_tunnel_upright.stl",
+    "stl_tpu/spoke_liner_A_split_face_down.stl",
+    "stl_tpu/spoke_liner_B_split_face_down.stl",
+    "stl_tpu/flag_cable_grommet_A_split_face_down.stl",
+    "stl_tpu/flag_cable_grommet_B_split_face_down.stl",
+    "stl_tpu/M125_bundle_grommet_A_split_face_down.stl",
+    "stl_tpu/M125_bundle_grommet_B_split_face_down.stl",
+    "stl_tpu/lid_gasket_flat.stl",
+    "stl_tpu/M125_pole_sleeve_upright.stl",
+    "stl_tpu/pole_collar_liner_A_split_face_down.stl",
+    "stl_tpu/pole_collar_liner_B_split_face_down.stl",
+    "test_coupons/bearing_seat_32.20_half_A.stl",
+    "test_coupons/bearing_seat_32.20_half_B.stl",
+    "test_coupons/bearing_seat_32.35_half_A.stl",
+    "test_coupons/bearing_seat_32.35_half_B.stl",
+    "test_coupons/bearing_seat_32.50_half_A.stl",
+    "test_coupons/bearing_seat_32.50_half_B.stl",
+    "test_coupons/PETG_lid_gasket_groove_coupon.stl",
+    "test_coupons/TPU_lid_gasket_coupon.stl",
+    "test_coupons/TPU_M125_sleeve_OD_15.60.stl",
+    "test_coupons/TPU_M125_sleeve_OD_15.80.stl",
+    "test_coupons/TPU_M125_sleeve_OD_16.00.stl",
+    "flagpole_finial_v0_5_assembly.glb",
+    "flagpole_finial_v0_5_print_layout_PETG.glb",
+    "flagpole_finial_v0_5_print_layout_TPU.glb"
+  ]
+}

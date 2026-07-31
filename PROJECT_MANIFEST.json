@@ -1,0 +1,22 @@
+{
+  "version": "0.5",
+  "current_materials": {
+    "structural": "orange PETG",
+    "soft_parts": "white TPU 95A"
+  },
+  "nozzle_mm": 0.4,
+  "mechanical_glb": "mechanical/flagpole_finial_v0_5_assembly.glb",
+  "petg_stl_count": 6,
+  "tpu_stl_count": 10,
+  "coupon_count": 11,
+  "firmware": "electronics/firmware/esp32_c3_flag_light",
+  "status": "provisional until pole, M125, carbon rod and printer calibration are measured",
+  "documentation_files": 20,
+  "preview_images_v05": 6,
+  "all_stl_validated": true,
+  "package_variant": "public-github-handoff",
+  "public_readme": "README.md",
+  "next_agent_task": "NEXT_AGENT_TASK_RU.md",
+  "repository_prep": "GITHUB_PUBLIC_PREP_RU.md",
+  "license_selected": false
+}
