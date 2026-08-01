@@ -34,7 +34,7 @@ function validate(source, media) {
   if (!Array.isArray(source.components) || source.components.length === 0) failures.push('components должен быть непустым массивом');
   for (const [index, item] of (source.components ?? []).entries()) {
     const place = `components[${index}]`;
-    if (!/^cmp-\d{3}$/.test(item.id ?? '')) failures.push(`${place}.id должен иметь вид cmp-001`);
+    if (!/^\d{3}$/.test(item.id ?? '')) failures.push(`${place}.id должен состоять ровно из трёх цифр, например 001`);
     if (ids.has(item.id)) failures.push(`${place}.id повторяется: ${item.id}`);
     ids.add(item.id);
     if (!categoryIds.has(item.category)) failures.push(`${place}.category неизвестна: ${item.category}`);
@@ -59,7 +59,7 @@ function validate(source, media) {
   }
   const sortedIds = [...ids].sort();
   sortedIds.forEach((id, index) => {
-    const expected = `cmp-${String(index + 1).padStart(3, '0')}`;
+    const expected = String(index + 1).padStart(3, '0');
     if (id !== expected) failures.push(`ID должны идти без пропусков: ожидался ${expected}, найден ${id}`);
   });
   if (media.schemaVersion !== 1) failures.push('schemaVersion drawings.json должен быть равен 1');
@@ -67,6 +67,9 @@ function validate(source, media) {
     if (!Array.isArray(media[group])) failures.push(`${group} должен быть массивом`);
     for (const [index, item] of (media[group] ?? []).entries()) {
       if (!item.id?.trim() || !item.title?.trim() || !item.description?.trim()) failures.push(`${group}[${index}] требует id, title и description`);
+      if (!/^\d{3}$/.test(item.id ?? '')) failures.push(`${group}[${index}].id должен состоять ровно из трёх цифр`);
+      if (ids.has(item.id)) failures.push(`повтор ID: ${item.id}`);
+      ids.add(item.id);
       validateAsset(item.file, `${group}[${index}].file`, failures);
       validateAsset(group === 'drawings' ? item.preview : item.poster, `${group}[${index}].${group === 'drawings' ? 'preview' : 'poster'}`, failures);
     }
@@ -136,7 +139,7 @@ const html = `<!doctype html>
 <header><h1>Проект Crucian</h1><p>Каталог компонентов, актуальные схемы и интерактивный просмотр текущих 3D-моделей. Карточки сгруппированы по назначению.</p></header>
 <main><section class="summary" aria-label="Сводка"><div class="metric"><strong>${components.length}</strong>компонентов</div><div class="metric"><strong>${source.categories.length}</strong>категорий</div><div class="metric"><strong>${media.drawings.length}</strong>чертежей и видов</div><div class="metric"><strong>${media.models.length}</strong>3D-модели</div></section>
 <nav class="tabs" role="tablist" aria-label="Разделы проекта"><button class="tab" role="tab" id="components-tab" aria-controls="components-panel" aria-selected="true">Компоненты</button><button class="tab" role="tab" id="drawings-tab" aria-controls="drawings-panel" aria-selected="false">Чертежи и 3D</button></nav>
-<section id="components-panel" class="tab-panel" role="tabpanel" aria-labelledby="components-tab"><section class="controls" aria-label="Фильтры"><label class="search"><span>Поиск по ID, названию и назначению</span><input id="search" type="search" placeholder="например: cmp-008, 6804, датчик"></label><label class="category-filter"><span>Категория</span><select id="category"><option value="">Все категории</option>${categoryOptions}</select></label><label class="toggle"><input id="incompleteOnly" type="checkbox"><span>Только позиции, которые нужно уточнить</span></label><output id="resultCount" class="result-count"></output></section>
+<section id="components-panel" class="tab-panel" role="tabpanel" aria-labelledby="components-tab"><section class="controls" aria-label="Фильтры"><label class="search"><span>Поиск по ID, названию и назначению</span><input id="search" type="search" placeholder="например: 008, 6804, датчик"></label><label class="category-filter"><span>Категория</span><select id="category"><option value="">Все категории</option>${categoryOptions}</select></label><label class="toggle"><input id="incompleteOnly" type="checkbox"><span>Только позиции, которые нужно уточнить</span></label><output id="resultCount" class="result-count"></output></section>
 <div class="table-wrap"><table id="catalogTable"><thead><tr><th>ID</th><th>Картинка</th><th>Возможные названия компонента</th><th>Зачем он нужен</th><th>Описание или покупка</th></tr></thead><tbody>${rows}</tbody></table><p id="noResults" class="no-results">По заданному фильтру ничего не найдено.</p></div></section>
 <section id="drawings-panel" class="tab-panel" role="tabpanel" aria-labelledby="drawings-tab" hidden><p class="section-intro">Превью загружаются локально. По ссылке открывается исходный SVG или PNG в полном размере.</p><div class="media-grid">${drawings}</div><h2 class="models-heading">Интерактивные 3D-модели</h2><p class="section-intro">GLB и модуль просмотра не загружаются, пока вы не нажмёте кнопку. Для вращения модели нужен локальный HTTP-сервер и доступ к интернету только для лёгкого компонента просмотра.</p><div class="model-grid">${models}</div></section></main>
 <footer>Источники данных: <code>catalog/components.json</code> и <code>catalog/drawings.json</code>. Все изображения и GLB хранятся в проекте; внешний код просмотра 3D загружается только по явному нажатию.</footer>

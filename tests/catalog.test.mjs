@@ -21,7 +21,8 @@ describe('project catalog', () => {
     const source = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/components.json'), 'utf8'));
     const ids = source.components.map(item => item.id).sort();
     assert.equal(ids.length, 23);
-    assert.deepEqual(ids, Array.from({ length: 23 }, (_, index) => `cmp-${String(index + 1).padStart(3, '0')}`));
+    assert.deepEqual(ids, Array.from({ length: 23 }, (_, index) => String(index + 1).padStart(3, '0')));
+    assert.equal(ids.every(id => /^\d{3}$/.test(id)), true);
     assert.equal(source.components.filter(item => item.name.includes('AHT20 + BMP280')).length, 1);
     assert.equal(source.components.some(item => /NTC 10k B3950|GY-BME\/P280|SHT20 standalone/i.test(item.name)), false);
   });
@@ -50,5 +51,6 @@ describe('project catalog', () => {
     assert.match(html, /Flexible silicone power wire kit — 2×0\.75 mm² and AWG20/);
     assert.match(html, /Four-color flexible sensor wire — AWG26–28/);
     assert.match(html, /Строительная кровельная или стеновая мембрана для этой детали не выбирается/);
+    assert.doesNotMatch(html, /\b(?:cmp|drw|mdl)-\d{3}\b/);
   });
 });

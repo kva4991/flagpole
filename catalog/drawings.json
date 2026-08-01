@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "drawings": [
     {
-      "id": "drw-001",
+      "id": "101",
       "category": "Электроника",
       "title": "Схема соединений электроники — A4",
       "description": "Общая схема питания, ESP32-C3, датчиков, MOSFET-модуля и подсветки.",
@@ -10,7 +10,7 @@
       "preview": "electronics/electronics_wiring_diagram_A4.png"
     },
     {
-      "id": "drw-002",
+      "id": "102",
       "category": "Электроника",
       "title": "Карта клемм и разъёмов — A4",
       "description": "Назначение контактов и точек подключения для монтажа.",
@@ -18,7 +18,7 @@
       "preview": "electronics/electronics_terminal_map_A4.png"
     },
     {
-      "id": "drw-003",
+      "id": "103",
       "category": "Механика",
       "title": "Общий вид сборки v0.5",
       "description": "Текущий концепт навершия в собранном виде.",
@@ -26,7 +26,7 @@
       "preview": "mechanical/preview_v05_assembly.png"
     },
     {
-      "id": "drw-004",
+      "id": "104",
       "category": "Механика",
       "title": "Разнесённый вид PETG/TPU",
       "description": "Взаимное расположение жёстких и эластичных печатных деталей.",
@@ -34,7 +34,7 @@
       "preview": "mechanical/preview_v05_exploded_PETG_TPU.png"
     },
     {
-      "id": "drw-005",
+      "id": "105",
       "category": "Механика",
       "title": "Продольный разрез",
       "description": "Внутренняя компоновка текущего механического концепта.",
@@ -42,7 +42,7 @@
       "preview": "mechanical/preview_v05_longitudinal_section.png"
     },
     {
-      "id": "drw-006",
+      "id": "106",
       "category": "Печать",
       "title": "Раскладка деталей PETG",
       "description": "Ориентация жёстких деталей на столе 3D-принтера.",
@@ -50,7 +50,7 @@
       "preview": "mechanical/preview_v05_print_PETG.png"
     },
     {
-      "id": "drw-007",
+      "id": "107",
       "category": "Печать",
       "title": "Раскладка деталей TPU",
       "description": "Ориентация эластичных деталей на столе 3D-принтера.",
@@ -58,7 +58,7 @@
       "preview": "mechanical/preview_v05_print_TPU.png"
     },
     {
-      "id": "drw-008",
+      "id": "108",
       "category": "Печать",
       "title": "Удержание деталей TPU",
       "description": "Концепт эластичных вкладышей, манжет и уплотнений.",
@@ -68,21 +68,21 @@
   ],
   "models": [
     {
-      "id": "mdl-001",
+      "id": "201",
       "title": "Сборка навершия v0.5",
       "description": "Интерактивная модель текущей сборки. Модель концептуальная, не финальная производственная геометрия.",
       "file": "mechanical/flagpole_finial_v0_5_assembly.glb",
       "poster": "mechanical/preview_v05_assembly.png"
     },
     {
-      "id": "mdl-002",
+      "id": "202",
       "title": "Раскладка печати PETG",
       "description": "Жёсткие детали в ориентации для печати.",
       "file": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb",
       "poster": "mechanical/preview_v05_print_PETG.png"
     },
     {
-      "id": "mdl-003",
+      "id": "203",
       "title": "Раскладка печати TPU",
       "description": "Эластичные детали в ориентации для печати.",
       "file": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
