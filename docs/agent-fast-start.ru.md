@@ -4,11 +4,12 @@
 
 ## Сначала
 
-1. Выполнить `git status --short --branch` и подтвердить реальную ветку.
-2. Прочитать [`current-implementation-status.ru.md`](current-implementation-status.ru.md).
-3. Прочитать разделы затронутой подсистемы в [`AUDIT_V061_RU.md`](AUDIT_V061_RU.md).
-4. Найти нужный §-тег в [`dev/tag-map.md`](dev/tag-map.md).
-5. Для архитектурного изменения открыть [`architecture/decisions/README.ru.md`](architecture/decisions/README.ru.md).
+1. Прочитать корневой [`AGENTS.md`](../AGENTS.md): там находятся полный рабочий процесс и условия синхронизации карточек, чертежей, GLB и HTML-каталога.
+2. Выполнить `git status --short --branch` и подтвердить реальную ветку.
+3. Прочитать [`current-implementation-status.ru.md`](current-implementation-status.ru.md).
+4. Прочитать разделы затронутой подсистемы в [`AUDIT_V061_RU.md`](AUDIT_V061_RU.md).
+5. Найти нужный §-тег в [`dev/tag-map.md`](dev/tag-map.md).
+6. Для архитектурного изменения открыть [`architecture/decisions/README.ru.md`](architecture/decisions/README.ru.md).
 
 ## Маршрут по типу задачи
 

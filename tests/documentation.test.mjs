@@ -2,7 +2,7 @@
  * Проверяет навигационный контракт документации локальным детерминированным
  * аудитом. Проектную истинность текста и внешний URL тест не подтверждает. §docqa01
  */
-import { readdirSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
@@ -29,5 +29,20 @@ describe('documentation contract', () => {
     assert.deepEqual(report.brokenLinks, []);
     assert.deepEqual(report.unknownTags, []);
     assert.deepEqual(report.missingNpmScripts, []);
+  });
+
+  it('keeps the agent synchronization contract explicit', () => {
+    const guidelines = readFileSync(resolve(repoRoot, 'AGENTS.md'), 'utf8');
+    for (const requiredText of [
+      'Когда обязательно обновлять карточки каталога',
+      'Когда обязательно обновлять чертежи и 3D на странице',
+      'catalog/components.json',
+      'catalog/drawings.json',
+      'npm.cmd run catalog:generate',
+      'npm.cmd run catalog:check',
+      'GitHub Pages-сайт пока не настроен',
+    ]) {
+      assert.match(guidelines, new RegExp(requiredText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    }
   });
 });
