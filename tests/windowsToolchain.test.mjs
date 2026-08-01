@@ -62,4 +62,5 @@ test("checksum manifest normalizes text line endings across Windows and Linux", 
   assert.match(checker, /replaceAll\('\\r\\n', '\\n'\)\.replaceAll\('\\r', '\\n'\)/);
   assert.match(checker, /textExtensions/);
   assert.match(checker, /textBasenames/);
+  assert.match(checker, /'\.cache'/);
 });
