@@ -41,5 +41,7 @@ describe('component catalog', () => {
     assert.match(html, /Oxford 210D PU 2000 fabric — neon orange/);
     assert.match(html, /Silver reflective fabric/);
     assert.match(html, /10 ft stainless-steel ground flagpole with five-prong base/);
+    assert.match(html, /ELEGOO TPU 95A filament — white, 1\.75 mm, 1 kg/);
+    assert.match(html, /TPU 85A filament — exact product not selected/);
   });
 });
