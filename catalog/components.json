@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "title": "Crucian component catalog",
   "columns": [
     "id",
@@ -8,9 +8,18 @@
     "purpose",
     "links"
   ],
+  "categories": [
+    { "id": "control", "label": "Управление и датчики" },
+    { "id": "power", "label": "Питание и коммутация" },
+    { "id": "lighting", "label": "Подсветка" },
+    { "id": "mechanics", "label": "Механика" },
+    { "id": "fabrics", "label": "Ткани" },
+    { "id": "printing", "label": "Материалы для 3D-печати" }
+  ],
   "components": [
     {
       "id": "cmp-001",
+      "category": "control",
       "name": "ESP32 C3 Mini Plus / SuperMini Plus V2.0",
       "image": "esp32_c3_mini_plus_front_1005012442113869.png",
       "additionalImages": [
@@ -59,6 +68,7 @@
     },
     {
       "id": "cmp-002",
+      "category": "control",
       "name": "VEML7700 ambient light sensor module — Gravity I2C",
       "image": "veml7700_module_board_1005008859887704.png",
       "imageStatus": "listing",
@@ -113,6 +123,7 @@
     },
     {
       "id": "cmp-003",
+      "category": "power",
       "name": "Senring M125-0205 slip ring — 12.5 mm, 2CH, 5A",
       "image": "senring_m125_0205_2ch_5a_1005007456626183.png",
       "imageStatus": "listing",
@@ -164,6 +175,7 @@
     },
     {
       "id": "cmp-004",
+      "category": "lighting",
       "name": "XUNATA Round Neon Light — 12V, 16 mm, 240 LED/m",
       "image": "xunata_round_neon_16mm_1005010381045204.png",
       "imageStatus": "listing",
@@ -210,6 +222,7 @@
     },
     {
       "id": "cmp-005",
+      "category": "power",
       "name": "TZT optoisolated LR7843 MOSFET PWM module — 30V",
       "image": "tzt_lr7843_module_board_1005001326798020.png",
       "imageStatus": "listing",
@@ -252,6 +265,7 @@
     },
     {
       "id": "cmp-006",
+      "category": "power",
       "name": "eletechsup synchronous DC-DC buck converter — 5V, 4A/5A",
       "image": "eletechsup_buck_5v_wiring_1005005870795744.png",
       "imageStatus": "listing",
@@ -302,6 +316,7 @@
     },
     {
       "id": "cmp-007",
+      "category": "mechanics",
       "name": "Carbon-fiber fishing-rod repair piece — Ø5 × 100 mm",
       "image": "carbon_fiber_rod_5x100_wb_1086430158.png",
       "imageStatus": "listing",
@@ -340,6 +355,7 @@
     },
     {
       "id": "cmp-008",
+      "category": "mechanics",
       "name": "Bearing 6804-2RS (candidate)",
       "image": "reference_2rs_sealed_bearing_wikimedia.png",
       "imageStatus": "reference",
@@ -349,11 +365,43 @@
         "закрытый пылезащищённый подшипник",
         "double rubber sealed bearing"
       ],
-      "purpose": "Базовый кандидат на подшипники вращения навершия. Требуется закрытое исполнение с двумя резиновыми уплотнениями, чтобы удерживать смазку и ограничивать попадание пыли и брызг. Точные размеры требуют перепроверки после фактических измерений.",
+      "purpose": "Два тонкосекционных однорядных радиальных шарикоподшипника поддерживают вращающееся навершие вокруг 20-мм древка. Требуется закрытое исполнение с двумя резиновыми уплотнениями, чтобы удерживать смазку и ограничивать попадание пыли и брызг.",
       "specifications": [
+        {
+          "label": "Стандартные размеры 6804",
+          "value": "внутренний диаметр d = 20 мм, наружный D = 32 мм, ширина B = 7 мм"
+        },
+        {
+          "label": "Тип",
+          "value": "однорядный радиальный шарикоподшипник глубокого желоба, тонкая серия 68; у SKF эквивалентное базовое обозначение 61804"
+        },
+        {
+          "label": "Количество в Crucian",
+          "value": "2 штуки — верхний и нижний; углепластиковая спица располагается между ними"
+        },
         {
           "label": "Обязательное исполнение",
           "value": "2RS — резиновые уплотнения с обеих сторон подшипника"
+        },
+        {
+          "label": "Масса",
+          "value": "примерно 17–18 г за штуку по открытой версии NSK 6804 и закрытой SKF 61804-2RS1"
+        },
+        {
+          "label": "Типовые рейтинги нагрузки",
+          "value": "динамический 4,03–4,45 кН, статический 2,32–2,47 кН по каталогам SKF/NSK/NTN; значения конкретного безымянного 2RS не подтверждены"
+        },
+        {
+          "label": "Скорость закрытого варианта",
+          "value": "ориентир около 13 000 об/мин для SKF 61804-2RS1/NTN 6804 LLU; в Crucian рабочая скорость несопоставимо ниже"
+        },
+        {
+          "label": "Фаска",
+          "value": "минимальный размер фаски r = 0,3 мм для стандартного 6804; сопряжённые буртики не должны упираться в фаску"
+        },
+        {
+          "label": "Зазор и смазка",
+          "value": "предпочтительно нормальный радиальный зазор CN и заводская пластичная смазка; варианты C3 или неизвестная смазка требуют отдельного согласования"
         },
         {
           "label": "Не использовать как прямую замену",
@@ -374,50 +422,23 @@
           "url": "https://evolution.skf.com/en/added-versatility-as-use-of-rsh-heavy-duty-seals-is-extended/"
         },
         {
+          "label": "SKF: 61804-2RS1, закрытый эквивалент 20 × 32 × 7 мм",
+          "url": "https://www.emarketplace.in.skf.com/deep-groove-ball-bearing/61804-2rs1"
+        },
+        {
+          "label": "NSK: стандартный открытый 6804 и базовые размеры/нагрузки",
+          "url": "https://www.oss.nsk.com/in/products/bearings/ball-bearings/deep-groove-ball-bearings/single-row-deep-groove-ball-bearings/6804-apn.html"
+        },
+        {
           "label": "Справочное изображение подшипника 2RS: Silberwolf, Wikimedia Commons, CC BY 2.5",
           "url": "https://commons.wikimedia.org/wiki/File:Radial-deep-groove-ball-bearing_din625-t1_2rs.png"
         }
       ],
-      "missing": "Кандидат не подтверждён. Справочное изображение показывает конструкцию 2RS, но не модель 6804-2RS. Нужны маркировка с суффиксом 2RS или эквивалентным обозначением производителя, фото обеих уплотнённых сторон купленного экземпляра, ссылка и измеренные внутренний/наружный диаметры и ширина."
-    },
-    {
-      "id": "cmp-009",
-      "name": "GY-BME/P280 environmental sensor module",
-      "image": "reference_bme280_breakout_wikimedia.jpg",
-      "imageStatus": "reference",
-      "aliases": [
-        "GY-BME/P280",
-        "GY-BME280",
-        "GY-BMP280",
-        "BME280 module",
-        "BMP280 module",
-        "датчик давления BME280/BMP280"
-      ],
-      "purpose": "Измеряет атмосферное давление и даёт резервное измерение температуры. Если на плате установлен BME280, он также измеряет влажность. Прошивка различает BMP280 и BME280 по идентификатору микросхемы.",
-      "specifications": [
-        { "label": "Интерфейс", "value": "I²C на общей шине GPIO4/GPIO5" },
-        { "label": "Адрес", "value": "0x76 или 0x77; прошивка проверяет оба" },
-        { "label": "Определение варианта", "value": "регистр 0xD0: 0x58 для BMP280, 0x60 для BME280" },
-        { "label": "Питание в проекте", "value": "3,3 В; подтяжки SDA/SCL должны быть к 3,3 В" }
-      ],
-      "links": [
-        {
-          "label": "Bosch Sensortec: BME280",
-          "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280"
-        },
-        {
-          "label": "Bosch Sensortec: BMP280 datasheet",
-          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf"
-        },
-        {
-          "label": "Справочное фото BME280 breakout: SparkFun, Wikimedia Commons, CC BY 2.0",
-          "url": "https://commons.wikimedia.org/wiki/File:SparkFun_Atmospheric_Sensor_Breakout_-_BME280_13676.jpg"
-        }
-      ],
-      "missing": "Нужно фото обеих сторон имеющейся платы и крупный снимок маркировки микросхемы: надпись GY-BME/P280 встречается на платах как с BMP280, так и с BME280. Справочное фото показывает другой breakout и не является фотографией имеющегося модуля."
+      "missing": "Кандидат не подтверждён. Нужны маркировка производителя и суффикс 2RS/2RS1/LLU или эквивалент, фото обеих уплотнённых сторон, ссылка продавца и контроль штангенциркулем размеров 20 × 32 × 7 мм. Каталожные нагрузки и обороты известных производителей нельзя автоматически переносить на безымянный подшипник."
     },
     {
       "id": "cmp-010",
+      "category": "power",
       "name": "2-pin waterproof connectors with 20 AWG wires — 5 pairs",
       "image": "waterproof_2pin_20awg_connectors_1005005628545454.png",
       "imageStatus": "listing",
@@ -460,6 +481,7 @@
     },
     {
       "id": "cmp-011",
+      "category": "power",
       "name": "KBXlife case for 2/4/6 × 18650 (8.4 V / USB)",
       "image": "kbxlife_6x18650_case_1005008301038053.png",
       "imageStatus": "listing",
@@ -502,6 +524,7 @@
     },
     {
       "id": "cmp-012",
+      "category": "printing",
       "name": "ELEGOO TPU 95A filament — white, 1.75 mm, 1 kg",
       "image": "elegoo_tpu_95a_white_1kg.png",
       "imageStatus": "listing",
@@ -539,6 +562,7 @@
     },
     {
       "id": "cmp-013",
+      "category": "fabrics",
       "name": "Oxford 210D PU 2000 fabric — neon orange",
       "image": "oxford_210d_pu2000_neon_orange.png",
       "imageStatus": "listing",
@@ -580,6 +604,7 @@
     },
     {
       "id": "cmp-014",
+      "category": "fabrics",
       "name": "Silver reflective fabric",
       "image": "reflective_fabric_silver_listing.png",
       "imageStatus": "listing",
@@ -605,6 +630,7 @@
     },
     {
       "id": "cmp-015",
+      "category": "mechanics",
       "name": "10 ft stainless-steel ground flagpole with five-prong base",
       "image": "ground_flagpole_10ft_5prong_yandex_4834237054.png",
       "imageStatus": "listing",
@@ -651,6 +677,7 @@
     },
     {
       "id": "cmp-016",
+      "category": "printing",
       "name": "ERYONE NEW TPU 85A filament",
       "image": "eryone_new_tpu_85a_1005010746965691.png",
       "imageStatus": "listing",
@@ -684,7 +711,8 @@
       "missing": "Нужно подтвердить выбранный цвет, диаметр, массу катушки и параметры печати по читаемой этикетке или карточке товара. Для финальных уплотнений нужны тестовые образцы на сжатие, восстановление формы, влагу и мороз; режимы печати подбираются отдельно от TPU 95A."
     },
     {
-      "id": "cmp-018",
+      "id": "cmp-017",
+      "category": "power",
       "name": "PUMUDDSY RXEF075 resettable PPTC fuse — 0.75A, 20 pcs",
       "image": "pumuddsy_rxef075_pptc_20pcs.png",
       "imageStatus": "listing",
@@ -725,7 +753,8 @@
       "missing": "Нужна ссылка на выбранный товар. До включения в схему требуется даташит или замеры: максимальный ток, начальное и сработавшее сопротивление, время срабатывания, температурное снижение допустимого тока, размеры и шаг выводов. Нужно также определить конкретную защищаемую цепь и проверить, что её рабочий ток с запасом ниже 0,75 А."
     },
     {
-      "id": "cmp-019",
+      "id": "cmp-018",
+      "category": "printing",
       "name": "PETG filament — secondary material candidate",
       "image": "reference_petg_filament_wikimedia.jpg",
       "imageStatus": "reference",
@@ -775,37 +804,8 @@
       "missing": "Нужны марка, цвет, диаметр, масса катушки, ссылка и технический паспорт выбранного PETG. Также нужно определить, какие конкретно детали останутся PETG, а какие будут напечатаны из ASA, и подтвердить материал купонами, уличным тестом и проверкой посадок."
     },
     {
-      "id": "cmp-020",
-      "name": "SHT20 temperature and humidity sensor module",
-      "image": "reference_sht_series_sensor_wikimedia.jpg",
-      "imageStatus": "reference",
-      "aliases": [
-        "SHT20",
-        "Sensirion SHT20",
-        "SHT2x module",
-        "датчик температуры и влажности SHT20"
-      ],
-      "purpose": "Запасной отдельный датчик температуры и относительной влажности воздуха с цифровыми измерениями по I²C. В основной схеме используется комбинированный AHT20+BMP280.",
-      "specifications": [
-        { "label": "Интерфейс и адрес", "value": "I²C, адрес 0x40" },
-        { "label": "Питание микросхемы", "value": "2,1–3,6 В по Sensirion; модуль в проекте питать от 3,3 В" },
-        { "label": "Типичная точность", "value": "±3 %RH и ±0,3 °C по Sensirion" },
-        { "label": "Монтаж", "value": "в вентилируемом кармане под гидрофобной мембраной, вдали от ESP32, DC-DC и нагрева неона" }
-      ],
-      "links": [
-        {
-          "label": "Sensirion: SHT20",
-          "url": "https://sensirion.com/products/catalog/SHT20"
-        },
-        {
-          "label": "Справочное фото датчика семейства SHT: Wdwd, Wikimedia Commons, CC BY-SA 3.0/GFDL",
-          "url": "https://commons.wikimedia.org/wiki/File:Capacitive_humidity_sensor_SHT.jpg"
-        }
-      ],
-      "missing": "Нужно фото обеих сторон имеющегося модуля SHT20, ссылка или схема платы и маркировка выводов. Справочное фото показывает датчик семейства SHT на другой плате и не подтверждает исполнение имеющегося модуля."
-    },
-    {
-      "id": "cmp-021",
+      "id": "cmp-009",
+      "category": "control",
       "name": "AHT20 + BMP280 combined I²C environment sensor module",
       "image": "aht20_bmp280_combo_1005010646115538.png",
       "imageStatus": "listing",
