@@ -40,5 +40,6 @@ describe('component catalog', () => {
     assert.match(html, /Carbon-fiber fishing-rod repair piece — Ø5 × 100 mm/);
     assert.match(html, /Oxford 210D PU 2000 fabric — neon orange/);
     assert.match(html, /Silver reflective fabric/);
+    assert.match(html, /10 ft stainless-steel ground flagpole with five-prong base/);
   });
 });
