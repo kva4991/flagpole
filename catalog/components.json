@@ -61,12 +61,6 @@
       "id": "cmp-002",
       "name": "VEML7700 ambient light sensor module — Gravity I2C",
       "image": "veml7700_module_board_1005008859887704.png",
-      "additionalImages": [
-        {
-          "file": "veml7700_module_specs_1005008859887704.png",
-          "label": "Электрические параметры из карточки продавца"
-        }
-      ],
       "imageStatus": "listing",
       "aliases": [
         "VEML7700",
@@ -218,12 +212,6 @@
       "id": "cmp-005",
       "name": "TZT optoisolated LR7843 MOSFET PWM module — 30V",
       "image": "tzt_lr7843_module_board_1005001326798020.png",
-      "additionalImages": [
-        {
-          "file": "tzt_lr7843_module_features_1005001326798020.png",
-          "label": "Заявленные продавцом функции и варианты MOSFET"
-        }
-      ],
       "imageStatus": "listing",
       "aliases": [
         "TZT LR7843 MOSFET relay module",
@@ -266,12 +254,6 @@
       "id": "cmp-006",
       "name": "eletechsup synchronous DC-DC buck converter — 5V, 4A/5A",
       "image": "eletechsup_buck_5v_wiring_1005005870795744.png",
-      "additionalImages": [
-        {
-          "file": "eletechsup_buck_output_resistor_1005005870795744.png",
-          "label": "Таблица задания выходного напряжения резистором R1"
-        }
-      ],
       "imageStatus": "listing",
       "aliases": [
         "eletechsup 5A 5V buck converter",
