@@ -50,5 +50,7 @@ describe('component catalog', () => {
     assert.match(html, /data-id="cmp-010"/);
     assert.doesNotMatch(html, /data-id="cmp-017"/);
     assert.match(html, /PUMUDDSY RXEF075 resettable PPTC fuse — 0\.75A, 20 pcs/);
+    assert.match(html, /PETG filament — secondary material candidate/);
+    assert.match(html, /ASA для постоянных наружных жёстких деталей/);
   });
 });

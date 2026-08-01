@@ -1,6 +1,6 @@
 # Crucian rotating flagpole finial
 
-Crucian is an experimental rotating flagpole-finial project combining printable PETG/TPU mechanics, a 12 V illuminated ichthys flag, ESP32-C3 firmware, BLE control, and a local Android application.
+Crucian is an experimental rotating flagpole-finial project combining printable ASA/PETG/TPU mechanics, a 12 V illuminated ichthys flag, ESP32-C3 firmware, BLE control, and a local Android application.
 
 The current engineering handoff is **v0.6.1**. It is not a production-ready or safety-certified product. Mechanical fits still depend on physical measurements, and the BLE, power, thermal, weather, and Android paths require real-hardware validation.
 

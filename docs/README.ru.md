@@ -23,8 +23,8 @@
 - [Электроника и прошивка v0.6](../electronics/README_V06_RU.md)
 - [Android-прототип](../android/README_RU.md)
 - [Каталог компонентов](../catalog/README_RU.md)
-- [Механическая сборка PETG/TPU](../mechanical/docs/ASSEMBLY_PETG_TPU_RU.md)
-- [Печать PETG/TPU](../mechanical/docs/PRINTING_PETG_TPU_RU.md)
+- [Механическая сборка ASA/PETG/TPU](../mechanical/docs/ASSEMBLY_PETG_TPU_RU.md)
+- [Печать: ASA как финальный выбор и профиль PETG v0.5](../mechanical/docs/PRINTING_PETG_TPU_RU.md)
 - [Обязательные измерения](../MEASUREMENTS_REQUIRED_RU.md)
 
 Исторические документы v0.5 и v0.2 сохраняются как происхождение решений, но не должны автоматически переопределять ADR и текущий статус v0.6.1.

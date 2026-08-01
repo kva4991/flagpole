@@ -15,7 +15,7 @@
 | `§catalog` | JSON — источник HTML-каталога | `catalog/README_RU.md` |
 | `§meas001` | Геометрия меняется только по реальным измерениям | `MEASUREMENTS_REQUIRED_RU.md` |
 | `§mech001` | Спица между подшипниками, токосъёмник не несущий | `docs/architecture/decisions/0003-structural-material-boundaries.ru.md` |
-| `§mat0001` | PETG несёт нагрузку, TPU выполняет ограниченные мягкие функции | `docs/architecture/decisions/0003-structural-material-boundaries.ru.md` |
+| `§mat0001` | ASA предпочтительна для наружной жёсткой геометрии, PETG — вторичный материал, TPU выполняет ограниченные мягкие функции | `docs/architecture/decisions/0005-asa-preferred-outdoor-material.ru.md` |
 | `§power01` | 6×18650 и регулируемая 12-вольтовая шина | `docs/architecture/decisions/0001-power-and-load-path.ru.md` |
 | `§slip001` | M125-0205 предпочтителен, M125U-06 резервный | `docs/AUDIT_V061_RU.md` |
 | `§ble0001` | Часовое BLE-окно только после настоящего включения питания | `docs/architecture/decisions/0002-ble-service-window.ru.md` |
