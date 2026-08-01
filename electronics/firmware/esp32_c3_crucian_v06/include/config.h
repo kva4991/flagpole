@@ -23,7 +23,7 @@ inline constexpr bool PWM_ACTIVE_HIGH = true;
 // Публичный код только для первичной настройки. Перед установкой его нужно сменить.
 inline constexpr uint32_t FACTORY_SETUP_PIN = 123456;
 inline constexpr uint8_t SENSOR_ERROR_LIMIT = 3;
-inline constexpr uint8_t SHT20_I2C_ADDRESS = 0x40;
+inline constexpr uint8_t AHT20_I2C_ADDRESS = 0x38;
 inline constexpr uint8_t BOSCH_I2C_ADDRESS_PRIMARY = 0x76;
 inline constexpr uint8_t BOSCH_I2C_ADDRESS_SECONDARY = 0x77;
 }

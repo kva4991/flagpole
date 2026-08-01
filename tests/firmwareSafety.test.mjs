@@ -44,12 +44,14 @@ describe('Crucian firmware safety contracts', () => {
     assert.doesNotMatch(main, /service->start\(\)/);
   });
 
-  it('uses SHT20 plus auto-detected BMP280/BME280 without NTC', () => {
+  it('uses the combined AHT20 plus BMP280 module without NTC', () => {
     assert.doesNotMatch(main, /readNtcTempC|analogRead\(cfg::PIN_NTC\)/);
     assert.doesNotMatch(config, /PIN_NTC|NTC_BETA|NTC_FIXED_R/);
-    assert.match(config, /SHT20_I2C_ADDRESS = 0x40/);
+    assert.match(config, /AHT20_I2C_ADDRESS = 0x38/);
     assert.match(main, /chipId == 0x58/);
-    assert.match(main, /chipId == 0x60/);
+    assert.match(main, /Adafruit_AHTX0/);
+    assert.match(main, /ENV=/);
+    assert.match(main, /PARTIAL/);
     assert.match(main, /;HUM=/);
     assert.match(main, /;PRESS=/);
     assert.match(main, /;ENV=/);

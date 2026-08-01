@@ -18,7 +18,7 @@
 <text x="14" y="56" class="t">5V / VBUS</text><text x="42" y="56" class="t">+5 В с выхода DC-DC</text>
 <text x="14" y="68" class="t">GND</text><text x="42" y="68" class="t">GND STAR</text>
 <text x="14" y="80" class="t">GPIO3</text><text x="42" y="80" class="t">IN/SIG MOSFET-модуля</text>
-<text x="14" y="92" class="t">GPIO4 / GPIO5</text><text x="42" y="92" class="t">SDA / SCL: VEML7700 + SHT20 + GY-BME/P280</text>
+<text x="14" y="92" class="t">GPIO4 / GPIO5</text><text x="42" y="92" class="t">SDA / SCL: VEML7700 + AHT20/BMP280</text>
 
 <!-- VEML table -->
 <rect x="104" y="28" width="83" height="68" class="box"/><rect x="104" y="28" width="83" height="10" class="head"/>

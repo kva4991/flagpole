@@ -3,7 +3,7 @@
 #include <Preferences.h>
 #include <NimBLEDevice.h>
 #include <Adafruit_VEML7700.h>
-#include <Adafruit_BME280.h>
+#include <Adafruit_AHTX0.h>
 #include <Adafruit_BMP280.h>
 #include <esp_sleep.h>
 #include <esp_system.h>
@@ -19,7 +19,7 @@ enum class WorkMode : uint8_t { Auto = 0, On = 1, Off = 2 };
 
 Preferences prefs;
 Adafruit_VEML7700 lightSensor;
-Adafruit_BME280 bmeSensor;
+Adafruit_AHTX0 ahtSensor;
 Adafruit_BMP280 bmpSensor;
 NimBLEServer* bleServer = nullptr;
 NimBLECharacteristic* statusChr = nullptr;
@@ -44,9 +44,8 @@ struct State {
     bool serviceReady = false;
     bool lightSensorReady = false;
     bool sensorFault = false;
-    bool sht20Ready = false;
+    bool aht20Ready = false;
     bool boschReady = false;
-    bool boschIsBme = false;
     uint8_t sensorErrorCount = 0;
     uint32_t powerOnMs = 0;
     uint32_t storedPin = cfg::FACTORY_SETUP_PIN;
@@ -97,12 +96,7 @@ bool readI2cRegister(uint8_t address, uint8_t reg, uint8_t& value) {
 bool initializeBoschSensorAt(uint8_t address) {
     uint8_t chipId = 0;
     if (!readI2cRegister(address, 0xD0, chipId)) return false;
-    if (chipId == 0x60) {
-        state.boschIsBme = true;
-        return bmeSensor.begin(address);
-    }
     if (chipId == 0x58) {
-        state.boschIsBme = false;
         return bmpSensor.begin(address);
     }
     return false;
@@ -113,70 +107,35 @@ bool initializeBoschSensor() {
            initializeBoschSensorAt(cfg::BOSCH_I2C_ADDRESS_SECONDARY);
 }
 
-uint8_t sht20Crc8(uint16_t raw) {
-    uint8_t crc = 0;
-    for (uint8_t byteIndex = 0; byteIndex < 2; ++byteIndex) {
-        crc ^= byteIndex == 0 ? static_cast<uint8_t>(raw >> 8) : static_cast<uint8_t>(raw);
-        for (uint8_t bit = 0; bit < 8; ++bit) {
-            crc = (crc & 0x80) ? static_cast<uint8_t>((crc << 1) ^ 0x31) : static_cast<uint8_t>(crc << 1);
-        }
-    }
-    return crc;
-}
-
-bool readSht20Measurement(uint8_t command, uint16_t waitMs, uint16_t& raw) {
-    Wire.beginTransmission(cfg::SHT20_I2C_ADDRESS);
-    Wire.write(command);
-    if (Wire.endTransmission() != 0) return false;
-    delay(waitMs);
-    if (Wire.requestFrom(cfg::SHT20_I2C_ADDRESS, static_cast<uint8_t>(3)) != 3) return false;
-    const uint8_t msb = Wire.read();
-    const uint8_t lsb = Wire.read();
-    const uint8_t crc = Wire.read();
-    const uint16_t wireRaw = (static_cast<uint16_t>(msb) << 8) | lsb;
-    if (sht20Crc8(wireRaw) != crc) return false;
-    raw = wireRaw & 0xFFFC;
-    return true;
-}
-
-bool readSht20(float& temperatureC, float& humidityPct) {
-    uint16_t rawTemperature = 0;
-    uint16_t rawHumidity = 0;
-    if (!readSht20Measurement(0xF3, 90, rawTemperature)) return false;
-    if (!readSht20Measurement(0xF5, 35, rawHumidity)) return false;
-    temperatureC = -46.85f + 175.72f * rawTemperature / 65536.0f;
-    humidityPct = constrain(-6.0f + 125.0f * rawHumidity / 65536.0f, 0.0f, 100.0f);
-    return std::isfinite(temperatureC) && std::isfinite(humidityPct);
+bool initializeAht20() {
+    return ahtSensor.begin(&Wire, 0, cfg::AHT20_I2C_ADDRESS);
 }
 
 void readEnvironment() {
-    float shtTemperature = 0.0f;
-    float shtHumidity = 0.0f;
-    state.sht20Ready = readSht20(shtTemperature, shtHumidity);
+    if (!state.aht20Ready) state.aht20Ready = initializeAht20();
+    sensors_event_t humidityEvent;
+    sensors_event_t temperatureEvent;
+    if (state.aht20Ready) {
+        state.aht20Ready = ahtSensor.getEvent(&humidityEvent, &temperatureEvent);
+        if (state.aht20Ready && std::isfinite(temperatureEvent.temperature) &&
+            std::isfinite(humidityEvent.relative_humidity)) {
+            state.lastTemp = temperatureEvent.temperature;
+            state.lastHumidity = constrain(humidityEvent.relative_humidity, 0.0f, 100.0f);
+        } else {
+            state.aht20Ready = false;
+        }
+    }
 
     if (!state.boschReady) state.boschReady = initializeBoschSensor();
     float boschTemperature = NAN;
-    float boschHumidity = NAN;
     float boschPressure = NAN;
     if (state.boschReady) {
-        if (state.boschIsBme) {
-            boschTemperature = bmeSensor.readTemperature();
-            boschHumidity = bmeSensor.readHumidity();
-            boschPressure = bmeSensor.readPressure() / 100.0f;
-        } else {
-            boschTemperature = bmpSensor.readTemperature();
-            boschPressure = bmpSensor.readPressure() / 100.0f;
-        }
+        boschTemperature = bmpSensor.readTemperature();
+        boschPressure = bmpSensor.readPressure() / 100.0f;
         if (!std::isfinite(boschTemperature) || !std::isfinite(boschPressure)) state.boschReady = false;
     }
 
-    if (state.sht20Ready) {
-        state.lastTemp = shtTemperature;
-        state.lastHumidity = shtHumidity;
-    } else {
-        if (std::isfinite(boschTemperature)) state.lastTemp = boschTemperature;
-        if (std::isfinite(boschHumidity)) state.lastHumidity = boschHumidity;
-    }
+    if (!state.aht20Ready && std::isfinite(boschTemperature)) state.lastTemp = boschTemperature;
     if (std::isfinite(boschPressure)) state.lastPressureHpa = boschPressure;
 }
 
@@ -241,9 +200,10 @@ String buildStatusPayload() {
     payload += ";BLE=" + String(state.bleForceOff ? 0 : 1);
     const char* sensorStatus = state.sensorFault ? "FAULT" : (state.sensorErrorCount > 0 ? "RETRY" : "OK");
     payload += ";SENSOR=" + String(sensorStatus);
-    const bool environmentReady = state.sht20Ready || state.boschReady;
-    payload += ";ENV=" + String(environmentReady ? "OK" : "FAULT");
-    payload += ";BARO=" + String(state.boschReady ? (state.boschIsBme ? "BME280" : "BMP280") : "NONE");
+    const bool environmentReady = state.aht20Ready || state.boschReady;
+    const char* environmentStatus = state.aht20Ready && state.boschReady ? "OK" : (environmentReady ? "PARTIAL" : "FAULT");
+    payload += ";ENV=" + String(environmentStatus);
+    payload += ";BARO=" + String(state.boschReady ? "BMP280" : "NONE");
     return payload;
 }
 
@@ -435,6 +395,7 @@ void setup() {
 
     Wire.begin(cfg::PIN_I2C_SDA, cfg::PIN_I2C_SCL);
     state.lightSensorReady = initializeLightSensor();
+    state.aht20Ready = initializeAht20();
     state.boschReady = initializeBoschSensor();
 
     loadConfig();
