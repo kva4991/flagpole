@@ -341,8 +341,8 @@
     {
       "id": "cmp-008",
       "name": "Bearing 6804-2RS (candidate)",
-      "image": "placeholder_bearing.png",
-      "imageStatus": "placeholder",
+      "image": "reference_ball_bearing_wikimedia.jpg",
+      "imageStatus": "reference",
       "aliases": [
         "6804-2RS",
         "подшипник 6804"
@@ -352,15 +352,19 @@
         {
           "label": "AliExpress: поиск 6804-2RS",
           "url": "https://www.aliexpress.com/wholesale?SearchText=6804-2RS+bearing"
+        },
+        {
+          "label": "Справочное фото шарикового подшипника: Solaris2006, Wikimedia Commons, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ball_bearing.jpg"
         }
       ],
-      "missing": "Кандидат не подтверждён. Нужны маркировка, фото, ссылка и измеренные внутренний/наружный диаметры и ширина."
+      "missing": "Кандидат не подтверждён. Справочное фото показывает тип детали, но не модель 6804-2RS. Нужны маркировка, фото купленного экземпляра, ссылка и измеренные внутренний/наружный диаметры и ширина."
     },
     {
       "id": "cmp-009",
       "name": "NTC 10k B3950",
-      "image": "placeholder_ntc.png",
-      "imageStatus": "placeholder",
+      "image": "reference_ntc_bead_wikimedia.jpg",
+      "imageStatus": "reference",
       "aliases": [
         "NTC 10k",
         "B3950 thermistor"
@@ -370,15 +374,19 @@
         {
           "label": "AliExpress: поиск NTC 10k B3950",
           "url": "https://www.aliexpress.com/wholesale?SearchText=NTC+10k+B3950+thermistor"
+        },
+        {
+          "label": "Справочное фото NTC bead: Ansgar Hellwig, Wikimedia Commons, CC BY-SA 2.0 DE",
+          "url": "https://commons.wikimedia.org/wiki/File:NTC_bead.jpg"
         }
       ],
-      "missing": "Компонент пока не подтверждён как установленный. Нужны фото, исполнение датчика и ссылка."
+      "missing": "Компонент пока не подтверждён как установленный. Справочное фото показывает измерительный NTC bead неизвестного номинала и не подтверждает 10 кОм/B3950. Нужны фото купленного экземпляра, исполнение датчика и ссылка."
     },
     {
       "id": "cmp-010",
       "name": "M12 waterproof connector",
-      "image": "placeholder_m12.png",
-      "imageStatus": "placeholder",
+      "image": "reference_m12_connector_wikimedia.webp",
+      "imageStatus": "reference",
       "aliases": [
         "M12 connector",
         "герметичный разъём M12",
@@ -389,9 +397,13 @@
         {
           "label": "AliExpress: поиск герметичного M12",
           "url": "https://www.aliexpress.com/wholesale?SearchText=M12+waterproof+connector"
+        },
+        {
+          "label": "Справочное фото M12 X-coded: Anordal, Wikimedia Commons, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:M12X_vs_8P8C_ethernet_connectors.webp"
         }
       ],
-      "missing": "Нужны фото, ссылка, число контактов, кодировка, панельная/кабельная часть и распиновка."
+      "missing": "Справочное фото показывает M12 X-coded и не определяет выбранный разъём. Нужны фото купленного экземпляра, ссылка, число контактов, кодировка, панельная/кабельная часть и распиновка."
     },
     {
       "id": "cmp-011",

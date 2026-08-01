@@ -51,8 +51,8 @@ function validate(source) {
         }
       }
     }
-    if (!['confirmed', 'listing', 'placeholder'].includes(item.imageStatus)) {
-      failures.push(`${place}.imageStatus должен быть confirmed, listing или placeholder`);
+    if (!['confirmed', 'listing', 'reference', 'placeholder'].includes(item.imageStatus)) {
+      failures.push(`${place}.imageStatus должен быть confirmed, listing, reference или placeholder`);
     }
     if (!Array.isArray(item.links)) failures.push(`${place}.links должен быть массивом`);
     for (const [linkIndex, link] of (item.links ?? []).entries()) {
@@ -94,6 +94,7 @@ function renderSpecifications(specifications = []) {
 function renderImageBadge(imageStatus) {
   if (imageStatus === 'confirmed') return '<span class="badge ok">фото экземпляра</span>';
   if (imageStatus === 'listing') return '<span class="badge info">фото продавца</span>';
+  if (imageStatus === 'reference') return '<span class="badge info">справочное изображение</span>';
   return '<span class="badge warning">нужно фото</span>';
 }
 

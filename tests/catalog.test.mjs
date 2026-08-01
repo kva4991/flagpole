@@ -28,6 +28,8 @@ describe('component catalog', () => {
     assert.match(html, /Только позиции, которые нужно уточнить/);
     assert.match(html, /data-id="cmp-001"/);
     assert.match(html, /фото продавца/);
+    assert.match(html, /справочное изображение/);
+    assert.match(html, /Solaris2006, Wikimedia Commons, CC BY-SA 3\.0/);
     assert.match(html, /KBXlife case for 2\/4\/6 × 18650/);
     assert.match(html, /это не принято как подтверждённый рейтинг IPX7/);
     assert.match(html, /ESP32 C3 Mini Plus \/ SuperMini Plus V2\.0/);
