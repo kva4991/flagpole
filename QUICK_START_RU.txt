@@ -1,14 +1,9 @@
-БЫСТРЫЙ СТАРТ v0.5
+CRUCIAN v0.6.1 — БЫСТРЫЙ СТАРТ
 
-1. Прочитать README_RU.md.
-2. Прочитать mechanical/docs/PRINTING_PETG_TPU_RU.md.
-3. Напечатать тестовые купоны:
-   - 6804: 32,20 / 32,35 / 32,50 мм;
-   - PETG-паз + TPU-прокладка крышки;
-   - после получения M125: втулки OD 15,60 / 15,80 / 16,00 мм.
-4. Заполнить MEASUREMENTS_REQUIRED_RU.md.
-5. Только после выбора посадок печатать полноразмерные детали.
+1. Прочитать docs/agent-fast-start.ru.md.
+2. Проверить docs/current-implementation-status.ru.md.
+3. Прочитать docs/AUDIT_V061_RU.md по затронутой подсистеме.
+4. Перед геометрией заполнить MEASUREMENTS_REQUIRED_RU.md.
+5. Выполнить npm.cmd run review:impact и рекомендованные проверки.
 
-PETG: папка mechanical/stl_petg/
-TPU 95A: папка mechanical/stl_tpu/
-Blender: mechanical/flagpole_finial_v0_5_assembly.glb
+Не считать локальный Node-тест аппаратным подтверждением.

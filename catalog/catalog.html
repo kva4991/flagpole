@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crucian — каталог компонентов</title>
+<style>
+:root { color-scheme: light dark; }
+body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: #f5f5f5; color: #202020; }
+header { padding: 20px 24px; background: #222; color: #fff; }
+main { padding: 24px; }
+input { width: min(540px, 100%); padding: 10px 12px; font-size: 16px; }
+table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 16px; }
+th, td { border: 1px solid #ddd; padding: 10px; vertical-align: top; }
+th { background: #fafafa; text-align: left; }
+.thumb { width: 180px; max-width: 100%; height: auto; display: block; }
+.muted { color: #666; }
+@media (prefers-color-scheme: dark) {
+  body { background: #121212; color: #f0f0f0; }
+  table { background: #1a1a1a; }
+  th, td { border-color: #444; }
+  th { background: #222; }
+  a { color: #8cc6ff; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Crucian — каталог компонентов</h1>
+  <p>Локальная автономная HTML-страница. JSON — источник истины. Таблицу можно дополнять вручную через <code>catalog/components.json</code> и повторную генерацию.</p>
+</header>
+<main>
+  <label>
+    <span>Поиск</span><br>
+    <input id="search" type="search" placeholder="например, ESP32, MOSFET, M12, TPU">
+  </label>
+  <table id="catalogTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Картинка</th>
+        <th>Возможные названия компонента</th>
+        <th>Пояснение, зачем нужен</th>
+        <th>Ссылки</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>cmp-001</td>
+      <td><img class="thumb" src="images/placeholder_esp32_c3.png" alt="ESP32-C3 SuperMini / ESP32 C3 Mini Plus"></td>
+      <td><strong>ESP32-C3 SuperMini / ESP32 C3 Mini Plus</strong><br><small>ESP32-C3 SuperMini<br>ESP32 C3 Mini Plus<br>ESP32-C3 SuperMini Plus</small></td>
+      <td>Основной микроконтроллер. Управляет BLE, PWM подсветки, датчиком освещённости и логикой режима дня/ночи.</td>
+      <td><ul><li><a href="https://www.espressif.com/en/products/socs/esp32-c3" target="_blank" rel="noreferrer">ESP32-C3 datasheet</a></li></ul></td>
+    </tr>
+    <tr>
+      <td>cmp-002</td>
+      <td><img class="thumb" src="images/placeholder_veml7700.png" alt="VEML7700 sensor module"></td>
+      <td><strong>VEML7700 sensor module</strong><br><small>VEML7700<br>ambient light sensor</small></td>
+      <td>Датчик освещённости. Нужен для автоматического включения и регулировки яркости по внешнему свету.</td>
+      <td><ul><li><a href="https://github.com/adafruit/Adafruit_VEML7700" target="_blank" rel="noreferrer">Adafruit VEML7700</a></li></ul></td>
+    </tr>
+    <tr>
+      <td>cmp-003</td>
+      <td><img class="thumb" src="images/placeholder_slip_ring.png" alt="Senring M125-0205 slip ring (preferred)"></td>
+      <td><strong>Senring M125-0205 slip ring (preferred)</strong><br><small>M125-0205<br>M125U-06 (fallback after current verification)<br>M125 series slip ring<br>mini capsule slip ring</small></td>
+      <td>Токосъёмник внутри флагштока. M125-0205 остаётся предпочтительным двухканальным вариантом; M125U-06 допустим только как резерв после проверки допустимого тока и фактических размеров.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-004</td>
+      <td><img class="thumb" src="images/placeholder_neon.png" alt="Round neon light 12V 16mm"></td>
+      <td><strong>Round neon light 12V 16mm</strong><br><small>XUNATA Round Neon Light<br>12V round LED neon<br>16mm round neon strip</small></td>
+      <td>Основная светящаяся лента по контуру рыбы.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-005</td>
+      <td><img class="thumb" src="images/placeholder_mosfet.png" alt="MOSFET driver / LR7843 module"></td>
+      <td><strong>MOSFET driver / LR7843 module</strong><br><small>LR7843<br>PC817 + LR7843 module<br>logic-level MOSFET</small></td>
+      <td>Силовой ключ, который коммутирует 12-вольтовую ленту и принимает PWM-сигнал от ESP.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-006</td>
+      <td><img class="thumb" src="images/placeholder_dc_dc.png" alt="DC-DC buck 12V to 5V"></td>
+      <td><strong>DC-DC buck 12V to 5V</strong><br><small>mini560 5A<br>TPS54560 module<br>buck converter 12V to 5V</small></td>
+      <td>Понижает 12 В до 5 В для питания ESP32-C3 и периферии.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-007</td>
+      <td><img class="thumb" src="images/placeholder_carbon_rod.png" alt="Carbon fiber rod 5mm"></td>
+      <td><strong>Carbon fiber rod 5mm</strong><br><small>углепластиковый пруток 5 мм<br>carbon fiber rod 5mm</small></td>
+      <td>Горизонтальная спица, удерживающая флаг между подшипниками.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-008</td>
+      <td><img class="thumb" src="images/placeholder_bearing.png" alt="Bearing 6804-2RS (candidate)"></td>
+      <td><strong>Bearing 6804-2RS (candidate)</strong><br><small>6804-2RS<br>подшипник 6804</small></td>
+      <td>Базовый кандидат на подшипники вращения навершия. Точные размеры требуют перепроверки после фактических измерений.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-009</td>
+      <td><img class="thumb" src="images/placeholder_ntc.png" alt="NTC 10k B3950"></td>
+      <td><strong>NTC 10k B3950</strong><br><small>NTC 10k<br>B3950 thermistor</small></td>
+      <td>Контроль температуры внутри отсека электроники. Полезен для испытаний и возможной тепловой защиты.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-010</td>
+      <td><img class="thumb" src="images/placeholder_m12.png" alt="M12 waterproof connector"></td>
+      <td><strong>M12 waterproof connector</strong><br><small>M12 connector<br>герметичный разъём M12<br>waterproof connector</small></td>
+      <td>Герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-011</td>
+      <td><img class="thumb" src="images/placeholder_18650.png" alt="18650 battery pack / 12V regulator"></td>
+      <td><strong>18650 battery pack / 12V regulator</strong><br><small>6x18650 pack<br>12V regulated battery pack</small></td>
+      <td>Источник питания всей системы. Пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 В.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr>
+    <tr>
+      <td>cmp-012</td>
+      <td><img class="thumb" src="images/placeholder_tpu.png" alt="TPU 95A and TPU 85A"></td>
+      <td><strong>TPU 95A and TPU 85A</strong><br><small>TPU 95A<br>TPU 85A</small></td>
+      <td>Мягкие печатные детали: 95A для функциональных мягких элементов, 85A для прокладок и уплотнений.</td>
+      <td><span class="muted">ссылки пока не добавлены</span></td>
+    </tr></tbody>
+  </table>
+</main>
+<script>
+const input = document.getElementById('search');
+const table = document.getElementById('catalogTable');
+input.addEventListener('input', () => {
+  const q = input.value.trim().toLowerCase();
+  for (const row of table.tBodies[0].rows) {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  }
+});
+</script>
+</body>
+</html>

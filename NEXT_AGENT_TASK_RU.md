@@ -1,5 +1,10 @@
 # Задача следующему агенту
 
+> Историческая задача для базы v0.5. Актуальные точки входа после интеграции
+> v0.6.1: [`docs/agent-fast-start.ru.md`](docs/agent-fast-start.ru.md),
+> [`docs/current-implementation-status.ru.md`](docs/current-implementation-status.ru.md)
+> и [`docs/AUDIT_V061_RU.md`](docs/AUDIT_V061_RU.md). §faststart
+
 ## Контекст
 
 Работай с публичным репозиторием проекта вращающегося навершия флагштока. Актуальная база — **v0.5**. Перед любыми изменениями полностью прочитай:

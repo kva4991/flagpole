@@ -1,0 +1,27 @@
+{
+  "project": "Crucian Flagpole Finial",
+  "version": "0.6.1",
+  "status": "integrated-audited-prototype",
+  "important_files": [
+    "docs/agent-fast-start.ru.md",
+    "docs/current-implementation-status.ru.md",
+    "docs/AUDIT_V061_RU.md",
+    "docs/architecture/decisions/README.ru.md",
+    "docs/PROJECT_DECISIONS_RU.md"
+  ],
+  "fixed_requirements": [
+    "BLE device name is Crucian",
+    "BLE enabled for 1 hour after power-on unless authorized",
+    "Successful BLE authorization keeps BLE until power off or BLE:OFF",
+    "6x18650 battery source stabilized to 12V",
+    "ESP32-C3 controls XUNATA 12V neon through MOSFET PWM",
+    "TPU95A and TPU85A both used"
+  ],
+  "quality_commands": [
+    "npm.cmd run quality:docs:all",
+    "npm.cmd run catalog:check",
+    "npm.cmd test",
+    "npm.cmd run review:impact",
+    "npm.cmd run checksums:check"
+  ]
+}

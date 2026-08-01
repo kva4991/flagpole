@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "title": "Crucian component catalog",
+  "columns": [
+    "id",
+    "image",
+    "aliases",
+    "purpose",
+    "links"
+  ],
+  "components": [
+    {
+      "id": "cmp-001",
+      "name": "ESP32-C3 SuperMini / ESP32 C3 Mini Plus",
+      "image": "placeholder_esp32_c3.png",
+      "aliases": [
+        "ESP32-C3 SuperMini",
+        "ESP32 C3 Mini Plus",
+        "ESP32-C3 SuperMini Plus"
+      ],
+      "purpose": "Основной микроконтроллер. Управляет BLE, PWM подсветки, датчиком освещённости и логикой режима дня/ночи.",
+      "links": [
+        {
+          "label": "ESP32-C3 datasheet",
+          "url": "https://www.espressif.com/en/products/socs/esp32-c3"
+        }
+      ]
+    },
+    {
+      "id": "cmp-002",
+      "name": "VEML7700 sensor module",
+      "image": "placeholder_veml7700.png",
+      "aliases": [
+        "VEML7700",
+        "ambient light sensor"
+      ],
+      "purpose": "Датчик освещённости. Нужен для автоматического включения и регулировки яркости по внешнему свету.",
+      "links": [
+        {
+          "label": "Adafruit VEML7700",
+          "url": "https://github.com/adafruit/Adafruit_VEML7700"
+        }
+      ]
+    },
+    {
+      "id": "cmp-003",
+      "name": "Senring M125-0205 slip ring (preferred)",
+      "image": "placeholder_slip_ring.png",
+      "aliases": [
+        "M125-0205",
+        "M125U-06 (fallback after current verification)",
+        "M125 series slip ring",
+        "mini capsule slip ring"
+      ],
+      "purpose": "Токосъёмник внутри флагштока. M125-0205 остаётся предпочтительным двухканальным вариантом; M125U-06 допустим только как резерв после проверки допустимого тока и фактических размеров.",
+      "links": []
+    },
+    {
+      "id": "cmp-004",
+      "name": "Round neon light 12V 16mm",
+      "image": "placeholder_neon.png",
+      "aliases": [
+        "XUNATA Round Neon Light",
+        "12V round LED neon",
+        "16mm round neon strip"
+      ],
+      "purpose": "Основная светящаяся лента по контуру рыбы.",
+      "links": []
+    },
+    {
+      "id": "cmp-005",
+      "name": "MOSFET driver / LR7843 module",
+      "image": "placeholder_mosfet.png",
+      "aliases": [
+        "LR7843",
+        "PC817 + LR7843 module",
+        "logic-level MOSFET"
+      ],
+      "purpose": "Силовой ключ, который коммутирует 12-вольтовую ленту и принимает PWM-сигнал от ESP.",
+      "links": []
+    },
+    {
+      "id": "cmp-006",
+      "name": "DC-DC buck 12V to 5V",
+      "image": "placeholder_dc_dc.png",
+      "aliases": [
+        "mini560 5A",
+        "TPS54560 module",
+        "buck converter 12V to 5V"
+      ],
+      "purpose": "Понижает 12 В до 5 В для питания ESP32-C3 и периферии.",
+      "links": []
+    },
+    {
+      "id": "cmp-007",
+      "name": "Carbon fiber rod 5mm",
+      "image": "placeholder_carbon_rod.png",
+      "aliases": [
+        "углепластиковый пруток 5 мм",
+        "carbon fiber rod 5mm"
+      ],
+      "purpose": "Горизонтальная спица, удерживающая флаг между подшипниками.",
+      "links": []
+    },
+    {
+      "id": "cmp-008",
+      "name": "Bearing 6804-2RS (candidate)",
+      "image": "placeholder_bearing.png",
+      "aliases": [
+        "6804-2RS",
+        "подшипник 6804"
+      ],
+      "purpose": "Базовый кандидат на подшипники вращения навершия. Точные размеры требуют перепроверки после фактических измерений.",
+      "links": []
+    },
+    {
+      "id": "cmp-009",
+      "name": "NTC 10k B3950",
+      "image": "placeholder_ntc.png",
+      "aliases": [
+        "NTC 10k",
+        "B3950 thermistor"
+      ],
+      "purpose": "Контроль температуры внутри отсека электроники. Полезен для испытаний и возможной тепловой защиты.",
+      "links": []
+    },
+    {
+      "id": "cmp-010",
+      "name": "M12 waterproof connector",
+      "image": "placeholder_m12.png",
+      "aliases": [
+        "M12 connector",
+        "герметичный разъём M12",
+        "waterproof connector"
+      ],
+      "purpose": "Герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу.",
+      "links": []
+    },
+    {
+      "id": "cmp-011",
+      "name": "18650 battery pack / 12V regulator",
+      "image": "placeholder_18650.png",
+      "aliases": [
+        "6x18650 pack",
+        "12V regulated battery pack"
+      ],
+      "purpose": "Источник питания всей системы. Пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 В.",
+      "links": []
+    },
+    {
+      "id": "cmp-012",
+      "name": "TPU 95A and TPU 85A",
+      "image": "placeholder_tpu.png",
+      "aliases": [
+        "TPU 95A",
+        "TPU 85A"
+      ],
+      "purpose": "Мягкие печатные детали: 95A для функциональных мягких элементов, 85A для прокладок и уплотнений.",
+      "links": []
+    }
+  ]
+}

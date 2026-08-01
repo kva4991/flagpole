@@ -1,65 +1,42 @@
-# Вращающееся навершие флагштока
+# Crucian rotating flagpole finial
 
-Открытый инженерный проект вращающегося навершия для небольшого флага в форме ихтиса. Навершие должно свободно поворачиваться по ветру, удерживать углепластиковую горизонтальную спицу, передавать питание на вращающуюся часть и автоматически включать подсветку в темноте.
+Crucian is an experimental rotating flagpole-finial project combining printable PETG/TPU mechanics, a 12 V illuminated ichthys flag, ESP32-C3 firmware, BLE control, and a local Android application.
 
-## Текущий статус
+The current engineering handoff is **v0.6.1**. It is not a production-ready or safety-certified product. Mechanical fits still depend on physical measurements, and the BLE, power, thermal, weather, and Android paths require real-hardware validation.
 
-Актуальная инженерная версия — **v0.5**. Это печатаемый прототип, а не завершённое серийное изделие.
+## Start here
 
-Перед полноразмерной печатью и эксплуатацией необходимо подтвердить реальные размеры:
+- [Russian project overview](README.ru.md)
+- [Fast start for a new development session](docs/agent-fast-start.ru.md)
+- [Current implementation status](docs/current-implementation-status.ru.md)
+- [v0.6.1 technical audit](docs/AUDIT_V061_RU.md)
+- [Documentation workflow](docs/DOCUMENTATION_WORKFLOW_RU.md)
+- [Architecture decisions](docs/architecture/decisions/README.ru.md)
+- [Required physical measurements](MEASUREMENTS_REQUIRED_RU.md)
 
-- наружный и внутренний диаметры верхней части древка;
-- фактическую посадку подшипников 6804-2RS;
-- точную модель и размеры токосъёмника M125;
-- фактический диаметр углепластиковой спицы;
-- размеры полученных электронных модулей;
-- калибровку конкретного принтера для PETG и TPU 95A.
+## Repository areas
 
-## Принятая архитектура
+- `mechanical/` — model generators, printable STL files, GLB assemblies, previews, and validation data;
+- `electronics/` — wiring documentation and ESP32-C3 firmware;
+- `android/` — the local BLE control application prototype;
+- `catalog/` — a generated offline component catalog whose source is `components.json`;
+- `docs/` — current status, focused design documents, audit reports, and immutable ADR history;
+- `scripts/`, `tools/quality/`, and `tests/` — deterministic documentation and repository checks.
 
-- корпус и несущие детали: оранжевый PETG;
-- мягкие вкладыши и прокладки: белый TPU 95A;
-- сопло: 0,4 мм;
-- два подшипника 6804-2RS;
-- углепластиковая спица Ø5 мм расположена между подшипниками;
-- токосъёмник не несёт механическую нагрузку;
-- питание через полое древко: 12 В, два провода;
-- предпочтительный токосъёмник: Senring M125-0205;
-- ESP32-C3 SuperMini Plus и VEML7700;
-- одноцветный круглый светящийся контур XUNATA 12 В, Ø16 мм;
-- глаз рыбы вырезается насквозь и не подсвечивается;
-- защита от дождя обеспечивается колпаком, лабиринтом, дренажом, статическими прокладками и герметизацией кабельных проходов.
+## Local documentation checks
 
-## Структура проекта
+Node.js is sufficient; the quality scripts have no third-party runtime dependencies.
 
-- [`README_RU.md`](README_RU.md) — подробный обзор текущей версии;
-- [`HANDOFF_NEXT_AGENT_RU.md`](HANDOFF_NEXT_AGENT_RU.md) — полный инженерный контекст;
-- [`NEXT_AGENT_TASK_RU.md`](NEXT_AGENT_TASK_RU.md) — конкретная задача для продолжения работы;
-- [`MEASUREMENTS_REQUIRED_RU.md`](MEASUREMENTS_REQUIRED_RU.md) — обязательные измерения;
-- [`mechanical/`](mechanical/) — генераторы моделей, STL, GLB, тестовые купоны и документация по печати;
-- [`electronics/`](electronics/) — схема, перечень компонентов и прошивка ESP32-C3;
-- файлы `fish_template_*` — шаблоны флага и светоотражающих вставок.
-
-## С чего начать
-
-1. Прочитать `HANDOFF_NEXT_AGENT_RU.md`.
-2. Снять размеры из `MEASUREMENTS_REQUIRED_RU.md`.
-3. Напечатать тестовые купоны из `mechanical/test_coupons/`.
-4. Проверить сборку электроники на столе до установки в корпус.
-5. Провести дождевой тест корпуса без подачи питания.
-6. Первые механические испытания проводить со страховочным шнуром и вдали от людей.
-
-## Воспроизведение моделей
-
-Из каталога `mechanical`:
-
-```bash
-python generate_models_v05.py
-python render_previews_v05.py
+```powershell
+npm.cmd run quality:docs:all
+npm.cmd run catalog:check
+npm.cmd test
+npm.cmd run review:impact
+npm.cmd run checksums:check
 ```
 
-Используются Python, NumPy, scikit-image, trimesh и matplotlib.
+These checks validate repository contracts only. They do not prove printable fit, electrical safety, BLE behavior on hardware, Android interoperability, weather resistance, or a verified IP rating.
 
-## Лицензия
+## License
 
-Лицензия проекта пока не выбрана. Перед тем как разрешать стороннее копирование, изменение или коммерческое использование, владелец репозитория должен отдельно определить лицензию для кода, документации и механических моделей.
+No project license has been selected. Public visibility alone does not grant permission to copy, modify, redistribute, or commercially use the code, documentation, or mechanical models.
