@@ -24,4 +24,5 @@
 | `§env001` | Комбинированный AHT20+BMP280 питается от 3,3 В и измеряет температуру, влажность и давление | `docs/architecture/decisions/0007-combined-aht20-bmp280.ru.md` |
 | `§envmech1` | Нижний карман датчика имеет защищённый пассивный воздухообмен и послепечатное сверление | `mechanical/docs/ENV_SENSOR_POCKET_RU.md` |
 | `§lightwell1` | Окно VEML7700 вырезается из имеющегося прозрачного PET либо имеющегося УФ-стойкого поликарбоната и калибруется после установки | `docs/architecture/decisions/0010-cut-light-well-window.ru.md` |
+| `§flagsew1` | Флаг шьётся УФ-стойкой bonded-полиэстеровой нитью Tex 45; Tex 70 допускается только после пробы машины и ткани | `docs/architecture/decisions/0011-flag-sewing-thread.ru.md` |
 | `§android1` | Android требует воспроизводимой сборки и последовательного GATT | `docs/AUDIT_V061_RU.md` |
