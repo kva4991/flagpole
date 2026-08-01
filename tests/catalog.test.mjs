@@ -7,6 +7,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -17,5 +18,14 @@ describe('component catalog', () => {
       encoding: 'utf8',
     });
     assert.equal(result.status, 0, result.stderr || result.stdout);
+  });
+
+  it('contains the requested columns and data-completion controls', () => {
+    const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
+    for (const heading of ['ID', 'Картинка', 'Возможные названия компонента', 'Зачем он нужен', 'Описание или покупка']) {
+      assert.match(html, new RegExp(`<th>${heading}</th>`));
+    }
+    assert.match(html, /Только позиции, которые нужно уточнить/);
+    assert.match(html, /data-id="cmp-001"/);
   });
 });

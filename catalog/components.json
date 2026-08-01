@@ -13,6 +13,7 @@
       "id": "cmp-001",
       "name": "ESP32-C3 SuperMini / ESP32 C3 Mini Plus",
       "image": "placeholder_esp32_c3.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "ESP32-C3 SuperMini",
         "ESP32 C3 Mini Plus",
@@ -21,15 +22,21 @@
       "purpose": "Основной микроконтроллер. Управляет BLE, PWM подсветки, датчиком освещённости и логикой режима дня/ночи.",
       "links": [
         {
-          "label": "ESP32-C3 datasheet",
-          "url": "https://www.espressif.com/en/products/socs/esp32-c3"
+          "label": "Espressif: ESP32-C3 datasheet",
+          "url": "https://documentation.espressif.com/esp32-c3_datasheet_en.html"
+        },
+        {
+          "label": "AliExpress: поиск ESP32-C3 SuperMini",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=ESP32-C3+SuperMini"
         }
-      ]
+      ],
+      "missing": "Нужны фото и ссылка на фактически выбранную плату: распиновка SuperMini и Mini Plus может различаться."
     },
     {
       "id": "cmp-002",
       "name": "VEML7700 sensor module",
       "image": "placeholder_veml7700.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "VEML7700",
         "ambient light sensor"
@@ -37,15 +44,25 @@
       "purpose": "Датчик освещённости. Нужен для автоматического включения и регулировки яркости по внешнему свету.",
       "links": [
         {
-          "label": "Adafruit VEML7700",
-          "url": "https://github.com/adafruit/Adafruit_VEML7700"
+          "label": "Vishay: VEML7700",
+          "url": "https://www.vishay.com/en/product/84286/"
+        },
+        {
+          "label": "Adafruit: модуль VEML7700",
+          "url": "https://www.adafruit.com/product/4162"
+        },
+        {
+          "label": "AliExpress: поиск модуля VEML7700",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=VEML7700+module"
         }
-      ]
+      ],
+      "missing": "Нужны фото и ссылка на фактически купленный модуль."
     },
     {
       "id": "cmp-003",
       "name": "Senring M125-0205 slip ring (preferred)",
       "image": "placeholder_slip_ring.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "M125-0205",
         "M125U-06 (fallback after current verification)",
@@ -53,110 +70,182 @@
         "mini capsule slip ring"
       ],
       "purpose": "Токосъёмник внутри флагштока. M125-0205 остаётся предпочтительным двухканальным вариантом; M125U-06 допустим только как резерв после проверки допустимого тока и фактических размеров.",
-      "links": []
+      "links": [
+        {
+          "label": "Senring: серия M125 и M125-0205",
+          "url": "https://www.senring.com/capsule-slip-ring/m125.html"
+        },
+        {
+          "label": "AliExpress: поиск M125-0205",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=M125-0205+slip+ring"
+        }
+      ],
+      "missing": "Нужны фото, ссылка на купленный токосъёмник и измеренные диаметр/длина/длина проводов."
     },
     {
       "id": "cmp-004",
       "name": "Round neon light 12V 16mm",
       "image": "placeholder_neon.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "XUNATA Round Neon Light",
         "12V round LED neon",
         "16mm round neon strip"
       ],
       "purpose": "Основная светящаяся лента по контуру рыбы.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск круглого неона 12 В 16 мм",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=12V+16mm+round+LED+neon"
+        }
+      ],
+      "missing": "Нужны фото, ссылка продавца, длина, мощность на метр, цвет и допустимый радиус изгиба."
     },
     {
       "id": "cmp-005",
       "name": "MOSFET driver / LR7843 module",
       "image": "placeholder_mosfet.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "LR7843",
         "PC817 + LR7843 module",
         "logic-level MOSFET"
       ],
       "purpose": "Силовой ключ, который коммутирует 12-вольтовую ленту и принимает PWM-сигнал от ESP.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск модуля LR7843",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=LR7843+MOSFET+module"
+        }
+      ],
+      "missing": "Нужны фото обеих сторон платы, ссылка продавца и подтверждение полярности входа/PWM."
     },
     {
       "id": "cmp-006",
       "name": "DC-DC buck 12V to 5V",
       "image": "placeholder_dc_dc.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "mini560 5A",
         "TPS54560 module",
         "buck converter 12V to 5V"
       ],
       "purpose": "Понижает 12 В до 5 В для питания ESP32-C3 и периферии.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск Mini560 5 В",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=Mini560+5V+buck+converter"
+        }
+      ],
+      "missing": "Нужны фото, ссылка продавца, точная маркировка и подтверждённый выход 5 В."
     },
     {
       "id": "cmp-007",
       "name": "Carbon fiber rod 5mm",
       "image": "placeholder_carbon_rod.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "углепластиковый пруток 5 мм",
         "carbon fiber rod 5mm"
       ],
       "purpose": "Горизонтальная спица, удерживающая флаг между подшипниками.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск прутка 5 мм",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=5mm+carbon+fiber+rod"
+        }
+      ],
+      "missing": "Нужны фото, ссылка продавца, фактический диаметр и длина."
     },
     {
       "id": "cmp-008",
       "name": "Bearing 6804-2RS (candidate)",
       "image": "placeholder_bearing.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "6804-2RS",
         "подшипник 6804"
       ],
       "purpose": "Базовый кандидат на подшипники вращения навершия. Точные размеры требуют перепроверки после фактических измерений.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск 6804-2RS",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=6804-2RS+bearing"
+        }
+      ],
+      "missing": "Кандидат не подтверждён. Нужны маркировка, фото, ссылка и измеренные внутренний/наружный диаметры и ширина."
     },
     {
       "id": "cmp-009",
       "name": "NTC 10k B3950",
       "image": "placeholder_ntc.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "NTC 10k",
         "B3950 thermistor"
       ],
       "purpose": "Контроль температуры внутри отсека электроники. Полезен для испытаний и возможной тепловой защиты.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск NTC 10k B3950",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=NTC+10k+B3950+thermistor"
+        }
+      ],
+      "missing": "Компонент пока не подтверждён как установленный. Нужны фото, исполнение датчика и ссылка."
     },
     {
       "id": "cmp-010",
       "name": "M12 waterproof connector",
       "image": "placeholder_m12.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "M12 connector",
         "герметичный разъём M12",
         "waterproof connector"
       ],
       "purpose": "Герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск герметичного M12",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=M12+waterproof+connector"
+        }
+      ],
+      "missing": "Нужны фото, ссылка, число контактов, кодировка, панельная/кабельная часть и распиновка."
     },
     {
       "id": "cmp-011",
       "name": "18650 battery pack / 12V regulator",
       "image": "placeholder_18650.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "6x18650 pack",
         "12V regulated battery pack"
       ],
       "purpose": "Источник питания всей системы. Пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 В.",
-      "links": []
+      "links": [],
+      "missing": "Нужны только фото и описание внешнего аккумуляторного блока: 6×18650 и модель стабилизатора 12 В. BMS/заряд не входят в проект Crucian."
     },
     {
       "id": "cmp-012",
       "name": "TPU 95A and TPU 85A",
       "image": "placeholder_tpu.png",
+      "imageStatus": "placeholder",
       "aliases": [
         "TPU 95A",
         "TPU 85A"
       ],
       "purpose": "Мягкие печатные детали: 95A для функциональных мягких элементов, 85A для прокладок и уплотнений.",
-      "links": []
+      "links": [
+        {
+          "label": "AliExpress: поиск TPU 95A",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=TPU+95A+filament"
+        },
+        {
+          "label": "AliExpress: поиск TPU 85A",
+          "url": "https://www.aliexpress.com/wholesale?SearchText=TPU+85A+filament"
+        }
+      ],
+      "missing": "Нужны производитель, точные названия пластиков, цвета и ссылки на купленные катушки."
     }
   ]
 }

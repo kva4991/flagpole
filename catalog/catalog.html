@@ -5,141 +5,182 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crucian — каталог компонентов</title>
 <style>
-:root { color-scheme: light dark; }
-body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: #f5f5f5; color: #202020; }
-header { padding: 20px 24px; background: #222; color: #fff; }
-main { padding: 24px; }
-input { width: min(540px, 100%); padding: 10px 12px; font-size: 16px; }
-table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 16px; }
-th, td { border: 1px solid #ddd; padding: 10px; vertical-align: top; }
-th { background: #fafafa; text-align: left; }
-.thumb { width: 180px; max-width: 100%; height: auto; display: block; }
-.muted { color: #666; }
-@media (prefers-color-scheme: dark) {
-  body { background: #121212; color: #f0f0f0; }
-  table { background: #1a1a1a; }
-  th, td { border-color: #444; }
-  th { background: #222; }
-  a { color: #8cc6ff; }
-}
+:root { color-scheme: light dark; --bg:#edf1f3; --panel:#fff; --ink:#172126; --muted:#607078; --line:#d3dde1; --accent:#067a78; --accent-soft:#d8f0ed; --warn:#9b4d00; --warn-bg:#fff0d9; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { padding:clamp(24px,5vw,56px); color:#fff; background:linear-gradient(125deg,#15373d,#087d78); }
+header h1 { margin:0 0 8px; font-size:clamp(28px,5vw,48px); line-height:1.1; }
+header p { max-width:850px; margin:0; color:#daf4f1; }
+main { max-width:1500px; margin:auto; padding:24px; }
+.summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin-top:-48px; margin-bottom:20px; }
+.metric { padding:16px 18px; border:1px solid var(--line); border-radius:14px; background:var(--panel); box-shadow:0 8px 30px #102d3320; }
+.metric strong { display:block; font-size:28px; color:var(--accent); }
+.controls { display:flex; flex-wrap:wrap; align-items:end; gap:12px; padding:16px; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+.search { flex:1 1 360px; }
+label span { display:block; margin-bottom:5px; font-weight:650; }
+input[type="search"] { width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px; background:var(--panel); color:var(--ink); font:inherit; }
+.toggle { display:flex; align-items:center; gap:8px; padding:10px 4px; }
+.toggle span { margin:0; }
+.result-count { color:var(--muted); padding:10px 2px; }
+.table-wrap { overflow:auto; margin-top:16px; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+table { width:100%; min-width:1080px; border-collapse:collapse; }
+th,td { padding:14px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th { position:sticky; top:0; z-index:1; background:#e4eeef; color:#27464c; font-size:13px; text-transform:uppercase; letter-spacing:.035em; }
+tbody tr:last-child td { border-bottom:0; }
+tbody tr:hover { background:#f3faf9; }
+.id-cell code { display:block; font-weight:700; color:var(--accent); }
+.copy-id { margin-top:8px; padding:3px 7px; border:1px solid var(--line); border-radius:6px; background:transparent; color:var(--muted); cursor:pointer; }
+.thumb { width:180px; height:120px; object-fit:contain; display:block; border:1px solid var(--line); border-radius:9px; background:#fff; }
+.badge { display:inline-block; margin-top:8px; padding:3px 8px; border-radius:999px; font-size:12px; font-weight:700; }
+.warning { color:var(--warn); background:var(--warn-bg); }
+.ok { color:#126534; background:#dff4e7; }
+.aliases,.links { margin:8px 0 0; padding-left:18px; }
+.needed { margin-top:10px; padding:10px; border-left:4px solid #db7b16; background:var(--warn-bg); color:#633500; }
+.empty { color:var(--muted); font-style:italic; }
+.no-results { display:none; padding:30px; text-align:center; color:var(--muted); }
+footer { max-width:1500px; margin:auto; padding:0 24px 30px; color:var(--muted); }
+@media (prefers-color-scheme:dark) { :root { --bg:#0d171a; --panel:#152227; --ink:#edf6f5; --muted:#a5b5ba; --line:#34464c; --accent:#5ed5cd; --accent-soft:#193a39; --warn:#ffbd78; --warn-bg:#3b2b1b; } th{background:#20343a;color:#c9e7e5} tbody tr:hover{background:#193136}.needed{color:#ffd6a6}.thumb{background:#f8f8f8} a{color:#70c9ff} }
+@media (max-width:700px) { main{padding:16px}.summary{margin-top:-32px}.copy-id{display:none} }
 </style>
 </head>
 <body>
 <header>
-  <h1>Crucian — каталог компонентов</h1>
-  <p>Локальная автономная HTML-страница. JSON — источник истины. Таблицу можно дополнять вручную через <code>catalog/components.json</code> и повторную генерацию.</p>
+  <h1>Каталог компонентов Crucian</h1>
+  <p>Рабочая ведомость известных деталей. Эскиз означает, что точная фотография ещё не получена. Чтобы дополнить карточку, пришлите её ID, фотографии, надписи на детали и ссылку продавца.</p>
 </header>
 <main>
-  <label>
-    <span>Поиск</span><br>
-    <input id="search" type="search" placeholder="например, ESP32, MOSFET, M12, TPU">
-  </label>
-  <table id="catalogTable">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Картинка</th>
-        <th>Возможные названия компонента</th>
-        <th>Пояснение, зачем нужен</th>
-        <th>Ссылки</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>cmp-001</td>
-      <td><img class="thumb" src="images/placeholder_esp32_c3.png" alt="ESP32-C3 SuperMini / ESP32 C3 Mini Plus"></td>
-      <td><strong>ESP32-C3 SuperMini / ESP32 C3 Mini Plus</strong><br><small>ESP32-C3 SuperMini<br>ESP32 C3 Mini Plus<br>ESP32-C3 SuperMini Plus</small></td>
-      <td>Основной микроконтроллер. Управляет BLE, PWM подсветки, датчиком освещённости и логикой режима дня/ночи.</td>
-      <td><ul><li><a href="https://www.espressif.com/en/products/socs/esp32-c3" target="_blank" rel="noreferrer">ESP32-C3 datasheet</a></li></ul></td>
+  <section class="summary" aria-label="Сводка">
+    <div class="metric"><strong>12</strong>позиций в каталоге</div>
+    <div class="metric"><strong>12</strong>требуют уточнения</div>
+    <div class="metric"><strong>16</strong>справочных ссылок</div>
+  </section>
+  <section class="controls" aria-label="Фильтры">
+    <label class="search"><span>Поиск по ID, названию и назначению</span><input id="search" type="search" placeholder="например: cmp-003, ESP32, токосъёмник"></label>
+    <label class="toggle"><input id="incompleteOnly" type="checkbox"><span>Только позиции, которые нужно уточнить</span></label>
+    <output id="resultCount" class="result-count"></output>
+  </section>
+  <div class="table-wrap">
+    <table id="catalogTable">
+      <thead><tr><th>ID</th><th>Картинка</th><th>Возможные названия компонента</th><th>Зачем он нужен</th><th>Описание или покупка</th></tr></thead>
+      <tbody>
+    <tr data-incomplete="true" data-search="cmp-001 esp32-c3 supermini / esp32 c3 mini plus esp32-c3 supermini esp32 c3 mini plus esp32-c3 supermini plus основной микроконтроллер. управляет ble, pwm подсветки, датчиком освещённости и логикой режима дня/ночи. нужны фото и ссылка на фактически выбранную плату: распиновка supermini и mini plus может различаться.">
+      <td class="id-cell"><code>cmp-001</code><button class="copy-id" type="button" data-id="cmp-001" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_esp32_c3.png" alt="ESP32-C3 SuperMini / ESP32 C3 Mini Plus" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>ESP32-C3 SuperMini / ESP32 C3 Mini Plus</strong><ul class="aliases"><li>ESP32-C3 SuperMini</li><li>ESP32 C3 Mini Plus</li><li>ESP32-C3 SuperMini Plus</li></ul></td>
+      <td><p>Основной микроконтроллер. Управляет BLE, PWM подсветки, датчиком освещённости и логикой режима дня/ночи.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото и ссылка на фактически выбранную плату: распиновка SuperMini и Mini Plus может различаться.</aside></td>
+      <td><ul class="links"><li><a href="https://documentation.espressif.com/esp32-c3_datasheet_en.html" target="_blank" rel="noopener noreferrer">Espressif: ESP32-C3 datasheet</a></li><li><a href="https://www.aliexpress.com/wholesale?SearchText=ESP32-C3+SuperMini" target="_blank" rel="noopener noreferrer">AliExpress: поиск ESP32-C3 SuperMini</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-002</td>
-      <td><img class="thumb" src="images/placeholder_veml7700.png" alt="VEML7700 sensor module"></td>
-      <td><strong>VEML7700 sensor module</strong><br><small>VEML7700<br>ambient light sensor</small></td>
-      <td>Датчик освещённости. Нужен для автоматического включения и регулировки яркости по внешнему свету.</td>
-      <td><ul><li><a href="https://github.com/adafruit/Adafruit_VEML7700" target="_blank" rel="noreferrer">Adafruit VEML7700</a></li></ul></td>
+    <tr data-incomplete="true" data-search="cmp-002 veml7700 sensor module veml7700 ambient light sensor датчик освещённости. нужен для автоматического включения и регулировки яркости по внешнему свету. нужны фото и ссылка на фактически купленный модуль.">
+      <td class="id-cell"><code>cmp-002</code><button class="copy-id" type="button" data-id="cmp-002" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_veml7700.png" alt="VEML7700 sensor module" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>VEML7700 sensor module</strong><ul class="aliases"><li>VEML7700</li><li>ambient light sensor</li></ul></td>
+      <td><p>Датчик освещённости. Нужен для автоматического включения и регулировки яркости по внешнему свету.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото и ссылка на фактически купленный модуль.</aside></td>
+      <td><ul class="links"><li><a href="https://www.vishay.com/en/product/84286/" target="_blank" rel="noopener noreferrer">Vishay: VEML7700</a></li><li><a href="https://www.adafruit.com/product/4162" target="_blank" rel="noopener noreferrer">Adafruit: модуль VEML7700</a></li><li><a href="https://www.aliexpress.com/wholesale?SearchText=VEML7700+module" target="_blank" rel="noopener noreferrer">AliExpress: поиск модуля VEML7700</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-003</td>
-      <td><img class="thumb" src="images/placeholder_slip_ring.png" alt="Senring M125-0205 slip ring (preferred)"></td>
-      <td><strong>Senring M125-0205 slip ring (preferred)</strong><br><small>M125-0205<br>M125U-06 (fallback after current verification)<br>M125 series slip ring<br>mini capsule slip ring</small></td>
-      <td>Токосъёмник внутри флагштока. M125-0205 остаётся предпочтительным двухканальным вариантом; M125U-06 допустим только как резерв после проверки допустимого тока и фактических размеров.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-003 senring m125-0205 slip ring (preferred) m125-0205 m125u-06 (fallback after current verification) m125 series slip ring mini capsule slip ring токосъёмник внутри флагштока. m125-0205 остаётся предпочтительным двухканальным вариантом; m125u-06 допустим только как резерв после проверки допустимого тока и фактических размеров. нужны фото, ссылка на купленный токосъёмник и измеренные диаметр/длина/длина проводов.">
+      <td class="id-cell"><code>cmp-003</code><button class="copy-id" type="button" data-id="cmp-003" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_slip_ring.png" alt="Senring M125-0205 slip ring (preferred)" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>Senring M125-0205 slip ring (preferred)</strong><ul class="aliases"><li>M125-0205</li><li>M125U-06 (fallback after current verification)</li><li>M125 series slip ring</li><li>mini capsule slip ring</li></ul></td>
+      <td><p>Токосъёмник внутри флагштока. M125-0205 остаётся предпочтительным двухканальным вариантом; M125U-06 допустим только как резерв после проверки допустимого тока и фактических размеров.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото, ссылка на купленный токосъёмник и измеренные диаметр/длина/длина проводов.</aside></td>
+      <td><ul class="links"><li><a href="https://www.senring.com/capsule-slip-ring/m125.html" target="_blank" rel="noopener noreferrer">Senring: серия M125 и M125-0205</a></li><li><a href="https://www.aliexpress.com/wholesale?SearchText=M125-0205+slip+ring" target="_blank" rel="noopener noreferrer">AliExpress: поиск M125-0205</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-004</td>
-      <td><img class="thumb" src="images/placeholder_neon.png" alt="Round neon light 12V 16mm"></td>
-      <td><strong>Round neon light 12V 16mm</strong><br><small>XUNATA Round Neon Light<br>12V round LED neon<br>16mm round neon strip</small></td>
-      <td>Основная светящаяся лента по контуру рыбы.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-004 round neon light 12v 16mm xunata round neon light 12v round led neon 16mm round neon strip основная светящаяся лента по контуру рыбы. нужны фото, ссылка продавца, длина, мощность на метр, цвет и допустимый радиус изгиба.">
+      <td class="id-cell"><code>cmp-004</code><button class="copy-id" type="button" data-id="cmp-004" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_neon.png" alt="Round neon light 12V 16mm" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>Round neon light 12V 16mm</strong><ul class="aliases"><li>XUNATA Round Neon Light</li><li>12V round LED neon</li><li>16mm round neon strip</li></ul></td>
+      <td><p>Основная светящаяся лента по контуру рыбы.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото, ссылка продавца, длина, мощность на метр, цвет и допустимый радиус изгиба.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=12V+16mm+round+LED+neon" target="_blank" rel="noopener noreferrer">AliExpress: поиск круглого неона 12 В 16 мм</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-005</td>
-      <td><img class="thumb" src="images/placeholder_mosfet.png" alt="MOSFET driver / LR7843 module"></td>
-      <td><strong>MOSFET driver / LR7843 module</strong><br><small>LR7843<br>PC817 + LR7843 module<br>logic-level MOSFET</small></td>
-      <td>Силовой ключ, который коммутирует 12-вольтовую ленту и принимает PWM-сигнал от ESP.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-005 mosfet driver / lr7843 module lr7843 pc817 + lr7843 module logic-level mosfet силовой ключ, который коммутирует 12-вольтовую ленту и принимает pwm-сигнал от esp. нужны фото обеих сторон платы, ссылка продавца и подтверждение полярности входа/pwm.">
+      <td class="id-cell"><code>cmp-005</code><button class="copy-id" type="button" data-id="cmp-005" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_mosfet.png" alt="MOSFET driver / LR7843 module" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>MOSFET driver / LR7843 module</strong><ul class="aliases"><li>LR7843</li><li>PC817 + LR7843 module</li><li>logic-level MOSFET</li></ul></td>
+      <td><p>Силовой ключ, который коммутирует 12-вольтовую ленту и принимает PWM-сигнал от ESP.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото обеих сторон платы, ссылка продавца и подтверждение полярности входа/PWM.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=LR7843+MOSFET+module" target="_blank" rel="noopener noreferrer">AliExpress: поиск модуля LR7843</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-006</td>
-      <td><img class="thumb" src="images/placeholder_dc_dc.png" alt="DC-DC buck 12V to 5V"></td>
-      <td><strong>DC-DC buck 12V to 5V</strong><br><small>mini560 5A<br>TPS54560 module<br>buck converter 12V to 5V</small></td>
-      <td>Понижает 12 В до 5 В для питания ESP32-C3 и периферии.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-006 dc-dc buck 12v to 5v mini560 5a tps54560 module buck converter 12v to 5v понижает 12 в до 5 в для питания esp32-c3 и периферии. нужны фото, ссылка продавца, точная маркировка и подтверждённый выход 5 в.">
+      <td class="id-cell"><code>cmp-006</code><button class="copy-id" type="button" data-id="cmp-006" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_dc_dc.png" alt="DC-DC buck 12V to 5V" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>DC-DC buck 12V to 5V</strong><ul class="aliases"><li>mini560 5A</li><li>TPS54560 module</li><li>buck converter 12V to 5V</li></ul></td>
+      <td><p>Понижает 12 В до 5 В для питания ESP32-C3 и периферии.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото, ссылка продавца, точная маркировка и подтверждённый выход 5 В.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=Mini560+5V+buck+converter" target="_blank" rel="noopener noreferrer">AliExpress: поиск Mini560 5 В</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-007</td>
-      <td><img class="thumb" src="images/placeholder_carbon_rod.png" alt="Carbon fiber rod 5mm"></td>
-      <td><strong>Carbon fiber rod 5mm</strong><br><small>углепластиковый пруток 5 мм<br>carbon fiber rod 5mm</small></td>
-      <td>Горизонтальная спица, удерживающая флаг между подшипниками.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-007 carbon fiber rod 5mm углепластиковый пруток 5 мм carbon fiber rod 5mm горизонтальная спица, удерживающая флаг между подшипниками. нужны фото, ссылка продавца, фактический диаметр и длина.">
+      <td class="id-cell"><code>cmp-007</code><button class="copy-id" type="button" data-id="cmp-007" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_carbon_rod.png" alt="Carbon fiber rod 5mm" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>Carbon fiber rod 5mm</strong><ul class="aliases"><li>углепластиковый пруток 5 мм</li><li>carbon fiber rod 5mm</li></ul></td>
+      <td><p>Горизонтальная спица, удерживающая флаг между подшипниками.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото, ссылка продавца, фактический диаметр и длина.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=5mm+carbon+fiber+rod" target="_blank" rel="noopener noreferrer">AliExpress: поиск прутка 5 мм</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-008</td>
-      <td><img class="thumb" src="images/placeholder_bearing.png" alt="Bearing 6804-2RS (candidate)"></td>
-      <td><strong>Bearing 6804-2RS (candidate)</strong><br><small>6804-2RS<br>подшипник 6804</small></td>
-      <td>Базовый кандидат на подшипники вращения навершия. Точные размеры требуют перепроверки после фактических измерений.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-008 bearing 6804-2rs (candidate) 6804-2rs подшипник 6804 базовый кандидат на подшипники вращения навершия. точные размеры требуют перепроверки после фактических измерений. кандидат не подтверждён. нужны маркировка, фото, ссылка и измеренные внутренний/наружный диаметры и ширина.">
+      <td class="id-cell"><code>cmp-008</code><button class="copy-id" type="button" data-id="cmp-008" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_bearing.png" alt="Bearing 6804-2RS (candidate)" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>Bearing 6804-2RS (candidate)</strong><ul class="aliases"><li>6804-2RS</li><li>подшипник 6804</li></ul></td>
+      <td><p>Базовый кандидат на подшипники вращения навершия. Точные размеры требуют перепроверки после фактических измерений.</p><aside class="needed"><strong>Нужно уточнить:</strong> Кандидат не подтверждён. Нужны маркировка, фото, ссылка и измеренные внутренний/наружный диаметры и ширина.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=6804-2RS+bearing" target="_blank" rel="noopener noreferrer">AliExpress: поиск 6804-2RS</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-009</td>
-      <td><img class="thumb" src="images/placeholder_ntc.png" alt="NTC 10k B3950"></td>
-      <td><strong>NTC 10k B3950</strong><br><small>NTC 10k<br>B3950 thermistor</small></td>
-      <td>Контроль температуры внутри отсека электроники. Полезен для испытаний и возможной тепловой защиты.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-009 ntc 10k b3950 ntc 10k b3950 thermistor контроль температуры внутри отсека электроники. полезен для испытаний и возможной тепловой защиты. компонент пока не подтверждён как установленный. нужны фото, исполнение датчика и ссылка.">
+      <td class="id-cell"><code>cmp-009</code><button class="copy-id" type="button" data-id="cmp-009" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_ntc.png" alt="NTC 10k B3950" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>NTC 10k B3950</strong><ul class="aliases"><li>NTC 10k</li><li>B3950 thermistor</li></ul></td>
+      <td><p>Контроль температуры внутри отсека электроники. Полезен для испытаний и возможной тепловой защиты.</p><aside class="needed"><strong>Нужно уточнить:</strong> Компонент пока не подтверждён как установленный. Нужны фото, исполнение датчика и ссылка.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=NTC+10k+B3950+thermistor" target="_blank" rel="noopener noreferrer">AliExpress: поиск NTC 10k B3950</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-010</td>
-      <td><img class="thumb" src="images/placeholder_m12.png" alt="M12 waterproof connector"></td>
-      <td><strong>M12 waterproof connector</strong><br><small>M12 connector<br>герметичный разъём M12<br>waterproof connector</small></td>
-      <td>Герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-010 m12 waterproof connector m12 connector герметичный разъём m12 waterproof connector герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу. нужны фото, ссылка, число контактов, кодировка, панельная/кабельная часть и распиновка.">
+      <td class="id-cell"><code>cmp-010</code><button class="copy-id" type="button" data-id="cmp-010" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_m12.png" alt="M12 waterproof connector" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>M12 waterproof connector</strong><ul class="aliases"><li>M12 connector</li><li>герметичный разъём M12</li><li>waterproof connector</li></ul></td>
+      <td><p>Герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото, ссылка, число контактов, кодировка, панельная/кабельная часть и распиновка.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=M12+waterproof+connector" target="_blank" rel="noopener noreferrer">AliExpress: поиск герметичного M12</a></li></ul></td>
     </tr>
-    <tr>
-      <td>cmp-011</td>
-      <td><img class="thumb" src="images/placeholder_18650.png" alt="18650 battery pack / 12V regulator"></td>
-      <td><strong>18650 battery pack / 12V regulator</strong><br><small>6x18650 pack<br>12V regulated battery pack</small></td>
-      <td>Источник питания всей системы. Пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 В.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-011 18650 battery pack / 12v regulator 6x18650 pack 12v regulated battery pack источник питания всей системы. пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 в. нужны только фото и описание внешнего аккумуляторного блока: 6×18650 и модель стабилизатора 12 в. bms/заряд не входят в проект crucian.">
+      <td class="id-cell"><code>cmp-011</code><button class="copy-id" type="button" data-id="cmp-011" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_18650.png" alt="18650 battery pack / 12V regulator" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>18650 battery pack / 12V regulator</strong><ul class="aliases"><li>6x18650 pack</li><li>12V regulated battery pack</li></ul></td>
+      <td><p>Источник питания всей системы. Пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 В.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны только фото и описание внешнего аккумуляторного блока: 6×18650 и модель стабилизатора 12 В. BMS/заряд не входят в проект Crucian.</aside></td>
+      <td><span class="empty">Ссылка пока не подтверждена</span></td>
     </tr>
-    <tr>
-      <td>cmp-012</td>
-      <td><img class="thumb" src="images/placeholder_tpu.png" alt="TPU 95A and TPU 85A"></td>
-      <td><strong>TPU 95A and TPU 85A</strong><br><small>TPU 95A<br>TPU 85A</small></td>
-      <td>Мягкие печатные детали: 95A для функциональных мягких элементов, 85A для прокладок и уплотнений.</td>
-      <td><span class="muted">ссылки пока не добавлены</span></td>
+    <tr data-incomplete="true" data-search="cmp-012 tpu 95a and tpu 85a tpu 95a tpu 85a мягкие печатные детали: 95a для функциональных мягких элементов, 85a для прокладок и уплотнений. нужны производитель, точные названия пластиков, цвета и ссылки на купленные катушки.">
+      <td class="id-cell"><code>cmp-012</code><button class="copy-id" type="button" data-id="cmp-012" title="Скопировать ID">копировать</button></td>
+      <td class="image-cell"><img class="thumb" src="images/placeholder_tpu.png" alt="TPU 95A and TPU 85A" loading="lazy"><span class="badge warning">нужно фото</span></td>
+      <td><strong>TPU 95A and TPU 85A</strong><ul class="aliases"><li>TPU 95A</li><li>TPU 85A</li></ul></td>
+      <td><p>Мягкие печатные детали: 95A для функциональных мягких элементов, 85A для прокладок и уплотнений.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны производитель, точные названия пластиков, цвета и ссылки на купленные катушки.</aside></td>
+      <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=TPU+95A+filament" target="_blank" rel="noopener noreferrer">AliExpress: поиск TPU 95A</a></li><li><a href="https://www.aliexpress.com/wholesale?SearchText=TPU+85A+filament" target="_blank" rel="noopener noreferrer">AliExpress: поиск TPU 85A</a></li></ul></td>
     </tr></tbody>
-  </table>
+    </table>
+    <p id="noResults" class="no-results">По заданному фильтру ничего не найдено.</p>
+  </div>
 </main>
+<footer>Источник данных: <code>catalog/components.json</code>. Страница автономна и не загружает скрипты, шрифты или изображения из интернета.</footer>
 <script>
 const input = document.getElementById('search');
+const incompleteOnly = document.getElementById('incompleteOnly');
 const table = document.getElementById('catalogTable');
-input.addEventListener('input', () => {
-  const q = input.value.trim().toLowerCase();
+const resultCount = document.getElementById('resultCount');
+const noResults = document.getElementById('noResults');
+function applyFilters() {
+  const query = input.value.trim().toLowerCase();
+  let visible = 0;
   for (const row of table.tBodies[0].rows) {
-    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    const matchesText = row.dataset.search.includes(query);
+    const matchesState = !incompleteOnly.checked || row.dataset.incomplete === 'true';
+    row.hidden = !(matchesText && matchesState);
+    if (!row.hidden) visible += 1;
   }
-});
+  resultCount.value = 'Показано: ' + visible;
+  noResults.style.display = visible === 0 ? 'block' : 'none';
+}
+input.addEventListener('input', applyFilters);
+incompleteOnly.addEventListener('change', applyFilters);
+for (const button of document.querySelectorAll('.copy-id')) {
+  button.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(button.dataset.id);
+    const previous = button.textContent;
+    button.textContent = 'скопировано';
+    setTimeout(() => { button.textContent = previous; }, 1200);
+  });
+}
+applyFilters();
 </script>
 </body>
 </html>
