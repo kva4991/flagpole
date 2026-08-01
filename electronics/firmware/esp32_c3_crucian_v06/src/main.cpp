@@ -176,7 +176,7 @@ uint8_t computeAutoBrightness(float lux) {
 }
 
 String printableFloat(float value, uint8_t digits = 1) {
-    return std::isfinite(value) ? String(value, digits) : String("NA");
+    return std::isfinite(value) ? String(value, static_cast<unsigned int>(digits)) : String("NA");
 }
 
 String buildStatusPayload() {

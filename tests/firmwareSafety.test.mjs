@@ -44,6 +44,10 @@ describe('Crucian firmware safety contracts', () => {
     assert.doesNotMatch(main, /;BAT=/);
   });
 
+  it('disambiguates Arduino String decimal formatting', () => {
+    assert.match(main, /String\(value, static_cast<unsigned int>\(digits\)\)/);
+  });
+
   it('uses the ESP32-C3 USB serial and C++17 build contract', () => {
     assert.match(platformio, /-std=gnu\+\+17/);
     assert.match(platformio, /ARDUINO_USB_MODE=1/);
