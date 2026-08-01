@@ -32,5 +32,6 @@ describe('component catalog', () => {
     assert.match(html, /это не принято как подтверждённый рейтинг IPX7/);
     assert.match(html, /ESP32 C3 Mini Plus \/ SuperMini Plus V2\.0/);
     assert.match(html, /Вид платы с обратной стороны/);
+    assert.match(html, /Senring M125-0205 slip ring — 12\.5 mm, 2CH, 5A/);
   });
 });
