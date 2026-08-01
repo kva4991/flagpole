@@ -1,6 +1,7 @@
 /*
  * Защищает три исправленных контракта прошивки статически: BLE не открывается
- * после Deep-sleep, PIN не публикуется через GATT, VEML7700 имеет fail-safe.
+ * после Deep-sleep, PIN не публикуется через GATT, VEML7700 имеет fail-safe,
+ * климатические датчики не подменяют световой fail-safe.
  * Тест не компилирует ESP32-код и не заменяет аппаратный стенд. §ble0001 §blesec1 §fwfail1
  */
 import { readFileSync } from 'node:fs';
@@ -41,5 +42,17 @@ describe('Crucian firmware safety contracts', () => {
     assert.match(platformio, /ARDUINO_USB_MODE=1/);
     assert.match(platformio, /ARDUINO_USB_CDC_ON_BOOT=1/);
     assert.doesNotMatch(main, /service->start\(\)/);
+  });
+
+  it('uses SHT20 plus auto-detected BMP280/BME280 without NTC', () => {
+    assert.doesNotMatch(main, /readNtcTempC|analogRead\(cfg::PIN_NTC\)/);
+    assert.doesNotMatch(config, /PIN_NTC|NTC_BETA|NTC_FIXED_R/);
+    assert.match(config, /SHT20_I2C_ADDRESS = 0x40/);
+    assert.match(main, /chipId == 0x58/);
+    assert.match(main, /chipId == 0x60/);
+    assert.match(main, /;HUM=/);
+    assert.match(main, /;PRESS=/);
+    assert.match(main, /;ENV=/);
+    assert.match(main, /;BARO=/);
   });
 });

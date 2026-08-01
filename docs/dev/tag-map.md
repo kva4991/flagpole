@@ -21,4 +21,5 @@
 | `§ble0001` | Часовое BLE-окно только после настоящего включения питания | `docs/architecture/decisions/0002-ble-service-window.ru.md` |
 | `§blesec1` | PIN и bond не раскрываются через GATT | `docs/AUDIT_V061_RU.md` |
 | `§fwfail1` | Ошибка датчика и неверная калибровка выключают нагрузку безопасно | `docs/AUDIT_V061_RU.md` |
+| `§env001` | SHT20 — основной климатический датчик; GY-BME/P280 автоматически определяется и даёт давление/резерв | `docs/architecture/decisions/0006-environment-sensors.ru.md` |
 | `§android1` | Android требует воспроизводимой сборки и последовательного GATT | `docs/AUDIT_V061_RU.md` |

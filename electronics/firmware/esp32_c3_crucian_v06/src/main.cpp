@@ -3,6 +3,8 @@
 #include <Preferences.h>
 #include <NimBLEDevice.h>
 #include <Adafruit_VEML7700.h>
+#include <Adafruit_BME280.h>
+#include <Adafruit_BMP280.h>
 #include <esp_sleep.h>
 #include <esp_system.h>
 #include <cmath>
@@ -17,6 +19,8 @@ enum class WorkMode : uint8_t { Auto = 0, On = 1, Off = 2 };
 
 Preferences prefs;
 Adafruit_VEML7700 lightSensor;
+Adafruit_BME280 bmeSensor;
+Adafruit_BMP280 bmpSensor;
 NimBLEServer* bleServer = nullptr;
 NimBLECharacteristic* statusChr = nullptr;
 NimBLECharacteristic* controlChr = nullptr;
@@ -40,6 +44,9 @@ struct State {
     bool serviceReady = false;
     bool lightSensorReady = false;
     bool sensorFault = false;
+    bool sht20Ready = false;
+    bool boschReady = false;
+    bool boschIsBme = false;
     uint8_t sensorErrorCount = 0;
     uint32_t powerOnMs = 0;
     uint32_t storedPin = cfg::FACTORY_SETUP_PIN;
@@ -47,6 +54,8 @@ struct State {
     float nightLux = cfg::DEFAULT_NIGHT_LUX;
     float lastLux = 0.0f;
     float lastTemp = 0.0f;
+    float lastHumidity = 0.0f;
+    float lastPressureHpa = 0.0f;
     float lastBattery = 0.0f;
     uint8_t currentBrightness = 0;
 } state;
@@ -76,15 +85,99 @@ bool readLux(float& value) {
     return true;
 }
 
-float readNtcTempC() {
-    int raw = analogRead(cfg::PIN_NTC);
-    if (raw <= 0) return -127.0f;
-    constexpr float maxAdc = 4095.0f;
-    float v = raw / maxAdc;
-    if (v <= 0.0f || v >= 1.0f) return -127.0f;
-    float r = cfg::NTC_FIXED_R * v / (1.0f - v);
-    float invT = 1.0f / cfg::NTC_T0_K + log(r / cfg::NTC_R0) / cfg::NTC_BETA;
-    return (1.0f / invT) - 273.15f;
+bool readI2cRegister(uint8_t address, uint8_t reg, uint8_t& value) {
+    Wire.beginTransmission(address);
+    Wire.write(reg);
+    if (Wire.endTransmission(false) != 0) return false;
+    if (Wire.requestFrom(address, static_cast<uint8_t>(1)) != 1) return false;
+    value = Wire.read();
+    return true;
+}
+
+bool initializeBoschSensorAt(uint8_t address) {
+    uint8_t chipId = 0;
+    if (!readI2cRegister(address, 0xD0, chipId)) return false;
+    if (chipId == 0x60) {
+        state.boschIsBme = true;
+        return bmeSensor.begin(address);
+    }
+    if (chipId == 0x58) {
+        state.boschIsBme = false;
+        return bmpSensor.begin(address);
+    }
+    return false;
+}
+
+bool initializeBoschSensor() {
+    return initializeBoschSensorAt(cfg::BOSCH_I2C_ADDRESS_PRIMARY) ||
+           initializeBoschSensorAt(cfg::BOSCH_I2C_ADDRESS_SECONDARY);
+}
+
+uint8_t sht20Crc8(uint16_t raw) {
+    uint8_t crc = 0;
+    for (uint8_t byteIndex = 0; byteIndex < 2; ++byteIndex) {
+        crc ^= byteIndex == 0 ? static_cast<uint8_t>(raw >> 8) : static_cast<uint8_t>(raw);
+        for (uint8_t bit = 0; bit < 8; ++bit) {
+            crc = (crc & 0x80) ? static_cast<uint8_t>((crc << 1) ^ 0x31) : static_cast<uint8_t>(crc << 1);
+        }
+    }
+    return crc;
+}
+
+bool readSht20Measurement(uint8_t command, uint16_t waitMs, uint16_t& raw) {
+    Wire.beginTransmission(cfg::SHT20_I2C_ADDRESS);
+    Wire.write(command);
+    if (Wire.endTransmission() != 0) return false;
+    delay(waitMs);
+    if (Wire.requestFrom(cfg::SHT20_I2C_ADDRESS, static_cast<uint8_t>(3)) != 3) return false;
+    const uint8_t msb = Wire.read();
+    const uint8_t lsb = Wire.read();
+    const uint8_t crc = Wire.read();
+    const uint16_t wireRaw = (static_cast<uint16_t>(msb) << 8) | lsb;
+    if (sht20Crc8(wireRaw) != crc) return false;
+    raw = wireRaw & 0xFFFC;
+    return true;
+}
+
+bool readSht20(float& temperatureC, float& humidityPct) {
+    uint16_t rawTemperature = 0;
+    uint16_t rawHumidity = 0;
+    if (!readSht20Measurement(0xF3, 90, rawTemperature)) return false;
+    if (!readSht20Measurement(0xF5, 35, rawHumidity)) return false;
+    temperatureC = -46.85f + 175.72f * rawTemperature / 65536.0f;
+    humidityPct = constrain(-6.0f + 125.0f * rawHumidity / 65536.0f, 0.0f, 100.0f);
+    return std::isfinite(temperatureC) && std::isfinite(humidityPct);
+}
+
+void readEnvironment() {
+    float shtTemperature = 0.0f;
+    float shtHumidity = 0.0f;
+    state.sht20Ready = readSht20(shtTemperature, shtHumidity);
+
+    if (!state.boschReady) state.boschReady = initializeBoschSensor();
+    float boschTemperature = NAN;
+    float boschHumidity = NAN;
+    float boschPressure = NAN;
+    if (state.boschReady) {
+        if (state.boschIsBme) {
+            boschTemperature = bmeSensor.readTemperature();
+            boschHumidity = bmeSensor.readHumidity();
+            boschPressure = bmeSensor.readPressure() / 100.0f;
+        } else {
+            boschTemperature = bmpSensor.readTemperature();
+            boschPressure = bmpSensor.readPressure() / 100.0f;
+        }
+        if (!std::isfinite(boschTemperature) || !std::isfinite(boschPressure)) state.boschReady = false;
+    }
+
+    if (state.sht20Ready) {
+        state.lastTemp = shtTemperature;
+        state.lastHumidity = shtHumidity;
+    } else {
+        if (std::isfinite(boschTemperature)) state.lastTemp = boschTemperature;
+        if (std::isfinite(boschHumidity)) state.lastHumidity = boschHumidity;
+    }
+    if (std::isfinite(boschPressure)) state.lastPressureHpa = boschPressure;
 }
 
 float readBatteryVolts() {
@@ -137,15 +230,20 @@ uint8_t computeAutoBrightness(float lux) {
 
 String buildStatusPayload() {
     String payload;
-    payload.reserve(96);
+    payload.reserve(160);
     payload += "MODE=" + modeToString(modeRtc);
     payload += ";LUX=" + String(state.lastLux, 1);
     payload += ";TEMP=" + String(state.lastTemp, 1);
+    payload += ";HUM=" + String(state.lastHumidity, 1);
+    payload += ";PRESS=" + String(state.lastPressureHpa, 1);
     payload += ";BAT=" + String(state.lastBattery, 1);
     payload += ";BRI=" + String(state.currentBrightness);
     payload += ";BLE=" + String(state.bleForceOff ? 0 : 1);
     const char* sensorStatus = state.sensorFault ? "FAULT" : (state.sensorErrorCount > 0 ? "RETRY" : "OK");
     payload += ";SENSOR=" + String(sensorStatus);
+    const bool environmentReady = state.sht20Ready || state.boschReady;
+    payload += ";ENV=" + String(environmentReady ? "OK" : "FAULT");
+    payload += ";BARO=" + String(state.boschReady ? (state.boschIsBme ? "BME280" : "BMP280") : "NONE");
     return payload;
 }
 
@@ -337,6 +435,7 @@ void setup() {
 
     Wire.begin(cfg::PIN_I2C_SDA, cfg::PIN_I2C_SCL);
     state.lightSensorReady = initializeLightSensor();
+    state.boschReady = initializeBoschSensor();
 
     loadConfig();
     if (!bleLockedUntilPowerCycleRtc) {
@@ -362,7 +461,7 @@ void loop() {
         state.sensorFault = state.sensorErrorCount >= cfg::SENSOR_ERROR_LIMIT;
         Serial.printf("VEML7700 read error %u/%u\n", state.sensorErrorCount, cfg::SENSOR_ERROR_LIMIT);
     }
-    state.lastTemp = readNtcTempC();
+    readEnvironment();
     state.lastBattery = readBatteryVolts();
 
     if (state.sensorFault) {

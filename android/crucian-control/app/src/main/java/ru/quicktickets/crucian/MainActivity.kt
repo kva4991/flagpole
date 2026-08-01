@@ -99,6 +99,10 @@ data class UiStatus(
     val deviceName: String = "Crucian",
     val lux: Float = 0f,
     val temperature: Float = 0f,
+    val humidity: Float = 0f,
+    val pressureHpa: Float = 0f,
+    val environmentStatus: String = "—",
+    val barometerType: String = "—",
     val batteryVolts: Float = 0f,
     val brightnessPercent: Int = 0,
     val mode: WorkMode = WorkMode.AUTO,
@@ -205,7 +209,7 @@ class BleViewModel(private val context: Context) : ViewModel() {
     }
 
     private fun parseStatus(raw: String) {
-        // Формат: MODE=AUTO;LUX=12.4;TEMP=25.1;BAT=12.1;BRI=80;BLE=1
+        // Формат: MODE=AUTO;LUX=12.4;TEMP=25.1;HUM=48.0;PRESS=1013.2;ENV=OK;BARO=BMP280;...
         val map = raw.split(';').mapNotNull { part ->
             val idx = part.indexOf('=')
             if (idx <= 0) null else part.substring(0, idx) to part.substring(idx + 1)
@@ -218,6 +222,10 @@ class BleViewModel(private val context: Context) : ViewModel() {
         uiStatus = uiStatus.copy(
             lux = map["LUX"]?.toFloatOrNull() ?: uiStatus.lux,
             temperature = map["TEMP"]?.toFloatOrNull() ?: uiStatus.temperature,
+            humidity = map["HUM"]?.toFloatOrNull() ?: uiStatus.humidity,
+            pressureHpa = map["PRESS"]?.toFloatOrNull() ?: uiStatus.pressureHpa,
+            environmentStatus = map["ENV"] ?: uiStatus.environmentStatus,
+            barometerType = map["BARO"] ?: uiStatus.barometerType,
             batteryVolts = map["BAT"]?.toFloatOrNull() ?: uiStatus.batteryVolts,
             brightnessPercent = map["BRI"]?.toIntOrNull() ?: uiStatus.brightnessPercent,
             bleActive = map["BLE"] == "1",
@@ -245,6 +253,9 @@ fun CrucianApp(vm: BleViewModel = viewModel()) {
         Text("Состояние подключения: ${status.connectionText}")
         Text("Освещённость: ${status.lux} лк")
         Text("Температура: ${status.temperature} °C")
+        Text("Влажность: ${status.humidity} %")
+        Text("Давление: ${status.pressureHpa} гПа")
+        Text("Климатические датчики: ${status.environmentStatus}; ${status.barometerType}")
         Text("Напряжение батареи: ${status.batteryVolts} В")
         Text("Яркость: ${status.brightnessPercent} %")
         Text("Последнее сообщение: ${status.lastMessage}")

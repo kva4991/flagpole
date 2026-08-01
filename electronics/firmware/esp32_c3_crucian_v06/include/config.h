@@ -8,7 +8,6 @@ inline constexpr char DEVICE_NAME[] = "Crucian";
 inline constexpr uint8_t PIN_PWM = 3;
 inline constexpr uint8_t PIN_I2C_SDA = 4;
 inline constexpr uint8_t PIN_I2C_SCL = 5;
-inline constexpr uint8_t PIN_NTC = 1;
 inline constexpr uint8_t PWM_CHANNEL = 0;
 inline constexpr uint32_t PWM_FREQ_HZ = 500;
 inline constexpr uint8_t PWM_RES_BITS = 10;
@@ -24,8 +23,7 @@ inline constexpr bool PWM_ACTIVE_HIGH = true;
 // Публичный код только для первичной настройки. Перед установкой его нужно сменить.
 inline constexpr uint32_t FACTORY_SETUP_PIN = 123456;
 inline constexpr uint8_t SENSOR_ERROR_LIMIT = 3;
-inline constexpr float NTC_FIXED_R = 10000.0f;
-inline constexpr float NTC_BETA = 3950.0f;
-inline constexpr float NTC_R0 = 10000.0f;
-inline constexpr float NTC_T0_K = 298.15f;
+inline constexpr uint8_t SHT20_I2C_ADDRESS = 0x40;
+inline constexpr uint8_t BOSCH_I2C_ADDRESS_PRIMARY = 0x76;
+inline constexpr uint8_t BOSCH_I2C_ADDRESS_SECONDARY = 0x77;
 }

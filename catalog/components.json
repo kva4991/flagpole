@@ -382,25 +382,39 @@
     },
     {
       "id": "cmp-009",
-      "name": "NTC 10k B3950",
-      "image": "reference_ntc_bead_wikimedia.jpg",
+      "name": "GY-BME/P280 environmental sensor module",
+      "image": "reference_bme280_breakout_wikimedia.jpg",
       "imageStatus": "reference",
       "aliases": [
-        "NTC 10k",
-        "B3950 thermistor"
+        "GY-BME/P280",
+        "GY-BME280",
+        "GY-BMP280",
+        "BME280 module",
+        "BMP280 module",
+        "датчик давления BME280/BMP280"
       ],
-      "purpose": "Контроль температуры внутри отсека электроники. Полезен для испытаний и возможной тепловой защиты.",
+      "purpose": "Измеряет атмосферное давление и даёт резервное измерение температуры. Если на плате установлен BME280, он также измеряет влажность. Прошивка различает BMP280 и BME280 по идентификатору микросхемы.",
+      "specifications": [
+        { "label": "Интерфейс", "value": "I²C на общей шине GPIO4/GPIO5" },
+        { "label": "Адрес", "value": "0x76 или 0x77; прошивка проверяет оба" },
+        { "label": "Определение варианта", "value": "регистр 0xD0: 0x58 для BMP280, 0x60 для BME280" },
+        { "label": "Питание в проекте", "value": "3,3 В; подтяжки SDA/SCL должны быть к 3,3 В" }
+      ],
       "links": [
         {
-          "label": "AliExpress: поиск NTC 10k B3950",
-          "url": "https://www.aliexpress.com/wholesale?SearchText=NTC+10k+B3950+thermistor"
+          "label": "Bosch Sensortec: BME280",
+          "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/humidity-sensors-bme280"
         },
         {
-          "label": "Справочное фото NTC bead: Ansgar Hellwig, Wikimedia Commons, CC BY-SA 2.0 DE",
-          "url": "https://commons.wikimedia.org/wiki/File:NTC_bead.jpg"
+          "label": "Bosch Sensortec: BMP280 datasheet",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf"
+        },
+        {
+          "label": "Справочное фото BME280 breakout: SparkFun, Wikimedia Commons, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:SparkFun_Atmospheric_Sensor_Breakout_-_BME280_13676.jpg"
         }
       ],
-      "missing": "Компонент пока не подтверждён как установленный. Справочное фото показывает измерительный NTC bead неизвестного номинала и не подтверждает 10 кОм/B3950. Нужны фото купленного экземпляра, исполнение датчика и ссылка."
+      "missing": "Нужно фото обеих сторон имеющейся платы и крупный снимок маркировки микросхемы: надпись GY-BME/P280 встречается на платах как с BMP280, так и с BME280. Справочное фото показывает другой breakout и не является фотографией имеющегося модуля."
     },
     {
       "id": "cmp-010",
@@ -759,6 +773,36 @@
         }
       ],
       "missing": "Нужны марка, цвет, диаметр, масса катушки, ссылка и технический паспорт выбранного PETG. Также нужно определить, какие конкретно детали останутся PETG, а какие будут напечатаны из ASA, и подтвердить материал купонами, уличным тестом и проверкой посадок."
+    },
+    {
+      "id": "cmp-020",
+      "name": "SHT20 temperature and humidity sensor module",
+      "image": "reference_sht_series_sensor_wikimedia.jpg",
+      "imageStatus": "reference",
+      "aliases": [
+        "SHT20",
+        "Sensirion SHT20",
+        "SHT2x module",
+        "датчик температуры и влажности SHT20"
+      ],
+      "purpose": "Основной датчик температуры и относительной влажности воздуха. Он заменяет NTC 10k и выдаёт откалиброванные цифровые измерения по I²C.",
+      "specifications": [
+        { "label": "Интерфейс и адрес", "value": "I²C, адрес 0x40" },
+        { "label": "Питание микросхемы", "value": "2,1–3,6 В по Sensirion; модуль в проекте питать от 3,3 В" },
+        { "label": "Типичная точность", "value": "±3 %RH и ±0,3 °C по Sensirion" },
+        { "label": "Монтаж", "value": "в вентилируемом кармане под гидрофобной мембраной, вдали от ESP32, DC-DC и нагрева неона" }
+      ],
+      "links": [
+        {
+          "label": "Sensirion: SHT20",
+          "url": "https://sensirion.com/products/catalog/SHT20"
+        },
+        {
+          "label": "Справочное фото датчика семейства SHT: Wdwd, Wikimedia Commons, CC BY-SA 3.0/GFDL",
+          "url": "https://commons.wikimedia.org/wiki/File:Capacitive_humidity_sensor_SHT.jpg"
+        }
+      ],
+      "missing": "Нужно фото обеих сторон имеющегося модуля SHT20, ссылка или схема платы и маркировка выводов. Справочное фото показывает датчик семейства SHT на другой плате и не подтверждает исполнение имеющегося модуля."
     }
   ]
 }
