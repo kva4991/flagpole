@@ -13,6 +13,7 @@ The current engineering handoff is **v0.6.1**. It is not a production-ready or s
 - [Documentation workflow](docs/DOCUMENTATION_WORKFLOW_RU.md)
 - [Architecture decisions](docs/architecture/decisions/README.ru.md)
 - [Required physical measurements](MEASUREMENTS_REQUIRED_RU.md)
+- [Local component, material, drawing, and 3D catalog](catalog/catalog.html)
 
 ## Repository areas
 
@@ -22,6 +23,16 @@ The current engineering handoff is **v0.6.1**. It is not a production-ready or s
 - `catalog/` — a generated offline component catalog whose source is `components.json`;
 - `docs/` — current status, focused design documents, audit reports, and immutable ADR history;
 - `scripts/`, `tools/quality/`, and `tests/` — deterministic documentation and repository checks.
+
+## Project materials and drawings page
+
+The generated local page at [`catalog/catalog.html`](catalog/catalog.html) collects the project's components, consumables, construction materials, drawings, and rotatable GLB models. From the repository root on Windows, start its local-only server and open the page with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\windows\open-component-catalog.ps1
+```
+
+The server binds only to `127.0.0.1`. The catalog data is edited in `catalog/components.json` and `catalog/drawings.json`; do not edit the generated HTML by hand.
 
 ## Local documentation checks
 
