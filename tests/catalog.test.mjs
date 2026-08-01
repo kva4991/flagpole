@@ -36,5 +36,6 @@ describe('component catalog', () => {
     assert.match(html, /eletechsup synchronous DC-DC buck converter — 5V, 4A\/5A/);
     assert.match(html, /TZT optoisolated LR7843 MOSFET PWM module — 30V/);
     assert.match(html, /VEML7700 ambient light sensor module — Gravity I2C/);
+    assert.match(html, /XUNATA Round Neon Light — 12V, 16 mm, 240 LED\/m/);
   });
 });
