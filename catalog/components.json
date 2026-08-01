@@ -59,14 +59,48 @@
     },
     {
       "id": "cmp-002",
-      "name": "VEML7700 sensor module",
-      "image": "placeholder_veml7700.png",
-      "imageStatus": "placeholder",
+      "name": "VEML7700 ambient light sensor module — Gravity I2C",
+      "image": "veml7700_module_board_1005008859887704.png",
+      "additionalImages": [
+        {
+          "file": "veml7700_module_specs_1005008859887704.png",
+          "label": "Электрические параметры из карточки продавца"
+        }
+      ],
+      "imageStatus": "listing",
       "aliases": [
         "VEML7700",
-        "ambient light sensor"
+        "VEML7700 ambient light sensor",
+        "Gravity I2C light sensor",
+        "цифровой датчик освещённости VEML7700"
       ],
       "purpose": "Датчик освещённости. Нужен для автоматического включения и регулировки яркости по внешнему свету.",
+      "specifications": [
+        {
+          "label": "Интерфейс",
+          "value": "I²C; на плате подписаны VIN, 3Vo, GND, SCL и SDA"
+        },
+        {
+          "label": "Питание модуля",
+          "value": "3,3–5 В — заявление продавца"
+        },
+        {
+          "label": "Потребление",
+          "value": "около 45 мкА в работе и 0,5 мкА в shutdown — заявления продавца"
+        },
+        {
+          "label": "Размер платы",
+          "value": "примерно 16,5 × 16,5 мм по размерной фотографии"
+        },
+        {
+          "label": "Температура",
+          "value": "от −25 до +85 °C — заявление продавца"
+        },
+        {
+          "label": "Диапазон",
+          "value": "в изображениях продавца указаны противоречивые 0–120 klx и 0–167 klx"
+        }
+      ],
       "links": [
         {
           "label": "Vishay: VEML7700",
@@ -77,11 +111,11 @@
           "url": "https://www.adafruit.com/product/4162"
         },
         {
-          "label": "AliExpress: поиск модуля VEML7700",
-          "url": "https://www.aliexpress.com/wholesale?SearchText=VEML7700+module"
+          "label": "AliExpress: VEML7700, товар 1005008859887704, вариант 12000056555791428",
+          "url": "https://aliexpress.ru/item/1005008859887704.html?sku_id=12000056555791428"
         }
       ],
-      "missing": "Нужны фото и ссылка на фактически купленный модуль."
+      "missing": "После получения нужны фото маркировки, проверка адреса I²C, питания от выбранной шины, показаний при нескольких уровнях света и поведения при отключении датчика. Карточка также называет 0,0036 и 0,005 lx/count, поэтому разрешение нельзя считать подтверждённым без даташита конкретной микросхемы и настройки gain/integration time."
     },
     {
       "id": "cmp-003",
