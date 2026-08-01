@@ -39,6 +39,18 @@ function validate(source) {
     } else if (!fs.existsSync(path.join(imageDirectory, item.image))) {
       failures.push(`${place}.image не найден: catalog/images/${item.image}`);
     }
+    if (item.additionalImages !== undefined) {
+      if (!Array.isArray(item.additionalImages) || item.additionalImages.length === 0) {
+        failures.push(`${place}.additionalImages должен быть непустым массивом`);
+      }
+      for (const [imageIndex, image] of (item.additionalImages ?? []).entries()) {
+        if (!image.file?.trim() || path.basename(image.file) !== image.file || !image.label?.trim()) {
+          failures.push(`${place}.additionalImages[${imageIndex}] требует безопасное имя file и label`);
+        } else if (!fs.existsSync(path.join(imageDirectory, image.file))) {
+          failures.push(`${place}.additionalImages[${imageIndex}].file не найден: catalog/images/${image.file}`);
+        }
+      }
+    }
     if (!['confirmed', 'listing', 'placeholder'].includes(item.imageStatus)) {
       failures.push(`${place}.imageStatus должен быть confirmed, listing или placeholder`);
     }
@@ -85,6 +97,14 @@ function renderImageBadge(imageStatus) {
   return '<span class="badge warning">нужно фото</span>';
 }
 
+function renderImages(item) {
+  const images = [
+    { file: item.image, label: item.name },
+    ...(item.additionalImages ?? []),
+  ];
+  return `<div class="gallery">${images.map(image => `<figure><img class="thumb" src="images/${htmlEscape(image.file)}" alt="${htmlEscape(image.label)}" loading="lazy"><figcaption>${htmlEscape(image.label)}</figcaption></figure>`).join('')}</div>${renderImageBadge(item.imageStatus)}`;
+}
+
 const source = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 const failures = validate(source);
 if (failures.length > 0) {
@@ -95,11 +115,11 @@ if (failures.length > 0) {
 const incompleteCount = source.components.filter(item => item.imageStatus === 'placeholder' || item.missing).length;
 const rows = source.components.map(item => {
   const incomplete = item.imageStatus === 'placeholder' || item.missing;
-  const searchText = [item.id, item.name, ...item.aliases, item.purpose, item.missing ?? ''].join(' ').toLowerCase();
+  const searchText = [item.id, item.name, ...item.aliases, item.purpose, ...(item.specifications ?? []).flatMap(specification => [specification.label, specification.value]), item.missing ?? ''].join(' ').toLowerCase();
   return `
     <tr data-incomplete="${incomplete}" data-search="${htmlEscape(searchText)}">
       <td class="id-cell"><code>${htmlEscape(item.id)}</code><button class="copy-id" type="button" data-id="${htmlEscape(item.id)}" title="Скопировать ID">копировать</button></td>
-      <td class="image-cell"><img class="thumb" src="images/${htmlEscape(item.image)}" alt="${htmlEscape(item.name)}" loading="lazy">${renderImageBadge(item.imageStatus)}</td>
+      <td class="image-cell">${renderImages(item)}</td>
       <td><strong>${htmlEscape(item.name)}</strong><ul class="aliases">${item.aliases.map(alias => `<li>${htmlEscape(alias)}</li>`).join('')}</ul></td>
       <td><p>${htmlEscape(item.purpose)}</p>${renderSpecifications(item.specifications)}${item.missing ? `<aside class="needed"><strong>Нужно уточнить:</strong> ${htmlEscape(item.missing)}</aside>` : ''}</td>
       <td>${renderLinks(item.links)}</td>
@@ -138,7 +158,10 @@ tbody tr:last-child td { border-bottom:0; }
 tbody tr:hover { background:#f3faf9; }
 .id-cell code { display:block; font-weight:700; color:var(--accent); }
 .copy-id { margin-top:8px; padding:3px 7px; border:1px solid var(--line); border-radius:6px; background:transparent; color:var(--muted); cursor:pointer; }
-.thumb { width:180px; height:120px; object-fit:contain; display:block; border:1px solid var(--line); border-radius:9px; background:#fff; }
+.gallery { display:grid; gap:8px; }
+.gallery figure { margin:0; }
+.gallery figcaption { margin-top:3px; max-width:180px; color:var(--muted); font-size:11px; }
+.thumb { width:180px; height:140px; object-fit:contain; display:block; border:1px solid var(--line); border-radius:9px; background:#fff; }
 .badge { display:inline-block; margin-top:8px; padding:3px 8px; border-radius:999px; font-size:12px; font-weight:700; }
 .warning { color:var(--warn); background:var(--warn-bg); }
 .ok { color:#126534; background:#dff4e7; }

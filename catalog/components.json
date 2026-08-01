@@ -11,26 +11,51 @@
   "components": [
     {
       "id": "cmp-001",
-      "name": "ESP32-C3 SuperMini / ESP32 C3 Mini Plus",
-      "image": "placeholder_esp32_c3.png",
-      "imageStatus": "placeholder",
+      "name": "ESP32 C3 Mini Plus / SuperMini Plus V2.0",
+      "image": "esp32_c3_mini_plus_front_1005012442113869.png",
+      "additionalImages": [
+        {
+          "file": "esp32_c3_mini_plus_back_1005012442113869.png",
+          "label": "Вид платы с обратной стороны"
+        }
+      ],
+      "imageStatus": "listing",
       "aliases": [
-        "ESP32-C3 SuperMini",
         "ESP32 C3 Mini Plus",
-        "ESP32-C3 SuperMini Plus"
+        "ESP32-C3 SuperMini Plus",
+        "ESP32 C3 Super mini V2.0",
+        "красная плата ESP32 C3 Mini Plus"
       ],
       "purpose": "Основной микроконтроллер. Управляет BLE, PWM подсветки, датчиком освещённости и логикой режима дня/ночи.",
+      "specifications": [
+        {
+          "label": "Микроконтроллер",
+          "value": "ESP32-C3 с Wi-Fi и Bluetooth LE"
+        },
+        {
+          "label": "Габариты платы",
+          "value": "18 × 22 мм по изображению продавца"
+        },
+        {
+          "label": "Разъём и кнопки",
+          "value": "USB Type-C, отдельные кнопки BOOT и RESET"
+        },
+        {
+          "label": "Маркировка платы",
+          "value": "V1.501 / ESP32-C3 Super Mini на обратной стороне"
+        }
+      ],
       "links": [
         {
           "label": "Espressif: ESP32-C3 datasheet",
           "url": "https://documentation.espressif.com/esp32-c3_datasheet_en.html"
         },
         {
-          "label": "AliExpress: поиск ESP32-C3 SuperMini",
-          "url": "https://www.aliexpress.com/wholesale?SearchText=ESP32-C3+SuperMini"
+          "label": "AliExpress: ESP32 C3 Mini Plus, товар 1005012442113869, вариант 12000058411516718",
+          "url": "https://aliexpress.ru/item/1005012442113869.html?sku_id=12000058411516718"
         }
       ],
-      "missing": "Нужны фото и ссылка на фактически выбранную плату: распиновка SuperMini и Mini Plus может различаться."
+      "missing": "Нужно сверить цвет и маркировку полученной платы: в названии варианта указана красная плата, а на присланных изображениях PCB выглядит чёрной. Точный объём flash, схема и распиновка выбранной ревизии продавцом не подтверждены."
     },
     {
       "id": "cmp-002",
