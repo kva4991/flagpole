@@ -22,4 +22,5 @@
 | `§blesec1` | PIN и bond не раскрываются через GATT | `docs/AUDIT_V061_RU.md` |
 | `§fwfail1` | Ошибка датчика и неверная калибровка выключают нагрузку безопасно | `docs/AUDIT_V061_RU.md` |
 | `§env001` | Комбинированный AHT20+BMP280 питается от 3,3 В и измеряет температуру, влажность и давление | `docs/architecture/decisions/0007-combined-aht20-bmp280.ru.md` |
+| `§envmech1` | Нижний карман датчика имеет защищённый пассивный воздухообмен и послепечатное сверление | `mechanical/docs/ENV_SENSOR_POCKET_RU.md` |
 | `§android1` | Android требует воспроизводимой сборки и последовательного GATT | `docs/AUDIT_V061_RU.md` |
