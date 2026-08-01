@@ -108,7 +108,7 @@
     "nodeTests": 29,
     "stlTopology": "34/34 watertight, winding consistent, one connected volume (previous completed validation)",
     "androidBuild": "assembleDebug successful on Windows 2026-08-02",
-    "firmwareBuild": "not completed locally: PlatformIO toolchain download stalled at 0%; GitHub Actions build required",
+    "firmwareBuild": "GitHub Actions successful on 2026-08-02 (run 30721115730); local PlatformIO dependency download had stalled",
     "hardwareBench": "required"
   },
   "notes": [
