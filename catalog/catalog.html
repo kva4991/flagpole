@@ -34,7 +34,12 @@ tbody tr:hover { background:#f3faf9; }
 .badge { display:inline-block; margin-top:8px; padding:3px 8px; border-radius:999px; font-size:12px; font-weight:700; }
 .warning { color:var(--warn); background:var(--warn-bg); }
 .ok { color:#126534; background:#dff4e7; }
+.info { color:#075985; background:#e0f2fe; }
 .aliases,.links { margin:8px 0 0; padding-left:18px; }
+.specifications { display:grid; gap:6px; margin:12px 0 0; }
+.specifications div { display:grid; grid-template-columns:minmax(95px,auto) 1fr; gap:8px; padding-top:6px; border-top:1px solid var(--line); }
+.specifications dt { font-weight:700; color:var(--muted); }
+.specifications dd { margin:0; }
 .needed { margin-top:10px; padding:10px; border-left:4px solid #db7b16; background:var(--warn-bg); color:#633500; }
 .empty { color:var(--muted); font-style:italic; }
 .no-results { display:none; padding:30px; text-align:center; color:var(--muted); }
@@ -46,13 +51,13 @@ footer { max-width:1500px; margin:auto; padding:0 24px 30px; color:var(--muted);
 <body>
 <header>
   <h1>Каталог компонентов Crucian</h1>
-  <p>Рабочая ведомость известных деталей. Эскиз означает, что точная фотография ещё не получена. Чтобы дополнить карточку, пришлите её ID, фотографии, надписи на детали и ссылку продавца.</p>
+  <p>Рабочая ведомость известных деталей. Пометка различает фото продавца, фото реального экземпляра и временный эскиз. Чтобы дополнить карточку, пришлите её ID, фотографии, надписи на детали и ссылку продавца.</p>
 </header>
 <main>
   <section class="summary" aria-label="Сводка">
     <div class="metric"><strong>12</strong>позиций в каталоге</div>
     <div class="metric"><strong>12</strong>требуют уточнения</div>
-    <div class="metric"><strong>16</strong>справочных ссылок</div>
+    <div class="metric"><strong>17</strong>справочных ссылок</div>
   </section>
   <section class="controls" aria-label="Фильтры">
     <label class="search"><span>Поиск по ID, названию и назначению</span><input id="search" type="search" placeholder="например: cmp-003, ESP32, токосъёмник"></label>
@@ -133,12 +138,12 @@ footer { max-width:1500px; margin:auto; padding:0 24px 30px; color:var(--muted);
       <td><p>Герметичное отсоединяемое соединение провода, выходящего из корпуса к флагу.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны фото, ссылка, число контактов, кодировка, панельная/кабельная часть и распиновка.</aside></td>
       <td><ul class="links"><li><a href="https://www.aliexpress.com/wholesale?SearchText=M12+waterproof+connector" target="_blank" rel="noopener noreferrer">AliExpress: поиск герметичного M12</a></li></ul></td>
     </tr>
-    <tr data-incomplete="true" data-search="cmp-011 18650 battery pack / 12v regulator 6x18650 pack 12v regulated battery pack источник питания всей системы. пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 в. нужны только фото и описание внешнего аккумуляторного блока: 6×18650 и модель стабилизатора 12 в. bms/заряд не входят в проект crucian.">
+    <tr data-incomplete="После получения нужны фото маркировки и измерения DC-выхода без нагрузки и под нагрузкой. Внутренняя схема соединения, защита и алгоритм зарядки в карточке не подтверждены; проект Crucian рассматривает этот блок как внешний источник перед отдельным стабилизатором 12 В." data-search="cmp-011 kbxlife case for 2/4/6 × 18650 (8.4 v / usb) kbxlife waterproof 18650 battery case корпус аккумулятора 6 × 18650 аккумуляторный блок 8,4 в для велосипедного фонаря 6-cell 18650 power bank case внешний корпус аккумуляторного блока на шесть элементов 18650. по карточке продавца выдаёт до 8,4 в через dc-разъём и 5 в через usb. для питания crucian его dc-выход должен проходить через отдельный стабилизатор/преобразователь до требуемых 12 в. после получения нужны фото маркировки и измерения dc-выхода без нагрузки и под нагрузкой. внутренняя схема соединения, защита и алгоритм зарядки в карточке не подтверждены; проект crucian рассматривает этот блок как внешний источник перед отдельным стабилизатором 12 в.">
       <td class="id-cell"><code>cmp-011</code><button class="copy-id" type="button" data-id="cmp-011" title="Скопировать ID">копировать</button></td>
-      <td class="image-cell"><img class="thumb" src="images/placeholder_18650.png" alt="18650 battery pack / 12V regulator" loading="lazy"><span class="badge warning">нужно фото</span></td>
-      <td><strong>18650 battery pack / 12V regulator</strong><ul class="aliases"><li>6x18650 pack</li><li>12V regulated battery pack</li></ul></td>
-      <td><p>Источник питания всей системы. Пользователь уточнил, что проект питается от 6 аккумуляторов 18650 с последующей стабилизацией до 12 В.</p><aside class="needed"><strong>Нужно уточнить:</strong> Нужны только фото и описание внешнего аккумуляторного блока: 6×18650 и модель стабилизатора 12 В. BMS/заряд не входят в проект Crucian.</aside></td>
-      <td><span class="empty">Ссылка пока не подтверждена</span></td>
+      <td class="image-cell"><img class="thumb" src="images/kbxlife_6x18650_case_1005008301038053.png" alt="KBXlife case for 2/4/6 × 18650 (8.4 V / USB)" loading="lazy"><span class="badge info">фото продавца</span></td>
+      <td><strong>KBXlife case for 2/4/6 × 18650 (8.4 V / USB)</strong><ul class="aliases"><li>KBXlife waterproof 18650 battery case</li><li>корпус аккумулятора 6 × 18650</li><li>аккумуляторный блок 8,4 В для велосипедного фонаря</li><li>6-cell 18650 power bank case</li></ul></td>
+      <td><p>Внешний корпус аккумуляторного блока на шесть элементов 18650. По карточке продавца выдаёт до 8,4 В через DC-разъём и 5 В через USB. Для питания Crucian его DC-выход должен проходить через отдельный стабилизатор/преобразователь до требуемых 12 В.</p><dl class="specifications"><div><dt>Конфигурация</dt><dd>2, 4 или 6 сменных элементов 18650 (заявление продавца)</dd></div><div><dt>Выходы</dt><dd>DC до 8,4 В; USB 5 В до 2,1 А (заявление продавца)</dd></div><div><dt>Корпус</dt><dd>чёрный пластик, примерно 87 × 65 × 45 мм, около 200 г, ремешок в комплекте</dd></div><div><dt>Ток ожидания</dt><dd>менее 10 мкА (заявление продавца)</dd></div><div><dt>Водозащита</dt><dd>в карточке написано «XP7»; это не принято как подтверждённый рейтинг IPX7</dd></div></dl><aside class="needed"><strong>Нужно уточнить:</strong> После получения нужны фото маркировки и измерения DC-выхода без нагрузки и под нагрузкой. Внутренняя схема соединения, защита и алгоритм зарядки в карточке не подтверждены; проект Crucian рассматривает этот блок как внешний источник перед отдельным стабилизатором 12 В.</aside></td>
+      <td><ul class="links"><li><a href="https://aliexpress.ru/item/1005008301038053.html?sku_id=12000044543567328" target="_blank" rel="noopener noreferrer">AliExpress: KBXlife, товар 1005008301038053, вариант 12000044543567328</a></li></ul></td>
     </tr>
     <tr data-incomplete="true" data-search="cmp-012 tpu 95a and tpu 85a tpu 95a tpu 85a мягкие печатные детали: 95a для функциональных мягких элементов, 85a для прокладок и уплотнений. нужны производитель, точные названия пластиков, цвета и ссылки на купленные катушки.">
       <td class="id-cell"><code>cmp-012</code><button class="copy-id" type="button" data-id="cmp-012" title="Скопировать ID">копировать</button></td>

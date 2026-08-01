@@ -39,8 +39,8 @@ function validate(source) {
     } else if (!fs.existsSync(path.join(imageDirectory, item.image))) {
       failures.push(`${place}.image не найден: catalog/images/${item.image}`);
     }
-    if (!['confirmed', 'placeholder'].includes(item.imageStatus)) {
-      failures.push(`${place}.imageStatus должен быть confirmed или placeholder`);
+    if (!['confirmed', 'listing', 'placeholder'].includes(item.imageStatus)) {
+      failures.push(`${place}.imageStatus должен быть confirmed, listing или placeholder`);
     }
     if (!Array.isArray(item.links)) failures.push(`${place}.links должен быть массивом`);
     for (const [linkIndex, link] of (item.links ?? []).entries()) {
@@ -50,6 +50,16 @@ function validate(source) {
         if (url.protocol !== 'https:') failures.push(`${place}.links[${linkIndex}].url должен использовать HTTPS`);
       } catch {
         failures.push(`${place}.links[${linkIndex}].url некорректен`);
+      }
+    }
+    if (item.specifications !== undefined) {
+      if (!Array.isArray(item.specifications) || item.specifications.length === 0) {
+        failures.push(`${place}.specifications должен быть непустым массивом`);
+      }
+      for (const [specIndex, specification] of (item.specifications ?? []).entries()) {
+        if (!specification.label?.trim() || !specification.value?.trim()) {
+          failures.push(`${place}.specifications[${specIndex}] требует label и value`);
+        }
       }
     }
     if (item.imageStatus === 'placeholder' && !item.missing?.trim()) {
@@ -62,6 +72,17 @@ function validate(source) {
 function renderLinks(links) {
   if (links.length === 0) return '<span class="empty">Ссылка пока не подтверждена</span>';
   return `<ul class="links">${links.map(link => `<li><a href="${htmlEscape(link.url)}" target="_blank" rel="noopener noreferrer">${htmlEscape(link.label)}</a></li>`).join('')}</ul>`;
+}
+
+function renderSpecifications(specifications = []) {
+  if (specifications.length === 0) return '';
+  return `<dl class="specifications">${specifications.map(specification => `<div><dt>${htmlEscape(specification.label)}</dt><dd>${htmlEscape(specification.value)}</dd></div>`).join('')}</dl>`;
+}
+
+function renderImageBadge(imageStatus) {
+  if (imageStatus === 'confirmed') return '<span class="badge ok">фото экземпляра</span>';
+  if (imageStatus === 'listing') return '<span class="badge info">фото продавца</span>';
+  return '<span class="badge warning">нужно фото</span>';
 }
 
 const source = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
@@ -78,9 +99,9 @@ const rows = source.components.map(item => {
   return `
     <tr data-incomplete="${incomplete}" data-search="${htmlEscape(searchText)}">
       <td class="id-cell"><code>${htmlEscape(item.id)}</code><button class="copy-id" type="button" data-id="${htmlEscape(item.id)}" title="Скопировать ID">копировать</button></td>
-      <td class="image-cell"><img class="thumb" src="images/${htmlEscape(item.image)}" alt="${htmlEscape(item.name)}" loading="lazy">${item.imageStatus === 'placeholder' ? '<span class="badge warning">нужно фото</span>' : '<span class="badge ok">фото подтверждено</span>'}</td>
+      <td class="image-cell"><img class="thumb" src="images/${htmlEscape(item.image)}" alt="${htmlEscape(item.name)}" loading="lazy">${renderImageBadge(item.imageStatus)}</td>
       <td><strong>${htmlEscape(item.name)}</strong><ul class="aliases">${item.aliases.map(alias => `<li>${htmlEscape(alias)}</li>`).join('')}</ul></td>
-      <td><p>${htmlEscape(item.purpose)}</p>${item.missing ? `<aside class="needed"><strong>Нужно уточнить:</strong> ${htmlEscape(item.missing)}</aside>` : ''}</td>
+      <td><p>${htmlEscape(item.purpose)}</p>${renderSpecifications(item.specifications)}${item.missing ? `<aside class="needed"><strong>Нужно уточнить:</strong> ${htmlEscape(item.missing)}</aside>` : ''}</td>
       <td>${renderLinks(item.links)}</td>
     </tr>`;
 }).join('');
@@ -121,7 +142,12 @@ tbody tr:hover { background:#f3faf9; }
 .badge { display:inline-block; margin-top:8px; padding:3px 8px; border-radius:999px; font-size:12px; font-weight:700; }
 .warning { color:var(--warn); background:var(--warn-bg); }
 .ok { color:#126534; background:#dff4e7; }
+.info { color:#075985; background:#e0f2fe; }
 .aliases,.links { margin:8px 0 0; padding-left:18px; }
+.specifications { display:grid; gap:6px; margin:12px 0 0; }
+.specifications div { display:grid; grid-template-columns:minmax(95px,auto) 1fr; gap:8px; padding-top:6px; border-top:1px solid var(--line); }
+.specifications dt { font-weight:700; color:var(--muted); }
+.specifications dd { margin:0; }
 .needed { margin-top:10px; padding:10px; border-left:4px solid #db7b16; background:var(--warn-bg); color:#633500; }
 .empty { color:var(--muted); font-style:italic; }
 .no-results { display:none; padding:30px; text-align:center; color:var(--muted); }
@@ -133,7 +159,7 @@ footer { max-width:1500px; margin:auto; padding:0 24px 30px; color:var(--muted);
 <body>
 <header>
   <h1>Каталог компонентов Crucian</h1>
-  <p>Рабочая ведомость известных деталей. Эскиз означает, что точная фотография ещё не получена. Чтобы дополнить карточку, пришлите её ID, фотографии, надписи на детали и ссылку продавца.</p>
+  <p>Рабочая ведомость известных деталей. Пометка различает фото продавца, фото реального экземпляра и временный эскиз. Чтобы дополнить карточку, пришлите её ID, фотографии, надписи на детали и ссылку продавца.</p>
 </header>
 <main>
   <section class="summary" aria-label="Сводка">
