@@ -44,5 +44,6 @@ describe('component catalog', () => {
     assert.match(html, /ELEGOO TPU 95A filament — white, 1\.75 mm, 1 kg/);
     assert.match(html, /ERYONE NEW TPU 85A filament/);
     assert.match(html, /2-pin waterproof connectors with 20 AWG wires — 5 pairs/);
+    assert.match(html, /PUMUDDSY RXEF075 resettable PPTC fuse — 0\.75A, 20 pcs/);
   });
 });
