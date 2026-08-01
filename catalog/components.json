@@ -604,22 +604,37 @@
     },
     {
       "id": "cmp-016",
-      "name": "TPU 85A filament — exact product not selected",
-      "image": "placeholder_tpu.png",
-      "imageStatus": "placeholder",
+      "name": "ERYONE NEW TPU 85A filament",
+      "image": "eryone_new_tpu_85a_1005010746965691.png",
+      "imageStatus": "listing",
       "aliases": [
+        "ERYONE TPU 85A",
         "TPU 85A",
         "мягкий TPU для уплотнений",
         "flexible filament Shore 85A"
       ],
       "purpose": "Более мягкий материал для прокладок, плоских уплотнений и других деталей, которым нужна большая податливость, чем у TPU 95A. Не используется как несущий или центрирующий материал.",
-      "links": [
+      "specifications": [
         {
-          "label": "AliExpress: поиск TPU 85A",
-          "url": "https://www.aliexpress.com/wholesale?SearchText=TPU+85A+filament"
+          "label": "Производитель",
+          "value": "ERYONE"
+        },
+        {
+          "label": "Материал",
+          "value": "NEW TPU с заявленной твёрдостью Shore 85A"
+        },
+        {
+          "label": "Внешний вид",
+          "value": "на фотографии продавца филамент выглядит белым или полупрозрачным; выбранный цвет требует подтверждения"
         }
       ],
-      "missing": "Нужны производитель, точное название, цвет, диаметр, масса катушки, ссылка и фотография этикетки выбранного TPU 85A."
+      "links": [
+        {
+          "label": "AliExpress: ERYONE NEW TPU 85A, товар 1005010746965691, вариант 12000053387027166",
+          "url": "https://aliexpress.ru/item/1005010746965691.html?sku_id=12000053387027166"
+        }
+      ],
+      "missing": "Нужно подтвердить выбранный цвет, диаметр, массу катушки и параметры печати по читаемой этикетке или карточке товара. Для финальных уплотнений нужны тестовые образцы на сжатие, восстановление формы, влагу и мороз; режимы печати подбираются отдельно от TPU 95A."
     }
   ]
 }
