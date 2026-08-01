@@ -1,0 +1,7 @@
+numpy==2.5.1
+trimesh==5.0.0
+networkx==3.6.1
+scikit-image==0.26.0
+matplotlib==3.11.1
+Pillow==12.3.0
+resvg-py==0.3.3

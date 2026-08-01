@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "drawings": [
     {
       "id": "101",
@@ -92,34 +92,50 @@
     {
       "id": "112",
       "category": "Механика",
-      "title": "Разнесённый вид PETG/TPU v0.6",
-      "description": "Взаимное расположение жёстких и эластичных деталей актуальной механики v0.6.",
-      "file": "mechanical/preview_v06_exploded_PETG_TPU.png",
-      "preview": "mechanical/preview_v06_exploded_PETG_TPU.png"
+      "title": "Разнесённый вид PETG/TPU v0.6 с ID",
+      "description": "Актуальный разнесённый вид со стабильными идентификаторами печатных деталей.",
+      "file": "mechanical/preview_v06_exploded_PETG_TPU_ids.png",
+      "preview": "mechanical/preview_v06_exploded_PETG_TPU_ids.png"
     },
     {
       "id": "113",
       "category": "Печать",
-      "title": "Раскладка деталей PETG v0.6",
-      "description": "Ориентация жёстких деталей v0.6 на столе 3D-принтера.",
-      "file": "mechanical/preview_v06_print_PETG.png",
-      "preview": "mechanical/preview_v06_print_PETG.png"
+      "title": "Раскладка деталей PETG v0.6 с ID",
+      "description": "Ориентация жёстких деталей с ID; печатать отдельной очередью без смешивания с TPU.",
+      "file": "mechanical/preview_v06_print_PETG_ids.png",
+      "preview": "mechanical/preview_v06_print_PETG_ids.png"
     },
     {
       "id": "114",
       "category": "Печать",
-      "title": "Раскладка деталей TPU 95A v0.6",
-      "description": "Ориентация функциональных мягких деталей TPU 95A.",
-      "file": "mechanical/preview_v06_print_TPU95.png",
-      "preview": "mechanical/preview_v06_print_TPU95.png"
+      "title": "Раскладка деталей TPU 95A v0.6 с ID",
+      "description": "Функциональные мягкие детали с ID; печатать отдельной очередью.",
+      "file": "mechanical/preview_v06_print_TPU95_ids.png",
+      "preview": "mechanical/preview_v06_print_TPU95_ids.png"
     },
     {
       "id": "115",
       "category": "Печать",
-      "title": "Раскладка деталей TPU 85A v0.6",
-      "description": "Ориентация мягких статических прокладок TPU 85A.",
-      "file": "mechanical/preview_v06_print_TPU85.png",
-      "preview": "mechanical/preview_v06_print_TPU85.png"
+      "title": "Раскладка деталей TPU 85A v0.6 с ID",
+      "description": "Мягкие статические прокладки с ID; печатать отдельной очередью.",
+      "file": "mechanical/preview_v06_print_TPU85_ids.png",
+      "preview": "mechanical/preview_v06_print_TPU85_ids.png"
+    },
+    {
+      "id": "116",
+      "category": "Механика и электрика",
+      "title": "Маршрут питания флага под спицей",
+      "description": "Герметичный 2-контактный разъём расположен у флага ниже спицы. Провод идёт по открытой наружной канавке и входит в электронный бокс через #tpu95-3 / #tpu95-4.",
+      "file": "mechanical/flag_power_cable_route_A4_landscape.svg",
+      "preview": "mechanical/flag_power_cable_route_A4_landscape.png"
+    },
+    {
+      "id": "117",
+      "category": "Документация",
+      "title": "Таблица идентификаторов печатных деталей v0.6",
+      "description": "Единая таблица с ID, материалом, количеством, назначением и STL-файлом деталей PETG, TPU 95A и TPU 85A.",
+      "file": "mechanical/part_id_table_v06.svg",
+      "preview": "mechanical/part_id_table_v06.png"
     }
   ],
   "models": [
@@ -178,6 +194,36 @@
       "description": "Интерактивная раскладка мягких статических прокладок.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU85.glb",
       "poster": "mechanical/preview_v06_print_TPU85.png"
+    },
+    {
+      "id": "209",
+      "title": "Маршрут питания флага — интерактивно",
+      "description": "Фокусная 3D-модель внешнего кабеля: герморазъём под спицей, наружная канавка, TPU95-ввод и внутренний сервисный участок.",
+      "file": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
+      "poster": "mechanical/preview_v06_flag_power_route.png"
+    }
+  ],
+  "printSessions": [
+    {
+      "id": "301",
+      "title": "Очередь печати PETG",
+      "description": "Отдельный запуск для жёстких деталей из купленного оранжевого PETG.",
+      "file": "mechanical/preview_v06_print_PETG.png",
+      "preview": "mechanical/preview_v06_print_PETG.png"
+    },
+    {
+      "id": "302",
+      "title": "Очередь печати TPU 95A",
+      "description": "Отдельный запуск для функциональных мягких втулок, вкладышей и кабельных разгрузок TPU 95A.",
+      "file": "mechanical/preview_v06_print_TPU95.png",
+      "preview": "mechanical/preview_v06_print_TPU95.png"
+    },
+    {
+      "id": "303",
+      "title": "Очередь печати TPU 85A",
+      "description": "Отдельный запуск для мягких статических прокладок TPU 85A; технологические подложки допустимы при необходимости.",
+      "file": "mechanical/preview_v06_print_TPU85.png",
+      "preview": "mechanical/preview_v06_print_TPU85.png"
     }
   ]
 }

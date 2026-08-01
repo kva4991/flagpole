@@ -1,15 +1,16 @@
-# Crucian rotating flagpole finial v0.7.0
+# Crucian rotating flagpole finial v0.7.2
 
 Crucian is an experimental rotating flagpole-finial project combining printable PETG/TPU mechanics, a 12 V illuminated ichthys flag, ESP32-C3 firmware, BLE control, a local Android application, and an offline component/3D catalog.
 
-The current engineering handoff is **v0.7.0**. The current rigid parts target the owner's already purchased orange PETG; ASA remains a possible future outdoor upgrade when the budget permits. This is not a production-ready or safety-certified product, and physical fits and hardware behavior still require validation.
+The current engineering handoff is **v0.7.2**. The current rigid parts target the owner's already purchased orange PETG; ASA remains a possible future outdoor upgrade when the budget permits. The flag-power cable now follows a serviceable external groove below the spoke and enters the electronics pod through one sealed TPU95 grommet. This is not a production-ready or safety-certified product, and physical fits and hardware behavior still require validation.
 
 ## Start here
 
 - [Russian project overview](README.ru.md)
 - [Fast start for a new development session](docs/agent-fast-start.ru.md)
 - [Current implementation status](docs/current-implementation-status.ru.md)
-- [v0.7.0 update report](UPDATE_REPORT_V070_RU.md)
+- [v0.7.2 update report](UPDATE_REPORT_V072_RU.md)
+- [v0.7.0 cumulative update report](UPDATE_REPORT_V070_RU.md)
 - [Project identity settings](docs/PROJECT_IDENTITY_RU.md)
 - [Documentation workflow](docs/DOCUMENTATION_WORKFLOW_RU.md)
 - [Architecture decisions](docs/architecture/decisions/README.ru.md)

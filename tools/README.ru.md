@@ -23,7 +23,10 @@ powershell -ExecutionPolicy Bypass -File tools\windows\setup.ps1 -Install -Accep
 7-Zip, ripgrep, Android SDK 35 и PlatformIO Core. PlatformIO устанавливается
 официальным installer script в изолированную исполняемую зону
 `%USERPROFILE%\Documents\pesochnica\flagpole\.platformio`; глобальный Python не
-загрязняется пакетами. Туда же направлен Gradle-кэш, а результаты ручного
+загрязняется пакетами. Зависимости генерации механики из
+`mechanical/requirements.txt` устанавливаются в отдельную среду
+`flagpole\.mechanical-venv`; в неё входит переносимый SVG-рендерер `resvg-py`,
+поэтому системный Cairo не нужен. Туда же направлен Gradle-кэш, а результаты ручного
 экспорта следует класть в `artifacts`. Антивирусное исключение должно
 охватывать только папку `flagpole`, не весь каталог `Documents` или исходный
 Git-репозиторий.
@@ -61,6 +64,14 @@ pio run --project-dir electronics\firmware\esp32_c3_crucian_v06
 
 ```powershell
 pio run --project-dir electronics\firmware\esp32_c3_flag_light
+```
+
+Генерация и проверка актуальной механики из защищённой зоны:
+
+```powershell
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_models_v06.py
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_reference_diagrams_v06.py
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\validate_models_v06.py
 ```
 
 Установка инструментов и успешная компиляция не заменяют тесты на ESP32-C3,

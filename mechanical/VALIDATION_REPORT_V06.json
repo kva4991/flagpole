@@ -1,12 +1,18 @@
 {
-  "files": [
+  "schemaVersion": 1,
+  "version": "0.7.2 cable-route update",
+  "checkedFiles": 34,
+  "allWatertight": true,
+  "allWindingConsistent": true,
+  "allSingleComponent": true,
+  "records": [
     {
       "file": "mechanical/stl_petg_v06/environment_sensor_pocket_open_side_up.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 55384,
       "vertices": 27694,
+      "faces": 55384,
       "bounds_mm": [
         [
           -62.9999885559082,
@@ -18,15 +24,16 @@
           17.599990844726562,
           12.0
         ]
-      ]
+      ],
+      "volume_mm3": 8737.326652636555
     },
     {
       "file": "mechanical/stl_petg_v06/photo_tunnel_upright.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 25912,
       "vertices": 12956,
+      "faces": 25912,
       "bounds_mm": [
         [
           -7.497838497161865,
@@ -38,15 +45,16 @@
           7.497835159301758,
           26.59999656677246
         ]
-      ]
+      ],
+      "volume_mm3": 1849.044168554562
     },
     {
       "file": "mechanical/stl_petg_v06/photo_window_retainer_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 4592,
       "vertices": 2296,
+      "faces": 4592,
       "bounds_mm": [
         [
           -7.497838497161865,
@@ -58,15 +66,16 @@
           7.497835159301758,
           1.3999998569488525
         ]
-      ]
+      ],
+      "volume_mm3": 202.3710848480877
     },
     {
       "file": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 204820,
-      "vertices": 102388,
+      "vertices": 102116,
+      "faces": 204276,
       "bounds_mm": [
         [
           -74.49982452392578,
@@ -78,15 +87,16 @@
           8.000000953674316,
           22.99981689453125
         ]
-      ]
+      ],
+      "volume_mm3": 66810.64999632821
     },
     {
       "file": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 207108,
-      "vertices": 103528,
+      "vertices": 104810,
+      "faces": 209676,
       "bounds_mm": [
         [
           -74.49982452392578,
@@ -98,15 +108,16 @@
           73.99996948242188,
           22.999813079833984
         ]
-      ]
+      ],
+      "volume_mm3": 64590.794267476515
     },
     {
       "file": "mechanical/stl_petg_v06/service_lid_top_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 108728,
       "vertices": 54348,
+      "faces": 108728,
       "bounds_mm": [
         [
           -73.31539916992188,
@@ -118,15 +129,16 @@
           20.31541633605957,
           8.423042297363281
         ]
-      ]
+      ],
+      "volume_mm3": 9421.462152774038
     },
     {
       "file": "mechanical/stl_petg_v06/stationary_collar_A_print_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 36504,
       "vertices": 18250,
+      "faces": 36504,
       "bounds_mm": [
         [
           -16.598247528076172,
@@ -138,15 +150,16 @@
           1.5999643802642822,
           16.999996185302734
         ]
-      ]
+      ],
+      "volume_mm3": 3920.4444052604376
     },
     {
       "file": "mechanical/stl_petg_v06/stationary_collar_B_print_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 36606,
       "vertices": 18301,
+      "faces": 36606,
       "bounds_mm": [
         [
           -16.598247528076172,
@@ -158,15 +171,58 @@
           13.999998092651367,
           16.999996185302734
         ]
-      ]
+      ],
+      "volume_mm3": 3795.0811717464435
+    },
+    {
+      "file": "mechanical/stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 4536,
+      "faces": 9068,
+      "bounds_mm": [
+        [
+          -18.0,
+          -23.997859954833984,
+          0.0
+        ],
+        [
+          -8.000005722045898,
+          -12.0021333694458,
+          5.997862339019775
+        ]
+      ],
+      "volume_mm3": 399.6598057645101
+    },
+    {
+      "file": "mechanical/stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 4516,
+      "faces": 9028,
+      "bounds_mm": [
+        [
+          -18.0,
+          12.002699851989746,
+          0.0
+        ],
+        [
+          -8.000005722045898,
+          23.997291564941406,
+          5.997863292694092
+        ]
+      ],
+      "volume_mm3": 399.49529920480137
     },
     {
       "file": "mechanical/stl_tpu95_v06/M125_bundle_grommet_A_split_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 8156,
       "vertices": 4080,
+      "faces": 8156,
       "bounds_mm": [
         [
           -22.0,
@@ -178,15 +234,16 @@
           -41.704429626464844,
           5.298147201538086
         ]
-      ]
+      ],
+      "volume_mm3": 275.191123372356
     },
     {
       "file": "mechanical/stl_tpu95_v06/M125_bundle_grommet_B_split_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 8048,
       "vertices": 4026,
+      "faces": 8048,
       "bounds_mm": [
         [
           -22.0,
@@ -198,15 +255,16 @@
           52.29621887207031,
           5.298148155212402
         ]
-      ]
+      ],
+      "volume_mm3": 274.7142511396176
     },
     {
       "file": "mechanical/stl_tpu95_v06/M125_pole_sleeve_upright.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 40144,
       "vertices": 20072,
+      "faces": 40144,
       "bounds_mm": [
         [
           -9.499242782592773,
@@ -218,55 +276,16 @@
           9.49923324584961,
           17.000001907348633
         ]
-      ]
-    },
-    {
-      "file": "mechanical/stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 13168,
-      "vertices": 6586,
-      "bounds_mm": [
-        [
-          55.0,
-          -46.47910690307617,
-          0.0
-        ],
-        [
-          71.99999237060547,
-          -34.51991653442383,
-          6.199996471405029
-        ]
-      ]
-    },
-    {
-      "file": "mechanical/stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 13160,
-      "vertices": 6582,
-      "bounds_mm": [
-        [
-          55.0,
-          34.51031494140625,
-          0.0
-        ],
-        [
-          71.99999237060547,
-          46.47740173339844,
-          6.199997425079346
-        ]
-      ]
+      ],
+      "volume_mm3": 1412.2283905327033
     },
     {
       "file": "mechanical/stl_tpu95_v06/pole_collar_liner_A_split_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 15576,
       "vertices": 7790,
+      "faces": 15576,
       "bounds_mm": [
         [
           -11.996733665466309,
@@ -278,15 +297,16 @@
           -1.1920928955078125e-07,
           11.999845504760742
         ]
-      ]
+      ],
+      "volume_mm3": 310.98750232045376
     },
     {
       "file": "mechanical/stl_tpu95_v06/pole_collar_liner_B_split_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 15720,
       "vertices": 7862,
+      "faces": 15720,
       "bounds_mm": [
         [
           -11.99985122680664,
@@ -298,15 +318,16 @@
           8.800000190734863,
           11.999845504760742
         ]
-      ]
+      ],
+      "volume_mm3": 311.53071994357316
     },
     {
       "file": "mechanical/stl_tpu95_v06/spoke_liner_A_split_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 27092,
       "vertices": 13548,
+      "faces": 27092,
       "bounds_mm": [
         [
           14.999999046325684,
@@ -318,15 +339,16 @@
           -22.52570915222168,
           5.849997520446777
         ]
-      ]
+      ],
+      "volume_mm3": 684.0099597637108
     },
     {
       "file": "mechanical/stl_tpu95_v06/spoke_liner_B_split_face_down.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 27104,
       "vertices": 13554,
+      "faces": 27104,
       "bounds_mm": [
         [
           14.999999046325684,
@@ -338,15 +360,16 @@
           31.478221893310547,
           5.8499979972839355
         ]
-      ]
+      ],
+      "volume_mm3": 683.0029349328296
     },
     {
       "file": "mechanical/stl_tpu85_v06/environment_membrane_gasket_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 4924,
       "vertices": 2462,
+      "faces": 4924,
       "bounds_mm": [
         [
           -53.35784149169922,
@@ -358,15 +381,16 @@
           5.859708786010742,
           1.2000000476837158
         ]
-      ]
+      ],
+      "volume_mm3": 61.82252027341747
     },
     {
       "file": "mechanical/stl_tpu85_v06/environment_pocket_gasket_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 20424,
       "vertices": 10212,
+      "faces": 20424,
       "bounds_mm": [
         [
           -61.23458480834961,
@@ -378,15 +402,16 @@
           14.23141860961914,
           1.4000000953674316
         ]
-      ]
+      ],
+      "volume_mm3": 426.0407556908845
     },
     {
       "file": "mechanical/stl_tpu85_v06/lid_gasket_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 32192,
       "vertices": 16096,
+      "faces": 32192,
       "bounds_mm": [
         [
           -72.69998931884766,
@@ -398,15 +423,16 @@
           19.699981689453125,
           1.8000004291534424
         ]
-      ]
+      ],
+      "volume_mm3": 646.2784333783778
     },
     {
       "file": "mechanical/stl_tpu85_v06/photo_window_gasket_flat.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 4188,
       "vertices": 2094,
+      "faces": 4188,
       "bounds_mm": [
         [
           -5.997866630554199,
@@ -418,35 +444,142 @@
           5.997859001159668,
           0.8000000715255737
         ]
-      ]
+      ],
+      "volume_mm3": 65.88985242920212
     },
     {
-      "file": "mechanical/test_coupons_v06/PETG_M4_captive_nut_trap_coupon.stl",
+      "file": "mechanical/test_coupons_v06/bearing_seat_32.20_half_A.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 45924,
-      "vertices": 22960,
+      "vertices": 28214,
+      "faces": 56432,
       "bounds_mm": [
         [
-          -18.0,
-          -10.000000953674316,
+          -20.999658584594727,
+          -9.999998092651367,
           0.0
         ],
         [
-          17.999984741210938,
-          9.999990463256836,
-          8.000000953674316
+          20.994937896728516,
+          1.2773066262181717e-15,
+          20.999652862548828
         ]
-      ]
+      ],
+      "volume_mm3": 3103.6960097731753
+    },
+    {
+      "file": "mechanical/test_coupons_v06/bearing_seat_32.20_half_B.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 28188,
+      "faces": 56380,
+      "bounds_mm": [
+        [
+          -20.99884796142578,
+          -1.2626108163415464e-15,
+          0.0
+        ],
+        [
+          20.998828887939453,
+          9.999998092651367,
+          20.99964714050293
+        ]
+      ],
+      "volume_mm3": 3102.2188630499554
+    },
+    {
+      "file": "mechanical/test_coupons_v06/bearing_seat_32.35_half_A.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 28298,
+      "faces": 56600,
+      "bounds_mm": [
+        [
+          -20.999658584594727,
+          -9.999998092651367,
+          0.0
+        ],
+        [
+          20.994937896728516,
+          1.2773066262181717e-15,
+          20.999652862548828
+        ]
+      ],
+      "volume_mm3": 3081.0234442185447
+    },
+    {
+      "file": "mechanical/test_coupons_v06/bearing_seat_32.35_half_B.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 28192,
+      "faces": 56388,
+      "bounds_mm": [
+        [
+          -20.99884796142578,
+          -1.2626108163415464e-15,
+          0.0
+        ],
+        [
+          20.998828887939453,
+          9.999998092651367,
+          20.99964714050293
+        ]
+      ],
+      "volume_mm3": 3079.6899171971622
+    },
+    {
+      "file": "mechanical/test_coupons_v06/bearing_seat_32.50_half_A.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 28308,
+      "faces": 56620,
+      "bounds_mm": [
+        [
+          -20.999658584594727,
+          -9.999998092651367,
+          0.0
+        ],
+        [
+          20.994937896728516,
+          1.2773066262181717e-15,
+          20.999652862548828
+        ]
+      ],
+      "volume_mm3": 3058.2755338048787
+    },
+    {
+      "file": "mechanical/test_coupons_v06/bearing_seat_32.50_half_B.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 28278,
+      "faces": 56560,
+      "bounds_mm": [
+        [
+          -20.99884796142578,
+          -1.2626108163415464e-15,
+          0.0
+        ],
+        [
+          20.998828887939453,
+          9.999998092651367,
+          20.99964714050293
+        ]
+      ],
+      "volume_mm3": 3057.0241762038568
     },
     {
       "file": "mechanical/test_coupons_v06/PETG_drill_skin_0.6_0.8_1.0_coupon.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 45568,
       "vertices": 22786,
+      "faces": 45568,
       "bounds_mm": [
         [
           -22.0,
@@ -458,15 +591,16 @@
           9.999990463256836,
           5.000000476837158
         ]
-      ]
+      ],
+      "volume_mm3": 4236.14766206703
     },
     {
       "file": "mechanical/test_coupons_v06/PETG_lid_gasket_groove_coupon.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 65852,
       "vertices": 32928,
+      "faces": 65852,
       "bounds_mm": [
         [
           -21.93933868408203,
@@ -478,15 +612,37 @@
           13.939334869384766,
           5.000000476837158
         ]
-      ]
+      ],
+      "volume_mm3": 5307.633229736976
+    },
+    {
+      "file": "mechanical/test_coupons_v06/PETG_M4_captive_nut_trap_coupon.stl",
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "vertices": 22960,
+      "faces": 45924,
+      "bounds_mm": [
+        [
+          -18.0,
+          -10.000000953674316,
+          0.0
+        ],
+        [
+          17.999984741210938,
+          9.999990463256836,
+          8.000000953674316
+        ]
+      ],
+      "volume_mm3": 5377.497972584809
     },
     {
       "file": "mechanical/test_coupons_v06/TPU85_lid_gasket_coupon.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 17520,
       "vertices": 8760,
+      "faces": 17520,
       "bounds_mm": [
         [
           -17.29380989074707,
@@ -498,15 +654,16 @@
           9.29118537902832,
           1.8000000715255737
         ]
-      ]
+      ],
+      "volume_mm3": 346.4579987726697
     },
     {
       "file": "mechanical/test_coupons_v06/TPU95_M125_sleeve_OD_15.60.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 40328,
       "vertices": 20164,
+      "faces": 40328,
       "bounds_mm": [
         [
           -9.499242782592773,
@@ -518,15 +675,16 @@
           9.49923324584961,
           17.000001907348633
         ]
-      ]
+      ],
+      "volume_mm3": 1342.52619363891
     },
     {
       "file": "mechanical/test_coupons_v06/TPU95_M125_sleeve_OD_15.80.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 40144,
       "vertices": 20072,
+      "faces": 40144,
       "bounds_mm": [
         [
           -9.499242782592773,
@@ -538,15 +696,16 @@
           9.49923324584961,
           17.000001907348633
         ]
-      ]
+      ],
+      "volume_mm3": 1412.2283905327033
     },
     {
       "file": "mechanical/test_coupons_v06/TPU95_M125_sleeve_OD_16.00.stl",
       "watertight": true,
       "winding_consistent": true,
       "components": 1,
-      "faces": 40480,
       "vertices": 20240,
+      "faces": 40480,
       "bounds_mm": [
         [
           -9.499242782592773,
@@ -558,128 +717,8 @@
           9.49923324584961,
           17.000001907348633
         ]
-      ]
-    },
-    {
-      "file": "mechanical/test_coupons_v06/bearing_seat_32.20_half_A.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 56432,
-      "vertices": 28214,
-      "bounds_mm": [
-        [
-          -20.999658584594727,
-          -9.999998092651367,
-          0.0
-        ],
-        [
-          20.994937896728516,
-          1.2773066262181717e-15,
-          20.999652862548828
-        ]
-      ]
-    },
-    {
-      "file": "mechanical/test_coupons_v06/bearing_seat_32.20_half_B.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 56380,
-      "vertices": 28188,
-      "bounds_mm": [
-        [
-          -20.99884796142578,
-          -1.2626108163415464e-15,
-          0.0
-        ],
-        [
-          20.998828887939453,
-          9.999998092651367,
-          20.99964714050293
-        ]
-      ]
-    },
-    {
-      "file": "mechanical/test_coupons_v06/bearing_seat_32.35_half_A.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 56600,
-      "vertices": 28298,
-      "bounds_mm": [
-        [
-          -20.999658584594727,
-          -9.999998092651367,
-          0.0
-        ],
-        [
-          20.994937896728516,
-          1.2773066262181717e-15,
-          20.999652862548828
-        ]
-      ]
-    },
-    {
-      "file": "mechanical/test_coupons_v06/bearing_seat_32.35_half_B.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 56388,
-      "vertices": 28192,
-      "bounds_mm": [
-        [
-          -20.99884796142578,
-          -1.2626108163415464e-15,
-          0.0
-        ],
-        [
-          20.998828887939453,
-          9.999998092651367,
-          20.99964714050293
-        ]
-      ]
-    },
-    {
-      "file": "mechanical/test_coupons_v06/bearing_seat_32.50_half_A.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 56620,
-      "vertices": 28308,
-      "bounds_mm": [
-        [
-          -20.999658584594727,
-          -9.999998092651367,
-          0.0
-        ],
-        [
-          20.994937896728516,
-          1.2773066262181717e-15,
-          20.999652862548828
-        ]
-      ]
-    },
-    {
-      "file": "mechanical/test_coupons_v06/bearing_seat_32.50_half_B.stl",
-      "watertight": true,
-      "winding_consistent": true,
-      "components": 1,
-      "faces": 56560,
-      "vertices": 28278,
-      "bounds_mm": [
-        [
-          -20.99884796142578,
-          -1.2626108163415464e-15,
-          0.0
-        ],
-        [
-          20.998828887939453,
-          9.999998092651367,
-          20.99964714050293
-        ]
-      ]
+      ],
+      "volume_mm3": 1481.9971723630194
     }
-  ],
-  "failures": []
+  ]
 }

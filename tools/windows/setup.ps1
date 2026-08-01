@@ -188,6 +188,21 @@ function Install-PlatformIO {
     if (-not (Test-Path -LiteralPath $candidate)) { throw 'PlatformIO was installed but pio.exe was not found.' }
 }
 
+function Install-MechanicalPythonEnvironment {
+    $venvRoot = Join-Path $ExecutionRoot '.mechanical-venv'
+    $venvPython = Join-Path $venvRoot 'Scripts\python.exe'
+    $requirements = Join-Path $repoRoot 'mechanical\requirements.txt'
+    if (-not (Test-Path -LiteralPath $venvPython)) {
+        Write-Host 'Creating isolated mechanical Python environment...' -ForegroundColor Cyan
+        & python -m venv $venvRoot
+        if ($LASTEXITCODE -ne 0) { throw 'Failed to create the mechanical Python environment.' }
+    }
+    & $venvPython -m pip install --disable-pip-version-check --requirement $requirements
+    if ($LASTEXITCODE -ne 0) { throw 'Failed to install mechanical Python dependencies.' }
+    & $venvPython -c 'import matplotlib, networkx, numpy, resvg_py, skimage, trimesh'
+    if ($LASTEXITCODE -ne 0) { throw 'Mechanical Python dependency import check failed.' }
+}
+
 function Sync-ExecutionWorktree {
     $target = Join-Path $ExecutionRoot 'worktree'
     $resolvedTarget = [IO.Path]::GetFullPath($target).TrimEnd('\')
@@ -238,6 +253,7 @@ Install-WindowsPackages
 Configure-Java
 Install-AndroidSdk
 Install-PlatformIO
+Install-MechanicalPythonEnvironment
 $buildRoot = Sync-ExecutionWorktree
 Warm-Toolchains -BuildRoot $buildRoot
 Write-Host ''

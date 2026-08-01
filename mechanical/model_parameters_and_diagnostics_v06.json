@@ -53,9 +53,37 @@
     "flag_cable_inner_diameter": 4.4,
     "flag_cable_grommet_body_diameter": 9.4,
     "flag_cable_grommet_flange_diameter": 12.0,
-    "flag_cable_center_z": 40.5,
-    "flag_cable_x_min": 55.0,
-    "flag_cable_x_max": 72.0,
+    "flag_cable_center_z": 18.0,
+    "flag_cable_x_min": -18.0,
+    "flag_cable_x_max": -8.0,
+    "external_cable_groove_radius": 3.0,
+    "external_cable_route_points": [
+      [
+        72.0,
+        -12.3,
+        18.0
+      ],
+      [
+        27.0,
+        -12.3,
+        18.0
+      ],
+      [
+        17.0,
+        -19.0,
+        16.5
+      ],
+      [
+        -8.5,
+        -19.0,
+        15.0
+      ],
+      [
+        -8.5,
+        0.0,
+        18.0
+      ]
+    ],
     "pod_x_min": -72.0,
     "pod_x_max": -10.0,
     "pod_y_half": 19.0,
@@ -213,9 +241,9 @@
       "watertight": true,
       "winding_consistent": true,
       "euler_number": -22,
-      "volume_mm3": 66154.52926965168,
-      "faces": 204820,
-      "vertices": 102388,
+      "volume_mm3": 66810.64999632821,
+      "faces": 204276,
+      "vertices": 102116,
       "bounds_mm": [
         [
           -74.49982452392578,
@@ -233,10 +261,10 @@
     "rotor_half_B": {
       "watertight": true,
       "winding_consistent": true,
-      "euler_number": -26,
-      "volume_mm3": 65394.29940220541,
-      "faces": 207108,
-      "vertices": 103528,
+      "euler_number": -28,
+      "volume_mm3": 64590.794301562266,
+      "faces": 209676,
+      "vertices": 104810,
       "bounds_mm": [
         [
           -74.49982452392578,
@@ -423,19 +451,19 @@
       "watertight": true,
       "winding_consistent": true,
       "euler_number": 2,
-      "volume_mm3": 607.7787707052203,
-      "faces": 13168,
-      "vertices": 6586,
+      "volume_mm3": 399.6598057645101,
+      "faces": 9068,
+      "vertices": 4536,
       "bounds_mm": [
         [
-          55.0,
+          -18.0,
           -3.337860107421875e-06,
-          34.51991653442383
+          12.0021333694458
         ],
         [
-          71.99999237060547,
-          6.199993133544922,
-          46.47910690307617
+          -8.000005722045898,
+          5.997859001159668,
+          23.997859954833984
         ]
       ],
       "components": 1
@@ -444,19 +472,19 @@
       "watertight": true,
       "winding_consistent": true,
       "euler_number": 2,
-      "volume_mm3": 607.5686920185071,
-      "faces": 13160,
-      "vertices": 6582,
+      "volume_mm3": 399.4952992048015,
+      "faces": 9028,
+      "vertices": 4516,
       "bounds_mm": [
         [
-          55.0,
-          -6.200000762939453,
-          34.51031494140625
+          -18.0,
+          -5.997866630554199,
+          12.002699851989746
         ],
         [
-          71.99999237060547,
+          -8.000005722045898,
           -3.337860107421875e-06,
-          46.47740173339844
+          23.997291564941406
         ]
       ],
       "components": 1
@@ -652,41 +680,42 @@
     }
   },
   "files": [
-    "stl_petg_v06/rotor_half_A_print_flat.stl",
-    "stl_petg_v06/rotor_half_B_print_flat.stl",
-    "stl_petg_v06/stationary_collar_A_print_flat.stl",
-    "stl_petg_v06/stationary_collar_B_print_flat.stl",
-    "stl_petg_v06/service_lid_top_face_down.stl",
-    "stl_petg_v06/photo_tunnel_upright.stl",
-    "stl_petg_v06/photo_window_retainer_flat.stl",
-    "stl_petg_v06/environment_sensor_pocket_open_side_up.stl",
-    "stl_tpu95_v06/spoke_liner_A_split_face_down.stl",
-    "stl_tpu95_v06/spoke_liner_B_split_face_down.stl",
-    "stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl",
-    "stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl",
-    "stl_tpu95_v06/M125_bundle_grommet_A_split_face_down.stl",
-    "stl_tpu95_v06/M125_bundle_grommet_B_split_face_down.stl",
-    "stl_tpu95_v06/M125_pole_sleeve_upright.stl",
-    "stl_tpu95_v06/pole_collar_liner_A_split_face_down.stl",
-    "stl_tpu95_v06/pole_collar_liner_B_split_face_down.stl",
-    "stl_tpu85_v06/lid_gasket_flat.stl",
-    "stl_tpu85_v06/photo_window_gasket_flat.stl",
-    "stl_tpu85_v06/environment_pocket_gasket_flat.stl",
-    "stl_tpu85_v06/environment_membrane_gasket_flat.stl",
-    "test_coupons_v06/bearing_seat_32.20_half_A.stl",
-    "test_coupons_v06/bearing_seat_32.20_half_B.stl",
-    "test_coupons_v06/bearing_seat_32.35_half_A.stl",
-    "test_coupons_v06/bearing_seat_32.35_half_B.stl",
-    "test_coupons_v06/bearing_seat_32.50_half_A.stl",
-    "test_coupons_v06/bearing_seat_32.50_half_B.stl",
-    "test_coupons_v06/PETG_lid_gasket_groove_coupon.stl",
-    "test_coupons_v06/TPU85_lid_gasket_coupon.stl",
-    "test_coupons_v06/TPU95_M125_sleeve_OD_15.60.stl",
-    "test_coupons_v06/TPU95_M125_sleeve_OD_15.80.stl",
-    "test_coupons_v06/TPU95_M125_sleeve_OD_16.00.stl",
-    "test_coupons_v06/PETG_M4_captive_nut_trap_coupon.stl",
-    "test_coupons_v06/PETG_drill_skin_0.6_0.8_1.0_coupon.stl",
+    "stl_petg_v06\\rotor_half_A_print_flat.stl",
+    "stl_petg_v06\\rotor_half_B_print_flat.stl",
+    "stl_petg_v06\\stationary_collar_A_print_flat.stl",
+    "stl_petg_v06\\stationary_collar_B_print_flat.stl",
+    "stl_petg_v06\\service_lid_top_face_down.stl",
+    "stl_petg_v06\\photo_tunnel_upright.stl",
+    "stl_petg_v06\\photo_window_retainer_flat.stl",
+    "stl_petg_v06\\environment_sensor_pocket_open_side_up.stl",
+    "stl_tpu95_v06\\spoke_liner_A_split_face_down.stl",
+    "stl_tpu95_v06\\spoke_liner_B_split_face_down.stl",
+    "stl_tpu95_v06\\flag_cable_grommet_A_split_face_down.stl",
+    "stl_tpu95_v06\\flag_cable_grommet_B_split_face_down.stl",
+    "stl_tpu95_v06\\M125_bundle_grommet_A_split_face_down.stl",
+    "stl_tpu95_v06\\M125_bundle_grommet_B_split_face_down.stl",
+    "stl_tpu95_v06\\M125_pole_sleeve_upright.stl",
+    "stl_tpu95_v06\\pole_collar_liner_A_split_face_down.stl",
+    "stl_tpu95_v06\\pole_collar_liner_B_split_face_down.stl",
+    "stl_tpu85_v06\\lid_gasket_flat.stl",
+    "stl_tpu85_v06\\photo_window_gasket_flat.stl",
+    "stl_tpu85_v06\\environment_pocket_gasket_flat.stl",
+    "stl_tpu85_v06\\environment_membrane_gasket_flat.stl",
+    "test_coupons_v06\\bearing_seat_32.20_half_A.stl",
+    "test_coupons_v06\\bearing_seat_32.20_half_B.stl",
+    "test_coupons_v06\\bearing_seat_32.35_half_A.stl",
+    "test_coupons_v06\\bearing_seat_32.35_half_B.stl",
+    "test_coupons_v06\\bearing_seat_32.50_half_A.stl",
+    "test_coupons_v06\\bearing_seat_32.50_half_B.stl",
+    "test_coupons_v06\\PETG_lid_gasket_groove_coupon.stl",
+    "test_coupons_v06\\TPU85_lid_gasket_coupon.stl",
+    "test_coupons_v06\\TPU95_M125_sleeve_OD_15.60.stl",
+    "test_coupons_v06\\TPU95_M125_sleeve_OD_15.80.stl",
+    "test_coupons_v06\\TPU95_M125_sleeve_OD_16.00.stl",
+    "test_coupons_v06\\PETG_M4_captive_nut_trap_coupon.stl",
+    "test_coupons_v06\\PETG_drill_skin_0.6_0.8_1.0_coupon.stl",
     "flagpole_finial_v0_6_assembly.glb",
+    "flagpole_finial_v0_6_flag_power_route.glb",
     "flagpole_finial_v0_6_exploded.glb",
     "flagpole_finial_v0_6_print_layout_PETG.glb",
     "flagpole_finial_v0_6_print_layout_TPU95.glb",

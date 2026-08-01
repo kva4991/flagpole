@@ -12,6 +12,7 @@ This is a parametric, printable concept updated for:
 - M125/M125U miniature slip ring located inside a provisional hollow pole;
 - electronics pod on the side opposite the flag;
 - service lid with a captured TPU gasket;
+- external cable groove below the spoke and a split TPU entry grommet at the electronics pod;
 - separate TPU cable grommets and carbon-rod liner.
 
 Exact pole OD/ID, carbon rod OD, bearing fit and purchased module dimensions remain
@@ -102,13 +103,24 @@ class Params:
     clamp_gap_total: float = 0.70
     clamp_gap_x_min: float = 24.0
 
-    # Cable exit to the flag; TPU split grommet is captured by two flanges
+    # Cable from the waterproof flag connector. The cable now runs in an
+    # external service groove below the spoke and enters the electronics pod
+    # only at its flag-facing wall. The split TPU grommet is captured by both
+    # rotor halves at that wall; it is not a second spoke hole.
     flag_cable_inner_diameter: float = 4.4
     flag_cable_grommet_body_diameter: float = 9.4
     flag_cable_grommet_flange_diameter: float = 12.0
-    flag_cable_center_z: float = 40.5
-    flag_cable_x_min: float = 55.0
-    flag_cable_x_max: float = 72.0
+    flag_cable_center_z: float = 18.0
+    flag_cable_x_min: float = -18.0
+    flag_cable_x_max: float = -8.0
+    external_cable_groove_radius: float = 3.0
+    external_cable_route_points: Tuple[Tuple[float, float, float], ...] = (
+        (72.0, -12.3, 18.0),
+        (27.0, -12.3, 18.0),
+        (17.0, -19.0, 16.5),
+        (-8.5, -19.0, 15.0),
+        (-8.5, 0.0, 18.0),
+    )
 
     # Electronics pod opposite the flag
     pod_x_min: float = -72.0
@@ -280,6 +292,22 @@ def sd_cylinder_y(x, y, z, radius: float, y_min: float, y_max: float,
     return np.maximum(radial, np.abs(y-yc)-yh)
 
 
+def sd_capsule_3d(x, y, z, start, end, radius: float):
+    """Signed distance to a rounded cable channel between arbitrary points."""
+    ax, ay, az = start
+    bx, by, bz = end
+    vx, vy, vz = bx-ax, by-ay, bz-az
+    wx, wy, wz = x-ax, y-ay, z-az
+    vv = vx*vx + vy*vy + vz*vz
+    if vv <= 1e-12:
+        return np.sqrt(wx*wx + wy*wy + wz*wz) - radius
+    t = np.clip((wx*vx + wy*vy + wz*vz) / vv, 0.0, 1.0)
+    dx = wx - t*vx
+    dy = wy - t*vy
+    dz = wz - t*vz
+    return np.sqrt(dx*dx + dy*dy + dz*dz) - radius
+
+
 def sd_box(x, y, z, x_min, x_max, y_min, y_max, z_min, z_max):
     cx, cy, cz = (x_min+x_max)/2, (y_min+y_max)/2, (z_min+z_max)/2
     hx, hy, hz = (x_max-x_min)/2, (y_max-y_min)/2, (z_max-z_min)/2
@@ -432,7 +460,9 @@ def rotor_full_sdf(x, y, z):
         sd_box(x,y,z,P.clamp_gap_x_min,P.arm_x_max+1,
                -P.clamp_gap_total/2,P.clamp_gap_total/2,
                P.arm_z_min-0.5,P.arm_z_max+0.5),
-        # Captured flag-cable grommet pocket.
+        # Captured cable-entry grommet in the flag-facing wall of the
+        # electronics pod. The waterproof connector itself stays outside near
+        # the flag; only its cable enters here after following the outer groove.
         sd_cylinder_x(x,y,z,P.flag_cable_grommet_body_diameter/2+0.18,
                       P.flag_cable_x_min+2.7,P.flag_cable_x_max-3.0,
                       cz=P.flag_cable_center_z),
@@ -466,19 +496,21 @@ def rotor_full_sdf(x, y, z):
         sd_cylinder_x(x,y,z,1.5,16.0,24.0,cz=-3.0),
     ]
 
+    # External cable route: below the spoke, along the negative-Y outer face,
+    # around the body and finally into the grommet at the electronics pod.
+    # The capsule centres sit close to the exterior surfaces, producing an
+    # open service groove rather than a hidden tunnel through bearing space.
+    route_points=P.external_cable_route_points
+    for start,end in zip(route_points[:-1],route_points[1:]):
+        holes.append(sd_capsule_3d(
+            x,y,z,start,end,P.external_cable_groove_radius))
+
     # TPU liner snap-key pockets. The keys hold each half in its PETG half during service.
     for x0 in (30.0,53.0):
         holes.append(sd_box(x,y,z,x0-2.6,x0+2.6,3.25,6.20,
                             P.spoke_center_z-1.35,P.spoke_center_z+1.35))
         holes.append(sd_box(x,y,z,x0-2.6,x0+2.6,-6.20,-3.25,
                             P.spoke_center_z-1.35,P.spoke_center_z+1.35))
-    # Cable grommet snap pockets.
-    for x0 in (61.0,67.0):
-        holes.append(sd_box(x,y,z,x0-1.9,x0+1.9,4.1,6.6,
-                            P.flag_cable_center_z-1.2,P.flag_cable_center_z+1.2))
-        holes.append(sd_box(x,y,z,x0-1.9,x0+1.9,-6.6,-4.1,
-                            P.flag_cable_center_z-1.2,P.flag_cable_center_z+1.2))
-
     # Through-bolts.
     for bx,bz in P.body_bolt_positions + P.clamp_bolt_positions:
         holes.append(sd_cylinder_y(x,y,z,P.body_bolt_clearance_diameter/2,
@@ -511,7 +543,20 @@ def rotor_full_sdf(x, y, z):
     holes.append(sd_cylinder_z(
         x-(P.env_pocket_center_x+6.0),y-7.0,z,2.0,13.0,17.5))
 
-    return subtract(solid,*holes)
+    base=subtract(solid,*holes)
+
+    # Internal cable-strain-relief bridge immediately behind the pod entry.
+    # A small UV-resistant cable tie or TPU band wraps around this bridge,
+    # keeping connector pulls away from the MOSFET/terminal wiring. The open
+    # centre preserves a short service loop and remains independent of the
+    # final electronics-board dimensions.
+    anchor_post_a=sd_rounded_box(
+        x,y,z,center=(-24.0,-6.5,20.0),half_size=(2.3,1.8,3.0),radius=0.8)
+    anchor_post_b=sd_rounded_box(
+        x,y,z,center=(-24.0,6.5,20.0),half_size=(2.3,1.8,3.0),radius=0.8)
+    anchor_bridge=sd_rounded_box(
+        x,y,z,center=(-24.0,0.0,22.2),half_size=(2.3,7.0,1.0),radius=0.8)
+    return union(base,anchor_post_a,anchor_post_b,anchor_bridge)
 
 
 def rotor_half_a_sdf(x,y,z):
@@ -705,13 +750,9 @@ def flag_cable_grommet_full_sdf(x,y,z):
     fb=sd_cylinder_x(x,y,z,P.flag_cable_grommet_flange_diameter/2,
                      P.flag_cable_x_max-3.0,P.flag_cable_x_max,
                      cz=P.flag_cable_center_z)
-    keys=[]
-    for x0 in (61.0,67.0):
-        keys.append(sd_box(x,y,z,x0-1.7,x0+1.7,4.25,6.2,
-                           P.flag_cable_center_z-1.0,P.flag_cable_center_z+1.0))
-        keys.append(sd_box(x,y,z,x0-1.7,x0+1.7,-6.2,-4.25,
-                           P.flag_cable_center_z-1.0,P.flag_cable_center_z+1.0))
-    solid=union(body,fa,fb,*keys)
+    # The two flanges are enough to capture the split grommet between the
+    # rotor halves; no remote snap keys are required at the pod wall.
+    solid=union(body,fa,fb)
     inner=sd_cylinder_x(x,y,z,P.flag_cable_inner_diameter/2,
                         P.flag_cable_x_min-1,P.flag_cable_x_max+1,
                         cz=P.flag_cable_center_z)
@@ -1034,6 +1075,53 @@ def mesh_diagnostics(mesh: trimesh.Trimesh):
     }
 
 
+def cylinder_between(start, end, radius: float, sections: int = 32)->trimesh.Trimesh:
+    """Create a reference cylinder between two millimetre-space points."""
+    a=np.array(start,dtype=float)
+    b=np.array(end,dtype=float)
+    delta=b-a
+    length=float(np.linalg.norm(delta))
+    if length <= 1e-9:
+        return trimesh.creation.icosphere(subdivisions=2,radius=radius)
+    tube=trimesh.creation.cylinder(radius=radius,height=length,sections=sections)
+    tube.apply_transform(trimesh.geometry.align_vectors([0,0,1],delta/length))
+    tube.apply_translation((a+b)/2)
+    return tube
+
+
+def external_flag_cable_reference()->trimesh.Trimesh:
+    """Non-printable reference for the waterproof-connector cable route.
+
+    The cable stays outside the housing in a service groove below the spoke,
+    wraps around the lower negative-Y side, then enters through the split TPU
+    grommet at the flag-facing wall of the electronics pod.
+    """
+    points=[np.array(p,dtype=float) for p in P.external_cable_route_points]
+    # Continue through the entry grommet into the electronics cavity and leave
+    # a short service loop before the terminal/MOSFET wiring.
+    points.extend([
+        np.array([-12.5,0.0,P.flag_cable_center_z],dtype=float),
+        np.array([-22.0,0.0,P.flag_cable_center_z],dtype=float),
+        np.array([-28.0,-5.0,P.flag_cable_center_z+4.0],dtype=float),
+    ])
+    parts=[cylinder_between(a,b,P.flag_cable_inner_diameter/2,28)
+           for a,b in zip(points[:-1],points[1:])]
+    return trimesh.util.concatenate(parts)
+
+
+def waterproof_connector_reference()->trimesh.Trimesh:
+    """Provisional external two-pin connector near the flag, below the spoke."""
+    # Exact bought connector dimensions are not known; this is a visual volume
+    # only and must not be used for the final cradle or fit.
+    body=trimesh.creation.cylinder(radius=5.0,height=18.0,sections=48)
+    body.apply_transform(trimesh.geometry.align_vectors([0,0,1],[1,0,0]))
+    body.apply_translation([81.0,-12.3,P.flag_cable_center_z])
+    strain=trimesh.creation.cylinder(radius=3.3,height=8.0,sections=40)
+    strain.apply_transform(trimesh.geometry.align_vectors([0,0,1],[1,0,0]))
+    strain.apply_translation([70.0,-12.3,P.flag_cable_center_z])
+    return trimesh.util.concatenate([body,strain])
+
+
 def cloth_loop_reference(z_center: float, loop_index: int)->trimesh.Trimesh:
     """Create a non-printable orange fabric-loop reference around the pole.
 
@@ -1083,6 +1171,10 @@ def create_references()->Dict[str,trimesh.Trimesh]:
     rod.apply_transform(trimesh.geometry.align_vectors([0,0,1],[1,0,0]))
     rod.apply_translation([P.spoke_insert_x_min+rod_len/2,0,P.spoke_center_z])
     refs['REF_carbon_spoke_OD5']=colored_copy(rod,[28,32,36,255])
+    refs['REF_flag_power_cable_external_route']=colored_copy(
+        external_flag_cable_reference(),[35,38,42,255])
+    refs['REF_waterproof_2pin_connector_provisional']=colored_copy(
+        waterproof_connector_reference(),[55,62,68,255])
     # M125 body in pole.
     m125=trimesh.creation.cylinder(radius=P.m125_body_diameter/2,
                                    height=P.m125_body_length,sections=64)
@@ -1120,7 +1212,7 @@ def main_v05_legacy():
     photo_bounds=((-9,9),(-9,9),(-1,29))
     collar_bounds=((-18,18),(-18,18),(-3,16))
     spoke_bounds=((13,68),(-7,7),(21,33))
-    flag_grommet_bounds=((53,74),(-8,8),(33,48))
+    flag_grommet_bounds=((-20,-6),(-8,8),(10,26))
     bundle_grommet_bounds=((-24,-9),(-7,7),(40,54))
     gasket_bounds=((-74,-8),(-22,22),(-1,4))
     sleeve_bounds=((-11,11),(-11,11),(-1,19))
@@ -1302,7 +1394,7 @@ def main():
     photo_retainer_bounds=((-9,9),(-9,9),(-1,4))
     collar_bounds=((-18,18),(-18,18),(-3,16))
     spoke_bounds=((13,68),(-7,7),(21,33))
-    flag_grommet_bounds=((53,74),(-8,8),(33,48))
+    flag_grommet_bounds=((-20,-6),(-8,8),(10,26))
     bundle_grommet_bounds=((-24,-9),(-7,7),(40,54))
     gasket_bounds=((-74,-8),(-22,22),(-1,4))
     sleeve_bounds=((-11,11),(-11,11),(-1,19))
@@ -1397,7 +1489,7 @@ def main():
     for name,m in coupon_meshes.items(): exported.append(export_stl(m,COUPON_DIR/f'{name}.stl'))
 
     ORANGE_A=[235,116,40,255]; ORANGE_B=[246,145,67,255]
-    WHITE95=[245,245,240,255]; WHITE85=[235,242,250,255]
+    WHITE95=[145,154,160,255]; WHITE85=[188,196,202,255]
     PETG_DARK=[220,94,28,255]
     photo_global=[P.photo_tunnel_center_x,0,P.lid_z_max]
     photo_top=P.lid_z_max+P.photo_tunnel_height
@@ -1427,6 +1519,22 @@ def main():
     assembly.update(create_references())
     assembly_path=ROOT/'flagpole_finial_v0_6_assembly.glb'
     assembly_path.write_bytes(to_glb_scene(assembly,'Flagpole finial v0.6 PETG + TPU95 + TPU85 assembly').export(file_type='glb'))
+
+    # Focused service model of the flag-power cable route. It deliberately
+    # omits the full flag and long pole so the external groove, waterproof
+    # connector, TPU entry grommet and short internal service loop remain easy
+    # to inspect in the web viewer.
+    route_scene={name:mesh for name,mesh in assembly.items() if name in {
+        'PETG_rotor_half_A','PETG_rotor_half_B','PETG_service_lid',
+        'TPU95_flag_cable_grommet_A','TPU95_flag_cable_grommet_B',
+        'REF_flag_power_cable_external_route','REF_waterproof_2pin_connector_provisional',
+        'REF_ESP32_C3_SuperMini','REF_buck_12_to_5','REF_PC817_LR7843_module'}}
+    short_spoke=cylinder_between(
+        [P.spoke_insert_x_min,0,P.spoke_center_z],
+        [105.0,0,P.spoke_center_z],P.spoke_diameter/2,48)
+    route_scene['REF_carbon_spoke_short']=colored_copy(short_spoke,[28,32,36,255])
+    route_path=ROOT/'flagpole_finial_v0_6_flag_power_route.glb'
+    route_path.write_bytes(to_glb_scene(route_scene,'Flag power cable route below spoke and into electronics pod').export(file_type='glb'))
 
     exploded={}
     explode_offsets={
@@ -1483,7 +1591,7 @@ def main():
         'environment_membrane_gasket':env_membrane_gasket,
         'm125_sleeve':sleeve,'pole_liner_A':pole_liner_a,'pole_liner_B':pole_liner_b,
     }
-    generated_glb=[assembly_path,exploded_path,petg_layout_path,tpu95_layout_path,tpu85_layout_path]
+    generated_glb=[assembly_path,route_path,exploded_path,petg_layout_path,tpu95_layout_path,tpu85_layout_path]
     diagnostics={
         'version':'0.6 PETG+TPU95+TPU85 provisional',
         'design_status':'Print coupons first; all purchased-part fits remain measurement-driven',

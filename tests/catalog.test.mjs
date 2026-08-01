@@ -54,7 +54,35 @@ describe('project catalog', () => {
     assert.match(html, /покупать отдельный материал не требуется/);
     assert.match(html, /UV-resistant bonded polyester sewing thread — Tex 45/);
     assert.match(html, /100% polyester\/PES, continuous filament, bonded/);
+    assert.match(html, /Маршрут питания флага под спицей/);
+    assert.match(html, /Таблица идентификаторов печатных деталей v0\.6/);
+    assert.match(html, /Раздельные очереди печати по материалам/);
+    assert.match(html, /Очередь печати PETG/);
+    assert.match(html, /Очередь печати TPU 95A/);
+    assert.match(html, /Очередь печати TPU 85A/);
+    assert.match(html, /нейлоновой основе/);
+    assert.match(html, /320 кд\/\(лк·м²\)/);
     assert.match(html, /Строительная кровельная или стеновая мембрана для этой детали не выбирается/);
     assert.doesNotMatch(html, /\b(?:cmp|drw|mdl)-\d{3}\b/);
+  });
+
+  it('keeps drawing, model and print-session IDs unique and assets present', () => {
+    const media = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/drawings.json'), 'utf8'));
+    assert.equal(media.schemaVersion, 2);
+    assert.equal(media.printSessions.length, 3);
+    const all = [...media.drawings, ...media.models, ...media.printSessions];
+    assert.equal(new Set(all.map(item => item.id)).size, all.length);
+    for (const item of media.drawings) {
+      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing drawing ${item.file}`);
+      assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing preview ${item.preview}`);
+    }
+    for (const item of media.models) {
+      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing model ${item.file}`);
+      assert.ok(fs.existsSync(resolve(repoRoot, item.poster)), `missing poster ${item.poster}`);
+    }
+    for (const item of media.printSessions) {
+      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing print session ${item.file}`);
+      assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing print session preview ${item.preview}`);
+    }
   });
 });

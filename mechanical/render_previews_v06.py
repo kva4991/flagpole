@@ -10,7 +10,7 @@ import trimesh
 
 ROOT=Path(__file__).resolve().parent
 
-DEFAULT_COLORS=['#ed7428','#f59443','#f5f5ef','#d95b17','#8a949c','#2d3339','#3e8b66','#455f9c']
+DEFAULT_COLORS=['#ed7428','#f59443','#9ca6ad','#d95b17','#8a949c','#2d3339','#3e8b66','#455f9c']
 
 def transformed_meshes(scene):
     dumped=scene.dump(concatenate=False)
@@ -19,7 +19,7 @@ def transformed_meshes(scene):
 def mesh_color(mesh,index):
     try:
         c=np.array(mesh.visual.main_color,dtype=float)[:3]/255.0
-        if np.all(c>0.95): return np.array(to_rgb('#f5f5ef'))
+        if np.all(c>0.90): return np.array(to_rgb('#9ca6ad'))
         return c
     except Exception:
         return np.array(to_rgb(DEFAULT_COLORS[index%len(DEFAULT_COLORS)]))
@@ -57,8 +57,8 @@ def equal_axes(ax,meshes,pad=.08):
 def render(glb,out,title,elev,azim):
     scene=trimesh.load(ROOT/glb,force='scene')
     meshes=transformed_meshes(scene)
-    fig=plt.figure(figsize=(12,8),dpi=120)
-    ax=fig.add_subplot(111,projection='3d')
+    fig=plt.figure(figsize=(12,8),dpi=120,facecolor='#f2f4f5')
+    ax=fig.add_subplot(111,projection='3d'); ax.set_facecolor('#f2f4f5')
     ax.set_proj_type('ortho')
     for i,m in enumerate(meshes): add_mesh(ax,m,i)
     equal_axes(ax,meshes)
@@ -66,7 +66,7 @@ def render(glb,out,title,elev,azim):
     ax.set_axis_off()
     ax.set_title(title,fontsize=15,pad=15)
     fig.tight_layout()
-    fig.savefig(ROOT/out,bbox_inches='tight',facecolor='white')
+    fig.savefig(ROOT/out,bbox_inches='tight',facecolor='#f2f4f5')
     plt.close(fig)
 
 if __name__=='__main__':

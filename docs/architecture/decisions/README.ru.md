@@ -20,3 +20,4 @@
 | [0014](0014-captive-nut-pockets.ru.md) | Принято | Параметрические закладные карманы под гайки |
 | [0015](0015-flag-attachment-loops.ru.md) | Принято | Четыре тканевые петли крепления флага к штоку |
 | [0016](0016-android-ble-state-machine.ru.md) | Принято | Android BLE state machine и очередь GATT |
+| [0017](0017-external-flag-power-cable-route.ru.md) | Принято | Наружный маршрут питания флага ниже спицы и один герметизируемый ввод |

@@ -1,12 +1,13 @@
 {
   "project": "Crucian rotating flagpole finial",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "packageType": "cumulative source, generated mechanics, documentation and handoff package",
   "sourceRepository": "https://github.com/kva4991/flagpole",
-  "sourceBranchReviewed": "agent/v061-documentation-method",
-  "sourceHeadReviewed": "e4dec567e15b66ee28cf7044fd7f67e4117f1105",
-  "fileCount": 238,
-  "totalBytes": 368480528,
+  "sourceBranchReviewed": "main",
+  "sourceHeadReviewed": "88543ac89b4c70aa0fcb1149a4375a83c48b588e",
+  "incomingPackage": "flagpole_v0_7_2_cumulative_github.zip",
+  "fileCount": 299,
+  "totalBytes": 385789347,
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
   "currentMechanicalSource": "mechanical/generate_models_v06.py",
@@ -41,15 +42,15 @@
     },
     {
       "path": "mechanical/flagpole_finial_v0_6_assembly.glb",
-      "bytes": 18267992
+      "bytes": 18168508
     },
     {
       "path": "mechanical/flagpole_finial_v0_6_exploded.glb",
-      "bytes": 18208728
+      "bytes": 18084512
     },
     {
       "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
-      "bytes": 13598796
+      "bytes": 13639212
     },
     {
       "path": "mechanical/stl_petg/service_lid_top_face_down.stl",
@@ -60,12 +61,16 @@
       "bytes": 11681084
     },
     {
+      "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
+      "bytes": 10851420
+    },
+    {
       "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
-      "bytes": 10355484
+      "bytes": 10483884
     },
     {
       "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
-      "bytes": 10241084
+      "bytes": 10213884
     },
     {
       "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
@@ -105,9 +110,9 @@
     }
   ],
   "validation": {
-    "nodeTests": 29,
-    "stlTopology": "34/34 watertight, winding consistent, one connected volume (previous completed validation)",
-    "androidBuild": "assembleDebug successful on Windows 2026-08-02",
+    "nodeTests": 33,
+    "stlTopology": "34/34 watertight, winding consistent, one connected volume after local v0.7.2 regeneration",
+    "androidBuild": "v0.7.2 assembleDebug successful on Windows 2026-08-02",
     "firmwareBuild": "GitHub Actions successful on 2026-08-02 (run 30721115730); local PlatformIO dependency download had stalled",
     "hardwareBench": "required"
   },
@@ -116,6 +121,7 @@
     "ASA is a future optional reprint and requires all fit coupons again.",
     "Battery voltage measurement is intentionally omitted.",
     "Mechanical fits remain measurement- and coupon-driven.",
+    "The flag-power cable route below the spoke remains provisional until the actual pigtail is measured and rain-tested.",
     "No project license has been selected."
   ]
 }

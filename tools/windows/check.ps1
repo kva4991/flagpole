@@ -83,6 +83,14 @@ if ($platformIoCandidates) {
 }
 else { Add-Result 'MISSING' 'PlatformIO Core' 'pio not found' }
 
+$mechanicalPython = Join-Path $ExecutionRoot '.mechanical-venv\Scripts\python.exe'
+if (Test-Path -LiteralPath $mechanicalPython) {
+    & $mechanicalPython -c 'import matplotlib, networkx, numpy, resvg_py, skimage, trimesh' 2>$null
+    if ($LASTEXITCODE -eq 0) { Add-Result 'OK' 'Mechanical Python environment' $mechanicalPython }
+    else { Add-Result 'MISSING' 'Mechanical Python environment' 'Environment exists, but required imports fail' }
+}
+else { Add-Result 'MISSING' 'Mechanical Python environment' $mechanicalPython }
+
 if (Test-Path -LiteralPath $ExecutionRoot) { Add-Result 'OK' 'Execution root' $ExecutionRoot }
 else { Add-Result 'MISSING' 'Execution root' $ExecutionRoot }
 

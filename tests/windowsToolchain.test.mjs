@@ -34,6 +34,9 @@ test("Windows setup uses isolated official PlatformIO installer and repository G
   assert.match(setup, /robocopy.+\/PURGE/);
   assert.match(setup, /crucian-control-debug\.apk/);
   assert.match(setup, /crucian-v06-firmware\.bin/);
+  assert.match(setup, /Install-MechanicalPythonEnvironment/);
+  assert.match(setup, /mechanical\\requirements\.txt/);
+  assert.match(setup, /\.mechanical-venv/);
   assert.doesNotMatch(setup, /pip install.+platformio/i);
 });
 
@@ -55,6 +58,9 @@ test("GitHub Actions builds Android and both PlatformIO projects", () => {
   assert.match(workflow, /esp32_c3_flag_light/);
   assert.match(workflow, /actions\/checkout@v7/);
   assert.match(workflow, /actions\/upload-artifact@v7/);
+  assert.match(workflow, /mechanical\/requirements\.txt/);
+  assert.match(workflow, /generate_models_v06\.py/);
+  assert.match(workflow, /validate_models_v06\.py/);
 });
 
 test("checksum manifest normalizes text line endings across Windows and Linux", () => {

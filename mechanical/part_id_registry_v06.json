@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "groups": {
+    "petg": [
+      {
+        "id": "#petg-1",
+        "name": "rotor_half_A",
+        "label": "Ротор, половина A",
+        "stl": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Силовая половина вращающегося корпуса со стороны A."
+      },
+      {
+        "id": "#petg-2",
+        "name": "rotor_half_B",
+        "label": "Ротор, половина B",
+        "stl": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Ответная силовая половина корпуса с закладными гайками."
+      },
+      {
+        "id": "#petg-3",
+        "name": "stationary_collar_A",
+        "label": "Неподвижный воротник, половина A",
+        "stl": "mechanical/stl_petg_v06/stationary_collar_A_print_flat.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Половина неподвижного воротника, фиксируемого на штоке."
+      },
+      {
+        "id": "#petg-4",
+        "name": "stationary_collar_B",
+        "label": "Неподвижный воротник, половина B",
+        "stl": "mechanical/stl_petg_v06/stationary_collar_B_print_flat.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Ответная половина воротника с карманами крепежа."
+      },
+      {
+        "id": "#petg-5",
+        "name": "service_lid",
+        "label": "Сервисная крышка",
+        "stl": "mechanical/stl_petg_v06/service_lid_top_face_down.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Съёмная верхняя крышка электронного отсека с дождевым свесом."
+      },
+      {
+        "id": "#petg-6",
+        "name": "photo_tunnel",
+        "label": "Световой тоннель VEML7700",
+        "stl": "mechanical/stl_petg_v06/photo_tunnel_upright.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Световой колодец VEML7700, защищающий датчик от боковой засветки."
+      },
+      {
+        "id": "#petg-7",
+        "name": "photo_window_retainer",
+        "label": "Прижим прозрачного окна",
+        "stl": "mechanical/stl_petg_v06/photo_window_retainer_flat.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Прижимает вырезанное прозрачное окно светового колодца."
+      },
+      {
+        "id": "#petg-8",
+        "name": "environment_sensor_pocket",
+        "label": "Съёмный карман AHT20+BMP280",
+        "stl": "mechanical/stl_petg_v06/environment_sensor_pocket_open_side_up.stl",
+        "material": "PETG",
+        "quantity": 1,
+        "description": "Съёмный наружный карман комбинированного датчика AHT20+BMP280."
+      }
+    ],
+    "tpu95": [
+      {
+        "id": "#tpu95-1",
+        "name": "spoke_liner_A",
+        "label": "Втулка спицы, половина A",
+        "stl": "mechanical/stl_tpu95_v06/spoke_liner_A_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Мягкая половина вкладыша углепластиковой спицы Ø5 мм."
+      },
+      {
+        "id": "#tpu95-2",
+        "name": "spoke_liner_B",
+        "label": "Втулка спицы, половина B",
+        "stl": "mechanical/stl_tpu95_v06/spoke_liner_B_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Вторая половина мягкого вкладыша спицы."
+      },
+      {
+        "id": "#tpu95-3",
+        "name": "flag_cable_grommet_A",
+        "label": "Кабельный ввод в бокс, половина A",
+        "stl": "mechanical/stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Первая половина разрезной манжеты, через которую наружный кабель входит в электронный отсек."
+      },
+      {
+        "id": "#tpu95-4",
+        "name": "flag_cable_grommet_B",
+        "label": "Кабельный ввод в бокс, половина B",
+        "stl": "mechanical/stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Ответная половина разрезной манжеты единственного кабельного ввода."
+      },
+      {
+        "id": "#tpu95-5",
+        "name": "M125_bundle_grommet_A",
+        "label": "Разгрузка жгута M125, половина A",
+        "stl": "mechanical/stl_tpu95_v06/M125_bundle_grommet_A_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Половина разгрузки жгута проводов токосъёмника M125."
+      },
+      {
+        "id": "#tpu95-6",
+        "name": "M125_bundle_grommet_B",
+        "label": "Разгрузка жгута M125, половина B",
+        "stl": "mechanical/stl_tpu95_v06/M125_bundle_grommet_B_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Вторая половина разгрузки жгута M125."
+      },
+      {
+        "id": "#tpu95-7",
+        "name": "M125_pole_sleeve",
+        "label": "Втулка под M125 / шток",
+        "stl": "mechanical/stl_tpu95_v06/M125_pole_sleeve_upright.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Центрирует корпус M125 внутри полого штока без силовой нагрузки."
+      },
+      {
+        "id": "#tpu95-8",
+        "name": "pole_collar_liner_A",
+        "label": "Вкладыш воротника по штоку, половина A",
+        "stl": "mechanical/stl_tpu95_v06/pole_collar_liner_A_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Мягкая половина вкладыша между воротником и штоком."
+      },
+      {
+        "id": "#tpu95-9",
+        "name": "pole_collar_liner_B",
+        "label": "Вкладыш воротника по штоку, половина B",
+        "stl": "mechanical/stl_tpu95_v06/pole_collar_liner_B_split_face_down.stl",
+        "material": "TPU 95A",
+        "quantity": 1,
+        "description": "Вторая половина вкладыша воротника."
+      }
+    ],
+    "tpu85": [
+      {
+        "id": "#tpu85-1",
+        "name": "lid_gasket",
+        "label": "Прокладка крышки",
+        "stl": "mechanical/stl_tpu85_v06/lid_gasket_flat.stl",
+        "material": "TPU 85A",
+        "quantity": 1,
+        "description": "Мягкая замкнутая прокладка сервисной крышки."
+      },
+      {
+        "id": "#tpu85-2",
+        "name": "photo_window_gasket",
+        "label": "Прокладка окна VEML7700",
+        "stl": "mechanical/stl_tpu85_v06/photo_window_gasket_flat.stl",
+        "material": "TPU 85A",
+        "quantity": 1,
+        "description": "Уплотняет прозрачное окно VEML7700 по периметру."
+      },
+      {
+        "id": "#tpu85-3",
+        "name": "environment_pocket_gasket",
+        "label": "Прокладка кармана AHT20+BMP280",
+        "stl": "mechanical/stl_tpu85_v06/environment_pocket_gasket_flat.stl",
+        "material": "TPU 85A",
+        "quantity": 1,
+        "description": "Уплотняет съёмный климатический карман относительно корпуса."
+      },
+      {
+        "id": "#tpu85-4",
+        "name": "environment_membrane_gasket",
+        "label": "Прокладка PTFE/ePTFE-мембраны",
+        "stl": "mechanical/stl_tpu85_v06/environment_membrane_gasket_flat.stl",
+        "material": "TPU 85A",
+        "quantity": 1,
+        "description": "Прижимает и уплотняет сменную PTFE/ePTFE-мембрану."
+      }
+    ]
+  },
+  "notesRu": [
+    "ID одной детали не меняется между актуальными v0.6-чертежами.",
+    "A/B обозначают разные печатные половины; одинаковое имя файла всегда имеет тот же ID.",
+    "PETG, TPU 95A и TPU 85A печатаются отдельными очередями."
+  ]
+}

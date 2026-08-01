@@ -75,8 +75,8 @@ function validate(source, media, identity) {
     if (id !== expected) failures.push(`ID компонентов должны идти без пропусков: ожидался ${expected}, найден ${id}`);
   });
 
-  if (media.schemaVersion !== 1) failures.push('schemaVersion drawings.json должен быть равен 1');
-  for (const group of ['drawings', 'models']) {
+  if (media.schemaVersion !== 2) failures.push('schemaVersion drawings.json должен быть равен 2');
+  for (const group of ['drawings', 'models', 'printSessions']) {
     if (!Array.isArray(media[group])) failures.push(`${group} должен быть массивом`);
     for (const [index, item] of (media[group] ?? []).entries()) {
       const place = `${group}[${index}]`;
@@ -85,7 +85,8 @@ function validate(source, media, identity) {
       ids.add(item.id);
       if (!item.title?.trim() || !item.description?.trim()) failures.push(`${place} требует title и description`);
       validateAsset(item.file, `${place}.file`, failures);
-      validateAsset(group === 'drawings' ? item.preview : item.poster, `${place}.${group === 'drawings' ? 'preview' : 'poster'}`, failures);
+      const previewField = group === 'models' ? 'poster' : 'preview';
+      validateAsset(item[previewField], `${place}.${previewField}`, failures);
     }
   }
   return failures;
@@ -163,6 +164,11 @@ const models = media.models.map(item => `<article class="model-card" data-title=
   <p class="model-status" aria-live="polite">Модель не загружена; изображение-постер сохранено.</p></div>
 </article>`).join('');
 
+const printSessions = media.printSessions.map(item => `<article class="media-card print-session-card">
+  <a href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener"><img src="${escape(repoUrl(item.preview))}" alt="${escape(item.title)}" loading="lazy"></a>
+  <div><span class="eyebrow">${escape(item.id)}</span><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><a class="action" href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener">Открыть раскладку</a></div>
+</article>`).join('');
+
 const categoryOptions = source.categories.map(category => `<option value="${escape(category.id)}">${escape(category.label)}</option>`).join('');
 
 const html = `<!doctype html>
@@ -173,11 +179,11 @@ const html = `<!doctype html>
 .gallery{display:grid;gap:8px}.gallery figure{margin:0}.gallery figcaption{margin-top:3px;max-width:180px;color:var(--muted);font-size:11px}
 </style></head><body>
 <header><h1>Проект ${escape(projectName)}</h1><p>Каталог компонентов, исходные изображения, чертежи и интерактивный просмотр 3D-моделей. Имя проекта задаётся один раз в <code>project_identity.json</code>.</p></header>
-<main><section class="summary" aria-label="Сводка"><div class="metric"><strong>${components.length}</strong>компонентов</div><div class="metric"><strong>${source.categories.length}</strong>категорий</div><div class="metric"><strong>${media.drawings.length}</strong>изображений и чертежей</div><div class="metric"><strong>${media.models.length}</strong>3D-моделей</div><div class="metric"><strong>${incompleteCount}</strong>нужно уточнить</div></section>
+<main><section class="summary" aria-label="Сводка"><div class="metric"><strong>${components.length}</strong>компонентов</div><div class="metric"><strong>${source.categories.length}</strong>категорий</div><div class="metric"><strong>${media.drawings.length}</strong>изображений и чертежей</div><div class="metric"><strong>${media.models.length}</strong>3D-моделей</div><div class="metric"><strong>${media.printSessions.length}</strong>очереди печати</div><div class="metric"><strong>${incompleteCount}</strong>нужно уточнить</div></section>
 <nav class="tabs" role="tablist" aria-label="Разделы проекта"><button class="tab" role="tab" id="components-tab" aria-controls="components-panel" aria-selected="true">Компоненты</button><button class="tab" role="tab" id="drawings-tab" aria-controls="drawings-panel" aria-selected="false">Чертежи и 3D</button></nav>
 <section id="components-panel" class="tab-panel" role="tabpanel" aria-labelledby="components-tab"><section class="controls" aria-label="Фильтры"><label class="search"><span>Поиск по ID, названию и назначению</span><input id="search" type="search" placeholder="например: 009, 6804, датчик"></label><label class="category-filter"><span>Категория</span><select id="category"><option value="">Все категории</option>${categoryOptions}</select></label><label class="toggle"><input id="incompleteOnly" type="checkbox"><span>Только позиции, которые нужно уточнить</span></label><output id="resultCount" class="result-count"></output></section>
 <div class="table-wrap"><table id="catalogTable"><thead><tr><th>ID</th><th>Картинка</th><th>Возможные названия компонента</th><th>Зачем он нужен</th><th>Описание или покупка</th></tr></thead><tbody>${rows}</tbody></table><p id="noResults" class="no-results">По заданному фильтру ничего не найдено.</p></div></section>
-<section id="drawings-panel" class="tab-panel" role="tabpanel" aria-labelledby="drawings-tab" hidden><p class="section-intro">Оригинальные картинки остаются отдельными карточками. Ниже для выбранных видов добавлены интерактивные GLB.</p><div class="media-grid">${drawings}</div><h2 class="models-heading">Интерактивные 3D-модели</h2><p class="section-intro">GLB и модуль просмотра загружаются только после нажатия. Кнопка «На весь экран» открывает модель в отдельном полноэкранном слое; закрыть его можно крестиком или клавишей Escape.</p><div class="model-grid">${models}</div></section></main>
+<section id="drawings-panel" class="tab-panel" role="tabpanel" aria-labelledby="drawings-tab" hidden><p class="section-intro">Оригинальные картинки остаются отдельными карточками. На актуальные v0.6-виды нанесены стабильные ID печатных деталей.</p><div class="media-grid">${drawings}</div><h2 class="models-heading">Интерактивные 3D-модели</h2><p class="section-intro">GLB и модуль просмотра загружаются только после нажатия. Кнопка «На весь экран» открывает модель в отдельном полноэкранном слое; закрыть его можно крестиком или клавишей Escape.</p><div class="model-grid">${models}</div><h2 class="models-heading">Раздельные очереди печати по материалам</h2><p class="section-intro">За один запуск печатается только один основной пластик: PETG, TPU 95A или TPU 85A. Технологические подложки для резиновых деталей допустимы, если они действительно нужны.</p><div class="media-grid">${printSessions}</div></section></main>
 <footer>Источники данных: <code>catalog/components.json</code>, <code>catalog/drawings.json</code> и <code>project_identity.json</code>. Сгенерированный HTML вручную не редактировать.</footer>
 <div id="fullscreenOverlay" class="fullscreen-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="fullscreenTitle"><div class="fullscreen-bar"><h2 id="fullscreenTitle">3D-модель</h2><button id="fullscreenClose" class="fullscreen-close" type="button" aria-label="Закрыть полноэкранный режим">×</button></div><div class="fullscreen-stage"><model-viewer id="fullscreenViewer" camera-controls auto-rotate shadow-intensity="1"></model-viewer></div><p class="fullscreen-hint">Вращайте мышью или пальцем. Закрыть: × или Escape.</p></div>
 <script>
