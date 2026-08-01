@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifestPath = resolve(repoRoot, 'CHECKSUMS_SHA256.txt');
-const ignoredDirectories = new Set(['.build', '.cache', '.git', '.gradle', '.pio', 'build', 'node_modules']);
+const ignoredDirectories = new Set(['.build', '.cache', '.git', '.gradle', '.pio', '__pycache__', 'build', 'node_modules']);
 const textExtensions = new Set([
   '.bat', '.cpp', '.h', '.html', '.ini', '.ino', '.json', '.kt', '.kts',
   '.md', '.mjs', '.pro', '.properties', '.ps1', '.py', '.svg', '.txt',

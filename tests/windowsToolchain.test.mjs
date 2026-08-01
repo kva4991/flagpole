@@ -63,4 +63,5 @@ test("checksum manifest normalizes text line endings across Windows and Linux", 
   assert.match(checker, /textExtensions/);
   assert.match(checker, /textBasenames/);
   assert.match(checker, /'\.cache'/);
+  assert.match(checker, /'__pycache__'/);
 });
