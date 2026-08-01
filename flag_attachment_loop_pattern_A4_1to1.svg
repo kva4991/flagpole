@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210">
+<defs><style>.t{font-family:Arial,sans-serif;font-size:5px;fill:#111}.s{font-family:Arial,sans-serif;font-size:3.7px;fill:#333}.cut{fill:#f47a20;fill-opacity:.25;stroke:#d75d00;stroke-width:.8}.fold{stroke:#6b7280;stroke-width:.5;stroke-dasharray:2 1}</style></defs>
+<rect width="297" height="210" fill="white"/>
+<text x="12" y="11" class="t">Четыре петли крепления — масштаб 1:1, предварительно 220 × 30 мм</text>
+<text x="12" y="18" class="s">Для текущей геометрии: Dштока≈20 мм, G≈62 мм. Перед раскроем измерить реальную сборку.</text>
+<rect x="38" y="25" width="220.0" height="30" class="cut"/>
+<line x1="53" y1="25" x2="53" y2="55" class="fold"/>
+<line x1="243.0" y1="25" x2="243.0" y2="55" class="fold"/>
+<line x1="38" y1="30" x2="258.0" y2="30" class="fold"/>
+<line x1="38" y1="50" x2="258.0" y2="50" class="fold"/>
+<text x="18" y="43" class="s">петля 1</text>
+<rect x="38" y="68" width="220.0" height="30" class="cut"/>
+<line x1="53" y1="68" x2="53" y2="98" class="fold"/>
+<line x1="243.0" y1="68" x2="243.0" y2="98" class="fold"/>
+<line x1="38" y1="73" x2="258.0" y2="73" class="fold"/>
+<line x1="38" y1="93" x2="258.0" y2="93" class="fold"/>
+<text x="18" y="86" class="s">петля 2</text>
+<rect x="38" y="111" width="220.0" height="30" class="cut"/>
+<line x1="53" y1="111" x2="53" y2="141" class="fold"/>
+<line x1="243.0" y1="111" x2="243.0" y2="141" class="fold"/>
+<line x1="38" y1="116" x2="258.0" y2="116" class="fold"/>
+<line x1="38" y1="136" x2="258.0" y2="136" class="fold"/>
+<text x="18" y="129" class="s">петля 3</text>
+<rect x="38" y="154" width="220.0" height="30" class="cut"/>
+<line x1="53" y1="154" x2="53" y2="184" class="fold"/>
+<line x1="243.0" y1="154" x2="243.0" y2="184" class="fold"/>
+<line x1="38" y1="159" x2="258.0" y2="159" class="fold"/>
+<line x1="38" y1="179" x2="258.0" y2="179" class="fold"/>
+<text x="18" y="172" class="s">петля 4</text>
+<text x="12" y="199" class="s">L = 2G + πD + 6 мм свободного хода + 30 мм припуска = 222.8 мм → предварительно 220 мм.</text>
+<text x="12" y="205" class="s">Если край флага будет ближе к штоку, длину уменьшить. Сначала сшить одну пробную петлю.</text>
+</svg>

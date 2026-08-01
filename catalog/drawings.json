@@ -64,6 +64,62 @@
       "description": "Концепт эластичных вкладышей, манжет и уплотнений.",
       "file": "mechanical/preview_v05_TPU_retention.png",
       "preview": "mechanical/preview_v05_TPU_retention.png"
+    },
+    {
+      "id": "109",
+      "category": "Флаг",
+      "title": "Флаг 300 × 250 мм с четырьмя петлями",
+      "description": "Полноразмерный контур флага и расположение четырёх тканевых петель крепления к штоку.",
+      "file": "flag_with_attachment_loops_full_size_300x250.svg",
+      "preview": "flag_with_attachment_loops_full_size_300x250.png"
+    },
+    {
+      "id": "110",
+      "category": "Флаг",
+      "title": "Выкройка четырёх петель — A4, 1:1",
+      "description": "Шаблон тканевых петель в натуральную величину; длина учитывает диаметр штока, свободный зазор и припуски.",
+      "file": "flag_attachment_loop_pattern_A4_1to1.svg",
+      "preview": "flag_attachment_loop_pattern_A4_1to1.png"
+    },
+    {
+      "id": "111",
+      "category": "Механика",
+      "title": "Общий вид сборки v0.6",
+      "description": "Сборочный вид актуальной механики v0.6 с карманом климатического датчика и закладными гайками.",
+      "file": "mechanical/preview_v06_assembly.png",
+      "preview": "mechanical/preview_v06_assembly.png"
+    },
+    {
+      "id": "112",
+      "category": "Механика",
+      "title": "Разнесённый вид PETG/TPU v0.6",
+      "description": "Взаимное расположение жёстких и эластичных деталей актуальной механики v0.6.",
+      "file": "mechanical/preview_v06_exploded_PETG_TPU.png",
+      "preview": "mechanical/preview_v06_exploded_PETG_TPU.png"
+    },
+    {
+      "id": "113",
+      "category": "Печать",
+      "title": "Раскладка деталей PETG v0.6",
+      "description": "Ориентация жёстких деталей v0.6 на столе 3D-принтера.",
+      "file": "mechanical/preview_v06_print_PETG.png",
+      "preview": "mechanical/preview_v06_print_PETG.png"
+    },
+    {
+      "id": "114",
+      "category": "Печать",
+      "title": "Раскладка деталей TPU 95A v0.6",
+      "description": "Ориентация функциональных мягких деталей TPU 95A.",
+      "file": "mechanical/preview_v06_print_TPU95.png",
+      "preview": "mechanical/preview_v06_print_TPU95.png"
+    },
+    {
+      "id": "115",
+      "category": "Печать",
+      "title": "Раскладка деталей TPU 85A v0.6",
+      "description": "Ориентация мягких статических прокладок TPU 85A.",
+      "file": "mechanical/preview_v06_print_TPU85.png",
+      "preview": "mechanical/preview_v06_print_TPU85.png"
     }
   ],
   "models": [
@@ -87,6 +143,41 @@
       "description": "Эластичные детали в ориентации для печати.",
       "file": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
       "poster": "mechanical/preview_v05_print_TPU.png"
+    },
+    {
+      "id": "204",
+      "title": "Разнесённый вид PETG/TPU v0.6",
+      "description": "Интерактивная разнесённая сборка актуальной механики v0.6.",
+      "file": "mechanical/flagpole_finial_v0_6_exploded.glb",
+      "poster": "mechanical/preview_v06_exploded_PETG_TPU.png"
+    },
+    {
+      "id": "205",
+      "title": "Общий вид сборки v0.6",
+      "description": "Интерактивная модель актуальной сборки v0.6.",
+      "file": "mechanical/flagpole_finial_v0_6_assembly.glb",
+      "poster": "mechanical/preview_v06_assembly.png"
+    },
+    {
+      "id": "206",
+      "title": "Раскладка деталей PETG v0.6",
+      "description": "Интерактивная раскладка жёстких деталей для печати.",
+      "file": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
+      "poster": "mechanical/preview_v06_print_PETG.png"
+    },
+    {
+      "id": "207",
+      "title": "Раскладка деталей TPU 95A v0.6",
+      "description": "Интерактивная раскладка функциональных мягких деталей.",
+      "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU95.glb",
+      "poster": "mechanical/preview_v06_print_TPU95.png"
+    },
+    {
+      "id": "208",
+      "title": "Раскладка деталей TPU 85A v0.6",
+      "description": "Интерактивная раскладка мягких статических прокладок.",
+      "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU85.glb",
+      "poster": "mechanical/preview_v06_print_TPU85.png"
     }
   ]
 }

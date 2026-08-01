@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "projectDisplayName": "Crucian",
+  "bluetoothDeviceName": "Crucian",
+  "commentRu": "Имя вашего проекта: измените projectDisplayName и bluetoothDeviceName, затем выполните npm run identity:generate"
+}

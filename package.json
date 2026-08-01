@@ -2,7 +2,10 @@
   "name": "crucian-finial-project",
   "private": true,
   "type": "module",
+  "version": "0.7.0",
   "scripts": {
+    "identity:generate": "node scripts/generateProjectIdentity.mjs",
+    "identity:check": "node scripts/generateProjectIdentity.mjs --check",
     "catalog:generate": "node scripts/generateComponentCatalog.mjs",
     "catalog:check": "node scripts/generateComponentCatalog.mjs --check",
     "review:impact": "node scripts/inspectChangeImpact.mjs --git origin/main",
@@ -12,6 +15,6 @@
     "checksums:check": "node scripts/checkChecksums.mjs --check",
     "toolchain:check": "powershell -ExecutionPolicy Bypass -File tools/windows/check.ps1",
     "test": "node --test tests/*.test.mjs",
-    "quality:gate": "npm run quality:docs:all && npm run catalog:check && npm test && npm run checksums:check"
+    "quality:gate": "npm run identity:check && npm run quality:docs:all && npm run catalog:check && npm test && npm run checksums:check"
   }
 }

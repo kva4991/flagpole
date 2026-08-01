@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390mm" height="250mm" viewBox="-90 0 390 250">
+  <rect x="-90" y="0" width="390" height="250" fill="white"/>
+  <rect x="0" y="0" width="300" height="250" fill="#fff3e8" stroke="#c85700" stroke-width="1.2"/>
+  <rect x="-72" y="0" width="18" height="250" rx="6" fill="#202020"/>
+
+  <!-- Four orange fabric loops. Their exact length is fitted to Dshaft and gap G. -->
+  <g fill="none" stroke="#f36a00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 11 15 L -48 15 C -82 15 -82 35 -48 35 L 11 35"/>
+    <path d="M 11 80 L -48 80 C -82 80 -82 100 -48 100 L 11 100"/>
+    <path d="M 11 145 L -48 145 C -82 145 -82 165 -48 165 L 11 165"/>
+    <path d="M 11 210 L -48 210 C -82 210 -82 230 -48 230 L 11 230"/>
+  </g>
+  <g fill="none" stroke="#9a4b18" stroke-width="0.8" stroke-dasharray="3 2">
+    <rect x="0" y="10" width="16" height="30"/>
+    <rect x="0" y="75" width="16" height="30"/>
+    <rect x="0" y="140" width="16" height="30"/>
+    <rect x="0" y="205" width="16" height="30"/>
+  </g>
+
+  <!-- Standard ichthys LED/neon path, tail left. -->
+  <g fill="none" stroke="#111" stroke-width="16" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10">
+    <path d="M 88 125 C 137 70 230 70 284 125 C 230 180 137 180 88 125"/>
+    <path d="M 88 125 L 38 72"/>
+    <path d="M 88 125 L 38 178"/>
+  </g>
+
+  <!-- Reflective fabric pieces: body and tail are separate. -->
+  <path d="M 101 125 C 143 86 221 86 268 125 C 221 164 143 164 101 125 Z"
+        fill="#cbd0d4" stroke="#60666a" stroke-width="1.2"/>
+  <path d="M 49 87 L 77 125 L 49 163 Z" fill="#cbd0d4" stroke="#60666a" stroke-width="1.2"/>
+
+  <!-- Eye is a through cut, not an LED. -->
+  <circle cx="243" cy="125" r="8" fill="#fff3e8" stroke="#111" stroke-width="1.2"/>
+</svg>

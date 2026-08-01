@@ -5,15 +5,15 @@
 const rules = [
   {
     area: 'Документация и решения',
-    pattern: /^(?:AGENTS\.md|README(?:\.ru|_RU)?\.md|docs\/|[^/]+_RU\.md$|.*\.txt$|PROJECT_MANIFEST[^/]*\.json$)/,
+    pattern: /^(?:AGENTS\.md|CHANGELOG\.md|README(?:\.ru|_RU)?\.md|docs\/|[^/]+_RU\.md$|.*\.txt$|PROJECT_MANIFEST[^/]*\.json$)/,
     risk: 'low',
     checks: ['npm.cmd run quality:docs:all'],
   },
   {
     area: 'Параметрическая механика и печатные модели',
-    pattern: /^(?:mechanical\/|fish_template_|FISH_TEMPLATE_)/,
+    pattern: /^(?:mechanical\/|fish_template_|FISH_TEMPLATE_|flag_(?:attachment|with)_)/,
     risk: 'critical',
-    checks: ['python mechanical/generate_models_v05.py', 'проверка STL и тестовых купонов'],
+    checks: ['python mechanical/generate_models_v06.py', 'проверка STL и тестовых купонов'],
   },
   {
     area: 'Электроника и схемы',
@@ -41,7 +41,7 @@ const rules = [
   },
   {
     area: 'Локальный quality-контур',
-    pattern: /^(?:package\.json|scripts\/|tools\/|tests\/|\.gitignore|\.gitattributes|CHECKSUMS_SHA256\.txt)/,
+    pattern: /^(?:\.github\/|package\.json|project_identity\.json|scripts\/|tools\/|tests\/|\.gitignore|\.gitattributes|CHECKSUMS_SHA256\.txt)/,
     risk: 'medium',
     checks: ['npm.cmd test', 'npm.cmd run checksums:check'],
   },

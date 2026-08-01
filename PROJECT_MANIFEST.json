@@ -1,22 +1,121 @@
 {
-  "version": "0.5",
-  "current_materials": {
-    "structural": "orange PETG",
-    "soft_parts": "white TPU 95A"
+  "project": "Crucian rotating flagpole finial",
+  "version": "0.7.0",
+  "packageType": "cumulative source, generated mechanics, documentation and handoff package",
+  "sourceRepository": "https://github.com/kva4991/flagpole",
+  "sourceBranchReviewed": "agent/v061-documentation-method",
+  "sourceHeadReviewed": "e4dec567e15b66ee28cf7044fd7f67e4117f1105",
+  "fileCount": 238,
+  "totalBytes": 368480528,
+  "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
+  "currentAndroidProject": "android/crucian-control",
+  "currentMechanicalSource": "mechanical/generate_models_v06.py",
+  "currentMechanicalArtifacts": {
+    "petg": "mechanical/stl_petg_v06",
+    "tpu95": "mechanical/stl_tpu95_v06",
+    "tpu85": "mechanical/stl_tpu85_v06",
+    "coupons": "mechanical/test_coupons_v06",
+    "validatedStlCount": 34
   },
-  "nozzle_mm": 0.4,
-  "mechanical_glb": "mechanical/flagpole_finial_v0_5_assembly.glb",
-  "petg_stl_count": 6,
-  "tpu_stl_count": 10,
-  "coupon_count": 11,
-  "firmware": "electronics/firmware/esp32_c3_flag_light",
-  "status": "provisional until pole, M125, carbon rod and printer calibration are measured",
-  "documentation_files": 20,
-  "preview_images_v05": 6,
-  "all_stl_validated": true,
-  "package_variant": "public-github-handoff",
-  "public_readme": "README.md",
-  "next_agent_task": "NEXT_AGENT_TASK_RU.md",
-  "repository_prep": "GITHUB_PUBLIC_PREP_RU.md",
-  "license_selected": false
+  "identitySource": "project_identity.json",
+  "currentFlagFiles": [
+    "flag_with_attachment_loops_full_size_300x250.svg",
+    "flag_attachment_loop_pattern_A4_1to1.svg"
+  ],
+  "largestFiles": [
+    {
+      "path": "mechanical/flagpole_finial_v0_5_assembly.glb",
+      "bytes": 37855244
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb",
+      "bytes": 28353728
+    },
+    {
+      "path": "mechanical/stl_petg/rotor_half_A_print_flat.stl",
+      "bytes": 23837284
+    },
+    {
+      "path": "mechanical/stl_petg/rotor_half_B_print_flat.stl",
+      "bytes": 23774884
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_assembly.glb",
+      "bytes": 18267992
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_exploded.glb",
+      "bytes": 18208728
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
+      "bytes": 13598796
+    },
+    {
+      "path": "mechanical/stl_petg/service_lid_top_face_down.stl",
+      "bytes": 12572484
+    },
+    {
+      "path": "archive/legacy_v02_reference/flagpole_finial_v0_2_assembly.glb",
+      "bytes": 11681084
+    },
+    {
+      "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
+      "bytes": 10355484
+    },
+    {
+      "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
+      "bytes": 10241084
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
+      "bytes": 9449204
+    },
+    {
+      "path": "mechanical/stl_petg_v06/service_lid_top_face_down.stl",
+      "bytes": 5436484
+    },
+    {
+      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_16.00.stl",
+      "bytes": 4794484
+    },
+    {
+      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_15.60.stl",
+      "bytes": 4744884
+    },
+    {
+      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_15.80.stl",
+      "bytes": 4730484
+    },
+    {
+      "path": "mechanical/stl_tpu/M125_pole_sleeve_upright.stl",
+      "bytes": 4730484
+    },
+    {
+      "path": "mechanical/test_coupons/PETG_lid_gasket_groove_coupon.stl",
+      "bytes": 4618684
+    },
+    {
+      "path": "mechanical/stl_petg/stationary_collar_B_print_flat.stl",
+      "bytes": 4133484
+    },
+    {
+      "path": "mechanical/test_coupons/bearing_seat_32.50_half_B.stl",
+      "bytes": 4103484
+    }
+  ],
+  "validation": {
+    "nodeTests": 28,
+    "stlTopology": "34/34 watertight, winding consistent, one connected volume (previous completed validation)",
+    "androidBuild": "assembleDebug successful on Windows 2026-08-02",
+    "firmwareBuild": "not completed locally: PlatformIO toolchain download stalled at 0%; GitHub Actions build required",
+    "hardwareBench": "required"
+  },
+  "notes": [
+    "Current structural print material is purchased orange PETG.",
+    "ASA is a future optional reprint and requires all fit coupons again.",
+    "Battery voltage measurement is intentionally omitted.",
+    "Mechanical fits remain measurement- and coupon-driven.",
+    "No project license has been selected."
+  ]
 }

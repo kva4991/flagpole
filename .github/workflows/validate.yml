@@ -24,6 +24,9 @@ jobs:
       - name: Run repository quality gate
         run: npm run quality:gate
 
+      - name: Check v0.6 mechanical Python sources
+        run: python -m py_compile mechanical/generate_models_v06.py mechanical/render_previews_v06.py
+
   android:
     runs-on: ubuntu-latest
     steps:

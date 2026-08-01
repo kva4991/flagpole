@@ -52,17 +52,15 @@ struct State {
     float dayLux = cfg::DEFAULT_DAY_LUX;
     float nightLux = cfg::DEFAULT_NIGHT_LUX;
     float lastLux = 0.0f;
-    float lastTemp = 0.0f;
-    float lastHumidity = 0.0f;
-    float lastPressureHpa = 0.0f;
-    float lastBattery = 0.0f;
+    float lastTemp = NAN;
+    float lastHumidity = NAN;
+    float lastPressureHpa = NAN;
     uint8_t currentBrightness = 0;
+    String lastCommandResult = "BOOT";
 } state;
 
 bool initializeLightSensor() {
-    if (!lightSensor.begin()) {
-        return false;
-    }
+    if (!lightSensor.begin()) return false;
     lightSensor.setGain(VEML7700_GAIN_1_8);
     lightSensor.setIntegrationTime(VEML7700_IT_100MS);
     return true;
@@ -71,9 +69,7 @@ bool initializeLightSensor() {
 bool readLux(float& value) {
     if (!state.lightSensorReady) {
         state.lightSensorReady = initializeLightSensor();
-        if (!state.lightSensorReady) {
-            return false;
-        }
+        if (!state.lightSensorReady) return false;
     }
     const float measured = lightSensor.readLux();
     if (!std::isfinite(measured) || measured < 0.0f) {
@@ -96,10 +92,8 @@ bool readI2cRegister(uint8_t address, uint8_t reg, uint8_t& value) {
 bool initializeBoschSensorAt(uint8_t address) {
     uint8_t chipId = 0;
     if (!readI2cRegister(address, 0xD0, chipId)) return false;
-    if (chipId == 0x58) {
-        return bmpSensor.begin(address);
-    }
-    return false;
+    if (chipId != 0x58) return false; // BMP280
+    return bmpSensor.begin(address);
 }
 
 bool initializeBoschSensor() {
@@ -132,16 +126,13 @@ void readEnvironment() {
     if (state.boschReady) {
         boschTemperature = bmpSensor.readTemperature();
         boschPressure = bmpSensor.readPressure() / 100.0f;
-        if (!std::isfinite(boschTemperature) || !std::isfinite(boschPressure)) state.boschReady = false;
+        if (!std::isfinite(boschTemperature) || !std::isfinite(boschPressure)) {
+            state.boschReady = false;
+        }
     }
 
     if (!state.aht20Ready && std::isfinite(boschTemperature)) state.lastTemp = boschTemperature;
     if (std::isfinite(boschPressure)) state.lastPressureHpa = boschPressure;
-}
-
-float readBatteryVolts() {
-    // Заглушка: при необходимости подключить делитель напряжения и скорректировать коэффициент.
-    return 12.0f;
 }
 
 uint16_t percentToDuty(uint8_t percent) {
@@ -152,9 +143,7 @@ uint16_t percentToDuty(uint8_t percent) {
 void applyBrightness(uint8_t percent) {
     state.currentBrightness = min<uint8_t>(percent, 100);
     uint16_t duty = percentToDuty(state.currentBrightness);
-    if (!cfg::PWM_ACTIVE_HIGH) {
-        duty = cfg::PWM_MAX - duty;
-    }
+    if (!cfg::PWM_ACTIVE_HIGH) duty = cfg::PWM_MAX - duty;
     ledcWrite(cfg::PWM_CHANNEL, duty);
     lampEnabledRtc = state.currentBrightness > 0;
 }
@@ -180,22 +169,24 @@ String modeToString(WorkMode mode) {
 uint8_t computeAutoBrightness(float lux) {
     if (lux >= state.dayLux) return 0;
     if (lux <= state.nightLux) return 100;
-    float span = state.dayLux - state.nightLux;
-    if (span < 1.0f) return 100;
-    float x = (state.dayLux - lux) / span;
-    x = constrain(x, 0.0f, 1.0f);
-    return static_cast<uint8_t>(20.0f + x * 80.0f); // от 20 до 100%
+    const float span = state.dayLux - state.nightLux;
+    if (span < cfg::MIN_CALIBRATION_GAP_LUX) return 100;
+    const float x = constrain((state.dayLux - lux) / span, 0.0f, 1.0f);
+    return static_cast<uint8_t>(20.0f + x * 80.0f);
+}
+
+String printableFloat(float value, uint8_t digits = 1) {
+    return std::isfinite(value) ? String(value, digits) : String("NA");
 }
 
 String buildStatusPayload() {
     String payload;
-    payload.reserve(160);
+    payload.reserve(180);
     payload += "MODE=" + modeToString(modeRtc);
-    payload += ";LUX=" + String(state.lastLux, 1);
-    payload += ";TEMP=" + String(state.lastTemp, 1);
-    payload += ";HUM=" + String(state.lastHumidity, 1);
-    payload += ";PRESS=" + String(state.lastPressureHpa, 1);
-    payload += ";BAT=" + String(state.lastBattery, 1);
+    payload += ";LUX=" + printableFloat(state.lastLux);
+    payload += ";TEMP=" + printableFloat(state.lastTemp);
+    payload += ";HUM=" + printableFloat(state.lastHumidity);
+    payload += ";PRESS=" + printableFloat(state.lastPressureHpa);
     payload += ";BRI=" + String(state.currentBrightness);
     payload += ";BLE=" + String(state.bleForceOff ? 0 : 1);
     const char* sensorStatus = state.sensorFault ? "FAULT" : (state.sensorErrorCount > 0 ? "RETRY" : "OK");
@@ -204,23 +195,24 @@ String buildStatusPayload() {
     const char* environmentStatus = state.aht20Ready && state.boschReady ? "OK" : (environmentReady ? "PARTIAL" : "FAULT");
     payload += ";ENV=" + String(environmentStatus);
     payload += ";BARO=" + String(state.boschReady ? "BMP280" : "NONE");
+    payload += ";RESULT=" + state.lastCommandResult;
     return payload;
 }
 
 String buildConfigPayload() {
     String payload;
-    payload.reserve(128);
-    payload += "NAME=" + String(cfg::DEVICE_NAME);
+    payload.reserve(150);
+    payload += "PROJECT=" + String(cfg::PROJECT_DISPLAY_NAME);
+    payload += ";NAME=" + String(cfg::DEVICE_NAME);
     payload += ";DAY=" + String(state.dayLux, 1);
     payload += ";NIGHT=" + String(state.nightLux, 1);
-    // Сам PIN никогда не возвращаем через GATT, даже по зашифрованному каналу.
     payload += ";PIN_DEFAULT=" + String(state.storedPin == cfg::FACTORY_SETUP_PIN ? 1 : 0);
     payload += ";WINDOW_MIN=60";
     return payload;
 }
 
 void notifyStatus() {
-    if (statusChr == nullptr) return;
+    if (statusChr == nullptr || !state.isConnected) return;
     const String payload = buildStatusPayload();
     statusChr->setValue(payload.c_str());
     statusChr->notify();
@@ -241,12 +233,13 @@ void loadConfig() {
 }
 
 void stopBle() {
-    // RTC-память переживает Deep-sleep: таймерное пробуждение не должно заново
-    // открывать сервисное окно. Полный power cycle очистит блокировку в setup().
     bleLockedUntilPowerCycleRtc = true;
     state.bleForceOff = true;
-    NimBLEDevice::stopAdvertising();
-    btStop();
+    state.bleWindowActive = false;
+    if (NimBLEDevice::isInitialized()) {
+        NimBLEDevice::stopAdvertising();
+        btStop();
+    }
 }
 
 void startAdvertising() {
@@ -263,55 +256,85 @@ class ControlCallbacks : public NimBLECharacteristicCallbacks {
         String command(raw.c_str());
         command.trim();
         command.toUpperCase();
+        state.lastCommandResult = "ERR_UNKNOWN";
 
         if (command == "STATUS?") {
+            state.lastCommandResult = "OK_STATUS";
             notifyStatus();
             return;
         }
         if (command.startsWith("MODE:")) {
-            String arg = command.substring(5);
+            const String arg = command.substring(5);
             if (arg == "AUTO") {
                 modeRtc = WorkMode::Auto;
+                state.lastCommandResult = "OK_MODE_AUTO";
             } else if (arg == "ON") {
                 modeRtc = WorkMode::On;
+                state.lastCommandResult = "OK_MODE_ON";
             } else if (arg == "OFF") {
                 modeRtc = WorkMode::Off;
+                state.lastCommandResult = "OK_MODE_OFF";
+            } else {
+                state.lastCommandResult = "ERR_MODE";
             }
         } else if (command.startsWith("BRIGHTNESS:")) {
-            int value = command.substring(11).toInt();
-            manualBrightnessRtc = static_cast<uint8_t>(constrain(value, 0, 100));
-            if (modeRtc == WorkMode::On) {
-                fadeTo(manualBrightnessRtc);
+            const int value = command.substring(11).toInt();
+            if (value >= 0 && value <= 100) {
+                manualBrightnessRtc = static_cast<uint8_t>(value);
+                if (modeRtc == WorkMode::On) fadeTo(manualBrightnessRtc);
+                state.lastCommandResult = "OK_BRIGHTNESS";
+            } else {
+                state.lastCommandResult = "ERR_BRIGHTNESS";
             }
         } else if (command == "BLE:OFF") {
             state.keepBleUntilPowerLoss = false;
+            state.lastCommandResult = "OK_BLE_OFF";
             notifyStatus();
-            delay(200);
+            delay(250);
             stopBle();
             return;
         } else if (command == "CALIBRATE:DAY") {
-            if (!state.sensorFault && state.sensorErrorCount == 0 && state.lastLux > state.nightLux) {
+            if (state.sensorFault || state.sensorErrorCount > 0) {
+                state.lastCommandResult = "ERR_LIGHT_SENSOR";
+            } else if (state.lastLux < state.nightLux + cfg::MIN_CALIBRATION_GAP_LUX) {
+                state.lastCommandResult = "ERR_DAY_TOO_LOW";
+            } else {
                 state.dayLux = state.lastLux;
                 saveConfig();
+                state.lastCommandResult = "OK_CAL_DAY";
             }
         } else if (command == "CALIBRATE:NIGHT") {
-            if (!state.sensorFault && state.sensorErrorCount == 0 && state.lastLux < state.dayLux) {
+            if (state.sensorFault || state.sensorErrorCount > 0) {
+                state.lastCommandResult = "ERR_LIGHT_SENSOR";
+            } else if (state.lastLux > state.dayLux - cfg::MIN_CALIBRATION_GAP_LUX) {
+                state.lastCommandResult = "ERR_NIGHT_TOO_HIGH";
+            } else {
                 state.nightLux = state.lastLux;
                 saveConfig();
+                state.lastCommandResult = "OK_CAL_NIGHT";
             }
         } else if (command.startsWith("PIN:")) {
-            // PIN:old,new
-            String pair = command.substring(4);
-            int comma = pair.indexOf(',');
-            if (comma > 0) {
-                uint32_t oldPin = pair.substring(0, comma).toInt();
-                uint32_t newPin = pair.substring(comma + 1).toInt();
-                if (oldPin == state.storedPin && newPin >= 100000 && newPin <= 999999) {
+            const String pair = command.substring(4);
+            const int comma = pair.indexOf(',');
+            if (comma <= 0) {
+                state.lastCommandResult = "ERR_PIN_FORMAT";
+            } else {
+                const uint32_t oldPin = pair.substring(0, comma).toInt();
+                const uint32_t newPin = pair.substring(comma + 1).toInt();
+                if (oldPin != state.storedPin) {
+                    state.lastCommandResult = "ERR_OLD_PIN";
+                } else if (newPin < 100000 || newPin > 999999) {
+                    state.lastCommandResult = "ERR_NEW_PIN";
+                } else {
                     state.storedPin = newPin;
                     saveConfig();
+                    state.lastCommandResult = "OK_PIN_CHANGED";
+                    notifyStatus();
+                    delay(250);
                     NimBLEDevice::deleteAllBonds();
                     NimBLEDevice::setSecurityPasskey(state.storedPin);
                     bleServer->disconnect(connInfo);
+                    return;
                 }
             }
         }
@@ -320,7 +343,7 @@ class ControlCallbacks : public NimBLECharacteristicCallbacks {
 };
 
 class ConfigCallbacks : public NimBLECharacteristicCallbacks {
-    void onRead(NimBLECharacteristic* pCharacteristic, NimBLEConnInfo& connInfo) override {
+    void onRead(NimBLECharacteristic* pCharacteristic, NimBLEConnInfo&) override {
         const String payload = buildConfigPayload();
         pCharacteristic->setValue(payload.c_str());
     }
@@ -329,19 +352,22 @@ class ConfigCallbacks : public NimBLECharacteristicCallbacks {
 class ServerCallbacks : public NimBLEServerCallbacks {
     void onConnect(NimBLEServer* pServer, NimBLEConnInfo& connInfo) override {
         state.isConnected = true;
+        pServer->updateConnParams(connInfo.getConnHandle(), 24, 48, 0, 180);
     }
-    void onDisconnect(NimBLEServer* pServer, NimBLEConnInfo& connInfo, int reason) override {
+
+    void onDisconnect(NimBLEServer*, NimBLEConnInfo&, int) override {
         state.isConnected = false;
         if (!state.bleForceOff && (state.bleWindowActive || state.keepBleUntilPowerLoss)) {
             NimBLEDevice::startAdvertising();
         }
     }
-    uint32_t onPassKeyDisplay() override {
-        return state.storedPin;
-    }
-    void onConfirmPassKey(NimBLEConnInfo& connInfo, uint32_t pin) override {
+
+    uint32_t onPassKeyDisplay() override { return state.storedPin; }
+
+    void onConfirmPassKey(NimBLEConnInfo& connInfo, uint32_t) override {
         NimBLEDevice::injectConfirmPasskey(connInfo, true);
     }
+
     void onAuthenticationComplete(NimBLEConnInfo& connInfo) override {
         if (!connInfo.isEncrypted() || !connInfo.isBonded()) {
             NimBLEDevice::getServer()->disconnect(connInfo);
@@ -349,6 +375,7 @@ class ServerCallbacks : public NimBLEServerCallbacks {
         }
         state.bleAuthorized = true;
         state.keepBleUntilPowerLoss = true;
+        state.lastCommandResult = "AUTH_OK";
     }
 } serverCallbacks;
 
@@ -357,17 +384,29 @@ void setupBle() {
     NimBLEDevice::setSecurityIOCap(BLE_HS_IO_DISPLAY_ONLY);
     NimBLEDevice::setSecurityAuth(true, true, true);
     NimBLEDevice::setSecurityPasskey(state.storedPin);
+    NimBLEDevice::setMTU(185);
+
     bleServer = NimBLEDevice::createServer();
     bleServer->setCallbacks(&serverCallbacks);
     NimBLEService* service = bleServer->createService(SERVICE_UUID);
-    statusChr = service->createCharacteristic(STATUS_UUID,
-        NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::NOTIFY | NIMBLE_PROPERTY::READ_ENC);
-    controlChr = service->createCharacteristic(CONTROL_UUID,
-        NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::WRITE_ENC);
-    configChr = service->createCharacteristic(CONFIG_UUID,
-        NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::READ_ENC);
+    statusChr = service->createCharacteristic(
+        STATUS_UUID,
+        NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::NOTIFY | NIMBLE_PROPERTY::READ_ENC,
+        200
+    );
+    controlChr = service->createCharacteristic(
+        CONTROL_UUID,
+        NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::WRITE_ENC,
+        96
+    );
+    configChr = service->createCharacteristic(
+        CONFIG_UUID,
+        NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::READ_ENC,
+        160
+    );
     controlChr->setCallbacks(new ControlCallbacks());
     configChr->setCallbacks(new ConfigCallbacks());
+    service->start();
     bleServer->start();
     startAdvertising();
     state.serviceReady = true;
@@ -388,6 +427,7 @@ void setup() {
     state.sensorErrorCount = sensorErrorCountRtc;
     state.sensorFault = state.sensorErrorCount >= cfg::SENSOR_ERROR_LIMIT;
     state.powerOnMs = millis();
+
     pinMode(cfg::PIN_PWM, OUTPUT);
     ledcSetup(cfg::PWM_CHANNEL, cfg::PWM_FREQ_HZ, cfg::PWM_RES_BITS);
     ledcAttachPin(cfg::PIN_PWM, cfg::PWM_CHANNEL);
@@ -415,41 +455,36 @@ void loop() {
         sensorErrorCountRtc = 0;
         state.sensorFault = false;
     } else {
-        if (state.sensorErrorCount < cfg::SENSOR_ERROR_LIMIT) {
-            ++state.sensorErrorCount;
-        }
+        if (state.sensorErrorCount < cfg::SENSOR_ERROR_LIMIT) ++state.sensorErrorCount;
         sensorErrorCountRtc = state.sensorErrorCount;
         state.sensorFault = state.sensorErrorCount >= cfg::SENSOR_ERROR_LIMIT;
         Serial.printf("VEML7700 read error %u/%u\n", state.sensorErrorCount, cfg::SENSOR_ERROR_LIMIT);
     }
+
     readEnvironment();
-    state.lastBattery = readBatteryVolts();
 
     if (state.sensorFault) {
-        // После трёх ошибок выключаем силовую нагрузку независимо от режима.
         if (state.currentBrightness != 0) fadeTo(0);
     } else if (!sensorMeasurementValid) {
-        // До достижения порога ошибки не меняем нагрузку по устаревшим данным.
+        // До порога отказа не меняем нагрузку по устаревшему значению.
     } else if (modeRtc == WorkMode::Off) {
         if (state.currentBrightness != 0) fadeTo(0);
     } else if (modeRtc == WorkMode::On) {
         if (state.currentBrightness != manualBrightnessRtc) fadeTo(manualBrightnessRtc);
     } else {
-        uint8_t target = computeAutoBrightness(state.lastLux);
+        const uint8_t target = computeAutoBrightness(state.lastLux);
         if (target != state.currentBrightness) fadeTo(target, 10);
     }
 
-    if (state.serviceReady && !state.bleForceOff) {
-        notifyStatus();
-    }
+    if (state.serviceReady && !state.bleForceOff) notifyStatus();
 
-    const bool bleSessionAllowed = state.keepBleUntilPowerLoss || (millis() - state.powerOnMs) < cfg::BLE_IDLE_WINDOW_MS;
+    const bool bleSessionAllowed = state.keepBleUntilPowerLoss ||
+        (millis() - state.powerOnMs) < cfg::BLE_IDLE_WINDOW_MS;
     state.bleWindowActive = bleSessionAllowed;
     if (!bleSessionAllowed && !state.isConnected && !state.keepBleUntilPowerLoss && !state.bleForceOff) {
         stopBle();
     }
 
-    // Экономим энергию: при выключенной лампе и отключённом BLE уходим в глубокий сон.
     if (state.currentBrightness == 0 && state.bleForceOff) {
         Serial.println("Entering deep sleep for day mode");
         delay(100);
