@@ -12,6 +12,7 @@ import assert from 'node:assert/strict';
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const main = readFileSync(resolve(repoRoot, 'electronics/firmware/esp32_c3_crucian_v06/src/main.cpp'), 'utf8');
 const config = readFileSync(resolve(repoRoot, 'electronics/firmware/esp32_c3_crucian_v06/include/config.h'), 'utf8');
+const platformio = readFileSync(resolve(repoRoot, 'electronics/firmware/esp32_c3_crucian_v06/platformio.ini'), 'utf8');
 
 describe('Crucian firmware safety contracts', () => {
   it('retains BLE lock across Deep-sleep and clears it on power-on', () => {
@@ -33,5 +34,12 @@ describe('Crucian firmware safety contracts', () => {
     assert.match(main, /state\.sensorFault = state\.sensorErrorCount >= cfg::SENSOR_ERROR_LIMIT/);
     assert.match(main, /if \(state\.sensorFault\)[\s\S]*fadeTo\(0\)/);
     assert.match(main, /SENSOR=/);
+  });
+
+  it('uses the ESP32-C3 USB serial and C++17 build contract', () => {
+    assert.match(platformio, /-std=gnu\+\+17/);
+    assert.match(platformio, /ARDUINO_USB_MODE=1/);
+    assert.match(platformio, /ARDUINO_USB_CDC_ON_BOOT=1/);
+    assert.doesNotMatch(main, /service->start\(\)/);
   });
 });

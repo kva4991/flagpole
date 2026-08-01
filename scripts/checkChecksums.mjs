@@ -10,6 +10,12 @@ import { fileURLToPath } from 'node:url';
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifestPath = resolve(repoRoot, 'CHECKSUMS_SHA256.txt');
 const ignoredDirectories = new Set(['.build', '.git', '.gradle', '.pio', 'build', 'node_modules']);
+const textExtensions = new Set([
+  '.bat', '.cpp', '.h', '.html', '.ini', '.ino', '.json', '.kt', '.kts',
+  '.md', '.mjs', '.pro', '.properties', '.ps1', '.py', '.svg', '.txt',
+  '.xml', '.yaml', '.yml',
+]);
+const textBasenames = new Set(['.gitattributes', '.gitignore', 'gradlew']);
 
 function walk(root) {
   const files = [];
@@ -27,7 +33,13 @@ function manifest() {
     .map((path) => relative(repoRoot, path).replaceAll('\\', '/'))
     .sort((left, right) => (left < right ? -1 : left > right ? 1 : 0))
     .map((path) => {
-      const hash = createHash('sha256').update(readFileSync(resolve(repoRoot, path))).digest('hex');
+      const absolutePath = resolve(repoRoot, path);
+      const extension = path.slice(path.lastIndexOf('.')).toLowerCase();
+      const basename = path.split('/').at(-1);
+      const content = textExtensions.has(extension) || textBasenames.has(basename)
+        ? readFileSync(absolutePath, 'utf8').replaceAll('\r\n', '\n').replaceAll('\r', '\n')
+        : readFileSync(absolutePath);
+      const hash = createHash('sha256').update(content).digest('hex');
       return `${hash}  ${path}`;
     })
     .join('\n') + '\n';

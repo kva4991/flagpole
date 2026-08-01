@@ -310,7 +310,6 @@ void setupBle() {
         NIMBLE_PROPERTY::READ | NIMBLE_PROPERTY::READ_ENC);
     controlChr->setCallbacks(new ControlCallbacks());
     configChr->setCallbacks(new ConfigCallbacks());
-    service->start();
     bleServer->start();
     startAdvertising();
     state.serviceReady = true;

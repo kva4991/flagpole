@@ -53,5 +53,13 @@ test("GitHub Actions builds Android and both PlatformIO projects", () => {
   assert.match(workflow, /platformio==6\.1\.19/);
   assert.match(workflow, /esp32_c3_crucian_v06/);
   assert.match(workflow, /esp32_c3_flag_light/);
-  assert.match(workflow, /actions\/upload-artifact@v4/);
+  assert.match(workflow, /actions\/checkout@v7/);
+  assert.match(workflow, /actions\/upload-artifact@v7/);
+});
+
+test("checksum manifest normalizes text line endings across Windows and Linux", () => {
+  const checker = read("scripts/checkChecksums.mjs");
+  assert.match(checker, /replaceAll\('\\r\\n', '\\n'\)\.replaceAll\('\\r', '\\n'\)/);
+  assert.match(checker, /textExtensions/);
+  assert.match(checker, /textBasenames/);
 });
