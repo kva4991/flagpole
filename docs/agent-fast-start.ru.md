@@ -31,4 +31,8 @@ npm.cmd run checksums:check
 git diff --check
 ```
 
+Windows-компьютер готовится и проверяется через `tools/windows/setup.ps1` и
+`tools/windows/check.ps1`. GitHub Actions независимо повторяет quality gate,
+Android-сборку и обе PlatformIO-сборки. §toolwin
+
 Ручные и аппаратные проверки из `review:impact` нельзя заменять зелёным Node-тестом. §status1

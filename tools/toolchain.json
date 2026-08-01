@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "windowsPackages": [
+    {
+      "name": "Git и Git Bash",
+      "command": "git",
+      "wingetId": "Git.Git",
+      "required": true
+    },
+    {
+      "name": "Python",
+      "command": "python",
+      "wingetId": "Python.Python.3.13",
+      "minimumVersion": "3.11",
+      "required": true
+    },
+    {
+      "name": "Node.js LTS",
+      "command": "node",
+      "wingetId": "OpenJS.NodeJS.LTS",
+      "minimumVersion": "22.0",
+      "required": true
+    },
+    {
+      "name": "Temurin JDK 17",
+      "command": "java",
+      "wingetId": "EclipseAdoptium.Temurin.17.JDK",
+      "requiredMajorVersion": 17,
+      "required": true
+    },
+    {
+      "name": "GitHub CLI",
+      "command": "gh",
+      "wingetId": "GitHub.cli",
+      "required": false
+    },
+    {
+      "name": "7-Zip",
+      "command": "7z",
+      "wingetId": "7zip.7zip",
+      "required": true
+    },
+    {
+      "name": "ripgrep",
+      "command": "rg",
+      "wingetId": "BurntSushi.ripgrep.MSVC",
+      "disallowedPathFragments": ["\\OpenAI\\Codex\\bin\\"],
+      "required": true
+    }
+  ],
+  "platformio": {
+    "minimumVersion": "6.1",
+    "installerUrl": "https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py",
+    "projects": [
+      "electronics/firmware/esp32_c3_crucian_v06",
+      "electronics/firmware/esp32_c3_flag_light"
+    ]
+  },
+  "gradleWrapperVersion": "8.10.2",
+  "androidProject": "android/crucian-control",
+  "androidSdk": {
+    "repositoryUrl": "https://dl.google.com/android/repository/repository2-1.xml",
+    "archiveBaseUrl": "https://dl.google.com/android/repository/",
+    "packages": [
+      "platform-tools",
+      "platforms;android-35",
+      "build-tools;35.0.0"
+    ]
+  }
+}

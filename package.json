@@ -10,6 +10,7 @@
     "quality:docs:all": "node scripts/checkDocumentation.mjs",
     "checksums:update": "node scripts/checkChecksums.mjs --update",
     "checksums:check": "node scripts/checkChecksums.mjs --check",
+    "toolchain:check": "powershell -ExecutionPolicy Bypass -File tools/windows/check.ps1",
     "test": "node --test tests/*.test.mjs",
     "quality:gate": "npm run quality:docs:all && npm run catalog:check && npm test && npm run checksums:check"
   }

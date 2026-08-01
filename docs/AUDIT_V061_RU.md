@@ -6,7 +6,7 @@
 
 Проверены состав архива, документация, конфигурация PlatformIO/Android, исходники BLE/PWM, каталог компонентов, локальные пути и признаки секретов. Выполнены детерминированные Node-проверки документации и генерируемого каталога.
 
-Не выполнены: PlatformIO-сборка, запуск на ESP32-C3, сопряжение с телефоном, электрический стенд, печать, измерение деталей, проверка водозащиты и тепловой тест. Gradle-сборка Android была запущена и завершилась воспроизводимым конфигурационным сбоем, описанным ниже.
+Не выполнены: PlatformIO-сборка, запуск на ESP32-C3, сопряжение с телефоном, электрический стенд, печать, измерение деталей, проверка водозащиты и тепловой тест. Первичный конфигурационный сбой Android исправлен; debug APK успешно собран локально 2026-08-01.
 
 ## Состав handoff
 
@@ -34,9 +34,9 @@
 
 ## Высокий риск
 
-### Android-проект не воспроизводим из репозитория
+### Android-проект приведён к воспроизводимой сборке
 
-В handoff нет `gradlew`, `gradlew.bat` и `gradle/wrapper/`, поэтому воспроизводимая версия Gradle не закреплена. Фактический запуск `gradle -p android\\crucian-control :app:assembleDebug --stacktrace` на Gradle 8.10.2 завершился до компиляции ошибкой: `Starting in Kotlin 2.0, the Compose Compiler Gradle plugin is required`. Проект использует Kotlin `2.0.21`, но не подключает `org.jetbrains.kotlin.plugin.compose`, сохраняя старую настройку `kotlinCompilerExtensionVersion`. Для Kotlin 2.0+ официальный Android-процесс использует Compose Compiler Gradle plugin той же версии. §android1
+Исходный handoff не содержал Wrapper и Compose Compiler plugin. Добавлены `gradlew`, `gradlew.bat`, `gradle/wrapper/` с Gradle 8.10.2 и `org.jetbrains.kotlin.plugin.compose` 2.0.21; Android Gradle Plugin поднят до 8.7.3 для `compileSdk 35`. Реальная компиляция затем выявила и исправила неверную константу `BluetoothGatt.TRANSPORT_LE` и обращение к `LocalContext.current` из callback. `:app:assembleDebug` после исправлений завершился успешно, APK экспортирован в изолированную зону `pesochnica/flagpole/artifacts`. Это подтверждает сборку, но не BLE-поведение на телефоне. §android1
 
 ### GATT-операции Android не сериализованы
 
@@ -68,14 +68,14 @@
 - тест карты влияния изменений;
 - обновление и повторная проверка SHA-256 manifest.
 
-Android Gradle build запущен отдельно и ожидаемо не прошёл из-за отсутствующего Compose Compiler Gradle plugin; это подтверждённый blocker, а не пройденная проверка.
+Android `:app:assembleDebug` прошёл локально через закреплённый Wrapper; APK не коммитится. Для GitHub добавлен workflow с независимыми job качества, Android и матрицей двух PlatformIO-проектов. Локальная PlatformIO-загрузка Windows toolchain остаётся заблокированной сетью: официальный URL отвечает и объявляет размер 258829021 байт, но тело останавливается после 8340 байт даже через отдельный `curl` range-запрос.
 
 ## Следующий технический порядок
 
-1. Собрать исправленную прошивку настоящим PlatformIO toolchain для выбранной ESP32-C3 SuperMini Plus.
+1. Получить зелёную PlatformIO-сборку обеих прошивок в GitHub Actions и скачать опубликованные workflow artifacts.
 2. Проверить на стенде BLE cold-boot/deep-sleep state machine, заводской PIN, смену PIN и отказ VEML7700.
 3. Проверить PWM и фактическую полярность конкретного MOSFET-модуля.
-4. Добавить Gradle Wrapper, привести Compose compiler configuration к выбранной версии Kotlin и собрать debug APK.
+4. Устранить deprecated BLE-вызовы и сериализовать GATT-операции; повторить Android-сборку и испытания на телефоне.
 5. Проверить сопряжение, смену PIN, отзыв bond, GATT-очередь и `BLE:OFF` на реальном телефоне.
 6. Подтвердить на входе Crucian стабильные 12 В от готовой внешней аккумуляторной подсистемы 6×18650.
 7. После фактических измерений обновить централизованные параметры механики и напечатать купоны.

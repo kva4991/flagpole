@@ -14,6 +14,7 @@ dist/
 # Node.js and local quality reports
 node_modules/
 .build/
+tools/.cache/
 
 # Android / Gradle
 .gradle/

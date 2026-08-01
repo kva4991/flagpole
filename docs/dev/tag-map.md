@@ -10,6 +10,7 @@
 | `§docqa01` | Уровни документации и локальный аудит | `docs/DOCUMENTATION_WORKFLOW_RU.md` |
 | `§adrproc` | Неизменяемая последовательная история ADR | `docs/architecture/decisions/README.ru.md` |
 | `§impact` | Карта влияния путей и обязательных проверок | `docs/quality-assistants/change-impact.ru.md` |
+| `§toolwin` | Windows toolchain и изолированная исполняемая зона | `tools/README.ru.md` |
 | `§checksum` | SHA-256 manifest публикуемого дерева | `docs/DOCUMENTATION_WORKFLOW_RU.md` |
 | `§catalog` | JSON — источник HTML-каталога | `catalog/README_RU.md` |
 | `§meas001` | Геометрия меняется только по реальным измерениям | `MEASUREMENTS_REQUIRED_RU.md` |

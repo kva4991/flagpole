@@ -2,6 +2,7 @@ package ru.quicktickets.crucian
 
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCallback
 import android.bluetooth.BluetoothGattCharacteristic
@@ -122,7 +123,7 @@ class BleViewModel(private val context: Context) : ViewModel() {
             if (result.scanRecord?.deviceName == "Crucian" || device.name == "Crucian") {
                 scanner?.stopScan(this)
                 uiStatus = uiStatus.copy(connectionText = "Подключение к ${device.address}")
-                gatt = device.connectGatt(context, false, gattCallback, BluetoothGatt.TRANSPORT_LE)
+                gatt = device.connectGatt(context, false, gattCallback, BluetoothDevice.TRANSPORT_LE)
             }
         }
     }
@@ -229,6 +230,7 @@ class BleViewModel(private val context: Context) : ViewModel() {
 @Composable
 fun CrucianApp(vm: BleViewModel = viewModel()) {
     val status = vm.uiStatus
+    val context = LocalContext.current
     var brightness by remember { mutableIntStateOf(status.brightnessPercent.coerceIn(0, 100)) }
     var oldPin by remember { mutableStateOf("") }
     var newPin by remember { mutableStateOf("") }
@@ -282,7 +284,7 @@ fun CrucianApp(vm: BleViewModel = viewModel()) {
             Text("Сменить PIN")
         }
 
-        TextButton(onClick = { vm.startScanIfPossible(LocalContext.current) }) {
+        TextButton(onClick = { vm.startScanIfPossible(context) }) {
             Text("Повторно сканировать")
         }
     }
