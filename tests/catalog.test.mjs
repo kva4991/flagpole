@@ -34,5 +34,6 @@ describe('component catalog', () => {
     assert.match(html, /Вид платы с обратной стороны/);
     assert.match(html, /Senring M125-0205 slip ring — 12\.5 mm, 2CH, 5A/);
     assert.match(html, /eletechsup synchronous DC-DC buck converter — 5V, 4A\/5A/);
+    assert.match(html, /TZT optoisolated LR7843 MOSFET PWM module — 30V/);
   });
 });
