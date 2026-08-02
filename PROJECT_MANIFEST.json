@@ -1,20 +1,20 @@
 {
   "project": "Crucian rotating flagpole finial",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "packageType": "cumulative source, generated mechanics, drawings, documentation and handoff package",
   "sourceRepository": "https://github.com/kva4991/flagpole",
   "sourceBranchReviewed": "main",
-  "sourceHeadReviewed": "fa855630b556a589c14ed3a1e2cbd37820d9f9c3",
+  "sourceHeadReviewed": "6bff2d717cb6bb6612e14cd612d2b961627c0617",
   "publication": {
     "branch": "main",
-    "commit": "a80263a98e1c23e67d2f4f41d046888d272daf37",
-    "githubActionsRun": 30753133808,
-    "conclusion": "success"
+    "commit": null,
+    "githubActionsRun": null,
+    "conclusion": "pending"
   },
-  "outputArchive": "flagpole_v0_7_4_cumulative.zip",
+  "outputArchive": "flagpole_v075_cumulative_update_20260802.zip",
   "treeMetrics": {
-    "publishedFileCountIncludingManifestAndChecksum": 353,
-    "totalBytesExcludingManifestAndChecksum": 467325281
+    "publishedFileCountIncludingManifestAndChecksum": 377,
+    "totalBytesExcludingManifestAndChecksum": 471168002
   },
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
@@ -36,14 +36,14 @@
     "fish_template_dimensioned_A4_landscape.svg"
   ],
   "validation": {
-    "nodeTests": "35/35 passed locally",
-    "markdownFiles": "92 checked locally",
-    "drawingCards": "26 total: 20 current, 6 historical, 0 reference",
-    "interactiveModels": "10 total: 7 current, 3 historical",
+    "nodeTests": "39/39 passed in the protected full checkout",
+    "markdownFiles": "95 checked in the protected full checkout",
+    "drawingCards": "19 current, 0 historical",
+    "interactiveModels": "7 current, 0 historical; 3 are print layouts",
     "stlTopology": "40/40 watertight, winding consistent and single connected component",
     "pythonSources": "all current Python generators and validators passed py_compile locally",
-    "androidBuild": "v0.7.4 assembleDebug successful locally and in GitHub Actions run 30753133808 for main commit a80263a",
-    "firmwareBuild": "sources unchanged; both PlatformIO projects built successfully in GitHub Actions run 30753133808 for main commit a80263a",
+    "androidBuild": "v0.7.5 source version synchronized; GitHub Actions build pending publication",
+    "firmwareBuild": "sources unchanged from the last successful main build; GitHub Actions confirmation pending publication",
     "hardwareBench": "required"
   },
   "notes": [

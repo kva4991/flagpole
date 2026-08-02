@@ -2,12 +2,15 @@
   "name": "crucian-finial-project",
   "private": true,
   "type": "module",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "scripts": {
     "identity:generate": "node scripts/generateProjectIdentity.mjs",
     "identity:check": "node scripts/generateProjectIdentity.mjs --check",
-    "catalog:generate": "node scripts/generateComponentCatalog.mjs",
-    "catalog:check": "node scripts/generateComponentCatalog.mjs --check",
+    "catalog:callouts": "node scripts/runPython.mjs mechanical/render_catalog_part_callouts_v075.py",
+    "catalog:callouts:check": "node scripts/runPython.mjs mechanical/render_catalog_part_callouts_v075.py --check",
+    "catalog:generate": "npm run catalog:callouts && node scripts/generateComponentCatalog.mjs",
+    "catalog:check": "npm run catalog:callouts:check && node scripts/generateComponentCatalog.mjs --check",
+    "models:semantics:check": "node scripts/runPython.mjs mechanical/validate_catalog_model_semantics_v075.py",
     "review:impact": "node scripts/inspectChangeImpact.mjs --git origin/main",
     "quality:docs": "node scripts/checkDocumentation.mjs",
     "quality:docs:all": "node scripts/checkDocumentation.mjs",
@@ -15,6 +18,6 @@
     "checksums:check": "node scripts/checkChecksums.mjs --check",
     "toolchain:check": "powershell -ExecutionPolicy Bypass -File tools/windows/check.ps1",
     "test": "node --test tests/*.test.mjs",
-    "quality:gate": "npm run identity:check && npm run quality:docs:all && npm run catalog:check && npm test && npm run checksums:check"
+    "quality:gate": "npm run identity:check && npm run quality:docs:all && npm run catalog:check && npm run models:semantics:check && npm test && npm run checksums:check"
   }
 }

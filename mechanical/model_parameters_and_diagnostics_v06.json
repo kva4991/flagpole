@@ -1,5 +1,5 @@
 {
-  "version": "0.7.4 PETG+TPU95+TPU85 provisional",
+  "version": "0.7.5 PETG+TPU95+TPU85 provisional",
   "design_status": "Print coupons first; all purchased-part fits remain measurement-driven",
   "parameters_mm": {
     "flag_width": 300.0,

@@ -12,8 +12,8 @@ android {
         applicationId = "ru.quicktickets.crucian"
         minSdk = 26
         targetSdk = 35
-        versionCode = 3
-        versionName = "0.7.4"
+        versionCode = 4
+        versionName = "0.7.5"
     }
 
     buildTypes {

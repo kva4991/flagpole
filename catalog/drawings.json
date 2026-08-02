@@ -1,387 +1,2470 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
+  "catalogPolicy": {
+    "visibility": "current-only",
+    "currentVersion": "0.7.5",
+    "partIdCallouts": "required-for-all-drawings-and-models-except-print-layouts",
+    "sourceDrawingsRemainClean": true
+  },
   "drawings": [
     {
       "id": "101",
       "category": "Электроника",
-      "title": "Схема соединений электроники v0.7.4 — A4",
-      "description": "Актуальная схема питания, ESP32-C3, VEML7700, AHT20+BMP280, MOSFET и двухконтактного выхода флага; механическая компоновка и закладные показаны карточками 124/125.",
+      "title": "Схема соединений электроники v0.7.5 — A4",
+      "description": "Актуальная схема питания и сигналов. Выноски используют единые ID каталога компонентов; механические детали корпуса показаны в карточках 111, 118, 124 и 125.",
       "file": "electronics/electronics_wiring_diagram_A4.svg",
       "preview": "electronics/electronics_wiring_diagram_A4.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "001",
+          "label": "ESP32-C3",
+          "target": [
+            0.28,
+            0.35
+          ],
+          "labelPosition": [
+            0.06,
+            0.1
+          ]
+        },
+        {
+          "id": "006",
+          "label": "DC-DC 12→5 В",
+          "target": [
+            0.25,
+            0.56
+          ],
+          "labelPosition": [
+            0.05,
+            0.3
+          ]
+        },
+        {
+          "id": "005",
+          "label": "MOSFET LR7843",
+          "target": [
+            0.47,
+            0.56
+          ],
+          "labelPosition": [
+            0.05,
+            0.5
+          ]
+        },
+        {
+          "id": "002",
+          "label": "VEML7700",
+          "target": [
+            0.7,
+            0.34
+          ],
+          "labelPosition": [
+            0.78,
+            0.1
+          ]
+        },
+        {
+          "id": "009",
+          "label": "AHT20+BMP280",
+          "target": [
+            0.7,
+            0.55
+          ],
+          "labelPosition": [
+            0.78,
+            0.31
+          ]
+        },
+        {
+          "id": "003",
+          "label": "Токосъёмник M125",
+          "target": [
+            0.48,
+            0.27
+          ],
+          "labelPosition": [
+            0.78,
+            0.52
+          ]
+        },
+        {
+          "id": "004",
+          "label": "Неон 12 В",
+          "target": [
+            0.83,
+            0.72
+          ],
+          "labelPosition": [
+            0.78,
+            0.73
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/101_electronics_wiring_diagram_A4_ids.png"
     },
     {
       "id": "102",
       "category": "Электроника",
-      "title": "Карта клемм, GPIO и разъёмов v0.7.4 — A4",
-      "description": "Актуальные GPIO3/4/5, питание датчиков, M125 и двухконтактный выход; добавлена ссылка на механическую карту M3/M4.",
+      "title": "Карта клемм, GPIO и разъёмов v0.7.5 — A4",
+      "description": "Клеммы, GPIO и разъёмы подписаны теми же ID, что карточки компонентов. Это исключает неоднозначные названия плат при сборке.",
       "file": "electronics/electronics_terminal_map_A4.svg",
       "preview": "electronics/electronics_terminal_map_A4.png",
       "status": "current",
-      "version": "0.7.4"
-    },
-    {
-      "id": "103",
-      "category": "Механика",
-      "title": "Общий вид сборки v0.5",
-      "description": "Исторический общий вид v0.5. Сохранён для истории развития и не задаёт текущую герметизацию, кабельную трассу, тоннель или карман датчика.",
-      "file": "mechanical/preview_v05_assembly.png",
-      "preview": "mechanical/preview_v05_assembly.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
-      "id": "104",
-      "category": "Механика",
-      "title": "Разнесённый вид PETG/TPU",
-      "description": "Исторический разнесённый вид v0.5. Не использовать как актуальный перечень деталей.",
-      "file": "mechanical/preview_v05_exploded_PETG_TPU.png",
-      "preview": "mechanical/preview_v05_exploded_PETG_TPU.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
-      "id": "105",
-      "category": "Механика",
-      "title": "Продольный разрез v0.5 — исторический",
-      "description": "Историческая внутренняя компоновка v0.5. Актуальная продольная схема v0.7.4 приведена отдельной карточкой ниже.",
-      "file": "mechanical/preview_v05_longitudinal_section.png",
-      "preview": "mechanical/preview_v05_longitudinal_section.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
-      "id": "106",
-      "category": "Печать",
-      "title": "Раскладка PETG v0.5 — историческая",
-      "description": "Историческая ориентация PETG v0.5. Для печати использовать актуальную раскладку v0.7.4.",
-      "file": "mechanical/preview_v05_print_PETG.png",
-      "preview": "mechanical/preview_v05_print_PETG.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
-      "id": "107",
-      "category": "Печать",
-      "title": "Раскладка TPU v0.5 — историческая",
-      "description": "Историческая общая TPU-раскладка до разделения TPU 95A и TPU 85A.",
-      "file": "mechanical/preview_v05_print_TPU.png",
-      "preview": "mechanical/preview_v05_print_TPU.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
-      "id": "108",
-      "category": "Печать",
-      "title": "Удержание TPU v0.5 — историческое",
-      "description": "Историческая схема мягких деталей. Актуальные ID и назначения находятся в таблице v0.7.4.",
-      "file": "mechanical/preview_v05_TPU_retention.png",
-      "preview": "mechanical/preview_v05_TPU_retention.png",
-      "status": "historical",
-      "version": "0.5"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "001",
+          "label": "ESP32-C3",
+          "target": [
+            0.25,
+            0.4
+          ],
+          "labelPosition": [
+            0.05,
+            0.12
+          ]
+        },
+        {
+          "id": "005",
+          "label": "MOSFET",
+          "target": [
+            0.52,
+            0.4
+          ],
+          "labelPosition": [
+            0.05,
+            0.34
+          ]
+        },
+        {
+          "id": "006",
+          "label": "DC-DC",
+          "target": [
+            0.25,
+            0.67
+          ],
+          "labelPosition": [
+            0.05,
+            0.58
+          ]
+        },
+        {
+          "id": "002",
+          "label": "VEML7700",
+          "target": [
+            0.74,
+            0.35
+          ],
+          "labelPosition": [
+            0.8,
+            0.1
+          ]
+        },
+        {
+          "id": "009",
+          "label": "AHT20+BMP280",
+          "target": [
+            0.74,
+            0.58
+          ],
+          "labelPosition": [
+            0.8,
+            0.34
+          ]
+        },
+        {
+          "id": "003",
+          "label": "M125",
+          "target": [
+            0.52,
+            0.69
+          ],
+          "labelPosition": [
+            0.8,
+            0.58
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/102_electronics_terminal_map_A4_ids.png"
     },
     {
       "id": "109",
       "category": "Флаг",
-      "title": "Флаг 300 × 250 мм с четырьмя лямками v0.7.4",
-      "description": "Верхняя лямка начинается на 10 мм ниже нижней кромки навершия в сборе; нижняя заканчивается вровень с низом полотна, средние распределены равномерно.",
+      "title": "Флаг 300 × 250 мм с четырьмя лямками v0.7.5",
+      "description": "Верхняя лямка начинается на 10 мм ниже нижней кромки навершия; выноски связывают полотно, неон и нить с карточками материалов.",
       "file": "flag_with_attachment_loops_full_size_300x250.svg",
       "preview": "flag_with_attachment_loops_full_size_300x250.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "013",
+          "label": "Oxford 210D",
+          "target": [
+            0.55,
+            0.48
+          ],
+          "labelPosition": [
+            0.72,
+            0.12
+          ]
+        },
+        {
+          "id": "004",
+          "label": "Неон Ø16 мм",
+          "target": [
+            0.63,
+            0.56
+          ],
+          "labelPosition": [
+            0.73,
+            0.34
+          ]
+        },
+        {
+          "id": "025",
+          "label": "Bonded polyester Tex 45",
+          "target": [
+            0.2,
+            0.3
+          ],
+          "labelPosition": [
+            0.72,
+            0.58
+          ]
+        },
+        {
+          "id": "014",
+          "label": "Светоотражающая вставка",
+          "target": [
+            0.49,
+            0.5
+          ],
+          "labelPosition": [
+            0.05,
+            0.73
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/109_flag_with_attachment_loops_full_size_300x250_ids.png"
     },
     {
       "id": "110",
       "category": "Флаг",
-      "title": "Выкройка четырёх лямок — A4, предварительно 220 × 30 мм",
-      "description": "Выкройка 1:1. Положение верхней лямки задаётся нижней кромкой навершия; длину сначала проверяют одной пробной лямкой.",
+      "title": "Выкройка четырёх лямок v0.7.5 — A4, предварительно 220 × 30 мм",
+      "description": "Выкройка 1:1. Выноски закрепляют материал лямки и швейную нить; длина подтверждается одной пробной лямкой.",
       "file": "flag_attachment_loop_pattern_A4_1to1.svg",
       "preview": "flag_attachment_loop_pattern_A4_1to1.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "013",
+          "label": "Oxford 210D",
+          "target": [
+            0.5,
+            0.48
+          ],
+          "labelPosition": [
+            0.08,
+            0.12
+          ]
+        },
+        {
+          "id": "025",
+          "label": "Нить Tex 45",
+          "target": [
+            0.65,
+            0.63
+          ],
+          "labelPosition": [
+            0.74,
+            0.15
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/110_flag_attachment_loop_pattern_A4_1to1_ids.png"
     },
     {
       "id": "111",
       "category": "Механика",
-      "title": "Общий вид сборки v0.7.4",
-      "description": "Актуальный общий вид с приподнятой открытой дорожкой проводов, направляющей под 35°, новым каркасом электроники, тоннелем 15 мм, мембраной Ø20 и явными закладными гайками.",
+      "title": "Общий вид сборки v0.7.5",
+      "description": "Актуальный общий вид. Выноски нанесены отдельным воспроизводимым слоем и используют стабильные ID печатных деталей.",
       "file": "mechanical/preview_v06_assembly.png",
       "preview": "mechanical/preview_v06_assembly.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A",
+          "target": [
+            0.49,
+            0.45
+          ],
+          "labelPosition": [
+            0.05,
+            0.1
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B",
+          "target": [
+            0.55,
+            0.51
+          ],
+          "labelPosition": [
+            0.05,
+            0.28
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Сервисная крышка",
+          "target": [
+            0.35,
+            0.24
+          ],
+          "labelPosition": [
+            0.05,
+            0.46
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "target": [
+            0.35,
+            0.66
+          ],
+          "labelPosition": [
+            0.05,
+            0.67
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "label": "Воротник A",
+          "target": [
+            0.48,
+            0.75
+          ],
+          "labelPosition": [
+            0.76,
+            0.1
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "label": "Воротник B",
+          "target": [
+            0.53,
+            0.77
+          ],
+          "labelPosition": [
+            0.76,
+            0.27
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "label": "Световой тоннель",
+          "target": [
+            0.35,
+            0.17
+          ],
+          "labelPosition": [
+            0.76,
+            0.44
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "label": "Направляющая проводов",
+          "target": [
+            0.71,
+            0.55
+          ],
+          "labelPosition": [
+            0.76,
+            0.66
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/111_preview_v06_assembly_ids.png"
     },
     {
       "id": "112",
       "category": "Механика",
-      "title": "Разнесённый вид PETG/TPU v0.7.4 с ID",
-      "description": "Актуальный разнесённый вид с #petg-9, #petg-10 и #tpu95-10; отдельная TPU-прокладка самоклеящейся мембраны удалена.",
+      "title": "Разнесённый вид PETG/TPU v0.7.5 с ID",
+      "description": "Актуальный разнесённый вид. Все 23 печатные детали уже имеют встроенные выноски; дополнительный слой не накладывается.",
       "file": "mechanical/preview_v06_exploded_PETG_TPU_ids.png",
       "preview": "mechanical/preview_v06_exploded_PETG_TPU_ids.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "embedded",
+      "partIds": [
+        "#petg-1",
+        "#petg-2",
+        "#petg-3",
+        "#petg-4",
+        "#petg-5",
+        "#petg-6",
+        "#petg-7",
+        "#petg-8",
+        "#petg-9",
+        "#petg-10",
+        "#tpu95-1",
+        "#tpu95-2",
+        "#tpu95-3",
+        "#tpu95-4",
+        "#tpu95-5",
+        "#tpu95-6",
+        "#tpu95-7",
+        "#tpu95-8",
+        "#tpu95-9",
+        "#tpu95-10",
+        "#tpu85-1",
+        "#tpu85-2",
+        "#tpu85-3"
+      ]
     },
     {
       "id": "113",
       "category": "Печать",
-      "title": "Раскладка PETG v0.7.4 с ID",
-      "description": "Очередь PETG: полностью параметрические половины корпуса, каркас электроники, опора VEML7700, крышка, тоннель и карман датчика.",
-      "file": "mechanical/preview_v06_print_PETG_ids.png",
-      "preview": "mechanical/preview_v06_print_PETG_ids.png",
+      "title": "Раскладка PETG v0.7.5",
+      "description": "Актуальная очередь жёстких деталей. ID намеренно вынесены из раскладки: состав сверяется по таблице 117, а сама картинка остаётся пригодной для контроля ориентации.",
+      "file": "mechanical/preview_v06_print_PETG.png",
+      "preview": "mechanical/preview_v06_print_PETG.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Раскладки для печати намеренно остаются без выносок, чтобы подписи не перекрывали ориентацию, зазоры и контуры деталей."
     },
     {
       "id": "114",
       "category": "Печать",
-      "title": "Раскладка TPU 95A v0.7.4 с ID",
-      "description": "Функциональные TPU95-детали, включая сменную направляющую двух проводов под углом около 35°.",
-      "file": "mechanical/preview_v06_print_TPU95_ids.png",
-      "preview": "mechanical/preview_v06_print_TPU95_ids.png",
+      "title": "Раскладка TPU 95A v0.7.5",
+      "description": "Актуальная очередь функциональных TPU95-деталей. Без выносок по принятому исключению для печатных раскладок.",
+      "file": "mechanical/preview_v06_print_TPU95.png",
+      "preview": "mechanical/preview_v06_print_TPU95.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Раскладки для печати намеренно остаются без выносок, чтобы подписи не перекрывали ориентацию, зазоры и контуры деталей."
     },
     {
       "id": "115",
       "category": "Печать",
-      "title": "Раскладка TPU 85A v0.7.4 с ID",
-      "description": "Три статические прокладки. Самоклеящаяся климатическая мембрана Ø20 устанавливается без отдельной TPU-прокладки.",
-      "file": "mechanical/preview_v06_print_TPU85_ids.png",
-      "preview": "mechanical/preview_v06_print_TPU85_ids.png",
+      "title": "Раскладка TPU 85A v0.7.5",
+      "description": "Актуальная очередь трёх статических уплотнений. Без выносок по принятому исключению для печатных раскладок.",
+      "file": "mechanical/preview_v06_print_TPU85.png",
+      "preview": "mechanical/preview_v06_print_TPU85.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Раскладки для печати намеренно остаются без выносок, чтобы подписи не перекрывали ориентацию, зазоры и контуры деталей."
     },
     {
       "id": "116",
       "category": "Механика и электрика",
-      "title": "Маршрут двух проводов питания флага v0.7.4",
-      "description": "Два провода Ø2 мм проходят по открытой приподнятой дорожке ниже M4; у отмеченной точки #tpu95-10 направляет их примерно под 35° вниз к флагу.",
+      "title": "Маршрут двух проводов питания флага v0.7.5",
+      "description": "Два провода идут по открытой дорожке ниже крепежа и выходят через направляющую около 35° вниз к флагу.",
       "file": "mechanical/flag_power_cable_route_A4_landscape.svg",
       "preview": "mechanical/flag_power_cable_route_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A",
+          "target": [
+            0.42,
+            0.45
+          ],
+          "labelPosition": [
+            0.05,
+            0.1
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B",
+          "target": [
+            0.45,
+            0.52
+          ],
+          "labelPosition": [
+            0.05,
+            0.27
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "label": "Ввод A",
+          "target": [
+            0.32,
+            0.49
+          ],
+          "labelPosition": [
+            0.05,
+            0.45
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "label": "Ввод B",
+          "target": [
+            0.35,
+            0.54
+          ],
+          "labelPosition": [
+            0.05,
+            0.62
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "label": "Направляющая 35°",
+          "target": [
+            0.73,
+            0.54
+          ],
+          "labelPosition": [
+            0.75,
+            0.1
+          ]
+        },
+        {
+          "id": "022",
+          "label": "Два силовых провода",
+          "target": [
+            0.57,
+            0.5
+          ],
+          "labelPosition": [
+            0.75,
+            0.31
+          ]
+        },
+        {
+          "id": "010",
+          "label": "Герметичный 2-pin",
+          "target": [
+            0.84,
+            0.66
+          ],
+          "labelPosition": [
+            0.75,
+            0.53
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/116_flag_power_cable_route_A4_landscape_ids.png"
     },
     {
       "id": "117",
       "category": "Документация",
-      "title": "Таблица идентификаторов печатных деталей v0.7.4",
-      "description": "Единый реестр 23 текущих печатных деталей; металлические закладные M4/M3 вынесены на отдельную карту 124.",
+      "title": "Таблица идентификаторов печатных деталей v0.7.5",
+      "description": "Единый реестр 23 текущих печатных деталей. Таблица сама является встроенной системой подписей.",
       "file": "mechanical/part_id_table_v06.svg",
       "preview": "mechanical/part_id_table_v06.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "embedded",
+      "partIds": [
+        "#petg-1",
+        "#petg-2",
+        "#petg-3",
+        "#petg-4",
+        "#petg-5",
+        "#petg-6",
+        "#petg-7",
+        "#petg-8",
+        "#petg-9",
+        "#petg-10",
+        "#tpu95-1",
+        "#tpu95-2",
+        "#tpu95-3",
+        "#tpu95-4",
+        "#tpu95-5",
+        "#tpu95-6",
+        "#tpu95-7",
+        "#tpu95-8",
+        "#tpu95-9",
+        "#tpu95-10",
+        "#tpu85-1",
+        "#tpu85-2",
+        "#tpu85-3"
+      ]
     },
     {
       "id": "118",
       "category": "Механика",
-      "title": "Актуальная продольная схема узлов v0.7.4",
-      "description": "Компоновка подшипников, спицы, M125, кабеля, каркаса электроники, тоннеля 15 мм, мембраны Ø20 и лямок, привязанных к нижнему краю навершия.",
-      "file": "mechanical/current_longitudinal_section_v074.svg",
-      "preview": "mechanical/current_longitudinal_section_v074.png",
+      "title": "Актуальная продольная схема узлов v0.7.5",
+      "description": "Компоновка подшипников, спицы, токосъёмника, электронного бокса, тоннеля, кармана датчика и лямок.",
+      "file": "mechanical/current_longitudinal_section_v075.svg",
+      "preview": "mechanical/current_longitudinal_section_v075.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A",
+          "target": [
+            0.48,
+            0.45
+          ],
+          "labelPosition": [
+            0.04,
+            0.08
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B",
+          "target": [
+            0.52,
+            0.5
+          ],
+          "labelPosition": [
+            0.04,
+            0.23
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "label": "Воротник A",
+          "target": [
+            0.48,
+            0.71
+          ],
+          "labelPosition": [
+            0.04,
+            0.39
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "label": "Воротник B",
+          "target": [
+            0.52,
+            0.74
+          ],
+          "labelPosition": [
+            0.04,
+            0.55
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Крышка",
+          "target": [
+            0.31,
+            0.28
+          ],
+          "labelPosition": [
+            0.77,
+            0.08
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "target": [
+            0.31,
+            0.64
+          ],
+          "labelPosition": [
+            0.77,
+            0.23
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "target": [
+            0.35,
+            0.45
+          ],
+          "labelPosition": [
+            0.77,
+            0.39
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "target": [
+            0.33,
+            0.34
+          ],
+          "labelPosition": [
+            0.77,
+            0.55
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "label": "Направляющая",
+          "target": [
+            0.69,
+            0.54
+          ],
+          "labelPosition": [
+            0.77,
+            0.71
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/118_current_longitudinal_section_v075_ids.png"
     },
     {
       "id": "119",
       "category": "Герметичность",
-      "title": "Герметичность электронного отсека и датчиков v0.7.4",
-      "description": "Независимые барьеры крышки, тоннеля с клеевой полкой и климатического кармана под самоклеящуюся мембрану Ø20; IP-класс не заявляется.",
+      "title": "Герметичность электронного отсека и датчиков v0.7.5",
+      "description": "Независимые обслуживаемые барьеры крышки, светового окна, кабельного ввода и климатического кармана.",
       "file": "mechanical/hermeticity_design_A4_landscape.svg",
       "preview": "mechanical/hermeticity_design_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-5",
+          "label": "Сервисная крышка",
+          "target": [
+            0.25,
+            0.3
+          ],
+          "labelPosition": [
+            0.04,
+            0.08
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "label": "Прокладка крышки",
+          "target": [
+            0.25,
+            0.38
+          ],
+          "labelPosition": [
+            0.04,
+            0.25
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "label": "Световой тоннель",
+          "target": [
+            0.5,
+            0.3
+          ],
+          "labelPosition": [
+            0.04,
+            0.42
+          ]
+        },
+        {
+          "id": "#petg-7",
+          "label": "Прижим окна",
+          "target": [
+            0.5,
+            0.39
+          ],
+          "labelPosition": [
+            0.04,
+            0.59
+          ]
+        },
+        {
+          "id": "#tpu85-2",
+          "label": "Прокладка окна",
+          "target": [
+            0.5,
+            0.47
+          ],
+          "labelPosition": [
+            0.76,
+            0.08
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "target": [
+            0.75,
+            0.38
+          ],
+          "labelPosition": [
+            0.76,
+            0.25
+          ]
+        },
+        {
+          "id": "#tpu85-3",
+          "label": "Прокладка кармана",
+          "target": [
+            0.75,
+            0.48
+          ],
+          "labelPosition": [
+            0.76,
+            0.42
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "label": "Кабельный ввод A",
+          "target": [
+            0.35,
+            0.72
+          ],
+          "labelPosition": [
+            0.76,
+            0.59
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "label": "Кабельный ввод B",
+          "target": [
+            0.42,
+            0.72
+          ],
+          "labelPosition": [
+            0.76,
+            0.76
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/119_hermeticity_design_A4_landscape_ids.png"
     },
     {
       "id": "120",
       "category": "Оптика",
-      "title": "Световой тоннель и крепление VEML7700 v0.7.4",
-      "description": "Тоннель Ø11 × 15 мм, выделенная кольцевая клеевая закладная, купон 15/18 мм и съёмная опора платы на двух M3.",
+      "title": "Световой тоннель и крепление VEML7700 v0.7.5",
+      "description": "Тоннель Ø11 × 15 мм, кольцевая клеевая полка, прозрачное окно, прижим и съёмная опора платы.",
       "file": "mechanical/photo_tunnel_veml_mount_A4_landscape.svg",
       "preview": "mechanical/photo_tunnel_veml_mount_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-5",
+          "label": "Крышка",
+          "target": [
+            0.22,
+            0.48
+          ],
+          "labelPosition": [
+            0.04,
+            0.1
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "label": "Тоннель 15 мм",
+          "target": [
+            0.43,
+            0.42
+          ],
+          "labelPosition": [
+            0.04,
+            0.29
+          ]
+        },
+        {
+          "id": "#petg-7",
+          "label": "Прижим окна",
+          "target": [
+            0.52,
+            0.3
+          ],
+          "labelPosition": [
+            0.04,
+            0.48
+          ]
+        },
+        {
+          "id": "#tpu85-2",
+          "label": "Прокладка окна",
+          "target": [
+            0.5,
+            0.38
+          ],
+          "labelPosition": [
+            0.75,
+            0.1
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "target": [
+            0.7,
+            0.55
+          ],
+          "labelPosition": [
+            0.75,
+            0.31
+          ]
+        },
+        {
+          "id": "002",
+          "label": "Плата VEML7700",
+          "target": [
+            0.69,
+            0.47
+          ],
+          "labelPosition": [
+            0.75,
+            0.52
+          ]
+        },
+        {
+          "id": "024",
+          "label": "Прозрачное окно",
+          "target": [
+            0.5,
+            0.23
+          ],
+          "labelPosition": [
+            0.75,
+            0.72
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/120_photo_tunnel_veml_mount_A4_landscape_ids.png"
     },
     {
       "id": "121",
       "category": "Климатический датчик",
-      "title": "Карман AHT20+BMP280 v0.7.4",
-      "description": "Самоклеящийся диск Ø20 мм с активным центром Ø10, семь отверстий Ø2 мм, смещённая перегородка, potting-well и две M3-закладные.",
+      "title": "Карман AHT20+BMP280 v0.7.5",
+      "description": "Самоклеящаяся мембрана Ø20/Ø10, семь отверстий Ø2 мм, смещённая перегородка, potting-well и две M3-закладные.",
       "file": "mechanical/environment_sensor_pocket_A4_landscape.svg",
       "preview": "mechanical/environment_sensor_pocket_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "target": [
+            0.48,
+            0.48
+          ],
+          "labelPosition": [
+            0.04,
+            0.1
+          ]
+        },
+        {
+          "id": "#tpu85-3",
+          "label": "Прокладка кармана",
+          "target": [
+            0.33,
+            0.67
+          ],
+          "labelPosition": [
+            0.04,
+            0.31
+          ]
+        },
+        {
+          "id": "009",
+          "label": "AHT20+BMP280",
+          "target": [
+            0.56,
+            0.52
+          ],
+          "labelPosition": [
+            0.74,
+            0.1
+          ]
+        },
+        {
+          "id": "019",
+          "label": "Мембрана Ø20/Ø10",
+          "target": [
+            0.49,
+            0.27
+          ],
+          "labelPosition": [
+            0.74,
+            0.31
+          ]
+        },
+        {
+          "id": "021",
+          "label": "2×M3",
+          "target": [
+            0.7,
+            0.7
+          ],
+          "labelPosition": [
+            0.74,
+            0.53
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/121_environment_sensor_pocket_A4_landscape_ids.png"
     },
     {
       "id": "122",
       "category": "Флаг",
-      "title": "Чистый шаблон рыбы для 16-мм неона — A4",
-      "description": "Чистый геометрический шаблон без размерных подписей. Толстая линия задаёт путь неона; крепёж навершия к шаблону не относится.",
+      "title": "Чистый шаблон рыбы для 16-мм неона v0.7.5 — A4",
+      "description": "Чистая геометрия сохраняется в исходном SVG; каталог показывает отдельную копию с выносками материалов.",
       "file": "fish_template_clean_A4_landscape.svg",
       "preview": "fish_template_clean_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "004",
+          "label": "Неон Ø16 мм",
+          "target": [
+            0.53,
+            0.5
+          ],
+          "labelPosition": [
+            0.73,
+            0.12
+          ]
+        },
+        {
+          "id": "013",
+          "label": "Oxford 210D",
+          "target": [
+            0.49,
+            0.58
+          ],
+          "labelPosition": [
+            0.73,
+            0.34
+          ]
+        },
+        {
+          "id": "014",
+          "label": "Рефлективная ткань",
+          "target": [
+            0.41,
+            0.52
+          ],
+          "labelPosition": [
+            0.73,
+            0.56
+          ]
+        },
+        {
+          "id": "025",
+          "label": "Нить Tex 45",
+          "target": [
+            0.28,
+            0.5
+          ],
+          "labelPosition": [
+            0.73,
+            0.76
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/122_fish_template_clean_A4_landscape_ids.png"
     },
     {
       "id": "123",
       "category": "Флаг",
-      "title": "Размерный шаблон рыбы для 16-мм неона — A4",
-      "description": "Размерная схема рыбы: примерно 249 × 106 мм, тело около 86 мм, неон 16 мм и сквозной глаз Ø16 мм; механический крепёж — карта 124.",
+      "title": "Размерный шаблон рыбы для 16-мм неона v0.7.5 — A4",
+      "description": "Размерная схема рыбы: приблизительно 249 × 106 мм, неон Ø16 мм и сквозной глаз Ø16 мм.",
       "file": "fish_template_dimensioned_A4_landscape.svg",
       "preview": "fish_template_dimensioned_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "004",
+          "label": "Неон Ø16 мм",
+          "target": [
+            0.53,
+            0.5
+          ],
+          "labelPosition": [
+            0.74,
+            0.1
+          ]
+        },
+        {
+          "id": "013",
+          "label": "Oxford 210D",
+          "target": [
+            0.48,
+            0.58
+          ],
+          "labelPosition": [
+            0.74,
+            0.31
+          ]
+        },
+        {
+          "id": "014",
+          "label": "Рефлективная вставка",
+          "target": [
+            0.4,
+            0.52
+          ],
+          "labelPosition": [
+            0.74,
+            0.52
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/123_fish_template_dimensioned_A4_landscape_ids.png"
     },
     {
       "id": "124",
       "category": "Механика",
-      "title": "Карта закладных гаек и крепежа v0.7.4",
+      "title": "Карта закладных гаек и крепежа v0.7.5",
       "description": "Все текущие винтовые соединения: 8×M4 и 10×M3, загрузочные горловины, зоны обслуживания и обязательные купоны.",
       "file": "mechanical/fastener_captive_nut_map_A4_landscape.svg",
       "preview": "mechanical/fastener_captive_nut_map_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A",
+          "target": [
+            0.25,
+            0.35
+          ],
+          "labelPosition": [
+            0.03,
+            0.08
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B",
+          "target": [
+            0.25,
+            0.48
+          ],
+          "labelPosition": [
+            0.03,
+            0.24
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "label": "Воротник A",
+          "target": [
+            0.5,
+            0.35
+          ],
+          "labelPosition": [
+            0.03,
+            0.4
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "label": "Воротник B",
+          "target": [
+            0.5,
+            0.48
+          ],
+          "labelPosition": [
+            0.03,
+            0.56
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Крышка",
+          "target": [
+            0.73,
+            0.31
+          ],
+          "labelPosition": [
+            0.75,
+            0.08
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "target": [
+            0.73,
+            0.48
+          ],
+          "labelPosition": [
+            0.75,
+            0.24
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "target": [
+            0.5,
+            0.67
+          ],
+          "labelPosition": [
+            0.75,
+            0.4
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "target": [
+            0.72,
+            0.67
+          ],
+          "labelPosition": [
+            0.75,
+            0.56
+          ]
+        },
+        {
+          "id": "021",
+          "label": "Крепёж M3/M4",
+          "target": [
+            0.48,
+            0.8
+          ],
+          "labelPosition": [
+            0.75,
+            0.74
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/124_fastener_captive_nut_map_A4_landscape_ids.png"
     },
     {
       "id": "125",
       "category": "Электроника и механика",
-      "title": "Компоновка электроники в боксе v0.7.4",
-      "description": "DC-DC лежит на нижнем уровне, ESP32-C3 и MOSFET стоят вертикально на противоположных стенках, VEML7700 — на съёмной верхней опоре.",
+      "title": "Компоновка электроники в боксе v0.7.5",
+      "description": "DC-DC лежит снизу, ESP32-C3 и MOSFET стоят вертикально на противоположных стенках, VEML7700 — на съёмной верхней опоре. Показана одна поднятая сервисная крышка.",
       "file": "mechanical/electronics_layout_A4_landscape.svg",
       "preview": "mechanical/electronics_layout_A4_landscape.png",
       "status": "current",
-      "version": "0.7.4"
-    },
-    {
-      "id": "126",
-      "category": "Android",
-      "title": "Иконка Android-приложения проекта",
-      "description": "Отдельный визуальный ресурс приложения; механические закладные к иконке не относятся.",
-      "file": "docs/android_app_icon_crucian.png",
-      "preview": "docs/android_app_icon_crucian.png",
-      "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "drawing",
+      "calloutMode": "overlay",
+      "callouts": [
+        {
+          "id": "#petg-5",
+          "label": "Единственная крышка",
+          "target": [
+            0.5,
+            0.18
+          ],
+          "labelPosition": [
+            0.04,
+            0.08
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "target": [
+            0.5,
+            0.55
+          ],
+          "labelPosition": [
+            0.04,
+            0.28
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "target": [
+            0.5,
+            0.35
+          ],
+          "labelPosition": [
+            0.04,
+            0.48
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "label": "Прокладка крышки",
+          "target": [
+            0.5,
+            0.26
+          ],
+          "labelPosition": [
+            0.04,
+            0.68
+          ]
+        },
+        {
+          "id": "001",
+          "label": "ESP32-C3",
+          "target": [
+            0.36,
+            0.55
+          ],
+          "labelPosition": [
+            0.76,
+            0.08
+          ]
+        },
+        {
+          "id": "005",
+          "label": "MOSFET",
+          "target": [
+            0.64,
+            0.55
+          ],
+          "labelPosition": [
+            0.76,
+            0.27
+          ]
+        },
+        {
+          "id": "006",
+          "label": "DC-DC",
+          "target": [
+            0.5,
+            0.68
+          ],
+          "labelPosition": [
+            0.76,
+            0.46
+          ]
+        },
+        {
+          "id": "002",
+          "label": "VEML7700",
+          "target": [
+            0.5,
+            0.39
+          ],
+          "labelPosition": [
+            0.76,
+            0.65
+          ]
+        }
+      ],
+      "annotatedPreview": "catalog/annotated/125_electronics_layout_A4_landscape_ids.png"
     }
   ],
   "models": [
     {
-      "id": "201",
-      "title": "Общий вид сборки v0.5 — интерактивно",
-      "description": "Интерактивная версия исходного общего вида v0.5. Картинка общего вида сохранена отдельной карточкой выше.",
-      "file": "mechanical/flagpole_finial_v0_5_assembly.glb",
-      "poster": "mechanical/preview_v05_assembly.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
-      "id": "202",
-      "title": "Раскладка деталей PETG v0.5 — интерактивно",
-      "description": "Интерактивная версия исходной раскладки PETG v0.5. Картинка раскладки сохранена отдельной карточкой выше.",
-      "file": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb",
-      "poster": "mechanical/preview_v05_print_PETG.png",
-      "status": "historical",
-      "version": "0.5"
-    },
-    {
       "id": "204",
-      "title": "Разнесённый вид PETG/TPU v0.7.4 — интерактивно",
-      "description": "Актуальная интерактивная разнесённая сборка PETG, TPU 95A и TPU 85A с новой направляющей проводов.",
+      "title": "Разнесённый вид PETG/TPU v0.7.5 — интерактивно",
+      "description": "Актуальная разнесённая сборка. Hotspots подписывают все 23 печатные детали теми же ID, что STL-реестр.",
       "file": "mechanical/flagpole_finial_v0_6_exploded.glb",
       "poster": "mechanical/preview_v06_exploded_PETG_TPU.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "model",
+      "calloutMode": "hotspots",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор, половина A",
+          "position": [
+            0.0,
+            0.035,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор, половина B",
+          "position": [
+            0.0,
+            -0.035,
+            0.03
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "label": "Воротник A",
+          "position": [
+            0.0,
+            0.025,
+            0.057
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "label": "Воротник B",
+          "position": [
+            0.0,
+            -0.025,
+            0.057
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Сервисная крышка",
+          "position": [
+            -0.041,
+            0.0,
+            0.081
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "label": "Световой тоннель",
+          "position": [
+            -0.05,
+            0.0,
+            0.097
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-7",
+          "label": "Прижим окна",
+          "position": [
+            -0.05,
+            0.0,
+            0.118
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "position": [
+            -0.042,
+            0.0,
+            -0.02
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "position": [
+            -0.051,
+            0.0,
+            0.038
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "position": [
+            -0.05,
+            0.0,
+            0.067
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu95-1",
+          "label": "Втулка спицы A",
+          "position": [
+            0.05,
+            0.022,
+            0.027
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-2",
+          "label": "Втулка спицы B",
+          "position": [
+            0.05,
+            -0.022,
+            0.027
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "label": "Кабельный ввод A",
+          "position": [
+            0.003,
+            0.018,
+            0.018
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "label": "Кабельный ввод B",
+          "position": [
+            0.003,
+            -0.018,
+            0.018
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-5",
+          "label": "Разгрузка M125 A",
+          "position": [
+            -0.016,
+            0.004,
+            0.047
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-6",
+          "label": "Разгрузка M125 B",
+          "position": [
+            -0.016,
+            -0.004,
+            0.047
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-7",
+          "label": "Втулка M125",
+          "position": [
+            0.0,
+            0.0,
+            0.05
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu95-8",
+          "label": "Вкладыш воротника A",
+          "position": [
+            0.0,
+            0.005,
+            0.054
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-9",
+          "label": "Вкладыш воротника B",
+          "position": [
+            0.0,
+            -0.005,
+            0.054
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "label": "Направляющая проводов",
+          "position": [
+            0.083,
+            -0.028,
+            0.004
+          ],
+          "normal": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "label": "Прокладка крышки",
+          "position": [
+            -0.041,
+            0.0,
+            0.069
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu85-2",
+          "label": "Прокладка окна",
+          "position": [
+            -0.05,
+            0.0,
+            0.062
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu85-3",
+          "label": "Прокладка кармана",
+          "position": [
+            -0.042,
+            0.0,
+            0.002
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
     },
     {
       "id": "205",
-      "title": "Общий вид сборки v0.7.4 — интерактивно",
-      "description": "Актуальная сборка с обновлённой герметизацией, укороченным тоннелем, карманом AHT20+BMP280 и наружным кабельным маршрутом.",
+      "title": "Общий вид сборки v0.7.5 — интерактивно",
+      "description": "Актуальная сборка. Hotspots охватывают все печатные детали; аппаратные референсы сохраняют собственные имена узлов.",
       "file": "mechanical/flagpole_finial_v0_6_assembly.glb",
       "poster": "mechanical/preview_v06_assembly.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "model",
+      "calloutMode": "hotspots",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A",
+          "position": [
+            0.0,
+            0.01,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B",
+          "position": [
+            0.0,
+            -0.01,
+            0.03
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "label": "Воротник A",
+          "position": [
+            0.0,
+            0.006,
+            0.057
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "label": "Воротник B",
+          "position": [
+            0.0,
+            -0.006,
+            0.057
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Сервисная крышка",
+          "position": [
+            -0.041,
+            0.0,
+            0.053
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "label": "Световой тоннель",
+          "position": [
+            -0.05,
+            0.0,
+            0.056
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-7",
+          "label": "Прижим окна",
+          "position": [
+            -0.05,
+            0.0,
+            0.064
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "label": "Карман датчика",
+          "position": [
+            -0.042,
+            0.0,
+            0.008
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "position": [
+            -0.047,
+            0.0,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "position": [
+            -0.05,
+            0.0,
+            0.042
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu95-1",
+          "label": "Втулка спицы A",
+          "position": [
+            0.04,
+            0.003,
+            0.027
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-2",
+          "label": "Втулка спицы B",
+          "position": [
+            0.04,
+            -0.003,
+            0.027
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "label": "Кабельный ввод A",
+          "position": [
+            -0.013,
+            0.003,
+            0.018
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "label": "Кабельный ввод B",
+          "position": [
+            -0.013,
+            -0.003,
+            0.018
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-5",
+          "label": "Разгрузка M125 A",
+          "position": [
+            -0.016,
+            0.003,
+            0.047
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-6",
+          "label": "Разгрузка M125 B",
+          "position": [
+            -0.016,
+            -0.003,
+            0.047
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-7",
+          "label": "Втулка M125",
+          "position": [
+            0.0,
+            0.0,
+            0.05
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu95-8",
+          "label": "Вкладыш воротника A",
+          "position": [
+            0.0,
+            0.003,
+            0.054
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-9",
+          "label": "Вкладыш воротника B",
+          "position": [
+            0.0,
+            -0.003,
+            0.054
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "label": "Направляющая проводов",
+          "position": [
+            0.065,
+            -0.016,
+            0.01
+          ],
+          "normal": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "label": "Прокладка крышки",
+          "position": [
+            -0.041,
+            0.0,
+            0.05
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu85-2",
+          "label": "Прокладка окна",
+          "position": [
+            -0.05,
+            0.0,
+            0.062
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu85-3",
+          "label": "Прокладка кармана",
+          "position": [
+            -0.042,
+            0.0,
+            0.016
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
     },
     {
       "id": "206",
-      "title": "Раскладка PETG v0.7.4 — интерактивно",
-      "description": "Актуальная отдельная очередь жёстких деталей из оранжевого PETG.",
+      "title": "Раскладка PETG v0.7.5 — интерактивно",
+      "description": "Актуальная отдельная очередь жёстких деталей без выносок.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
       "poster": "mechanical/preview_v06_print_PETG.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Интерактивные раскладки для печати намеренно не содержат hotspots: подписи мешают проверять ориентацию и взаимные зазоры."
     },
     {
       "id": "207",
-      "title": "Раскладка TPU 95A v0.7.4 — интерактивно",
-      "description": "Актуальная очередь втулок, разгрузок и направляющей #tpu95-10.",
+      "title": "Раскладка TPU 95A v0.7.5 — интерактивно",
+      "description": "Актуальная очередь втулок, разгрузок и направляющей без выносок.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU95.glb",
       "poster": "mechanical/preview_v06_print_TPU95.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Интерактивные раскладки для печати намеренно не содержат hotspots: подписи мешают проверять ориентацию и взаимные зазоры."
     },
     {
       "id": "208",
-      "title": "Раскладка TPU 85A v0.7.4 — интерактивно",
-      "description": "Актуальная очередь мягких статических уплотнений.",
+      "title": "Раскладка TPU 85A v0.7.5 — интерактивно",
+      "description": "Актуальная очередь мягких статических уплотнений без выносок.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU85.glb",
       "poster": "mechanical/preview_v06_print_TPU85.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Интерактивные раскладки для печати намеренно не содержат hotspots: подписи мешают проверять ориентацию и взаимные зазоры."
     },
     {
       "id": "209",
-      "title": "Маршрут двух проводов питания флага v0.7.4 — интерактивно",
-      "description": "Фокусная модель: два провода ниже гайки, PETG-борта, #tpu95-10 у флага и ввод #tpu95-3/#tpu95-4 у электронного бокса.",
+      "title": "Маршрут двух проводов питания флага v0.7.5 — интерактивно",
+      "description": "Фокусная модель маршрута: корпус, единственный ввод, направляющая, провода, разъём и компоненты электронного отсека.",
       "file": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
       "poster": "mechanical/preview_v06_flag_power_route.png",
       "status": "current",
-      "version": "0.7.4"
-    },
-    {
-      "id": "203",
-      "title": "Раскладка TPU v0.5 — интерактивно, историческая",
-      "description": "Историческая общая TPU-раскладка до разделения TPU 95A и TPU 85A. Для печати использовать модели 206 и 207.",
-      "file": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
-      "poster": "mechanical/preview_v05_print_TPU.png",
-      "status": "historical",
-      "version": "0.5"
+      "version": "0.7.5",
+      "kind": "model",
+      "calloutMode": "hotspots",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A",
+          "position": [
+            0.0,
+            0.01,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B",
+          "position": [
+            0.0,
+            -0.01,
+            0.03
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Сервисная крышка",
+          "position": [
+            -0.041,
+            0.0,
+            0.053
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "position": [
+            -0.047,
+            0.0,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "label": "Ввод A",
+          "position": [
+            -0.013,
+            0.003,
+            0.018
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "label": "Ввод B",
+          "position": [
+            -0.013,
+            -0.003,
+            0.018
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "label": "Направляющая 35°",
+          "position": [
+            0.065,
+            -0.016,
+            0.01
+          ],
+          "normal": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "id": "022",
+          "label": "Два силовых провода",
+          "position": [
+            0.035,
+            -0.02,
+            0.008
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "010",
+          "label": "2-pin разъём",
+          "position": [
+            0.084,
+            -0.016,
+            -0.004
+          ],
+          "normal": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "id": "001",
+          "label": "ESP32-C3",
+          "position": [
+            -0.029,
+            0.01,
+            0.031
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "005",
+          "label": "MOSFET",
+          "position": [
+            -0.049,
+            -0.01,
+            0.035
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "006",
+          "label": "DC-DC",
+          "position": [
+            -0.052,
+            0.0,
+            0.024
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        }
+      ]
     },
     {
       "id": "210",
-      "category": "Электроника и механика",
-      "title": "Компоновка электроники v0.7.4 — интерактивно",
-      "description": "Интерактивный вид съёмного каркаса, вертикальных ESP32/MOSFET, нижнего DC-DC, опоры VEML7700 и двух M3-закладных.",
+      "title": "Компоновка электроники v0.7.5 — интерактивно",
+      "description": "Исправленный сервисный вид: одна поднятая крышка, один каркас, одна опора VEML7700 и две разнесённые половины корпуса.",
       "file": "mechanical/flagpole_finial_v0_6_electronics_layout.glb",
       "poster": "mechanical/preview_v06_electronics_layout.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "model",
+      "calloutMode": "hotspots",
+      "callouts": [
+        {
+          "id": "#petg-1",
+          "label": "Ротор A, отведён",
+          "position": [
+            0.0,
+            0.04,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "label": "Ротор B, отведён",
+          "position": [
+            0.0,
+            -0.04,
+            0.03
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "label": "Одна поднятая крышка",
+          "position": [
+            -0.041,
+            0.0,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "label": "Каркас электроники",
+          "position": [
+            -0.047,
+            0.0,
+            0.03
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "label": "Опора VEML7700",
+          "position": [
+            -0.05,
+            0.0,
+            0.042
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "label": "Прокладка крышки",
+          "position": [
+            -0.041,
+            0.0,
+            0.05
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "001",
+          "label": "ESP32-C3",
+          "position": [
+            -0.029,
+            0.01,
+            0.031
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "005",
+          "label": "MOSFET",
+          "position": [
+            -0.049,
+            -0.01,
+            0.035
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "id": "006",
+          "label": "DC-DC",
+          "position": [
+            -0.052,
+            0.0,
+            0.024
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "id": "002",
+          "label": "VEML7700",
+          "position": [
+            -0.05,
+            0.0,
+            0.045
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        }
+      ]
     }
   ],
   "printSessions": [
     {
       "id": "301",
-      "title": "Очередь печати PETG",
-      "description": "Отдельный запуск принтера для жёстких деталей из оранжевого PETG. Это основная чистовая очередь на версии v0.7.4. Белые детали на рендерах специально показаны сероватыми, чтобы не сливаться с фоном.",
+      "title": "Очередь печати PETG v0.7.5",
+      "description": "Отдельный запуск принтера для жёстких деталей из оранжевого PETG. Выноски не наносятся по правилу печатных раскладок.",
       "file": "mechanical/preview_v06_print_PETG.png",
       "preview": "mechanical/preview_v06_print_PETG.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Печатная раскладка."
     },
     {
       "id": "302",
-      "title": "Очередь печати TPU 95A",
-      "description": "Отдельный запуск принтера для функциональных мягких деталей TPU 95A: втулок, разгрузок и демпферных элементов.",
+      "title": "Очередь печати TPU 95A v0.7.5",
+      "description": "Отдельный запуск для функциональных мягких деталей TPU 95A. Выноски не наносятся.",
       "file": "mechanical/preview_v06_print_TPU95.png",
       "preview": "mechanical/preview_v06_print_TPU95.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Печатная раскладка."
     },
     {
       "id": "303",
-      "title": "Очередь печати TPU 85A",
-      "description": "Отдельный запуск принтера для мягких уплотнений TPU 85A. Если нужны сервисные подложки именно для резиновых деталей, они допустимы как часть этой очереди.",
+      "title": "Очередь печати TPU 85A v0.7.5",
+      "description": "Отдельный запуск для мягких уплотнений TPU 85A. Выноски не наносятся.",
       "file": "mechanical/preview_v06_print_TPU85.png",
       "preview": "mechanical/preview_v06_print_TPU85.png",
       "status": "current",
-      "version": "0.7.4"
+      "version": "0.7.5",
+      "kind": "print-layout",
+      "calloutMode": "exempt",
+      "calloutExemptReason": "Печатная раскладка."
     }
   ]
 }

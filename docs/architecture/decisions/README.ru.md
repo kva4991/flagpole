@@ -29,3 +29,4 @@
 | [0023](0023-adhesive-membrane-20mm-seven-holes.ru.md) | Принято | Мембрана Ø20 и семь отверстий Ø2 |
 | [0024](0024-removable-electronics-carrier.ru.md) | Принято | Съёмный двухуровневый каркас электроники |
 | [0025](0025-fully-parametric-current-mechanics.ru.md) | Принято | Полностью параметрическая current-механика |
+| [0026](0026-current-only-catalog-and-part-id-callouts.ru.md) | Принято | Только актуальные карточки и обязательные ID-выноски вне раскладок печати |

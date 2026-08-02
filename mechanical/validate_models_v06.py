@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate printable STL meshes generated for the current v0.7.4 handoff."""
+"""Validate printable STL meshes generated for the current v0.7.5 handoff."""
 from pathlib import Path
 import json
 import trimesh
@@ -23,7 +23,7 @@ for folder in FOLDERS:
         })
 summary={
     'schemaVersion':1,
-    'version':'0.7.4 cumulative mechanical update',
+    'version':'0.7.5 cumulative mechanical update',
     'checkedFiles':len(records),
     'allWatertight':all(r['watertight'] for r in records),
     'allWindingConsistent':all(r['winding_consistent'] for r in records),
@@ -32,7 +32,7 @@ summary={
 }
 (ROOT/'VALIDATION_REPORT_V06.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 lines=[
-    '# Проверка STL актуальной механики v0.7.4',
+    '# Проверка STL актуальной механики v0.7.5',
     '',
     f'- Проверено STL: **{summary["checkedFiles"]}**',
     f'- Все замкнуты: **{"да" if summary["allWatertight"] else "нет"}**',

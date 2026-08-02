@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the v0.7.4 part-ID table and twin-wire route diagrams.
+"""Generate the v0.7.5 part-ID table and twin-wire route diagrams.
 
 Sources of truth:
 - mechanical/part_id_registry_v06.json

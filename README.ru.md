@@ -1,8 +1,8 @@
-# Вращающееся навершие флагштока Crucian v0.7.4
+# Вращающееся навершие флагштока Crucian v0.7.5
 
 Crucian — экспериментальный проект вращающегося навершия для небольшого флага с подсвеченным контуром рыбы. Репозиторий объединяет печатную механику PETG/TPU, подсветку 12 В, прошивку ESP32-C3, BLE-управление, Android-приложение и автономный каталог компонентов, чертежей и 3D-моделей.
 
-Актуальная кумулятивная версия — **v0.7.4**. Текущая механика снова полностью строится параметрическим генератором, без использования переходных сеток v0.7.3 как источника геометрии.
+Актуальная кумулятивная версия — **v0.7.5**. Текущая механика снова полностью строится параметрическим генератором, без использования переходных сеток v0.7.3 как источника геометрии.
 
 Основные изменения:
 
@@ -21,7 +21,7 @@ Crucian — экспериментальный проект вращающего
 
 1. Прочитать [быстрый вход для нового чата](docs/agent-fast-start.ru.md).
 2. Проверить [текущий статус реализации](docs/current-implementation-status.ru.md).
-3. Открыть [отчёт v0.7.4](UPDATE_REPORT_V074_RU.md) и [аудит чертежей](docs/DRAWING_AUDIT_V074_RU.md).
+3. Открыть [отчёт v0.7.5](UPDATE_REPORT_V075_RU.md) и [аудит чертежей](docs/DRAWING_AUDIT_V074_RU.md).
 4. Перед изменением архитектуры открыть [индекс ADR](docs/architecture/decisions/README.ru.md).
 5. Перед печатью заполнить [таблицу обязательных измерений](MEASUREMENTS_REQUIRED_RU.md).
 6. Компоненты, изображения и вращаемые 3D-модели смотреть в [локальном каталоге](catalog/catalog.html).
@@ -36,7 +36,7 @@ Crucian — экспериментальный проект вращающего
 - `mechanical/fastener_captive_nut_map_A4_landscape.svg` — карта всех закладных;
 - `mechanical/electronics_layout_A4_landscape.svg` — компоновка электроники.
 
-Имена файлов с `v0_6` сохранены для совместимости ссылок, но их содержимое соответствует v0.7.4.
+Имена файлов с `v0_6` сохранены для совместимости ссылок, но их содержимое соответствует v0.7.5.
 
 ## Локальный каталог компонентов, чертежей и 3D
 
@@ -57,9 +57,9 @@ python mechanical/render_previews_v06.py
 python mechanical/render_part_id_drawings_v06.py
 python mechanical/render_flag_power_route_v06.py
 python mechanical/generate_reference_diagrams_v06.py
-python mechanical/generate_detail_diagrams_v074.py
-python mechanical/generate_hermeticity_diagram_v074.py
-python electronics/generate_electronics_diagrams_v074.py
+python mechanical/generate_detail_diagrams_v075.py
+python mechanical/generate_hermeticity_diagram_v075.py
+python electronics/generate_electronics_diagrams_v075.py
 npm.cmd run catalog:generate
 npm.cmd run quality:gate
 ```

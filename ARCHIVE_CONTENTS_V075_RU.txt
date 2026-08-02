@@ -1,0 +1,50 @@
+КУМУЛЯТИВНЫЙ ПАКЕТ ОБНОВЛЕНИЯ FLAGPOLE v0.7.5
+База: main / 6bff2d717cb6bb6612e14cd612d2b961627c0617
+Дата: 2026-08-02
+
+В корне:
+- README_FIRST_RU.md — порядок применения
+- UPDATE_REPORT_V075_RU.md — подробные причины и последствия
+- PACKAGE_VALIDATION_V075_RU.txt — фактически выполненные проверки и ограничения
+- APPLY_UPDATE_V075.ps1 — рекомендуемый Windows-запуск
+- APPLY_UPDATE_V075.cmd — CMD-обёртка
+- MANIFEST_SHA256.txt — контрольные суммы пакета
+
+Инструменты:
+- tools/apply_update_v075.py — идемпотентное применение, регенерация, проверки и создание полного ZIP
+
+Полные замены в payload:
+- VERSION.txt
+- package.json
+- .github/workflows/validate.yml
+- catalog/drawings.json
+- catalog/README_RU.md
+- scripts/generateComponentCatalog.mjs
+- scripts/runPython.mjs
+- mechanical/render_catalog_part_callouts_v075.py
+- mechanical/validate_catalog_model_semantics_v075.py
+- tests/catalog.test.mjs
+- tests/mechanicalArtifacts.test.mjs
+- docs/CATALOG_MEDIA_POLICY_RU.md
+- docs/architecture/decisions/0026-current-only-catalog-and-part-id-callouts.ru.md
+- UPDATE_REPORT_V075_RU.md
+- PACKAGE_VALIDATION_V075_RU.txt
+- ARCHIVE_CONTENTS_V075_RU.txt
+
+Изменения, выполняемые применителем в существующем checkout:
+- mechanical/generate_models_v06.py — v0.7.5 и одна крышка в electronics layout
+- создаются generate_detail_diagrams_v075.py, generate_hermeticity_diagram_v075.py,
+  electronics/generate_electronics_diagrams_v075.py из текущих параметрических источников
+- render_part_id_drawings_v06.py становится совместимым входом нового слоя выносок
+- обновляются текущие README/status/AGENTS/реестр деталей/ADR index/changelog
+- удаляются старые подписанные PNG именно печатных раскладок
+- перегенерируются GLB, SVG, PNG, диагностические JSON, HTML и CHECKSUMS_SHA256.txt
+
+Не включены повторно:
+- неизменённые бинарные STL/GLB/PNG исходного репозитория;
+- .git и история коммитов;
+- caches, node_modules, build, .pio.
+
+После обычного запуска создаётся полный архив checkout:
+- flagpole_v0.7.5_cumulative_full.zip
+- flagpole_v0.7.5_cumulative_full.zip.sha256

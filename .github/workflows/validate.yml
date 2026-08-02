@@ -21,6 +21,15 @@ jobs:
         with:
           node-version: '22'
 
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: mechanical/requirements.txt
+
+      - name: Install catalogue drawing dependencies
+        run: python -m pip install --requirement mechanical/requirements.txt
+
       - name: Run repository quality gate
         run: npm run quality:gate
 
@@ -31,11 +40,12 @@ jobs:
           mechanical/render_previews_v06.py
           mechanical/generate_reference_diagrams_v06.py
           mechanical/render_flag_power_route_v06.py
-          mechanical/render_part_id_drawings_v06.py
-          mechanical/generate_detail_diagrams_v074.py
-          mechanical/generate_hermeticity_diagram_v074.py
+          mechanical/render_catalog_part_callouts_v075.py
+          mechanical/generate_detail_diagrams_v075.py
+          mechanical/generate_hermeticity_diagram_v075.py
           mechanical/validate_models_v06.py
-          electronics/generate_electronics_diagrams_v074.py
+          mechanical/validate_catalog_model_semantics_v075.py
+          electronics/generate_electronics_diagrams_v075.py
 
   mechanical:
     runs-on: ubuntu-latest
@@ -55,23 +65,26 @@ jobs:
       - name: Install mechanical dependencies
         run: python -m pip install --requirement mechanical/requirements.txt
 
-      - name: Regenerate v0.7.4 mechanics and diagrams
+      - name: Regenerate v0.7.5 mechanics and diagrams
         run: |
           python mechanical/generate_models_v06.py
           python mechanical/validate_models_v06.py
+          python mechanical/validate_catalog_model_semantics_v075.py
           python mechanical/render_previews_v06.py
-          python mechanical/render_part_id_drawings_v06.py
           python mechanical/render_flag_power_route_v06.py
           python mechanical/generate_reference_diagrams_v06.py
-          python mechanical/generate_detail_diagrams_v074.py
-          python mechanical/generate_hermeticity_diagram_v074.py
-          python electronics/generate_electronics_diagrams_v074.py
+          python mechanical/generate_detail_diagrams_v075.py
+          python mechanical/generate_hermeticity_diagram_v075.py
+          python electronics/generate_electronics_diagrams_v075.py
+          python mechanical/render_catalog_part_callouts_v075.py
 
       - name: Verify generated catalog after drawing regeneration
         run: npm run catalog:generate && npm run catalog:check
 
-      - name: Validate all generated STL files
-        run: python mechanical/validate_models_v06.py
+      - name: Validate all generated STL files and model semantics
+        run: |
+          python mechanical/validate_models_v06.py
+          python mechanical/validate_catalog_model_semantics_v075.py
 
   android:
     runs-on: ubuntu-latest

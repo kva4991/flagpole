@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210">
 <style>.title{font:700 7px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.sub{font:3.3px 'DejaVu Sans',Arial,sans-serif;fill:#52616a}.th{font:700 3.6px 'DejaVu Sans',Arial,sans-serif;fill:white}.td{font:3.1px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.note{font:3px 'DejaVu Sans',Arial,sans-serif;fill:#172126}</style>
 <rect width="297" height="210" fill="#f5f6f7"/>
-<text x="148.5" y="10" text-anchor="middle" class="title">Crucian v0.7.4 — карта клемм, GPIO и разъёмов</text>
+<text x="148.5" y="10" text-anchor="middle" class="title">Crucian v0.7.5 — карта клемм, GPIO и разъёмов</text>
 <text x="148.5" y="16" text-anchor="middle" class="sub">карта функциональная: физические цвета M125, J1 и маркировки китайских модулей подтверждаются прозвонкой</text>
 <rect x="10" y="24" width="277" height="9" rx="2" fill="#234f59"/>
 <text x="14" y="30" class="th">Узел</text><text x="67" y="30" class="th">Контакт</text><text x="116" y="30" class="th">Назначение</text>
@@ -113,7 +113,7 @@
 <text x="15" y="172.5" class="note">Монтажная проверка: сначала прозвонить M125 и J1; затем проверить DC-DC без ESP; после этого подключать датчики и MOSFET.</text>
 <text x="15" y="177.0" class="note">Герметичный J1 находится снаружи у флага. От него два провода идут по открытой обслуживаемой дорожке ниже спицы.</text>
 <text x="15" y="181.5" class="note">Единственный ввод в сухой электронный бокс — TPU95-манжета #tpu95-3/#tpu95-4; внутри оставить сервисную петлю 30–40 мм.</text>
-<text x="15" y="186.0" class="note">Значения 3,3 В, GPIO3/4/5 и адреса датчиков являются текущей схемой прошивки v0.7.4.</text>
+<text x="15" y="186.0" class="note">Значения 3,3 В, GPIO3/4/5 и адреса датчиков являются текущей схемой прошивки v0.7.5.</text>
 <text x="15" y="190.5" class="note">Полярность конкретного MOSFET-модуля и возможность прямой пайки к Gate подтвердить по реальной плате.</text>
 <text x="15" y="195.0" class="note">Механическое крепление модулей и все закладные M3/M4 показаны на чертежах 124 и 125.</text>
 </svg>

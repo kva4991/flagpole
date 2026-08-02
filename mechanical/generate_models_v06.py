@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the current v0.7.4 flagpole-finial PETG + TPU95A + TPU85A models.
+"""Generate the current v0.7.5 flagpole-finial PETG + TPU95A + TPU85A models.
 
 Design status
 -------------
@@ -33,7 +33,7 @@ import numpy as np
 from skimage import measure
 import trimesh
 
-CURRENT_VERSION = "0.7.4"
+CURRENT_VERSION = "0.7.5"
 ROOT = Path(__file__).resolve().parent
 PETG_DIR = ROOT / "stl_petg_v06"
 TPU95_DIR = ROOT / "stl_tpu95_v06"
@@ -120,7 +120,7 @@ class Params:
     flag_cable_center_z: float = 18.0
     flag_cable_x_min: float = -18.0
     flag_cable_x_max: float = -8.0
-    external_cable_groove_radius: float = 0.0  # historical name; v0.7.4 uses a raised rail
+    external_cable_groove_radius: float = 0.0  # historical name; v0.7.5 uses a raised rail
     external_cable_route_points: Tuple[Tuple[float, float, float], ...] = (
         (58.0, -16.2, 15.0),
         (49.0, -16.5, 12.2),
@@ -1498,7 +1498,7 @@ def create_references()->Dict[str,trimesh.Trimesh]:
     stem.apply_translation([0,0,body_top+P.m125_stem_length/2])
     refs['REF_M125_rotor_stem']=colored_copy(stem,[95,95,102,255])
 
-    # Electronics placeholders match the v0.7.4 carrier arrangement.
+    # Electronics placeholders match the v0.7.5 carrier arrangement.
     esp=trimesh.creation.box(extents=P.esp_size_vertical); esp.apply_translation(P.esp_center_vertical)
     refs['REF_ESP32_C3_SuperMini_vertical']=colored_copy(esp,[180,45,45,255])
     buck=trimesh.creation.box(extents=P.buck_size); buck.apply_translation(P.buck_center)
@@ -1714,13 +1714,14 @@ def main():
     route_path.write_bytes(to_glb_scene(route_scene,f'Flag power route v{CURRENT_VERSION}').export(file_type='glb'))
 
     electronics_names={
-        'PETG_electronics_carrier','PETG_VEML7700_cradle','PETG_service_lid',
+        'PETG_electronics_carrier','PETG_VEML7700_cradle',
         'REF_ESP32_C3_SuperMini_vertical','REF_buck_12_to_5_flat','REF_PC817_LR7843_vertical',
         'REF_VEML7700_board_provisional','TPU85_lid_gasket'}
     electronics_scene={name:mesh for name,mesh in assembly.items() if name in electronics_names or name.startswith('REF_M3_cradle_')}
     electronics_scene['PETG_rotor_half_A_retracted']=translate(assembly['PETG_rotor_half_A'],[0,30,0])
     electronics_scene['PETG_rotor_half_B_retracted']=translate(assembly['PETG_rotor_half_B'],[0,-30,0])
-    electronics_scene['PETG_service_lid_raised']=translate(assembly['PETG_service_lid'],[0,0,22])
+    # The service view contains one logical lid. It is shown raised, not duplicated.
+    electronics_scene['PETG_service_lid']=translate(assembly['PETG_service_lid'],[0,0,22])
     electronics_path=ROOT/'flagpole_finial_v0_6_electronics_layout.glb'
     electronics_path.write_bytes(to_glb_scene(electronics_scene,f'Electronics layout v{CURRENT_VERSION}').export(file_type='glb'))
 

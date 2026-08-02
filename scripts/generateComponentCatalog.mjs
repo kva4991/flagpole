@@ -6,6 +6,8 @@ const root = process.cwd();
 const componentPath = path.join(root, 'catalog', 'components.json');
 const drawingsPath = path.join(root, 'catalog', 'drawings.json');
 const identityPath = path.join(root, 'project_identity.json');
+const versionPath = path.join(root, 'VERSION.txt');
+const partRegistryPath = path.join(root, 'mechanical', 'part_id_registry_v06.json');
 const imageDirectory = path.join(root, 'catalog', 'images');
 const htmlPath = path.join(root, 'catalog', 'catalog.html');
 
@@ -16,15 +18,73 @@ const escape = value => String(value)
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;');
 
+const finiteArray = (value, length) => Array.isArray(value)
+  && value.length === length
+  && value.every(number => Number.isFinite(number));
+
 function validateAsset(value, place, failures) {
-  if (!value?.trim() || path.isAbsolute(value) || value.split(/[\\/]/).includes('..')) {
+  if (typeof value !== 'string' || !value.trim() || path.isAbsolute(value) || value.split(/[\\/]/).includes('..')) {
     failures.push(`${place} должен быть безопасным путём относительно корня проекта`);
   } else if (!fs.existsSync(path.join(root, value))) {
     failures.push(`${place} не найден: ${value}`);
   }
 }
 
-function validate(source, media, identity) {
+function validateCalloutId(id, allowedIds, place, failures) {
+  if (typeof id !== 'string' || !allowedIds.has(id)) {
+    failures.push(`${place}.id неизвестен: ${String(id)}`);
+  }
+}
+
+function validateDrawingCallouts(item, place, allowedIds, failures) {
+  if (item.kind === 'print-layout') {
+    if (item.calloutMode !== 'exempt') failures.push(`${place}.calloutMode для раскладки должен быть exempt`);
+    if (!item.calloutExemptReason?.trim()) failures.push(`${place}.calloutExemptReason обязателен`);
+    if ((item.callouts ?? []).length) failures.push(`${place}: раскладка печати не должна содержать callouts`);
+    if (item.annotatedPreview) failures.push(`${place}: раскладка печати не должна иметь annotatedPreview`);
+    return;
+  }
+  if (item.kind !== 'drawing') failures.push(`${place}.kind должен быть drawing или print-layout`);
+  if (item.calloutMode === 'embedded') {
+    if (!Array.isArray(item.partIds) || item.partIds.length === 0) failures.push(`${place}.partIds должен быть непустым массивом`);
+    if ((item.callouts ?? []).length) failures.push(`${place}: embedded-вид не должен дублировать callouts`);
+    if (item.annotatedPreview) failures.push(`${place}: embedded-вид не должен иметь annotatedPreview`);
+    for (const [index, id] of (item.partIds ?? []).entries()) validateCalloutId(id, allowedIds, `${place}.partIds[${index}]`, failures);
+    return;
+  }
+  if (item.calloutMode !== 'overlay') failures.push(`${place}.calloutMode должен быть overlay или embedded`);
+  if (item.partIds) failures.push(`${place}: overlay-вид не должен иметь partIds`);
+  if (!Array.isArray(item.callouts) || item.callouts.length === 0) failures.push(`${place}.callouts должен быть непустым массивом`);
+  validateAsset(item.annotatedPreview, `${place}.annotatedPreview`, failures);
+  for (const [index, callout] of (item.callouts ?? []).entries()) {
+    const calloutPlace = `${place}.callouts[${index}]`;
+    validateCalloutId(callout.id, allowedIds, calloutPlace, failures);
+    if (!callout.label?.trim()) failures.push(`${calloutPlace}.label обязателен`);
+    if (!finiteArray(callout.target, 2) || callout.target.some(value => value < 0 || value > 1)) failures.push(`${calloutPlace}.target должен быть [x,y] в диапазоне 0…1`);
+    if (!finiteArray(callout.labelPosition, 2) || callout.labelPosition.some(value => value < 0 || value > 1)) failures.push(`${calloutPlace}.labelPosition должен быть [x,y] в диапазоне 0…1`);
+  }
+}
+
+function validateModelCallouts(item, place, allowedIds, failures) {
+  if (item.kind === 'print-layout') {
+    if (item.calloutMode !== 'exempt') failures.push(`${place}.calloutMode для раскладки должен быть exempt`);
+    if (!item.calloutExemptReason?.trim()) failures.push(`${place}.calloutExemptReason обязателен`);
+    if ((item.callouts ?? []).length) failures.push(`${place}: раскладка печати не должна содержать hotspots`);
+    return;
+  }
+  if (item.kind !== 'model') failures.push(`${place}.kind должен быть model или print-layout`);
+  if (item.calloutMode !== 'hotspots') failures.push(`${place}.calloutMode должен быть hotspots`);
+  if (!Array.isArray(item.callouts) || item.callouts.length === 0) failures.push(`${place}.callouts должен быть непустым массивом`);
+  for (const [index, callout] of (item.callouts ?? []).entries()) {
+    const calloutPlace = `${place}.callouts[${index}]`;
+    validateCalloutId(callout.id, allowedIds, calloutPlace, failures);
+    if (!callout.label?.trim()) failures.push(`${calloutPlace}.label обязателен`);
+    if (!finiteArray(callout.position, 3)) failures.push(`${calloutPlace}.position должен быть массивом из трёх конечных чисел в метрах`);
+    if (!finiteArray(callout.normal, 3) || callout.normal.every(value => value === 0)) failures.push(`${calloutPlace}.normal должен быть ненулевым массивом из трёх чисел`);
+  }
+}
+
+function validate(source, media, identity, registry, currentVersion) {
   const failures = [];
   const ids = new Set();
   const categoryIds = new Set();
@@ -33,6 +93,7 @@ function validate(source, media, identity) {
   for (const key of ['projectDisplayName', 'bluetoothDeviceName']) {
     if (typeof identity[key] !== 'string' || !identity[key].trim()) failures.push(`${key} должен быть непустой строкой`);
   }
+  if (!/^\d+\.\d+\.\d+$/.test(currentVersion)) failures.push('VERSION.txt должен содержать версию вида X.Y.Z');
 
   if (source.schemaVersion !== 2) failures.push('schemaVersion components.json должен быть равен 2');
   if (!Array.isArray(source.categories) || source.categories.length === 0) failures.push('categories должен быть непустым массивом');
@@ -68,14 +129,24 @@ function validate(source, media, identity) {
       }
     }
   }
-
   const componentIds = [...ids].sort();
   componentIds.forEach((id, index) => {
     const expected = String(index + 1).padStart(3, '0');
     if (id !== expected) failures.push(`ID компонентов должны идти без пропусков: ожидался ${expected}, найден ${id}`);
   });
 
-  if (media.schemaVersion !== 2) failures.push('schemaVersion drawings.json должен быть равен 2');
+  const registryItems = Object.values(registry.groups ?? {}).flat();
+  const registryIds = registryItems.map(item => item.id);
+  if (!registryIds.length) failures.push('Реестр печатных деталей пуст');
+  if (new Set(registryIds).size !== registryIds.length) failures.push('В реестре печатных деталей повторяются ID');
+  const allowedCalloutIds = new Set([...componentIds, ...registryIds]);
+
+  if (media.schemaVersion !== 3) failures.push('schemaVersion drawings.json должен быть равен 3');
+  if (media.catalogPolicy?.visibility !== 'current-only') failures.push('catalogPolicy.visibility должен быть current-only');
+  if (media.catalogPolicy?.currentVersion !== currentVersion) failures.push('catalogPolicy.currentVersion должен совпадать с VERSION.txt');
+  if (media.catalogPolicy?.partIdCallouts !== 'required-for-all-drawings-and-models-except-print-layouts') failures.push('catalogPolicy.partIdCallouts не закрепляет обязательное правило выносок');
+  if (media.catalogPolicy?.sourceDrawingsRemainClean !== true) failures.push('catalogPolicy.sourceDrawingsRemainClean должен быть true');
+
   for (const group of ['drawings', 'models', 'printSessions']) {
     if (!Array.isArray(media[group])) failures.push(`${group} должен быть массивом`);
     for (const [index, item] of (media[group] ?? []).entries()) {
@@ -84,11 +155,17 @@ function validate(source, media, identity) {
       if (ids.has(item.id)) failures.push(`повтор ID: ${item.id}`);
       ids.add(item.id);
       if (!item.title?.trim() || !item.description?.trim()) failures.push(`${place} требует title и description`);
-      if (!['current', 'historical', 'reference'].includes(item.status)) failures.push(`${place}.status должен быть current, historical или reference`);
-      if (!item.version?.trim()) failures.push(`${place}.version обязателен`);
+      if (item.status !== 'current') failures.push(`${place}.status должен быть только current; история не публикуется в рабочем каталоге`);
+      if (item.version !== currentVersion) failures.push(`${place}.version должен быть ${currentVersion}`);
       validateAsset(item.file, `${place}.file`, failures);
       const previewField = group === 'models' ? 'poster' : 'preview';
       validateAsset(item[previewField], `${place}.${previewField}`, failures);
+      if (group === 'drawings') validateDrawingCallouts(item, place, allowedCalloutIds, failures);
+      else if (group === 'models') validateModelCallouts(item, place, allowedCalloutIds, failures);
+      else {
+        if (item.kind !== 'print-layout' || item.calloutMode !== 'exempt' || !item.calloutExemptReason?.trim()) failures.push(`${place} должен быть оформлен как освобождённая раскладка печати`);
+        if ((item.callouts ?? []).length || item.partIds || item.annotatedPreview) failures.push(`${place}: очередь печати не должна содержать выноски`);
+      }
     }
   }
   return failures;
@@ -97,7 +174,9 @@ function validate(source, media, identity) {
 const source = JSON.parse(fs.readFileSync(componentPath, 'utf8'));
 const media = JSON.parse(fs.readFileSync(drawingsPath, 'utf8'));
 const identity = JSON.parse(fs.readFileSync(identityPath, 'utf8'));
-const failures = validate(source, media, identity);
+const registry = JSON.parse(fs.readFileSync(partRegistryPath, 'utf8'));
+const currentVersion = fs.readFileSync(versionPath, 'utf8').trim();
+const failures = validate(source, media, identity, registry, currentVersion);
 if (failures.length) {
   console.error(`Ошибки каталога:\n- ${failures.join('\n- ')}`);
   process.exit(1);
@@ -110,6 +189,10 @@ const incompleteCount = components.filter(item => item.imageStatus === 'placehol
 const repoUrl = file => `../${file.split(path.sep).join('/')}`;
 const fileSize = file => `${(fs.statSync(path.join(root, file)).size / 1024 / 1024).toFixed(1).replace('.', ',')} МБ`;
 const projectName = identity.projectDisplayName;
+const componentNames = new Map(source.components.map(item => [item.id, item.name]));
+const partItems = Object.values(registry.groups).flat();
+const partNames = new Map(partItems.map(item => [item.id, item.label]));
+const nameForId = id => partNames.get(id) ?? componentNames.get(id) ?? id;
 
 function renderLinks(links) {
   if (!links.length) return '<span class="empty">Ссылка пока не подтверждена</span>';
@@ -129,16 +212,32 @@ function renderBadge(status) {
         : '<span class="badge warning">нужно фото</span>';
 }
 
-function renderMediaStatus(item) {
-  const label = item.status === 'current' ? `актуально · v${escape(item.version)}`
-    : item.status === 'historical' ? `история · v${escape(item.version)}`
-      : `справочно · ${escape(item.version)}`;
-  return `<span class="media-status ${escape(item.status)}">${label}</span>`;
-}
-
 function renderImages(item) {
   const images = [{ file: item.image, label: item.name }, ...(item.additionalImages ?? [])];
   return `<div class="gallery">${images.map(image => `<figure><img class="thumb" src="images/${escape(image.file)}" alt="${escape(image.label)}" loading="lazy"><figcaption>${escape(image.label)}</figcaption></figure>`).join('')}</div>${renderBadge(item.imageStatus)}`;
+}
+
+function visibleIds(item) {
+  if (item.calloutMode === 'embedded') return item.partIds;
+  return (item.callouts ?? []).map(callout => callout.id);
+}
+
+function renderCalloutLegend(item) {
+  if (item.kind === 'print-layout') return `<p class="callout-exemption"><strong>Без выносок:</strong> ${escape(item.calloutExemptReason)}</p>`;
+  const labels = item.calloutMode === 'embedded'
+    ? item.partIds.map(id => ({ id, label: nameForId(id) }))
+    : item.callouts.map(callout => ({ id: callout.id, label: callout.label }));
+  return `<details class="callout-legend"><summary>Показанные ID: ${labels.length}</summary><ul>${labels.map(({ id, label }) => `<li><code>${escape(id)}</code> — ${escape(label)}</li>`).join('')}</ul></details>`;
+}
+
+function renderModelHotspots(item) {
+  if (item.kind === 'print-layout') return '';
+  return item.callouts.map((callout, index) => {
+    const slot = `hotspot-${item.id}-${index}-${callout.id.replace(/[^a-zA-Z0-9_-]/g, '')}`;
+    const position = callout.position.map(value => `${value}m`).join(' ');
+    const normal = callout.normal.join(' ');
+    return `<button class="model-hotspot" type="button" slot="${escape(slot)}" data-position="${escape(position)}" data-normal="${escape(normal)}" aria-label="${escape(`${callout.id}: ${callout.label}`)}"><span class="hotspot-id">${escape(callout.id)}</span><span class="hotspot-label">${escape(callout.label)}</span></button>`;
+  }).join('');
 }
 
 let currentCategory = '';
@@ -158,56 +257,61 @@ const rows = components.map(item => {
   </tr>`;
 }).join('');
 
-const drawings = media.drawings.map(item => `<article class="media-card ${escape(item.status)}">
-  <a href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener"><img src="${escape(repoUrl(item.preview))}" alt="${escape(item.title)}" loading="lazy"></a>
-  <div><span class="eyebrow">${escape(item.category)} · ${escape(item.id)}</span>${renderMediaStatus(item)}<h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><a class="action" href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener">Открыть изображение</a></div>
-</article>`).join('');
+const drawings = media.drawings.map(item => {
+  const shownPreview = item.calloutMode === 'overlay' ? item.annotatedPreview : item.preview;
+  const mainAction = item.calloutMode === 'overlay' ? 'Открыть версию с выносками' : 'Открыть изображение';
+  return `<article class="media-card" data-kind="${escape(item.kind)}">
+  <a href="${escape(repoUrl(shownPreview))}" target="_blank" rel="noopener"><img src="${escape(repoUrl(shownPreview))}" alt="${escape(item.title)}" loading="lazy"></a>
+  <div><span class="eyebrow">${escape(item.category)} · ${escape(item.id)}</span><span class="media-status">актуально · v${escape(item.version)}</span><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p>
+  <div class="media-actions"><a class="action" href="${escape(repoUrl(shownPreview))}" target="_blank" rel="noopener">${mainAction}</a>${item.calloutMode === 'overlay' ? `<a class="secondary-action" href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener">Исходник без выносок</a>` : ''}</div>${renderCalloutLegend(item)}</div>
+</article>`;
+}).join('');
 
-const models = media.models.map(item => `<article class="model-card ${escape(item.status)}" data-title="${escape(item.title)}">
+const models = media.models.map(item => `<article class="model-card" data-title="${escape(item.title)}" data-kind="${escape(item.kind)}">
   <div class="viewer-shell">
-    <model-viewer data-model data-src="${escape(repoUrl(item.file))}" poster="${escape(repoUrl(item.poster))}" camera-controls auto-rotate shadow-intensity="1" alt="${escape(item.title)}"></model-viewer>
+    <model-viewer data-model data-src="${escape(repoUrl(item.file))}" poster="${escape(repoUrl(item.poster))}" camera-controls auto-rotate shadow-intensity="1" alt="${escape(item.title)}">${renderModelHotspots(item)}</model-viewer>
     <button class="model-fullscreen" type="button" aria-label="Открыть модель на весь экран">На весь экран</button>
   </div>
-  <div><span class="eyebrow">${escape(item.id)} · ${fileSize(item.file)}</span>${renderMediaStatus(item)}<h3>${escape(item.title)}</h3><p>${escape(item.description)}</p>
+  <div><span class="eyebrow">${escape(item.id)} · ${fileSize(item.file)}</span><span class="media-status">актуально · v${escape(item.version)}</span><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p>
   <div class="model-actions"><button class="load-model" type="button">Загрузить интерактивную 3D-модель</button><a class="action" href="${escape(repoUrl(item.file))}" download>Скачать GLB</a></div>
-  <p class="model-status" aria-live="polite">Модель не загружена; изображение-постер сохранено.</p></div>
+  <p class="model-status" aria-live="polite">Модель не загружена; изображение-постер сохранено.</p>${renderCalloutLegend(item)}</div>
 </article>`).join('');
 
-const printSessions = media.printSessions.map(item => `<article class="media-card print-session-card ${escape(item.status)}">
+const printSessions = media.printSessions.map(item => `<article class="media-card print-session-card" data-kind="print-layout">
   <a href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener"><img src="${escape(repoUrl(item.preview))}" alt="${escape(item.title)}" loading="lazy"></a>
-  <div><span class="eyebrow">${escape(item.id)} · раздельная очередь</span>${renderMediaStatus(item)}<h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><a class="action" href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener">Открыть раскладку</a></div>
+  <div><span class="eyebrow">${escape(item.id)} · раздельная очередь</span><span class="media-status">актуально · v${escape(item.version)}</span><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><a class="action" href="${escape(repoUrl(item.file))}" target="_blank" rel="noopener">Открыть раскладку</a>${renderCalloutLegend(item)}</div>
 </article>`).join('');
 
 const categoryOptions = source.categories.map(category => `<option value="${escape(category.id)}">${escape(category.label)}</option>`).join('');
+const calloutCount = media.drawings.filter(item => item.kind !== 'print-layout').length + media.models.filter(item => item.kind !== 'print-layout').length;
 
 const html = `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escape(projectName)} — компоненты, чертежи и 3D</title>
+<title>${escape(projectName)} — компоненты, актуальные чертежи и 3D</title>
 <style>
-:root{color-scheme:light dark;--bg:#edf1f3;--panel:#fff;--ink:#172126;--muted:#607078;--line:#d3dde1;--accent:#067a78;--warn:#9b4d00;--warn-bg:#fff0d9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}body.modal-open{overflow:hidden}header{padding:clamp(24px,5vw,56px);color:#fff;background:linear-gradient(125deg,#15373d,#087d78)}header h1{margin:0 0 8px;font-size:clamp(28px,5vw,48px);line-height:1.1}header p{max-width:900px;margin:0;color:#daf4f1}main{max-width:1500px;margin:auto;padding:24px}.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:-48px;margin-bottom:20px}.metric{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:0 8px 30px #102d3320}.metric strong{display:block;font-size:28px;color:var(--accent)}.tabs{display:flex;gap:8px;margin:0 0 16px}.tab{padding:11px 18px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}.tab-panel[hidden]{display:none}.controls{display:flex;flex-wrap:wrap;align-items:end;gap:12px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.search{flex:1 1 330px}label span{display:block;margin-bottom:5px;font-weight:650}input[type="search"],select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font:inherit}.category-filter{min-width:220px}.toggle{display:flex;align-items:center;gap:8px;padding:10px 4px}.toggle span{margin:0}.result-count{color:var(--muted);padding:10px 2px}.table-wrap{overflow:auto;margin-top:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}table{width:100%;min-width:1080px;border-collapse:collapse}th,td{padding:14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}thead th{position:sticky;top:0;z-index:2;background:#e4eeef;color:#27464c;font-size:13px;text-transform:uppercase;letter-spacing:.035em}.category-row th{background:#d8eeeb;color:#075b58;font-size:17px}.component-row:hover{background:#f3faf9}.id-cell code{display:block;font-weight:700;color:var(--accent)}.copy-id{margin-top:8px;padding:3px 7px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}.thumb{width:180px;height:140px;object-fit:contain;display:block;border:1px solid var(--line);border-radius:9px;background:#fff}.badge{display:inline-block;margin-top:8px;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:700}.warning{color:var(--warn);background:var(--warn-bg)}.ok{color:#126534;background:#dff4e7}.info{color:#075985;background:#e0f2fe}.aliases,.links{margin:8px 0 0;padding-left:18px}.specifications{display:grid;gap:6px;margin:12px 0 0}.specifications div{display:grid;grid-template-columns:minmax(95px,auto) 1fr;gap:8px;padding-top:6px;border-top:1px solid var(--line)}.specifications dt{font-weight:700;color:var(--muted)}.specifications dd{margin:0}.needed{margin-top:10px;padding:10px;border-left:4px solid #db7b16;background:var(--warn-bg);color:#633500}.empty,.model-status{color:var(--muted)}.no-results{display:none;padding:30px;text-align:center;color:var(--muted)}.section-intro{margin:0 0 18px}.media-grid,.model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.media-card,.model-card{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.media-card img,model-viewer{display:block;width:100%;height:320px;object-fit:contain;background:#f8fafb}.media-card>div,.model-card>div:not(.viewer-shell){padding:16px}.media-card h3,.model-card h3{margin:4px 0}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;text-transform:uppercase}.action{display:inline-block;color:var(--accent);font-weight:700}.models-heading{margin-top:32px}.model-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.load-model,.model-fullscreen{padding:9px 12px;border:0;border-radius:8px;background:var(--accent);color:#fff;font:inherit;font-weight:700;cursor:pointer}.load-model:disabled{opacity:.65;cursor:wait}.viewer-shell{position:relative}.model-fullscreen{position:absolute;right:12px;bottom:12px;box-shadow:0 2px 12px #0005}.fullscreen-overlay{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr;background:#071013f5;color:#fff}.fullscreen-overlay[hidden]{display:none}.fullscreen-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:#101d21}.fullscreen-bar h2{margin:0;font-size:18px}.fullscreen-close{width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#111;font-size:32px;line-height:1;cursor:pointer}.fullscreen-stage{min-height:0}.fullscreen-stage model-viewer{width:100%;height:100%;background:#0b1519}.fullscreen-hint{padding:8px 16px;margin:0;background:#101d21;color:#cfe2e5}footer{max-width:1500px;margin:auto;padding:0 24px 30px;color:var(--muted)}@media(prefers-color-scheme:dark){:root{--bg:#0d171a;--panel:#152227;--ink:#edf6f5;--muted:#a5b5ba;--line:#34464c;--accent:#5ed5cd;--warn:#ffbd78;--warn-bg:#3b2b1b}thead th{background:#20343a;color:#c9e7e5}.category-row th{background:#193936;color:#aeece7}.component-row:hover{background:#193136}.needed{color:#ffd6a6}.thumb,.media-card img,model-viewer{background:#f8f8f8}a{color:#70c9ff}}@media(max-width:700px){main{padding:16px}.summary{margin-top:-32px}.copy-id{display:none}.media-card img,model-viewer{height:240px}.model-fullscreen{font-size:13px}}
-.gallery{display:grid;gap:8px}.gallery figure{margin:0}.gallery figcaption{margin-top:3px;max-width:180px;color:var(--muted);font-size:11px}
-.media-status{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:800}.media-status.current{background:#dff4e7;color:#126534}.media-status.historical{background:#e8edf0;color:#52616a}.media-status.reference{background:#e0f2fe;color:#075985}.media-card.historical,.model-card.historical{border-style:dashed}.media-card.historical img,.model-card.historical model-viewer{filter:saturate(.65)}
+:root{color-scheme:light dark;--bg:#edf1f3;--panel:#fff;--ink:#172126;--muted:#607078;--line:#d3dde1;--accent:#067a78;--warn:#9b4d00;--warn-bg:#fff0d9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}body.modal-open{overflow:hidden}header{padding:clamp(24px,5vw,56px);color:#fff;background:linear-gradient(125deg,#15373d,#087d78)}header h1{margin:0 0 8px;font-size:clamp(28px,5vw,48px);line-height:1.1}header p{max-width:970px;margin:0;color:#daf4f1}main{max-width:1500px;margin:auto;padding:24px}.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:-48px;margin-bottom:20px}.metric{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:0 8px 30px #102d3320}.metric strong{display:block;font-size:28px;color:var(--accent)}.tabs{display:flex;gap:8px;margin:0 0 16px}.tab{padding:11px 18px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}.tab-panel[hidden]{display:none}.controls{display:flex;flex-wrap:wrap;align-items:end;gap:12px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.search{flex:1 1 330px}label span{display:block;margin-bottom:5px;font-weight:650}input[type="search"],select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font:inherit}.category-filter{min-width:220px}.toggle{display:flex;align-items:center;gap:8px;padding:10px 4px}.toggle span{margin:0}.result-count{color:var(--muted);padding:10px 2px}.table-wrap{overflow:auto;margin-top:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}table{width:100%;min-width:1080px;border-collapse:collapse}th,td{padding:14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}thead th{position:sticky;top:0;z-index:2;background:#e4eeef;color:#27464c;font-size:13px;text-transform:uppercase;letter-spacing:.035em}.category-row th{background:#d8eeeb;color:#075b58;font-size:17px}.component-row:hover{background:#f3faf9}.id-cell code{display:block;font-weight:700;color:var(--accent)}.copy-id{margin-top:8px;padding:3px 7px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}.thumb{width:180px;height:140px;object-fit:contain;display:block;border:1px solid var(--line);border-radius:9px;background:#fff}.badge{display:inline-block;margin-top:8px;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:700}.warning{color:var(--warn);background:var(--warn-bg)}.ok{color:#126534;background:#dff4e7}.info{color:#075985;background:#e0f2fe}.aliases,.links{margin:8px 0 0;padding-left:18px}.specifications{display:grid;gap:6px;margin:12px 0 0}.specifications div{display:grid;grid-template-columns:minmax(95px,auto) 1fr;gap:8px;padding-top:6px;border-top:1px solid var(--line)}.specifications dt{font-weight:700;color:var(--muted)}.specifications dd{margin:0}.needed{margin-top:10px;padding:10px;border-left:4px solid #db7b16;background:var(--warn-bg);color:#633500}.empty,.model-status{color:var(--muted)}.no-results{display:none;padding:30px;text-align:center;color:var(--muted)}.section-intro{margin:0 0 18px}.policy-note{padding:14px 16px;border-left:4px solid var(--accent);border-radius:8px;background:var(--panel)}.media-grid,.model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.media-card,.model-card{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.media-card img,model-viewer{display:block;width:100%;height:320px;object-fit:contain;background:#f8fafb}.media-card>div,.model-card>div:not(.viewer-shell){padding:16px}.media-card h3,.model-card h3{margin:4px 0}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;text-transform:uppercase}.media-status{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:999px;background:#dff4e7;color:#126534;font-size:11px;font-weight:800}.action,.secondary-action{display:inline-block;color:var(--accent);font-weight:700}.secondary-action{font-weight:600}.media-actions,.model-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.models-heading{margin-top:32px}.load-model,.model-fullscreen{padding:9px 12px;border:0;border-radius:8px;background:var(--accent);color:#fff;font:inherit;font-weight:700;cursor:pointer}.load-model:disabled{opacity:.65;cursor:wait}.viewer-shell{position:relative}.model-fullscreen{position:absolute;right:12px;bottom:12px;z-index:4;box-shadow:0 2px 12px #0005}.model-hotspot{position:relative;display:flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid #172126;border-radius:999px;background:#fffffff2;color:#172126;font:700 12px/1.1 system-ui,sans-serif;box-shadow:0 2px 8px #0005;white-space:nowrap;cursor:default}.model-hotspot::before{content:"";position:absolute;width:9px;height:9px;border:2px solid #fff;border-radius:50%;background:#172126;transform:translate(-15px,0)}.hotspot-label{font-weight:500}.callout-legend{margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}.callout-legend summary{cursor:pointer;font-weight:700;color:var(--accent)}.callout-legend ul{columns:2;column-gap:22px;padding-left:20px}.callout-legend li{break-inside:avoid;margin:4px 0}.callout-legend code{font-weight:800}.callout-exemption{margin:14px 0 0;padding:9px 11px;border-radius:8px;background:#eef2f4;color:#53626a}.fullscreen-overlay{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:auto 1fr auto;background:#071013f5;color:#fff}.fullscreen-overlay[hidden]{display:none}.fullscreen-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:#101d21}.fullscreen-bar h2{margin:0;font-size:18px}.fullscreen-close{width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#111;font-size:32px;line-height:1;cursor:pointer}.fullscreen-stage{min-height:0}.fullscreen-stage model-viewer{width:100%;height:100%;background:#0b1519}.fullscreen-hint{padding:8px 16px;margin:0;background:#101d21;color:#cfe2e5}footer{max-width:1500px;margin:auto;padding:0 24px 30px;color:var(--muted)}.gallery{display:grid;gap:8px}.gallery figure{margin:0}.gallery figcaption{margin-top:3px;max-width:180px;color:var(--muted);font-size:11px}@media(prefers-color-scheme:dark){:root{--bg:#0d171a;--panel:#152227;--ink:#edf6f5;--muted:#a5b5ba;--line:#34464c;--accent:#5ed5cd;--warn:#ffbd78;--warn-bg:#3b2b1b}thead th{background:#20343a;color:#c9e7e5}.category-row th{background:#193936;color:#aeece7}.component-row:hover{background:#193136}.needed{color:#ffd6a6}.thumb,.media-card img,model-viewer{background:#f8f8f8}a{color:#70c9ff}.callout-exemption{background:#263439;color:#c7d2d6}}@media(max-width:700px){main{padding:16px}.summary{margin-top:-32px}.copy-id{display:none}.media-card img,model-viewer{height:240px}.model-fullscreen{font-size:13px}.callout-legend ul{columns:1}.hotspot-label{display:none}}
 </style></head><body>
-<header><h1>Проект ${escape(projectName)}</h1><p>Каталог компонентов, исходные изображения, чертежи и интерактивный просмотр 3D-моделей. Имя проекта задаётся один раз в <code>project_identity.json</code>.</p></header>
-<main><section class="summary" aria-label="Сводка"><div class="metric"><strong>${components.length}</strong>компонентов</div><div class="metric"><strong>${source.categories.length}</strong>категорий</div><div class="metric"><strong>${media.drawings.length}</strong>изображений и чертежей</div><div class="metric"><strong>${media.models.length}</strong>3D-моделей</div><div class="metric"><strong>${media.printSessions.length}</strong>очереди печати</div><div class="metric"><strong>${incompleteCount}</strong>нужно уточнить</div></section>
+<header><h1>Проект ${escape(projectName)}</h1><p>Каталог компонентов и только актуальных чертежей/3D версии v${escape(currentVersion)}. Все непечатные виды имеют стабильные ID-выноски; раскладки печати оставлены чистыми намеренно.</p></header>
+<main><section class="summary" aria-label="Сводка"><div class="metric"><strong>${components.length}</strong>компонентов</div><div class="metric"><strong>${source.categories.length}</strong>категорий</div><div class="metric"><strong>${media.drawings.length}</strong>актуальных чертежей</div><div class="metric"><strong>${media.models.length}</strong>актуальных 3D-моделей</div><div class="metric"><strong>${calloutCount}</strong>видов с ID</div><div class="metric"><strong>${incompleteCount}</strong>нужно уточнить</div></section>
 <nav class="tabs" role="tablist" aria-label="Разделы проекта"><button class="tab" role="tab" id="components-tab" aria-controls="components-panel" aria-selected="true">Компоненты</button><button class="tab" role="tab" id="drawings-tab" aria-controls="drawings-panel" aria-selected="false">Чертежи и 3D</button></nav>
 <section id="components-panel" class="tab-panel" role="tabpanel" aria-labelledby="components-tab"><section class="controls" aria-label="Фильтры"><label class="search"><span>Поиск по ID, названию и назначению</span><input id="search" type="search" placeholder="например: 009, 6804, датчик"></label><label class="category-filter"><span>Категория</span><select id="category"><option value="">Все категории</option>${categoryOptions}</select></label><label class="toggle"><input id="incompleteOnly" type="checkbox"><span>Только позиции, которые нужно уточнить</span></label><output id="resultCount" class="result-count"></output></section>
 <div class="table-wrap"><table id="catalogTable"><thead><tr><th>ID</th><th>Картинка</th><th>Возможные названия компонента</th><th>Зачем он нужен</th><th>Описание или покупка</th></tr></thead><tbody>${rows}</tbody></table><p id="noResults" class="no-results">По заданному фильтру ничего не найдено.</p></div></section>
-<section id="drawings-panel" class="tab-panel" role="tabpanel" aria-labelledby="drawings-tab" hidden><p class="section-intro">Карточки имеют явный статус «актуально», «история» или «справочно». Исторические v0.5-виды сохранены только для сравнения; сборку и печать вести по актуальным чертежам v0.7.4.</p><div class="media-grid">${drawings}</div><h2 class="models-heading">Интерактивные 3D-модели</h2><p class="section-intro">GLB и модуль просмотра загружаются только после нажатия. Кнопка «На весь экран» открывает модель в отдельном полноэкранном слое; закрыть его можно крестиком или клавишей Escape.</p><div class="model-grid">${models}</div><h2 class="models-heading">Раздельные очереди печати по материалам</h2><p class="section-intro">За один запуск печатается только один основной пластик: PETG, TPU 95A или TPU 85A. Технологические подложки для резиновых деталей допустимы, если они действительно нужны.</p><div class="media-grid">${printSessions}</div></section></main>
-<footer>Источники данных: <code>catalog/components.json</code>, <code>catalog/drawings.json</code> и <code>project_identity.json</code>. Сгенерированный HTML вручную не редактировать.</footer>
-<div id="fullscreenOverlay" class="fullscreen-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="fullscreenTitle"><div class="fullscreen-bar"><h2 id="fullscreenTitle">3D-модель</h2><button id="fullscreenClose" class="fullscreen-close" type="button" aria-label="Закрыть полноэкранный режим">×</button></div><div class="fullscreen-stage"><model-viewer id="fullscreenViewer" camera-controls auto-rotate shadow-intensity="1"></model-viewer></div><p class="fullscreen-hint">Вращайте мышью или пальцем. Закрыть: × или Escape.</p></div>
+<section id="drawings-panel" class="tab-panel" role="tabpanel" aria-labelledby="drawings-tab" hidden><p class="section-intro policy-note"><strong>Правило публикации:</strong> здесь нет исторических карточек и смешения версий. Подписанные PNG-копии генерируются из чистых исходников; интерактивные GLB получают hotspots. Единственное исключение — раскладки печати.</p><div class="media-grid">${drawings}</div><h2 class="models-heading">Интерактивные 3D-модели</h2><p class="section-intro">GLB и модуль просмотра загружаются только после нажатия. ID-метки сохраняются и в полноэкранном режиме.</p><div class="model-grid">${models}</div><h2 class="models-heading">Раздельные очереди печати по материалам</h2><p class="section-intro">За один запуск печатается только один основной пластик. Эти раскладки печати намеренно не содержат выносок.</p><div class="media-grid">${printSessions}</div></section></main>
+<footer>Источники: <code>catalog/components.json</code>, <code>catalog/drawings.json</code>, <code>mechanical/part_id_registry_v06.json</code>, <code>VERSION.txt</code> и <code>project_identity.json</code>. Сгенерированный HTML вручную не редактировать.</footer>
+<div id="fullscreenOverlay" class="fullscreen-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="fullscreenTitle"><div class="fullscreen-bar"><h2 id="fullscreenTitle">3D-модель</h2><button id="fullscreenClose" class="fullscreen-close" type="button" aria-label="Закрыть полноэкранный режим">×</button></div><div class="fullscreen-stage"><model-viewer id="fullscreenViewer" camera-controls auto-rotate shadow-intensity="1"></model-viewer></div><p class="fullscreen-hint">Вращайте мышью или пальцем. ID-метки привязаны к деталям. Закрыть: × или Escape.</p></div>
 <script>
 const tabs=[...document.querySelectorAll('[role="tab"]')];for(const tab of tabs)tab.addEventListener('click',()=>{for(const button of tabs){const selected=button===tab;button.setAttribute('aria-selected',String(selected));document.getElementById(button.getAttribute('aria-controls')).hidden=!selected;}});
 const input=document.getElementById('search'),category=document.getElementById('category'),incompleteOnly=document.getElementById('incompleteOnly'),table=document.getElementById('catalogTable'),resultCount=document.getElementById('resultCount'),noResults=document.getElementById('noResults');
 function applyFilters(){const query=input.value.trim().toLowerCase(),selectedCategory=category.value;let visible=0;for(const row of table.querySelectorAll('.component-row')){row.hidden=!(row.dataset.search.includes(query)&&(!selectedCategory||row.dataset.category===selectedCategory)&&(!incompleteOnly.checked||row.dataset.incomplete==='true'));if(!row.hidden)visible++;}for(const heading of table.querySelectorAll('.category-row'))heading.hidden=![...table.querySelectorAll('.component-row')].some(row=>!row.hidden&&row.dataset.category===heading.dataset.categoryHeading);resultCount.value='Показано: '+visible;noResults.style.display=visible?'none':'block';}
 input.addEventListener('input',applyFilters);category.addEventListener('change',applyFilters);incompleteOnly.addEventListener('change',applyFilters);for(const button of document.querySelectorAll('.copy-id'))button.addEventListener('click',async()=>{await navigator.clipboard.writeText(button.dataset.id);const old=button.textContent;button.textContent='скопировано';setTimeout(()=>button.textContent=old,1200);});applyFilters();
 let viewerRuntime;function loadViewerRuntime(){if(!viewerRuntime)viewerRuntime=new Promise((resolve,reject)=>{const script=document.createElement('script');script.type='module';script.src='https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js';script.onload=resolve;script.onerror=reject;document.head.append(script);});return viewerRuntime;}
-async function ensureModel(card){const viewer=card.querySelector('[data-model]'),status=card.querySelector('.model-status'),button=card.querySelector('.load-model');if(viewer.src)return viewer;button.disabled=true;status.textContent='Загружается модуль просмотра…';await loadViewerRuntime();status.textContent='Загружается GLB…';viewer.src=viewer.dataset.src;await new Promise((resolve,reject)=>{viewer.addEventListener('load',resolve,{once:true});viewer.addEventListener('error',reject,{once:true});});status.textContent='Готово: модель можно вращать мышью или пальцем.';button.hidden=true;return viewer;}
+async function ensureModel(card){const viewer=card.querySelector('[data-model]'),status=card.querySelector('.model-status'),button=card.querySelector('.load-model');if(viewer.src)return viewer;button.disabled=true;status.textContent='Загружается модуль просмотра…';await loadViewerRuntime();status.textContent='Загружается GLB…';viewer.src=viewer.dataset.src;await new Promise((resolve,reject)=>{viewer.addEventListener('load',resolve,{once:true});viewer.addEventListener('error',reject,{once:true});});status.textContent=card.dataset.kind==='print-layout'?'Готово: раскладка без выносок.':'Готово: модель можно вращать; ID-метки привязаны к деталям.';button.hidden=true;return viewer;}
 for(const button of document.querySelectorAll('.load-model'))button.addEventListener('click',async()=>{const card=button.closest('.model-card');try{await ensureModel(card);}catch{card.querySelector('.model-status').textContent='Не удалось загрузить модель. Запустите локальный HTTP-сервер или скачайте GLB.';button.disabled=false;}});
 const overlay=document.getElementById('fullscreenOverlay'),fullscreenViewer=document.getElementById('fullscreenViewer'),fullscreenTitle=document.getElementById('fullscreenTitle'),fullscreenClose=document.getElementById('fullscreenClose');
-async function openFullscreen(card){try{const viewer=await ensureModel(card);await loadViewerRuntime();fullscreenTitle.textContent=card.dataset.title;fullscreenViewer.poster=viewer.poster;fullscreenViewer.src=viewer.src;overlay.hidden=false;document.body.classList.add('modal-open');if(overlay.requestFullscreen){try{await overlay.requestFullscreen();}catch{}}fullscreenClose.focus();}catch{card.querySelector('.model-status').textContent='Полноэкранный режим недоступен: модель не загрузилась.';}}
-async function closeFullscreen(){if(document.fullscreenElement){try{await document.exitFullscreen();}catch{}}overlay.hidden=true;document.body.classList.remove('modal-open');fullscreenViewer.removeAttribute('src');}
-for(const button of document.querySelectorAll('.model-fullscreen'))button.addEventListener('click',()=>openFullscreen(button.closest('.model-card')));fullscreenClose.addEventListener('click',closeFullscreen);document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!overlay.hidden)closeFullscreen();});document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&!overlay.hidden){overlay.hidden=true;document.body.classList.remove('modal-open');fullscreenViewer.removeAttribute('src');}});
+function copyHotspots(source,target){target.querySelectorAll('.model-hotspot').forEach(node=>node.remove());for(const hotspot of source.querySelectorAll('.model-hotspot'))target.append(hotspot.cloneNode(true));}
+async function openFullscreen(card){try{const viewer=await ensureModel(card);await loadViewerRuntime();fullscreenTitle.textContent=card.dataset.title;fullscreenViewer.poster=viewer.poster;copyHotspots(viewer,fullscreenViewer);fullscreenViewer.src=viewer.src;overlay.hidden=false;document.body.classList.add('modal-open');if(overlay.requestFullscreen){try{await overlay.requestFullscreen();}catch{}}fullscreenClose.focus();}catch{card.querySelector('.model-status').textContent='Полноэкранный режим недоступен: модель не загрузилась.';}}
+async function closeFullscreen(){if(document.fullscreenElement){try{await document.exitFullscreen();}catch{}}overlay.hidden=true;document.body.classList.remove('modal-open');fullscreenViewer.removeAttribute('src');fullscreenViewer.querySelectorAll('.model-hotspot').forEach(node=>node.remove());}
+for(const button of document.querySelectorAll('.model-fullscreen'))button.addEventListener('click',()=>openFullscreen(button.closest('.model-card')));fullscreenClose.addEventListener('click',closeFullscreen);document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!overlay.hidden)closeFullscreen();});document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&!overlay.hidden){overlay.hidden=true;document.body.classList.remove('modal-open');fullscreenViewer.removeAttribute('src');fullscreenViewer.querySelectorAll('.model-hotspot').forEach(node=>node.remove());}});
 </script></body></html>`;
 
 if (process.argv.includes('--check')) {
@@ -216,7 +320,7 @@ if (process.argv.includes('--check')) {
     console.error('catalog/catalog.html не соответствует JSON-источникам. Запустите npm run catalog:generate.');
     process.exit(1);
   }
-  console.log('Каталог компонентов, картинок и интерактивных 3D-моделей синхронизирован.');
+  console.log(`Каталог v${currentVersion} синхронизирован: только актуальные материалы и обязательные ID-выноски.`);
 } else {
   fs.writeFileSync(htmlPath, html, 'utf8');
   console.log(`Generated ${htmlPath}`);

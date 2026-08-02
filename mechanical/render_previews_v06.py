@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render current v0.7.4 static previews from the generated GLB models."""
+"""Render current v0.7.5 static previews from the generated GLB models."""
 from pathlib import Path
 import numpy as np
 import matplotlib

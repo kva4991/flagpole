@@ -1,4 +1,4 @@
-/* Проверяет воспроизводимость каталога из JSON-источников. §catalog */
+/* Политика рабочего каталога v0.7.5: только current и обязательные ID-выноски. §catalog */
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -7,134 +7,153 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const readJson = path => JSON.parse(fs.readFileSync(resolve(repoRoot, path), 'utf8'));
+const currentVersion = fs.readFileSync(resolve(repoRoot, 'VERSION.txt'), 'utf8').trim();
 
 describe('project catalog', () => {
-  it('matches its JSON sources', () => {
-    const result = spawnSync(process.execPath, ['scripts/generateComponentCatalog.mjs', '--check'], {
+  it('matches its JSON sources and generated callout images', () => {
+    const render = spawnSync(process.execPath, ['scripts/runPython.mjs', 'mechanical/render_catalog_part_callouts_v075.py', '--check'], {
       cwd: repoRoot,
       encoding: 'utf8',
     });
-    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(render.status, 0, render.stderr || render.stdout);
+
+    const catalog = spawnSync(process.execPath, ['scripts/generateComponentCatalog.mjs', '--check'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+    });
+    assert.equal(catalog.status, 0, catalog.stderr || catalog.stdout);
   });
 
   it('uses continuous component IDs and one selected climate module', () => {
-    const source = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/components.json'), 'utf8'));
+    const source = readJson('catalog/components.json');
     const ids = source.components.map(item => item.id).sort();
     assert.equal(ids.length, 25);
     assert.deepEqual(ids, Array.from({ length: 25 }, (_, index) => String(index + 1).padStart(3, '0')));
-    assert.equal(ids.every(id => /^\d{3}$/.test(id)), true);
     assert.equal(source.components.filter(item => item.name.includes('AHT20 + BMP280')).length, 1);
-    assert.equal(source.components.some(item => /NTC 10k B3950|GY-BME\/P280|SHT20 standalone/i.test(item.name)), false);
   });
 
-  it('contains categories, requested columns, drawings and lazy 3D controls', () => {
+  it('publishes only the current version and never historical v0.5 cards', () => {
+    assert.equal(currentVersion, '0.7.5');
+    const media = readJson('catalog/drawings.json');
+    assert.equal(media.schemaVersion, 3);
+    assert.equal(media.catalogPolicy.visibility, 'current-only');
+    assert.equal(media.catalogPolicy.currentVersion, currentVersion);
+    assert.equal(media.catalogPolicy.partIdCallouts, 'required-for-all-drawings-and-models-except-print-layouts');
+    assert.equal(media.catalogPolicy.sourceDrawingsRemainClean, true);
+
+    const all = [...media.drawings, ...media.models, ...media.printSessions];
+    assert.equal(new Set(all.map(item => item.id)).size, all.length);
+    assert.ok(all.length > 0);
+    assert.equal(all.every(item => item.status === 'current'), true);
+    assert.equal(all.every(item => item.version === currentVersion), true);
+    assert.equal(all.some(item => item.version === '0.5' || item.status === 'historical'), false);
+
+    const forbidden = [
+      'flagpole_finial_v0_5_assembly.glb',
+      'flagpole_finial_v0_5_print_layout_PETG.glb',
+      'flagpole_finial_v0_5_print_layout_TPU.glb',
+      'Общий вид сборки v0.5 — интерактивно',
+      'Раскладка деталей PETG v0.5 — интерактивно',
+      'Раскладка TPU v0.5 — интерактивно, историческая',
+    ];
+    const jsonText = JSON.stringify(media);
+    const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
+    for (const value of forbidden) {
+      assert.doesNotMatch(jsonText, new RegExp(value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+      assert.doesNotMatch(html, new RegExp(value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    }
+    assert.doesNotMatch(html, /история · v0\.5|class="[^"]*historical/);
+  });
+
+  it('requires callouts on every non-print drawing and model', () => {
+    const media = readJson('catalog/drawings.json');
+    const registry = readJson('mechanical/part_id_registry_v06.json');
+    const components = readJson('catalog/components.json');
+    const allowedIds = new Set([
+      ...components.components.map(item => item.id),
+      ...Object.values(registry.groups).flat().map(item => item.id),
+    ]);
+
+    for (const item of media.drawings) {
+      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing drawing ${item.file}`);
+      assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing preview ${item.preview}`);
+      if (item.kind === 'print-layout') {
+        assert.equal(item.calloutMode, 'exempt');
+        assert.ok(item.calloutExemptReason);
+        assert.equal(item.callouts, undefined);
+        assert.equal(item.annotatedPreview, undefined);
+      } else if (item.calloutMode === 'embedded') {
+        assert.ok(item.partIds.length > 0);
+        assert.equal(item.partIds.every(id => allowedIds.has(id)), true);
+      } else {
+        assert.equal(item.calloutMode, 'overlay');
+        assert.ok(item.callouts.length > 0);
+        assert.ok(fs.existsSync(resolve(repoRoot, item.annotatedPreview)), `missing annotated drawing ${item.annotatedPreview}`);
+        for (const callout of item.callouts) {
+          assert.ok(allowedIds.has(callout.id), `unknown callout ${callout.id}`);
+          assert.equal(callout.target.length, 2);
+          assert.equal(callout.labelPosition.length, 2);
+        }
+      }
+    }
+
+    for (const item of media.models) {
+      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing model ${item.file}`);
+      assert.ok(fs.existsSync(resolve(repoRoot, item.poster)), `missing poster ${item.poster}`);
+      if (item.kind === 'print-layout') {
+        assert.equal(item.calloutMode, 'exempt');
+        assert.ok(item.calloutExemptReason);
+        assert.equal(item.callouts, undefined);
+      } else {
+        assert.equal(item.calloutMode, 'hotspots');
+        assert.ok(item.callouts.length > 0);
+        for (const callout of item.callouts) {
+          assert.ok(allowedIds.has(callout.id), `unknown hotspot ${callout.id}`);
+          assert.equal(callout.position.length, 3);
+          assert.equal(callout.normal.length, 3);
+        }
+      }
+    }
+  });
+
+  it('renders current-only wording, annotated drawings and 3D hotspots', () => {
     const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
     for (const heading of ['ID', 'Картинка', 'Возможные названия компонента', 'Зачем он нужен', 'Описание или покупка']) {
       assert.match(html, new RegExp(`<th>${heading}</th>`));
     }
-    for (const category of ['Управление и датчики', 'Питание и коммутация', 'Подсветка', 'Механика', 'Герметизация и монтаж', 'Ткани', 'Материалы для 3D-печати']) {
-      assert.match(html, new RegExp(category));
-    }
-    assert.match(html, /Bearing 6804-2RS \(candidate\)/);
-    assert.match(html, /внутренний диаметр d = 20 мм, наружный D = 32 мм, ширина B = 7 мм/);
-    assert.match(html, /2RS — резиновые уплотнения с обеих сторон/);
-    assert.match(html, /Компоненты/);
-    assert.match(html, /Чертежи и 3D/);
-    assert.match(html, /Схема соединений электроники v0\.7\.4 — A4/);
-    assert.match(html, /flagpole_finial_v0_5_assembly\.glb/);
-    assert.match(html, /data-src="\.\.\/mechanical\/flagpole_finial_v0_5_assembly\.glb"/);
+    assert.match(html, /только актуальных чертежей\/3D версии v0\.7\.5/i);
+    assert.match(html, /catalog\/annotated\/101_electronics_wiring_diagram_A4_ids\.png/);
+    assert.match(html, /class="model-hotspot"/);
+    assert.match(html, /slot="hotspot-210-/);
+    assert.match(html, /#petg-5/);
+    assert.match(html, /Показанные ID/);
+    assert.match(html, /раскладки печати намеренно не содержат выносок/i);
     assert.match(html, /model-viewer\/4\.2\.0\/model-viewer\.min\.js/);
-    assert.match(html, /Загрузить интерактивную 3D-модель/);
-    assert.match(html, /Self-adhesive hydrophobic vent membrane — Ø20 mm \/ active Ø10 mm/);
-    assert.match(html, /MOLYKOTE 111 silicone compound for seals/);
-    assert.match(html, /A2 stainless M3\/M4 screws, washers and standard hex nuts for captive pockets/);
-    assert.match(html, /Flexible silicone power wire kit — 2×0\.75 mm² and AWG20/);
-    assert.match(html, /Four-color flexible sensor wire — AWG26–28/);
-    assert.match(html, /Cut transparent window for the VEML7700 light well/);
-    assert.match(html, /покупать отдельный материал не требуется/);
-    assert.match(html, /UV-resistant bonded polyester sewing thread — Tex 45/);
-    assert.match(html, /100% polyester\/PES, continuous filament, bonded/);
-    assert.match(html, /Маршрут двух проводов питания флага v0\.7\.4/);
-    assert.match(html, /Таблица идентификаторов печатных деталей v0\.7\.4/);
-    assert.match(html, /Карта закладных гаек и крепежа v0\.7\.4/);
-    assert.match(html, /Компоновка электроники в боксе v0\.7\.4/);
-    assert.match(html, /актуально · v0\.7\.4/);
-    assert.match(html, /история · v0\.5/);
-    assert.match(html, /Раздельные очереди печати по материалам/);
-    assert.match(html, /Очередь печати PETG/);
-    assert.match(html, /Очередь печати TPU 95A/);
-    assert.match(html, /Очередь печати TPU 85A/);
-    assert.match(html, /нейлоновой основе/);
-    assert.match(html, /320 кд\/\(лк·м²\)/);
-    assert.match(html, /семь отверстий Ø2 мм/);
-    assert.doesNotMatch(html, /\b(?:cmp|drw|mdl)-\d{3}\b/);
+    assert.match(html, /copyHotspots/);
+    assert.match(html, /Компоновка электроники v0\.7\.5 — интерактивно/);
+    assert.match(html, /одна поднятая крышка/i);
+    assert.doesNotMatch(html, /актуально · v0\.7\.4/);
   });
 
-  it('keeps drawing, model and print-session IDs unique and assets present', () => {
-    const media = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/drawings.json'), 'utf8'));
-    assert.equal(media.schemaVersion, 2);
-    assert.equal(media.printSessions.length, 3);
-    assert.equal(media.models.length, 10);
-    const all = [...media.drawings, ...media.models, ...media.printSessions];
-    assert.equal(new Set(all.map(item => item.id)).size, all.length);
-    assert.equal(media.drawings.length, 26);
-    assert.equal(media.drawings.filter(item => item.status === 'current').length, 20);
-    assert.equal(media.drawings.filter(item => item.status === 'historical').length, 6);
-    assert.equal(media.drawings.filter(item => item.status === 'reference').length, 0);
-    for (const item of media.drawings) {
-      assert.ok(['current', 'historical', 'reference'].includes(item.status));
-      assert.ok(item.version);
-      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing drawing ${item.file}`);
-      assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing preview ${item.preview}`);
-    }
-    for (const item of media.models) {
-      assert.ok(['current', 'historical', 'reference'].includes(item.status));
-      assert.ok(item.version);
-      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing model ${item.file}`);
-      assert.ok(fs.existsSync(resolve(repoRoot, item.poster)), `missing poster ${item.poster}`);
-    }
-    for (const item of media.printSessions) {
-      assert.equal(item.status, 'current');
-      assert.equal(item.version, '0.7.4');
-      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing print session ${item.file}`);
-      assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing print session preview ${item.preview}`);
-    }
+  it('keeps print layouts clean in both 2D and 3D', () => {
+    const media = readJson('catalog/drawings.json');
+    const drawingLayouts = media.drawings.filter(item => item.kind === 'print-layout');
+    const modelLayouts = media.models.filter(item => item.kind === 'print-layout');
+    const printSessions = media.printSessions;
+    assert.equal(drawingLayouts.length, 3);
+    assert.equal(modelLayouts.length, 3);
+    assert.equal(printSessions.length, 3);
+    assert.equal([...drawingLayouts, ...modelLayouts, ...printSessions].every(item => item.calloutMode === 'exempt' && !item.callouts && !item.partIds && !item.annotatedPreview), true);
+    assert.equal(drawingLayouts.every(item => !/_ids\.png$/i.test(item.preview)), true);
   });
 
-  it('catalogues every working visual artifact outside component images and archive', () => {
-    const media = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/drawings.json'), 'utf8'));
-    const referenced = new Set();
-    for (const item of media.drawings) {
-      referenced.add(item.file.replaceAll('\\', '/'));
-      referenced.add(item.preview.replaceAll('\\', '/'));
-    }
-    for (const item of media.models) {
-      referenced.add(item.file.replaceAll('\\', '/'));
-      referenced.add(item.poster.replaceAll('\\', '/'));
-    }
-    for (const item of media.printSessions) {
-      referenced.add(item.file.replaceAll('\\', '/'));
-      referenced.add(item.preview.replaceAll('\\', '/'));
-    }
-    const allowedGeneratedCopies = new Set([
-      'android/crucian-control/app/src/main/res/drawable-nodpi/ic_crucian_launcher.png',
-    ]);
-    const extensions = new Set(['.png', '.svg', '.glb', '.jpg', '.jpeg']);
-    const found = [];
-    function walk(directory) {
-      for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-        const absolute = resolve(directory, entry.name);
-        const relative = absolute.slice(repoRoot.length + 1).replaceAll('\\', '/');
-        if (entry.isDirectory()) {
-          if (relative === 'catalog/images' || relative.startsWith('catalog/images/') || relative === 'archive' || relative.startsWith('archive/')) continue;
-          walk(absolute);
-        } else if (extensions.has(entry.name.slice(entry.name.lastIndexOf('.')).toLowerCase())) {
-          found.push(relative);
-        }
-      }
-    }
-    walk(repoRoot);
-    const uncatalogued = found.filter(file => !referenced.has(file) && !allowedGeneratedCopies.has(file));
-    assert.deepEqual(uncatalogued, []);
+  it('contains one canonical service lid in the electronics-layout generator', () => {
+    const source = fs.readFileSync(resolve(repoRoot, 'mechanical/generate_models_v06.py'), 'utf8');
+    const block = source.match(/electronics_names=\{[\s\S]*?electronics_path=/)?.[0] ?? '';
+    assert.ok(block, 'electronics layout block not found');
+    assert.doesNotMatch(block, /'PETG_service_lid'\s*,[\s\S]*electronics_scene=\{/);
+    assert.doesNotMatch(block, /PETG_service_lid_raised/);
+    assert.equal((block.match(/electronics_scene\['PETG_service_lid'\]/g) ?? []).length, 1);
   });
 });

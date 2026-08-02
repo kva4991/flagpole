@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render an annotated service view of the v0.7.4 flag-power route."""
+"""Render an annotated service view of the v0.7.5 flag-power route."""
 from pathlib import Path
 import numpy as np
 import matplotlib

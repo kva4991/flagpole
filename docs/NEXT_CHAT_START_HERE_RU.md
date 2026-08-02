@@ -3,15 +3,15 @@
 ## Текущая версия
 
 ```text
-0.7.4
+0.7.5
 ```
 
 ## Обязательный порядок чтения
 
 1. `AGENTS.md`
 2. `docs/current-implementation-status.ru.md`
-3. `UPDATE_REPORT_V074_RU.md`
-4. `docs/DRAWING_AUDIT_V074_RU.md`
+3. `UPDATE_REPORT_V075_RU.md`
+4. `docs/CATALOG_MEDIA_POLICY_RU.md`
 5. `docs/PROJECT_DECISIONS_RU.md`
 6. `docs/architecture/decisions/README.ru.md`
 7. `MEASUREMENTS_REQUIRED_RU.md`
@@ -39,10 +39,10 @@
 
 ## Проверено программно
 
-- 35/35 Node-тестов и 92 Markdown-файла;
+- 39/39 Node-тестов и 95 Markdown-файлов;
 - 40/40 STL по топологии;
-- локальная Android-сборка;
-- GitHub Actions run [`30753133808`](https://github.com/kva4991/flagpole/actions/runs/30753133808) для commit `a80263a` в `main`: quality, механика, Android и обе PlatformIO-сборки успешны.
+- семантическая проверка семи current GLB и воспроизводимость 14 подписанных PNG;
+- Android v0.7.5 и обе PlatformIO-сборки ожидают подтверждения GitHub Actions после публикации.
 
 ## Требует стенда
 
