@@ -7,9 +7,9 @@
   "sourceHeadReviewed": "6bff2d717cb6bb6612e14cd612d2b961627c0617",
   "publication": {
     "branch": "main",
-    "commit": null,
-    "githubActionsRun": null,
-    "conclusion": "pending"
+    "commit": "7e5417bf1b606a35565aaf849fdab96d18b5d7e3",
+    "githubActionsRun": 30761888122,
+    "conclusion": "success"
   },
   "outputArchive": "flagpole_v075_cumulative_update_20260802.zip",
   "treeMetrics": {
@@ -42,8 +42,8 @@
     "interactiveModels": "7 current, 0 historical; 3 are print layouts",
     "stlTopology": "40/40 watertight, winding consistent and single connected component",
     "pythonSources": "all current Python generators and validators passed py_compile locally",
-    "androidBuild": "v0.7.5 source version synchronized; GitHub Actions build pending publication",
-    "firmwareBuild": "sources unchanged from the last successful main build; GitHub Actions confirmation pending publication",
+    "androidBuild": "v0.7.5 debug APK built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
+    "firmwareBuild": "both PlatformIO projects built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
     "hardwareBench": "required"
   },
   "notes": [
