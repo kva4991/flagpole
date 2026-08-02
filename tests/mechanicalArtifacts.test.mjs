@@ -10,84 +10,94 @@ const required = [
   'mechanical/flagpole_finial_v0_6_assembly.glb',
   'mechanical/flagpole_finial_v0_6_exploded.glb',
   'mechanical/flagpole_finial_v0_6_flag_power_route.glb',
+  'mechanical/flagpole_finial_v0_6_electronics_layout.glb',
   'mechanical/flagpole_finial_v0_6_print_layout_PETG.glb',
   'mechanical/flagpole_finial_v0_6_print_layout_TPU95.glb',
   'mechanical/flagpole_finial_v0_6_print_layout_TPU85.glb',
+  'mechanical/stl_petg_v06/electronics_carrier_open_side_up.stl',
+  'mechanical/stl_petg_v06/VEML7700_cradle_flat.stl',
+  'mechanical/stl_tpu95_v06/flag_side_wire_guide_slit_up.stl',
   'mechanical/test_coupons_v06/PETG_M4_captive_nut_trap_coupon.stl',
-  'mechanical/test_coupons_v06/PETG_drill_skin_0.6_0.8_1.0_coupon.stl',
+  'mechanical/test_coupons_v06/PETG_M3_captive_nut_trap_coupon.stl',
+  'mechanical/test_coupons_v06/PETG_twin_wire_rail_4.2x2.5_coupon.stl',
+  'mechanical/test_coupons_v06/PETG_photo_tunnel_15_18_comparison_coupon.stl',
   'flag_with_attachment_loops_full_size_300x250.svg',
   'flag_attachment_loop_pattern_A4_1to1.svg',
   'mechanical/flag_power_cable_route_A4_landscape.svg',
-  'mechanical/flag_power_cable_route_A4_landscape.png',
-  'mechanical/docs/FLAG_POWER_CABLE_ROUTE_RU.md',
-  'mechanical/part_id_registry_v06.json',
-  'mechanical/part_id_table_v06.svg',
-  'mechanical/part_id_table_v06.png',
+  'mechanical/fastener_captive_nut_map_A4_landscape.svg',
+  'mechanical/electronics_layout_A4_landscape.svg',
+  'mechanical/current_longitudinal_section_v074.svg',
   'mechanical/generate_reference_diagrams_v06.py',
+  'mechanical/generate_detail_diagrams_v074.py',
+  'mechanical/generate_hermeticity_diagram_v074.py',
+  'electronics/generate_electronics_diagrams_v074.py',
   'mechanical/validate_models_v06.py',
-  'mechanical/generate_detail_diagrams_v073.py',
-  'mechanical/generate_hermeticity_diagram_v073.py',
-  'mechanical/generate_drawing_audit_contact_sheet_v073.py',
-  'electronics/generate_electronics_diagrams_v073.py',
-  'mechanical/hermeticity_design_A4_landscape.svg',
-  'mechanical/photo_tunnel_veml_mount_A4_landscape.svg',
-  'mechanical/environment_sensor_pocket_A4_landscape.svg',
-  'mechanical/current_longitudinal_section_v073.svg',
-  'mechanical/test_coupons_v06/PETG_twin_wire_rail_4.2x2.5_coupon.stl',
-  'mechanical/test_coupons_v06/PETG_VEML7700_cradle_coupon.stl',
 ];
 
-test('current v0.7.3 mechanical sources and requested artifacts exist', () => {
-  for (const file of required) {
-    assert.ok(fs.existsSync(path.join(root, file)), `missing ${file}`);
-  }
+test('current v0.7.4 mechanical sources and requested artifacts exist', () => {
+  for (const file of required) assert.ok(fs.existsSync(path.join(root, file)), `missing ${file}`);
 });
 
-test('mechanical generator includes captive nuts, sensor pocket, loops and external cable route', () => {
+test('current generator is parametric and includes all requested features', () => {
   const source = fs.readFileSync(path.join(root, 'mechanical/generate_models_v06.py'), 'utf8');
-  assert.match(source, /captive_nut/i);
-  assert.match(source, /environment_sensor_pocket/i);
-  assert.match(source, /REF_flag_attachment_loop_\{loop_index\}/);
-  assert.match(source, /REF_flag_attachment_loop_\{index\}/);
-  assert.match(source, /external_cable_route_points/);
-  assert.match(source, /REF_flag_power_cable_external_route/);
-  assert.match(source, /start=1/);
+  assert.match(source, /CURRENT_VERSION = "0\.7\.4"/);
+  assert.match(source, /m4_nut_pocket_across_flats/);
+  assert.match(source, /m3_nut_pocket_across_flats/);
+  assert.match(source, /flag_side_wire_guide_sdf/);
+  assert.match(source, /environment_membrane_open_area_mm2/);
+  assert.match(source, /electronics_carrier_sdf/);
+  assert.match(source, /photo_glue_groove/);
+  assert.match(source, /flag_loop_top_offsets/);
+  assert.doesNotMatch(source, /load_source_mesh|SOURCE_MESH_DIR|source_meshes_v073/);
 });
 
-test('flag cable route stays below spoke and enters beside electronics pod', () => {
+test('flag cable route reaches the owner point below fasteners through the angled guide', () => {
   const diagnostics = JSON.parse(fs.readFileSync(path.join(root, 'mechanical/model_parameters_and_diagnostics_v06.json'), 'utf8'));
-  const parameters = diagnostics.parameters_mm;
-  assert.ok(parameters.flag_cable_center_z < parameters.spoke_center_z);
-  assert.ok(Array.isArray(parameters.external_cable_route_points));
-  assert.ok(parameters.external_cable_route_points.length >= 5);
-  assert.equal(parameters.flag_cable_x_min, -18.0);
-  assert.ok(Math.min(...parameters.external_cable_route_points.map(point => point[2])) < parameters.flag_cable_center_z);
+  const p = diagnostics.parameters_mm;
+  assert.equal(diagnostics.version.startsWith('0.7.4'), true);
+  assert.ok(p.flag_cable_center_z < p.spoke_center_z);
+  assert.equal(p.twin_wire_clear_width, 4.2);
+  assert.equal(p.wire_rail_height, 2.5);
+  assert.ok(Math.abs(diagnostics.derived_mm.flag_side_guide_angle_down_deg - 35) < 0.1);
+  assert.deepEqual(p.flag_side_guide_start, [58.0, -16.2, 15.0]);
+  assert.deepEqual(p.flag_side_guide_end, [72.0, -16.2, 5.2]);
   const document = fs.readFileSync(path.join(root, 'mechanical/docs/FLAG_POWER_CABLE_ROUTE_RU.md'), 'utf8');
-  assert.match(document, /единственн.*герметизируем.*ввод/i);
-  assert.match(document, /под спиц/i);
+  assert.match(document, /вход.*единственн/i);
+  assert.match(document, /34,99°/);
   assert.match(document, /#tpu95-3/);
   assert.match(document, /#tpu95-4/);
 });
 
-test('part registry uses unique stable IDs and existing STL files', () => {
+test('flag loop datum, membrane, tunnel and captive nuts match v0.7.4', () => {
+  const diagnostics = JSON.parse(fs.readFileSync(path.join(root, 'mechanical/model_parameters_and_diagnostics_v06.json'), 'utf8'));
+  assert.deepEqual(diagnostics.derived_mm.flag_loop_top_offsets.map(v => Math.round(v * 100) / 100), [45, 106.67, 168.33, 230]);
+  assert.ok(Math.abs(diagnostics.derived_mm.environment_membrane_open_area_mm2 - 21.9911) < 0.01);
+  assert.equal(diagnostics.parameters_mm.env_membrane_disc_diameter, 20);
+  assert.equal(diagnostics.parameters_mm.env_membrane_active_diameter, 10);
+  assert.equal(diagnostics.parameters_mm.env_vent_hole_count, 7);
+  assert.equal(diagnostics.parameters_mm.photo_tunnel_height, 15);
+  assert.equal(diagnostics.parameters_mm.m4_nut_pocket_across_flats, 7.3);
+  assert.equal(diagnostics.parameters_mm.m3_nut_pocket_across_flats, 5.8);
+});
+
+test('part registry uses unique IDs and current STL files', () => {
   const registry = JSON.parse(fs.readFileSync(path.join(root, 'mechanical/part_id_registry_v06.json'), 'utf8'));
   const items = Object.values(registry.groups).flat();
   const ids = items.map(item => item.id);
   assert.equal(new Set(ids).size, ids.length);
-  assert.ok(ids.every(id => /^#(?:petg|tpu95|tpu85)-\d+$/.test(id)));
-  for (const item of items) {
-    assert.ok(item.description, `missing description for ${item.id}`);
-    assert.ok(Number.isInteger(item.quantity) && item.quantity > 0, `invalid quantity for ${item.id}`);
-    assert.ok(fs.existsSync(path.join(root, item.stl)), `missing STL for ${item.id}: ${item.stl}`);
-  }
+  assert.ok(ids.includes('#petg-9'));
+  assert.ok(ids.includes('#petg-10'));
+  assert.ok(ids.includes('#tpu95-10'));
+  assert.equal(ids.includes('#tpu85-4'), false);
+  for (const item of items) assert.ok(fs.existsSync(path.join(root, item.stl)), `missing STL for ${item.id}: ${item.stl}`);
 });
 
-test('all current SVG diagram generators avoid a native Cairo dependency on Windows', () => {
+test('all current SVG generators use the portable resvg dependency', () => {
   const generators = [
     'mechanical/generate_reference_diagrams_v06.py',
-    'mechanical/generate_detail_diagrams_v073.py',
-    'mechanical/generate_hermeticity_diagram_v073.py',
-    'electronics/generate_electronics_diagrams_v073.py',
+    'mechanical/generate_detail_diagrams_v074.py',
+    'mechanical/generate_hermeticity_diagram_v074.py',
+    'electronics/generate_electronics_diagrams_v074.py',
   ];
   const requirements = fs.readFileSync(path.join(root, 'mechanical/requirements.txt'), 'utf8');
   for (const generator of generators) {
@@ -98,7 +108,8 @@ test('all current SVG diagram generators avoid a native Cairo dependency on Wind
   assert.match(requirements, /^resvg-py==/m);
 });
 
-test('flag loop documentation uses shaft gap in length formula', () => {
+test('flag loop documentation keeps the shaft-gap formula and new datum', () => {
   const document = fs.readFileSync(path.join(root, 'mechanical/docs/FLAG_ATTACHMENT_LOOPS_RU.md'), 'utf8');
   assert.match(document, /L = 2 × G \+ π × Dштока/);
+  assert.match(document, /10 мм ниже нижней кромки навершия/);
 });

@@ -4,22 +4,22 @@
     {
       "id": "101",
       "category": "Электроника",
-      "title": "Схема соединений электроники v0.7.3 — A4",
-      "description": "Актуальная схема: внешняя 6×18650-подсистема выдаёт стабилизированные 12 В, питание проходит через M125-0205; внутри показаны DC-DC, ESP32-C3, VEML7700, AHT20+BMP280, MOSFET, 2-pin разъём и неон.",
+      "title": "Схема соединений электроники v0.7.4 — A4",
+      "description": "Актуальная схема питания, ESP32-C3, VEML7700, AHT20+BMP280, MOSFET и двухконтактного выхода флага; механическая компоновка и закладные показаны карточками 124/125.",
       "file": "electronics/electronics_wiring_diagram_A4.svg",
       "preview": "electronics/electronics_wiring_diagram_A4.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "102",
       "category": "Электроника",
-      "title": "Карта клемм, GPIO и разъёмов v0.7.3 — A4",
-      "description": "Актуальное назначение контактов: GPIO3 PWM, GPIO4 SDA, GPIO5 SCL, 3,3 В для датчиков и двухконтактный разъём флага. Фиктивного измерения батареи нет.",
+      "title": "Карта клемм, GPIO и разъёмов v0.7.4 — A4",
+      "description": "Актуальные GPIO3/4/5, питание датчиков, M125 и двухконтактный выход; добавлена ссылка на механическую карту M3/M4.",
       "file": "electronics/electronics_terminal_map_A4.svg",
       "preview": "electronics/electronics_terminal_map_A4.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "103",
@@ -45,7 +45,7 @@
       "id": "105",
       "category": "Механика",
       "title": "Продольный разрез v0.5 — исторический",
-      "description": "Историческая внутренняя компоновка v0.5. Актуальная продольная схема v0.7.3 приведена отдельной карточкой ниже.",
+      "description": "Историческая внутренняя компоновка v0.5. Актуальная продольная схема v0.7.4 приведена отдельной карточкой ниже.",
       "file": "mechanical/preview_v05_longitudinal_section.png",
       "preview": "mechanical/preview_v05_longitudinal_section.png",
       "status": "historical",
@@ -55,7 +55,7 @@
       "id": "106",
       "category": "Печать",
       "title": "Раскладка PETG v0.5 — историческая",
-      "description": "Историческая ориентация PETG v0.5. Для печати использовать актуальную раскладку v0.7.3.",
+      "description": "Историческая ориентация PETG v0.5. Для печати использовать актуальную раскладку v0.7.4.",
       "file": "mechanical/preview_v05_print_PETG.png",
       "preview": "mechanical/preview_v05_print_PETG.png",
       "status": "historical",
@@ -75,7 +75,7 @@
       "id": "108",
       "category": "Печать",
       "title": "Удержание TPU v0.5 — историческое",
-      "description": "Историческая схема мягких деталей. Актуальные ID и назначения находятся в таблице v0.7.3.",
+      "description": "Историческая схема мягких деталей. Актуальные ID и назначения находятся в таблице v0.7.4.",
       "file": "mechanical/preview_v05_TPU_retention.png",
       "preview": "mechanical/preview_v05_TPU_retention.png",
       "status": "historical",
@@ -84,182 +84,182 @@
     {
       "id": "109",
       "category": "Флаг",
-      "title": "Флаг 300 × 250 мм с четырьмя петлями v0.7.3",
-      "description": "Текущая схема: верхняя петля начинается на 10 мм ниже верха, нижняя заканчивается вровень с низом, две средние распределены равномерно по центрам.",
+      "title": "Флаг 300 × 250 мм с четырьмя лямками v0.7.4",
+      "description": "Верхняя лямка начинается на 10 мм ниже нижней кромки навершия в сборе; нижняя заканчивается вровень с низом полотна, средние распределены равномерно.",
       "file": "flag_with_attachment_loops_full_size_300x250.svg",
       "preview": "flag_with_attachment_loops_full_size_300x250.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "110",
       "category": "Флаг",
-      "title": "Выкройка четырёх петель — A4, предварительно 220 × 30 мм",
-      "description": "Предварительная выкройка 1:1 для текущей геометрии: Dштока≈20 мм и G≈62 мм. Перед раскроем измерить реальную сборку и сначала сшить одну пробную петлю.",
+      "title": "Выкройка четырёх лямок — A4, предварительно 220 × 30 мм",
+      "description": "Выкройка 1:1. Положение верхней лямки задаётся нижней кромкой навершия; длину сначала проверяют одной пробной лямкой.",
       "file": "flag_attachment_loop_pattern_A4_1to1.svg",
       "preview": "flag_attachment_loop_pattern_A4_1to1.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "111",
       "category": "Механика",
-      "title": "Общий вид сборки v0.7.3",
-      "description": "Актуальный общий вид с четырьмя петлями, наружной двухпроводной трассой, укороченным тоннелем и нижним климатическим карманом.",
+      "title": "Общий вид сборки v0.7.4",
+      "description": "Актуальный общий вид с приподнятой открытой дорожкой проводов, направляющей под 35°, новым каркасом электроники, тоннелем 15 мм, мембраной Ø20 и явными закладными гайками.",
       "file": "mechanical/preview_v06_assembly.png",
       "preview": "mechanical/preview_v06_assembly.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "112",
       "category": "Механика",
-      "title": "Разнесённый вид PETG/TPU v0.7.3 с ID",
-      "description": "Актуальный разнесённый вид с постоянными ID, включая новую сменную направляющую #tpu95-10.",
+      "title": "Разнесённый вид PETG/TPU v0.7.4 с ID",
+      "description": "Актуальный разнесённый вид с #petg-9, #petg-10 и #tpu95-10; отдельная TPU-прокладка самоклеящейся мембраны удалена.",
       "file": "mechanical/preview_v06_exploded_PETG_TPU_ids.png",
       "preview": "mechanical/preview_v06_exploded_PETG_TPU_ids.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "113",
       "category": "Печать",
-      "title": "Раскладка PETG v0.7.3 с ID",
-      "description": "Актуальная отдельная очередь печати оранжевым PETG: усиленный корпус, крышка, тоннель, карман датчика и остальные жёсткие детали.",
+      "title": "Раскладка PETG v0.7.4 с ID",
+      "description": "Очередь PETG: полностью параметрические половины корпуса, каркас электроники, опора VEML7700, крышка, тоннель и карман датчика.",
       "file": "mechanical/preview_v06_print_PETG_ids.png",
       "preview": "mechanical/preview_v06_print_PETG_ids.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "114",
       "category": "Печать",
-      "title": "Раскладка TPU 95A v0.7.3 с ID",
-      "description": "Актуальная отдельная очередь функциональных мягких деталей TPU 95A, включая #tpu95-10.",
+      "title": "Раскладка TPU 95A v0.7.4 с ID",
+      "description": "Функциональные TPU95-детали, включая сменную направляющую двух проводов под углом около 35°.",
       "file": "mechanical/preview_v06_print_TPU95_ids.png",
       "preview": "mechanical/preview_v06_print_TPU95_ids.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "115",
       "category": "Печать",
-      "title": "Раскладка TPU 85A v0.7.3 с ID",
-      "description": "Актуальная отдельная очередь мягких статических уплотнений TPU 85A.",
+      "title": "Раскладка TPU 85A v0.7.4 с ID",
+      "description": "Три статические прокладки. Самоклеящаяся климатическая мембрана Ø20 устанавливается без отдельной TPU-прокладки.",
       "file": "mechanical/preview_v06_print_TPU85_ids.png",
       "preview": "mechanical/preview_v06_print_TPU85_ids.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "116",
       "category": "Механика и электрика",
-      "title": "Маршрут двух проводов питания флага v0.7.3",
-      "description": "Два провода Ø2 мм идут ниже гайки между PETG-бортами с просветом 4,2 мм и высотой 2,5 мм; у флага стоит #tpu95-10, вход в сухой бокс — #tpu95-3/#tpu95-4.",
+      "title": "Маршрут двух проводов питания флага v0.7.4",
+      "description": "Два провода Ø2 мм проходят по открытой приподнятой дорожке ниже M4; у отмеченной точки #tpu95-10 направляет их примерно под 35° вниз к флагу.",
       "file": "mechanical/flag_power_cable_route_A4_landscape.svg",
       "preview": "mechanical/flag_power_cable_route_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "117",
       "category": "Документация",
-      "title": "Таблица идентификаторов печатных деталей v0.7.3",
-      "description": "Единый реестр ID, материала, количества, назначения и STL-файла; одинаковая деталь сохраняет ID на всех актуальных чертежах.",
+      "title": "Таблица идентификаторов печатных деталей v0.7.4",
+      "description": "Единый реестр 23 текущих печатных деталей; металлические закладные M4/M3 вынесены на отдельную карту 124.",
       "file": "mechanical/part_id_table_v06.svg",
       "preview": "mechanical/part_id_table_v06.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "118",
       "category": "Механика",
-      "title": "Актуальная продольная схема узлов v0.7.3",
-      "description": "Текущая компоновка подшипников, спицы, M125, наружного кабеля, электронного бокса, светового тоннеля, климатического кармана и петель флага.",
-      "file": "mechanical/current_longitudinal_section_v073.svg",
-      "preview": "mechanical/current_longitudinal_section_v073.png",
+      "title": "Актуальная продольная схема узлов v0.7.4",
+      "description": "Компоновка подшипников, спицы, M125, кабеля, каркаса электроники, тоннеля 15 мм, мембраны Ø20 и лямок, привязанных к нижнему краю навершия.",
+      "file": "mechanical/current_longitudinal_section_v074.svg",
+      "preview": "mechanical/current_longitudinal_section_v074.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "119",
       "category": "Герметичность",
-      "title": "Герметичность электронного отсека и датчиков v0.7.3",
-      "description": "Совместная схема крышки с лабиринтом и TPU85-прокладкой, тоннеля VEML7700, отдельной vent-мембраны и климатического кармана. IP-класс не заявляется без стенда.",
+      "title": "Герметичность электронного отсека и датчиков v0.7.4",
+      "description": "Независимые барьеры крышки, тоннеля с клеевой полкой и климатического кармана под самоклеящуюся мембрану Ø20; IP-класс не заявляется.",
       "file": "mechanical/hermeticity_design_A4_landscape.svg",
       "preview": "mechanical/hermeticity_design_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "120",
       "category": "Оптика",
-      "title": "Световой тоннель и крепление VEML7700 v0.7.3",
-      "description": "Тоннель Ø11 × 18 мм вставляется изнутри наружу; показаны внутренняя шайба, окно, прокладка, прижим и предварительное крепление платы на двух штырьках.",
+      "title": "Световой тоннель и крепление VEML7700 v0.7.4",
+      "description": "Тоннель Ø11 × 15 мм, выделенная кольцевая клеевая закладная, купон 15/18 мм и съёмная опора платы на двух M3.",
       "file": "mechanical/photo_tunnel_veml_mount_A4_landscape.svg",
       "preview": "mechanical/photo_tunnel_veml_mount_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "121",
       "category": "Климатический датчик",
-      "title": "Карман AHT20+BMP280 v0.7.3",
-      "description": "Текущий размер кармана, нижняя PTFE/ePTFE-мембрана, три отверстия после сверления, смещённая перегородка, TPU85-прокладка и отдельный potting-well проводов.",
+      "title": "Карман AHT20+BMP280 v0.7.4",
+      "description": "Самоклеящийся диск Ø20 мм с активным центром Ø10, семь отверстий Ø2 мм, смещённая перегородка, potting-well и две M3-закладные.",
       "file": "mechanical/environment_sensor_pocket_A4_landscape.svg",
       "preview": "mechanical/environment_sensor_pocket_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "122",
       "category": "Флаг",
-      "title": "Чистый шаблон ихтиса для 16-мм неона — A4",
-      "description": "Актуальный чистый шаблон контура без размерных подписей. Толстая линия задаёт путь 16-мм неона; внутренние тонкие линии задают светоотражающие вставки и сквозной глаз.",
+      "title": "Чистый шаблон рыбы для 16-мм неона — A4",
+      "description": "Чистый геометрический шаблон без размерных подписей. Толстая линия задаёт путь неона; крепёж навершия к шаблону не относится.",
       "file": "fish_template_clean_A4_landscape.svg",
       "preview": "fish_template_clean_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "123",
       "category": "Флаг",
-      "title": "Размерный шаблон ихтиса для 16-мм неона — A4",
-      "description": "Актуальная размерная схема рыбы: примерно 249 × 106 мм, тело около 86 мм, неон 16 мм и сквозной глаз Ø16 мм. Крепление полотна к штоку показано отдельной схемой петель.",
+      "title": "Размерный шаблон рыбы для 16-мм неона — A4",
+      "description": "Размерная схема рыбы: примерно 249 × 106 мм, тело около 86 мм, неон 16 мм и сквозной глаз Ø16 мм; механический крепёж — карта 124.",
       "file": "fish_template_dimensioned_A4_landscape.svg",
       "preview": "fish_template_dimensioned_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "124",
-      "category": "Флаг",
-      "title": "Согласованный визуальный образец ихтиса",
-      "description": "Справочный согласованный образец формы. Для раскроя и измерений использовать SVG-карточки 122 и 123, а не растровый образец.",
-      "file": "FISH_TEMPLATE_APPROVED_REFERENCE.png",
-      "preview": "FISH_TEMPLATE_APPROVED_REFERENCE.png",
-      "status": "reference",
-      "version": "reference"
+      "category": "Механика",
+      "title": "Карта закладных гаек и крепежа v0.7.4",
+      "description": "Все текущие винтовые соединения: 8×M4 и 10×M3, загрузочные горловины, зоны обслуживания и обязательные купоны.",
+      "file": "mechanical/fastener_captive_nut_map_A4_landscape.svg",
+      "preview": "mechanical/fastener_captive_nut_map_A4_landscape.png",
+      "status": "current",
+      "version": "0.7.4"
     },
     {
       "id": "125",
-      "category": "Аудит",
-      "title": "Сводный лист проверки актуальности чертежей v0.7.3",
-      "description": "Контактный лист актуальных и исторических изображений для визуальной сверки. Источником статусов остаётся catalog/drawings.json.",
-      "file": "docs/drawing_audit_contact_sheet_v073.png",
-      "preview": "docs/drawing_audit_contact_sheet_v073.png",
+      "category": "Электроника и механика",
+      "title": "Компоновка электроники в боксе v0.7.4",
+      "description": "DC-DC лежит на нижнем уровне, ESP32-C3 и MOSFET стоят вертикально на противоположных стенках, VEML7700 — на съёмной верхней опоре.",
+      "file": "mechanical/electronics_layout_A4_landscape.svg",
+      "preview": "mechanical/electronics_layout_A4_landscape.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "126",
       "category": "Android",
       "title": "Иконка Android-приложения проекта",
-      "description": "Схематичный оранжевый флаг на чёрном флагштоке. Видимое имя приложения берётся из project_identity.json.",
+      "description": "Отдельный визуальный ресурс приложения; механические закладные к иконке не относятся.",
       "file": "docs/android_app_icon_crucian.png",
       "preview": "docs/android_app_icon_crucian.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     }
   ],
   "models": [
@@ -283,57 +283,57 @@
     },
     {
       "id": "204",
-      "title": "Разнесённый вид PETG/TPU v0.7.3 — интерактивно",
+      "title": "Разнесённый вид PETG/TPU v0.7.4 — интерактивно",
       "description": "Актуальная интерактивная разнесённая сборка PETG, TPU 95A и TPU 85A с новой направляющей проводов.",
       "file": "mechanical/flagpole_finial_v0_6_exploded.glb",
       "poster": "mechanical/preview_v06_exploded_PETG_TPU.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "205",
-      "title": "Общий вид сборки v0.7.3 — интерактивно",
+      "title": "Общий вид сборки v0.7.4 — интерактивно",
       "description": "Актуальная сборка с обновлённой герметизацией, укороченным тоннелем, карманом AHT20+BMP280 и наружным кабельным маршрутом.",
       "file": "mechanical/flagpole_finial_v0_6_assembly.glb",
       "poster": "mechanical/preview_v06_assembly.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "206",
-      "title": "Раскладка PETG v0.7.3 — интерактивно",
+      "title": "Раскладка PETG v0.7.4 — интерактивно",
       "description": "Актуальная отдельная очередь жёстких деталей из оранжевого PETG.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
       "poster": "mechanical/preview_v06_print_PETG.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "207",
-      "title": "Раскладка TPU 95A v0.7.3 — интерактивно",
+      "title": "Раскладка TPU 95A v0.7.4 — интерактивно",
       "description": "Актуальная очередь втулок, разгрузок и направляющей #tpu95-10.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU95.glb",
       "poster": "mechanical/preview_v06_print_TPU95.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "208",
-      "title": "Раскладка TPU 85A v0.7.3 — интерактивно",
+      "title": "Раскладка TPU 85A v0.7.4 — интерактивно",
       "description": "Актуальная очередь мягких статических уплотнений.",
       "file": "mechanical/flagpole_finial_v0_6_print_layout_TPU85.glb",
       "poster": "mechanical/preview_v06_print_TPU85.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "209",
-      "title": "Маршрут двух проводов питания флага v0.7.3 — интерактивно",
+      "title": "Маршрут двух проводов питания флага v0.7.4 — интерактивно",
       "description": "Фокусная модель: два провода ниже гайки, PETG-борта, #tpu95-10 у флага и ввод #tpu95-3/#tpu95-4 у электронного бокса.",
       "file": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
       "poster": "mechanical/preview_v06_flag_power_route.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "203",
@@ -343,17 +343,27 @@
       "poster": "mechanical/preview_v05_print_TPU.png",
       "status": "historical",
       "version": "0.5"
+    },
+    {
+      "id": "210",
+      "category": "Электроника и механика",
+      "title": "Компоновка электроники v0.7.4 — интерактивно",
+      "description": "Интерактивный вид съёмного каркаса, вертикальных ESP32/MOSFET, нижнего DC-DC, опоры VEML7700 и двух M3-закладных.",
+      "file": "mechanical/flagpole_finial_v0_6_electronics_layout.glb",
+      "poster": "mechanical/preview_v06_electronics_layout.png",
+      "status": "current",
+      "version": "0.7.4"
     }
   ],
   "printSessions": [
     {
       "id": "301",
       "title": "Очередь печати PETG",
-      "description": "Отдельный запуск принтера для жёстких деталей из оранжевого PETG. Это основная чистовая очередь на версии v0.7.3. Белые детали на рендерах специально показаны сероватыми, чтобы не сливаться с фоном.",
+      "description": "Отдельный запуск принтера для жёстких деталей из оранжевого PETG. Это основная чистовая очередь на версии v0.7.4. Белые детали на рендерах специально показаны сероватыми, чтобы не сливаться с фоном.",
       "file": "mechanical/preview_v06_print_PETG.png",
       "preview": "mechanical/preview_v06_print_PETG.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "302",
@@ -362,7 +372,7 @@
       "file": "mechanical/preview_v06_print_TPU95.png",
       "preview": "mechanical/preview_v06_print_TPU95.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     },
     {
       "id": "303",
@@ -371,7 +381,7 @@
       "file": "mechanical/preview_v06_print_TPU85.png",
       "preview": "mechanical/preview_v06_print_TPU85.png",
       "status": "current",
-      "version": "0.7.3"
+      "version": "0.7.4"
     }
   ]
 }

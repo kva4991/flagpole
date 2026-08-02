@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
 <rect width="420" height="297" fill="#f4f5f6"/>
-<text x="210.0" y="16" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="8" font-weight="700" fill="#172126">Таблица идентификаторов печатных деталей v0.7.3</text>
+<text x="210.0" y="16" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="8" font-weight="700" fill="#172126">Таблица идентификаторов печатных деталей v0.7.4</text>
 <text x="210.0" y="22" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="4" fill="#52616a">Одинаковая деталь сохраняет один и тот же ID на всех актуальных чертежах</text>
 <rect x="12" y="29" width="396" height="9" rx="1.5" fill="#193f46"/>
 
@@ -11,325 +11,342 @@
 <text x="162" y="35" font-family="DejaVu Sans,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff">Кол-во</text>
 <text x="180" y="35" font-family="DejaVu Sans,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff">Назначение</text>
 <text x="304" y="35" font-family="DejaVu Sans,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff">STL-файл</text>
-<rect x="12" y="38" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="39.2" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="42.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-1</text>
-<text x="53" y="42.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="42.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Ротор, половина A</text>
-<text x="164" y="42.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="42.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Силовая половина вращающегося корпуса со стороны</text>
-<text x="180" y="46.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">A.</text>
-<text x="304" y="42.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/rotor_half_A_print_flat.stl</text>
-<line x1="45" y1="38" x2="45" y2="48.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="38" x2="78" y2="48.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="38" x2="160" y2="48.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="38" x2="178" y2="48.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="38" x2="302" y2="48.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="48.7" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="49.900000000000006" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="53.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-2</text>
-<text x="53" y="53.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="53.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Ротор, половина B</text>
-<text x="164" y="53.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="53.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Ответная силовая половина корпуса с закладными</text>
-<text x="180" y="57.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">гайками.</text>
-<text x="304" y="53.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/rotor_half_B_print_flat.stl</text>
-<line x1="45" y1="48.7" x2="45" y2="59.400000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="48.7" x2="78" y2="59.400000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="48.7" x2="160" y2="59.400000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="48.7" x2="178" y2="59.400000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="48.7" x2="302" y2="59.400000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="59.400000000000006" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="60.60000000000001" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="63.900000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-3</text>
-<text x="53" y="63.900000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="63.900000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Неподвижный воротник, половина</text>
-<text x="80" y="67.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">A</text>
-<text x="164" y="63.900000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="63.900000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Половина неподвижного воротника, фиксируемого на</text>
-<text x="180" y="67.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">штоке.</text>
-<text x="304" y="63.900000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/stationary_collar_A_print_flat.stl</text>
-<line x1="45" y1="59.400000000000006" x2="45" y2="70.10000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="59.400000000000006" x2="78" y2="70.10000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="59.400000000000006" x2="160" y2="70.10000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="59.400000000000006" x2="178" y2="70.10000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="59.400000000000006" x2="302" y2="70.10000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="70.10000000000001" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="71.30000000000001" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="74.60000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-4</text>
-<text x="53" y="74.60000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="74.60000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Неподвижный воротник, половина</text>
-<text x="80" y="78.4" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">B</text>
-<text x="164" y="74.60000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="74.60000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Ответная половина воротника с карманами крепежа.</text>
-<text x="304" y="74.60000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/stationary_collar_B_print_flat.stl</text>
-<line x1="45" y1="70.10000000000001" x2="45" y2="80.80000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="70.10000000000001" x2="78" y2="80.80000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="70.10000000000001" x2="160" y2="80.80000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="70.10000000000001" x2="178" y2="80.80000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="70.10000000000001" x2="302" y2="80.80000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="80.80000000000001" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="82.00000000000001" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="85.30000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-5</text>
-<text x="53" y="85.30000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="85.30000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Сервисная крышка</text>
-<text x="164" y="85.30000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="85.30000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Съёмная верхняя крышка электронного отсека с</text>
-<text x="180" y="89.10000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">дождевым свесом.</text>
-<text x="304" y="85.30000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/service_lid_top_face_down.stl</text>
-<line x1="45" y1="80.80000000000001" x2="45" y2="91.50000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="80.80000000000001" x2="78" y2="91.50000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="80.80000000000001" x2="160" y2="91.50000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="80.80000000000001" x2="178" y2="91.50000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="80.80000000000001" x2="302" y2="91.50000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="91.50000000000001" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="92.70000000000002" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="96.00000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-6</text>
-<text x="53" y="96.00000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="96.00000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Световой тоннель VEML7700</text>
-<text x="164" y="96.00000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="96.00000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Световой колодец VEML7700, защищающий датчик от</text>
-<text x="180" y="99.80000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">боковой засветки.</text>
-<text x="304" y="96.00000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/photo_tunnel_upright.stl</text>
-<line x1="45" y1="91.50000000000001" x2="45" y2="102.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="91.50000000000001" x2="78" y2="102.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="91.50000000000001" x2="160" y2="102.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="91.50000000000001" x2="178" y2="102.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="91.50000000000001" x2="302" y2="102.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="102.20000000000002" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="103.40000000000002" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="106.70000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-7</text>
-<text x="53" y="106.70000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="106.70000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прижим прозрачного окна</text>
-<text x="164" y="106.70000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="106.70000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Прижимает вырезанное прозрачное окно светового</text>
-<text x="180" y="110.50000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">колодца.</text>
-<text x="304" y="106.70000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/photo_window_retainer_flat.stl</text>
-<line x1="45" y1="102.20000000000002" x2="45" y2="112.90000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="102.20000000000002" x2="78" y2="112.90000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="102.20000000000002" x2="160" y2="112.90000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="102.20000000000002" x2="178" y2="112.90000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="102.20000000000002" x2="302" y2="112.90000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="112.90000000000002" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="114.10000000000002" width="5" height="8.299999999999999" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="117.40000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#petg-8</text>
-<text x="53" y="117.40000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">PETG</text>
-<text x="80" y="117.40000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Съёмный карман AHT20+BMP280</text>
-<text x="164" y="117.40000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="117.40000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Съёмный наружный карман комбинированного датчика</text>
-<text x="180" y="121.20000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">AHT20+BMP280.</text>
-<text x="304" y="117.40000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_petg_v06/environment_sensor_pocket_open_side_up.stl</text>
-<line x1="45" y1="112.90000000000002" x2="45" y2="123.60000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="112.90000000000002" x2="78" y2="123.60000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="112.90000000000002" x2="160" y2="123.60000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="112.90000000000002" x2="178" y2="123.60000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="112.90000000000002" x2="302" y2="123.60000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="123.60000000000002" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="124.80000000000003" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="128.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-1</text>
-<text x="53" y="128.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="128.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Втулка спицы, половина A</text>
-<text x="164" y="128.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="128.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Мягкая половина вкладыша углепластиковой спицы</text>
-<text x="180" y="131.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Ø5 мм.</text>
-<text x="304" y="128.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/spoke_liner_A_split_face_down.stl</text>
-<line x1="45" y1="123.60000000000002" x2="45" y2="134.3" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="123.60000000000002" x2="78" y2="134.3" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="123.60000000000002" x2="160" y2="134.3" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="123.60000000000002" x2="178" y2="134.3" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="123.60000000000002" x2="302" y2="134.3" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="134.3" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="135.5" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="138.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-2</text>
-<text x="53" y="138.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="138.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Втулка спицы, половина B</text>
-<text x="164" y="138.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="138.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Вторая половина мягкого вкладыша спицы.</text>
-<text x="304" y="138.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/spoke_liner_B_split_face_down.stl</text>
-<line x1="45" y1="134.3" x2="45" y2="145.0" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="134.3" x2="78" y2="145.0" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="134.3" x2="160" y2="145.0" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="134.3" x2="178" y2="145.0" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="134.3" x2="302" y2="145.0" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="145.0" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="146.2" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="149.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-3</text>
-<text x="53" y="149.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="149.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Кабельный ввод в бокс,</text>
-<text x="80" y="153.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">половина A</text>
-<text x="164" y="149.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="149.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Первая половина разрезной манжеты, через которую</text>
-<text x="180" y="153.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">наружный кабель входит в электронный отсек.</text>
-<text x="304" y="149.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl</text>
-<line x1="45" y1="145.0" x2="45" y2="155.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="145.0" x2="78" y2="155.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="145.0" x2="160" y2="155.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="145.0" x2="178" y2="155.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="145.0" x2="302" y2="155.7" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="155.7" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="156.89999999999998" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="160.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-4</text>
-<text x="53" y="160.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="160.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Кабельный ввод в бокс,</text>
-<text x="80" y="164.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">половина B</text>
-<text x="164" y="160.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="160.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Ответная половина разрезной манжеты</text>
-<text x="180" y="164.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">единственного кабельного ввода.</text>
-<text x="304" y="160.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl</text>
-<line x1="45" y1="155.7" x2="45" y2="166.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="155.7" x2="78" y2="166.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="155.7" x2="160" y2="166.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="155.7" x2="178" y2="166.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="155.7" x2="302" y2="166.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="166.39999999999998" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="167.59999999999997" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="170.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-5</text>
-<text x="53" y="170.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="170.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Разгрузка жгута M125, половина</text>
-<text x="80" y="174.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">A</text>
-<text x="164" y="170.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="170.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Половина разгрузки жгута проводов токосъёмника</text>
-<text x="180" y="174.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">M125.</text>
-<text x="304" y="170.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/M125_bundle_grommet_A_split_face_down.stl</text>
-<line x1="45" y1="166.39999999999998" x2="45" y2="177.09999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="166.39999999999998" x2="78" y2="177.09999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="166.39999999999998" x2="160" y2="177.09999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="166.39999999999998" x2="178" y2="177.09999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="166.39999999999998" x2="302" y2="177.09999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="177.09999999999997" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="178.29999999999995" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="181.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-6</text>
-<text x="53" y="181.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="181.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Разгрузка жгута M125, половина</text>
-<text x="80" y="185.39999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">B</text>
-<text x="164" y="181.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="181.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Вторая половина разгрузки жгута M125.</text>
-<text x="304" y="181.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/M125_bundle_grommet_B_split_face_down.stl</text>
-<line x1="45" y1="177.09999999999997" x2="45" y2="187.79999999999995" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="177.09999999999997" x2="78" y2="187.79999999999995" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="177.09999999999997" x2="160" y2="187.79999999999995" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="177.09999999999997" x2="178" y2="187.79999999999995" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="177.09999999999997" x2="302" y2="187.79999999999995" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="187.79999999999995" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="188.99999999999994" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="192.29999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-7</text>
-<text x="53" y="192.29999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="192.29999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Втулка под M125 / шток</text>
-<text x="164" y="192.29999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="192.29999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Центрирует корпус M125 внутри полого штока без</text>
-<text x="180" y="196.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">силовой нагрузки.</text>
-<text x="304" y="192.29999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/M125_pole_sleeve_upright.stl</text>
-<line x1="45" y1="187.79999999999995" x2="45" y2="198.49999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="187.79999999999995" x2="78" y2="198.49999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="187.79999999999995" x2="160" y2="198.49999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="187.79999999999995" x2="178" y2="198.49999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="187.79999999999995" x2="302" y2="198.49999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="198.49999999999994" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="199.69999999999993" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="202.99999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-8</text>
-<text x="53" y="202.99999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="202.99999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Вкладыш воротника по штоку,</text>
-<text x="80" y="206.79999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">половина A</text>
-<text x="164" y="202.99999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="202.99999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Мягкая половина вкладыша между воротником и</text>
-<text x="180" y="206.79999999999995" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">штоком.</text>
-<text x="304" y="202.99999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/pole_collar_liner_A_split_face_down.stl</text>
-<line x1="45" y1="198.49999999999994" x2="45" y2="209.19999999999993" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="198.49999999999994" x2="78" y2="209.19999999999993" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="198.49999999999994" x2="160" y2="209.19999999999993" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="198.49999999999994" x2="178" y2="209.19999999999993" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="198.49999999999994" x2="302" y2="209.19999999999993" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="209.19999999999993" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="210.39999999999992" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="213.69999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-9</text>
-<text x="53" y="213.69999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="213.69999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Вкладыш воротника по штоку,</text>
-<text x="80" y="217.49999999999994" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">половина B</text>
-<text x="164" y="213.69999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="213.69999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Вторая половина вкладыша воротника.</text>
-<text x="304" y="213.69999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/pole_collar_liner_B_split_face_down.stl</text>
-<line x1="45" y1="209.19999999999993" x2="45" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="209.19999999999993" x2="78" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="209.19999999999993" x2="160" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="209.19999999999993" x2="178" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="209.19999999999993" x2="302" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="219.89999999999992" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="221.0999999999999" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-10</text>
-<text x="53" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
-<text x="80" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Направляющая двух проводов у</text>
-<text x="80" y="228.19999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">флага</text>
-<text x="164" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Сменная разрезная вставка в PETG-кольце:</text>
-<text x="180" y="228.19999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">разделяет два провода Ø2 мм и защищает изоляцию</text>
-<text x="304" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/flag_side_wire_guide_slit_up.stl</text>
-<line x1="45" y1="219.89999999999992" x2="45" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="219.89999999999992" x2="78" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="219.89999999999992" x2="160" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="219.89999999999992" x2="178" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="219.89999999999992" x2="302" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="230.5999999999999" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="231.7999999999999" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-1</text>
-<text x="53" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка крышки</text>
-<text x="164" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Мягкая замкнутая прокладка сервисной крышки.</text>
-<text x="304" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/lid_gasket_flat.stl</text>
-<line x1="45" y1="230.5999999999999" x2="45" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="230.5999999999999" x2="78" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="230.5999999999999" x2="160" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="230.5999999999999" x2="178" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="230.5999999999999" x2="302" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="241.2999999999999" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="242.4999999999999" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-2</text>
-<text x="53" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка окна VEML7700</text>
-<text x="164" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Уплотняет прозрачное окно VEML7700 по периметру.</text>
-<text x="304" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/photo_window_gasket_flat.stl</text>
-<line x1="45" y1="241.2999999999999" x2="45" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="241.2999999999999" x2="78" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="241.2999999999999" x2="160" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="241.2999999999999" x2="178" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="241.2999999999999" x2="302" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="251.9999999999999" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="253.19999999999987" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-3</text>
-<text x="53" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка кармана AHT20+BMP280</text>
-<text x="164" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Уплотняет съёмный климатический карман</text>
-<text x="180" y="260.2999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">относительно корпуса.</text>
-<text x="304" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/environment_pocket_gasket_flat.stl</text>
-<line x1="45" y1="251.9999999999999" x2="45" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="251.9999999999999" x2="78" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="251.9999999999999" x2="160" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="251.9999999999999" x2="178" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="251.9999999999999" x2="302" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="262.6999999999999" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="263.89999999999986" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-4</text>
-<text x="53" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка PTFE/ePTFE-мембраны</text>
-<text x="164" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Прижимает и уплотняет сменную</text>
-<text x="180" y="270.9999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">PTFE/ePTFE-мембрану.</text>
-<text x="304" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/environment_membrane_gasket_flat.stl</text>
-<line x1="45" y1="262.6999999999999" x2="45" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="78" y1="262.6999999999999" x2="78" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="160" y1="262.6999999999999" x2="160" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="178" y1="262.6999999999999" x2="178" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
-<line x1="302" y1="262.6999999999999" x2="302" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="12" y="282" width="396" height="10" rx="2" fill="#fff" stroke="#c7d0d4" stroke-width="0.4"/>
-<rect x="18" y="284" width="5" height="6" rx="1" fill="#e98638" stroke="#555" stroke-width="0.25"/>
-<text x="25" y="286.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.4" font-weight="700" fill="#172126">PETG</text>
-<text x="25" y="289.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" fill="#52616a">жёсткие детали; текущая чистовая печать</text>
-<rect x="148" y="284" width="5" height="6" rx="1" fill="#8b949b" stroke="#555" stroke-width="0.25"/>
-<text x="155" y="286.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.4" font-weight="700" fill="#172126">TPU 95A</text>
-<text x="155" y="289.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" fill="#52616a">втулки, демпферы и разгрузки</text>
-<rect x="278" y="284" width="5" height="6" rx="1" fill="#b9c1c8" stroke="#555" stroke-width="0.25"/>
-<text x="285" y="286.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.4" font-weight="700" fill="#172126">TPU 85A</text>
-<text x="285" y="289.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" fill="#52616a">мягкие статические уплотнения</text>
+<rect x="12" y="38" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="39.2" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="42.1" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-1</text>
+<text x="53" y="42.1" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="42.1" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Ротор, половина A</text>
+<text x="164" y="42.1" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="42.1" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Силовая половина вращающегося корпуса с наружной</text>
+<text x="180" y="45.6" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">дорожкой двух проводов, посадкой направляющей и</text>
+<text x="304" y="42.1" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/rotor_half_A_print_flat.stl</text>
+<line x1="45" y1="38" x2="45" y2="47.8" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="38" x2="78" y2="47.8" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="38" x2="160" y2="47.8" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="38" x2="178" y2="47.8" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="38" x2="302" y2="47.8" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="47.8" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="49.0" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="51.9" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-2</text>
+<text x="53" y="51.9" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="51.9" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Ротор, половина B</text>
+<text x="164" y="51.9" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="51.9" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Ответная силовая половина корпуса с закладными</text>
+<text x="180" y="55.4" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">M4/M3 и наружной дорожкой двух проводов.</text>
+<text x="304" y="51.9" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/rotor_half_B_print_flat.stl</text>
+<line x1="45" y1="47.8" x2="45" y2="57.599999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="47.8" x2="78" y2="57.599999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="47.8" x2="160" y2="57.599999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="47.8" x2="178" y2="57.599999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="47.8" x2="302" y2="57.599999999999994" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="57.599999999999994" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="58.8" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="61.699999999999996" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-3</text>
+<text x="53" y="61.699999999999996" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="61.699999999999996" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Неподвижный воротник, половина</text>
+<text x="80" y="65.19999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">A</text>
+<text x="164" y="61.699999999999996" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="61.699999999999996" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Половина неподвижного воротника, фиксируемого на</text>
+<text x="180" y="65.19999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">штоке.</text>
+<text x="304" y="61.699999999999996" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/stationary_collar_A_print_flat.stl</text>
+<line x1="45" y1="57.599999999999994" x2="45" y2="67.39999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="57.599999999999994" x2="78" y2="67.39999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="57.599999999999994" x2="160" y2="67.39999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="57.599999999999994" x2="178" y2="67.39999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="57.599999999999994" x2="302" y2="67.39999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="67.39999999999999" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="68.6" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="71.49999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-4</text>
+<text x="53" y="71.49999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="71.49999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Неподвижный воротник, половина</text>
+<text x="80" y="74.99999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">B</text>
+<text x="164" y="71.49999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="71.49999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Ответная половина воротника с карманами крепежа.</text>
+<text x="304" y="71.49999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/stationary_collar_B_print_flat.stl</text>
+<line x1="45" y1="67.39999999999999" x2="45" y2="77.19999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="67.39999999999999" x2="78" y2="77.19999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="67.39999999999999" x2="160" y2="77.19999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="67.39999999999999" x2="178" y2="77.19999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="67.39999999999999" x2="302" y2="77.19999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="77.19999999999999" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="78.39999999999999" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="81.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-5</text>
+<text x="53" y="81.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="81.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Сервисная крышка</text>
+<text x="164" y="81.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="81.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Съёмная верхняя крышка электронного отсека с</text>
+<text x="180" y="84.79999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">дождевым свесом.</text>
+<text x="304" y="81.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/service_lid_top_face_down.stl</text>
+<line x1="45" y1="77.19999999999999" x2="45" y2="86.99999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="77.19999999999999" x2="78" y2="86.99999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="77.19999999999999" x2="160" y2="86.99999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="77.19999999999999" x2="178" y2="86.99999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="77.19999999999999" x2="302" y2="86.99999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="86.99999999999999" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="88.19999999999999" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="91.09999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-6</text>
+<text x="53" y="91.09999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="91.09999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Световой тоннель VEML7700</text>
+<text x="164" y="91.09999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="91.09999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Световой тоннель VEML7700 длиной 15 мм с</text>
+<text x="180" y="94.59999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">отдельной клеевой полкой и кольцевым резервуаром</text>
+<text x="304" y="91.09999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/photo_tunnel_upright.stl</text>
+<line x1="45" y1="86.99999999999999" x2="45" y2="96.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="86.99999999999999" x2="78" y2="96.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="86.99999999999999" x2="160" y2="96.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="86.99999999999999" x2="178" y2="96.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="86.99999999999999" x2="302" y2="96.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="96.79999999999998" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="97.99999999999999" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="100.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-7</text>
+<text x="53" y="100.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="100.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Прижим прозрачного окна</text>
+<text x="164" y="100.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="100.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Прижимает вырезанное прозрачное окно светового</text>
+<text x="180" y="104.39999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">колодца.</text>
+<text x="304" y="100.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/photo_window_retainer_flat.stl</text>
+<line x1="45" y1="96.79999999999998" x2="45" y2="106.59999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="96.79999999999998" x2="78" y2="106.59999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="96.79999999999998" x2="160" y2="106.59999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="96.79999999999998" x2="178" y2="106.59999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="96.79999999999998" x2="302" y2="106.59999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="106.59999999999998" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="107.79999999999998" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="110.69999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-8</text>
+<text x="53" y="110.69999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="110.69999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Съёмный карман AHT20+BMP280</text>
+<text x="164" y="110.69999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="110.69999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Съёмный наружный карман AHT20+BMP280 под</text>
+<text x="180" y="114.19999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">самоклеящуюся мембрану Ø20 мм с активным центром</text>
+<text x="304" y="110.69999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/environment_sensor_pocket_open_side_up.stl</text>
+<line x1="45" y1="106.59999999999998" x2="45" y2="116.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="106.59999999999998" x2="78" y2="116.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="106.59999999999998" x2="160" y2="116.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="106.59999999999998" x2="178" y2="116.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="106.59999999999998" x2="302" y2="116.39999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="116.39999999999998" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="117.59999999999998" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="120.49999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-9</text>
+<text x="53" y="120.49999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="120.49999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Двухуровневый каркас</text>
+<text x="80" y="123.99999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">электроники</text>
+<text x="164" y="120.49999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="120.49999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Съёмный каркас: DC-DC лежит снизу, ESP32-C3 и</text>
+<text x="180" y="123.99999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">MOSFET стоят вертикально на противоположных</text>
+<text x="304" y="120.49999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/electronics_carrier_open_side_up.stl</text>
+<line x1="45" y1="116.39999999999998" x2="45" y2="126.19999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="116.39999999999998" x2="78" y2="126.19999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="116.39999999999998" x2="160" y2="126.19999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="116.39999999999998" x2="178" y2="126.19999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="116.39999999999998" x2="302" y2="126.19999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="126.19999999999997" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="127.39999999999998" width="5" height="7.4" rx="1" fill="#e98638" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="130.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#petg-10</text>
+<text x="53" y="130.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">PETG</text>
+<text x="80" y="130.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Съёмная опора VEML7700</text>
+<text x="164" y="130.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="130.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Регулируемая опора платы VEML7700 над каркасом</text>
+<text x="180" y="133.79999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">электроники; крепится двумя M3 в закладные гайки.</text>
+<text x="304" y="130.29999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_petg_v06/VEML7700_cradle_flat.stl</text>
+<line x1="45" y1="126.19999999999997" x2="45" y2="135.99999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="126.19999999999997" x2="78" y2="135.99999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="126.19999999999997" x2="160" y2="135.99999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="126.19999999999997" x2="178" y2="135.99999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="126.19999999999997" x2="302" y2="135.99999999999997" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="135.99999999999997" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="137.19999999999996" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="140.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-1</text>
+<text x="53" y="140.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="140.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Втулка спицы, половина A</text>
+<text x="164" y="140.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="140.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Мягкая половина вкладыша углепластиковой спицы Ø5</text>
+<text x="180" y="143.59999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">мм.</text>
+<text x="304" y="140.09999999999997" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/spoke_liner_A_split_face_down.stl</text>
+<line x1="45" y1="135.99999999999997" x2="45" y2="145.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="135.99999999999997" x2="78" y2="145.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="135.99999999999997" x2="160" y2="145.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="135.99999999999997" x2="178" y2="145.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="135.99999999999997" x2="302" y2="145.79999999999998" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="145.79999999999998" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="146.99999999999997" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="149.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-2</text>
+<text x="53" y="149.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="149.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Втулка спицы, половина B</text>
+<text x="164" y="149.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="149.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Вторая половина мягкого вкладыша спицы.</text>
+<text x="304" y="149.89999999999998" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/spoke_liner_B_split_face_down.stl</text>
+<line x1="45" y1="145.79999999999998" x2="45" y2="155.6" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="145.79999999999998" x2="78" y2="155.6" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="145.79999999999998" x2="160" y2="155.6" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="145.79999999999998" x2="178" y2="155.6" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="145.79999999999998" x2="302" y2="155.6" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="155.6" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="156.79999999999998" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="159.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-3</text>
+<text x="53" y="159.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="159.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Кабельный ввод в бокс,</text>
+<text x="80" y="163.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">половина A</text>
+<text x="164" y="159.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="159.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Первая половина разрезной манжеты, через которую</text>
+<text x="180" y="163.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">наружный кабель входит в электронный отсек.</text>
+<text x="304" y="159.7" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl</text>
+<line x1="45" y1="155.6" x2="45" y2="165.4" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="155.6" x2="78" y2="165.4" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="155.6" x2="160" y2="165.4" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="155.6" x2="178" y2="165.4" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="155.6" x2="302" y2="165.4" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="165.4" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="166.6" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="169.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-4</text>
+<text x="53" y="169.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="169.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Кабельный ввод в бокс,</text>
+<text x="80" y="173.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">половина B</text>
+<text x="164" y="169.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="169.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Ответная половина разрезной манжеты единственного</text>
+<text x="180" y="173.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">кабельного ввода.</text>
+<text x="304" y="169.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl</text>
+<line x1="45" y1="165.4" x2="45" y2="175.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="165.4" x2="78" y2="175.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="165.4" x2="160" y2="175.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="165.4" x2="178" y2="175.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="165.4" x2="302" y2="175.20000000000002" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="175.20000000000002" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="176.4" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="179.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-5</text>
+<text x="53" y="179.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="179.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Разгрузка жгута M125, половина</text>
+<text x="80" y="182.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">A</text>
+<text x="164" y="179.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="179.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Половина разгрузки жгута проводов токосъёмника</text>
+<text x="180" y="182.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">M125.</text>
+<text x="304" y="179.3" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/M125_bundle_grommet_A_split_face_down.stl</text>
+<line x1="45" y1="175.20000000000002" x2="45" y2="185.00000000000003" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="175.20000000000002" x2="78" y2="185.00000000000003" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="175.20000000000002" x2="160" y2="185.00000000000003" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="175.20000000000002" x2="178" y2="185.00000000000003" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="175.20000000000002" x2="302" y2="185.00000000000003" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="185.00000000000003" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="186.20000000000002" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="189.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-6</text>
+<text x="53" y="189.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="189.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Разгрузка жгута M125, половина</text>
+<text x="80" y="192.60000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">B</text>
+<text x="164" y="189.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="189.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Вторая половина разгрузки жгута M125.</text>
+<text x="304" y="189.10000000000002" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/M125_bundle_grommet_B_split_face_down.stl</text>
+<line x1="45" y1="185.00000000000003" x2="45" y2="194.80000000000004" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="185.00000000000003" x2="78" y2="194.80000000000004" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="185.00000000000003" x2="160" y2="194.80000000000004" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="185.00000000000003" x2="178" y2="194.80000000000004" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="185.00000000000003" x2="302" y2="194.80000000000004" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="194.80000000000004" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="196.00000000000003" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="198.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-7</text>
+<text x="53" y="198.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="198.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Втулка под M125 / шток</text>
+<text x="164" y="198.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="198.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Центрирует корпус M125 внутри полого штока без</text>
+<text x="180" y="202.40000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">силовой нагрузки.</text>
+<text x="304" y="198.90000000000003" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/M125_pole_sleeve_upright.stl</text>
+<line x1="45" y1="194.80000000000004" x2="45" y2="204.60000000000005" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="194.80000000000004" x2="78" y2="204.60000000000005" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="194.80000000000004" x2="160" y2="204.60000000000005" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="194.80000000000004" x2="178" y2="204.60000000000005" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="194.80000000000004" x2="302" y2="204.60000000000005" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="204.60000000000005" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="205.80000000000004" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="208.70000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-8</text>
+<text x="53" y="208.70000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="208.70000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Вкладыш воротника по штоку,</text>
+<text x="80" y="212.20000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">половина A</text>
+<text x="164" y="208.70000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="208.70000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Мягкая половина вкладыша между воротником и</text>
+<text x="180" y="212.20000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">штоком.</text>
+<text x="304" y="208.70000000000005" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/pole_collar_liner_A_split_face_down.stl</text>
+<line x1="45" y1="204.60000000000005" x2="45" y2="214.40000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="204.60000000000005" x2="78" y2="214.40000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="204.60000000000005" x2="160" y2="214.40000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="204.60000000000005" x2="178" y2="214.40000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="204.60000000000005" x2="302" y2="214.40000000000006" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="214.40000000000006" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="215.60000000000005" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="218.50000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-9</text>
+<text x="53" y="218.50000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="218.50000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Вкладыш воротника по штоку,</text>
+<text x="80" y="222.00000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">половина B</text>
+<text x="164" y="218.50000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="218.50000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Вторая половина вкладыша воротника.</text>
+<text x="304" y="218.50000000000006" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/pole_collar_liner_B_split_face_down.stl</text>
+<line x1="45" y1="214.40000000000006" x2="45" y2="224.20000000000007" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="214.40000000000006" x2="78" y2="224.20000000000007" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="214.40000000000006" x2="160" y2="224.20000000000007" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="214.40000000000006" x2="178" y2="224.20000000000007" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="214.40000000000006" x2="302" y2="224.20000000000007" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="224.20000000000007" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="225.40000000000006" width="5" height="7.4" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu95-10</text>
+<text x="53" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Направляющая двух проводов у</text>
+<text x="80" y="231.80000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">флага</text>
+<text x="164" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Сменная разрезная направляющая двух проводов Ø2</text>
+<text x="180" y="231.80000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">мм; устанавливается под углом около 35° вниз к</text>
+<text x="304" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/flag_side_wire_guide_slit_up.stl</text>
+<line x1="45" y1="224.20000000000007" x2="45" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="224.20000000000007" x2="78" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="224.20000000000007" x2="160" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="224.20000000000007" x2="178" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="224.20000000000007" x2="302" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="234.00000000000009" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="235.20000000000007" width="5" height="7.4" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="238.10000000000008" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu85-1</text>
+<text x="53" y="238.10000000000008" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 85A</text>
+<text x="80" y="238.10000000000008" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Прокладка крышки</text>
+<text x="164" y="238.10000000000008" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="238.10000000000008" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Мягкая замкнутая прокладка сервисной крышки.</text>
+<text x="304" y="238.10000000000008" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu85_v06/lid_gasket_flat.stl</text>
+<line x1="45" y1="234.00000000000009" x2="45" y2="243.8000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="234.00000000000009" x2="78" y2="243.8000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="234.00000000000009" x2="160" y2="243.8000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="234.00000000000009" x2="178" y2="243.8000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="234.00000000000009" x2="302" y2="243.8000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="243.8000000000001" width="396" height="9.8" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="245.00000000000009" width="5" height="7.4" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="247.9000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu85-2</text>
+<text x="53" y="247.9000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 85A</text>
+<text x="80" y="247.9000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Прокладка окна VEML7700</text>
+<text x="164" y="247.9000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="247.9000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Уплотняет прозрачное окно VEML7700 по периметру.</text>
+<text x="304" y="247.9000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu85_v06/photo_window_gasket_flat.stl</text>
+<line x1="45" y1="243.8000000000001" x2="45" y2="253.6000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="243.8000000000001" x2="78" y2="253.6000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="243.8000000000001" x2="160" y2="253.6000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="243.8000000000001" x2="178" y2="253.6000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="243.8000000000001" x2="302" y2="253.6000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="253.6000000000001" width="396" height="9.8" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="254.8000000000001" width="5" height="7.4" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="257.7000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="700" fill="#172126">#tpu85-3</text>
+<text x="53" y="257.7000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">TPU 85A</text>
+<text x="80" y="257.7000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Прокладка кармана AHT20+BMP280</text>
+<text x="164" y="257.7000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
+<text x="180" y="257.7000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Уплотняет съёмный климатический карман</text>
+<text x="180" y="261.2000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">относительно корпуса.</text>
+<text x="304" y="257.7000000000001" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu85_v06/environment_pocket_gasket_flat.stl</text>
+<line x1="45" y1="253.6000000000001" x2="45" y2="263.4000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="253.6000000000001" x2="78" y2="263.4000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="253.6000000000001" x2="160" y2="263.4000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="253.6000000000001" x2="178" y2="263.4000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="253.6000000000001" x2="302" y2="263.4000000000001" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="279" width="396" height="13" rx="2" fill="#fff" stroke="#c7d0d4" stroke-width="0.4"/>
+<rect x="18" y="281" width="5" height="6" rx="1" fill="#e98638" stroke="#555" stroke-width="0.25"/>
+<text x="25" y="283.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.2" font-weight="700" fill="#172126">PETG</text>
+<text x="25" y="286.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" fill="#52616a">жёсткие детали</text>
+<rect x="108" y="281" width="5" height="6" rx="1" fill="#8b949b" stroke="#555" stroke-width="0.25"/>
+<text x="115" y="283.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.2" font-weight="700" fill="#172126">TPU 95A</text>
+<text x="115" y="286.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" fill="#52616a">втулки и разгрузки</text>
+<rect x="198" y="281" width="5" height="6" rx="1" fill="#b9c1c8" stroke="#555" stroke-width="0.25"/>
+<text x="205" y="283.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.2" font-weight="700" fill="#172126">TPU 85A</text>
+<text x="205" y="286.8" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" fill="#52616a">статические уплотнения</text>
+<text x="288" y="284" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.9" fill="#172126">Металлические закладные M4/M3 не имеют печатных ID.</text>
+<text x="288" y="288" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.9" fill="#52616a">Их количество и расположение показаны на карте крепежа 124.</text>
 </svg>

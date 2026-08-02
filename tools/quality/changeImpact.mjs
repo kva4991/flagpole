@@ -4,6 +4,12 @@
  */
 const rules = [
   {
+    area: 'Архивные справочные материалы',
+    pattern: /^archive\//,
+    risk: 'low',
+    checks: ['npm.cmd run checksums:check'],
+  },
+  {
     area: 'Документация и решения',
     pattern: /^(?:AGENTS\.md|CHANGELOG\.md|README(?:\.ru|_RU)?\.md|docs\/|[^/]+_RU\.md$|.*\.txt$|PROJECT_MANIFEST[^/]*\.json$)/,
     risk: 'low',

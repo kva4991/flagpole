@@ -1,40 +1,41 @@
-# Как самостоятельно опубликовать проект в GitHub
+# Как опубликовать кумулятивный архив v0.7.4
 
-## 1. Распакуйте архив
+Архив содержит полное дерево проекта без `.git`, кэшей и локальных build-каталогов.
 
-Распакуйте каталог `crucian-flagpole-finial` в удобное место.
-
-## 2. Проверьте публичное содержимое
-
-Перед публикацией обратите внимание:
-
-- в проекте нет паролей от реальных аккаунтов и токенов;
-- в прошивке присутствует демонстрационный PIN по умолчанию — его нужно сменить перед эксплуатацией;
-- лицензия пока не выбрана;
-- крупные STL/GLB хранятся как обычные бинарные файлы.
-
-## 3. Создайте репозиторий
+## Вариант 1: заменить содержимое локального клона
 
 ```powershell
-git init
-git add .
-git commit -m "Initial cumulative project import v0.6.0"
-git branch -M main
-git remote add origin https://github.com/USER/REPOSITORY.git
-git push -u origin main
+git clone https://github.com/kva4991/flagpole.git
+cd flagpole
+git checkout main
+git pull --ff-only
 ```
 
-## 4. Git LFS
+Распакуйте каталог `flagpole-v0.7.4` рядом. Скопируйте его содержимое поверх клона, удалив файлы, которые отсутствуют в архиве, но не удаляйте `.git`.
 
-Самый большой файл проекта меньше ограничения GitHub в 100 МБ. Поэтому Git LFS не является обязательным.
-
-При частых изменениях STL и GLB можно позже подключить Git LFS:
+Проверка:
 
 ```powershell
-git lfs install
-git lfs track "*.stl" "*.glb" "*.blend"
-git add .gitattributes
-git commit -m "Track 3D assets with Git LFS"
+npm.cmd run quality:gate
+git status --short
+git diff --check
 ```
 
-Не подключайте LFS автоматически, если не хотите устанавливать его на всех компьютерах.
+Публикация:
+
+```powershell
+git checkout -b update/v0.7.4
+git add -A
+git commit -m "Release cumulative v0.7.4 mechanical update"
+git push -u origin update/v0.7.4
+```
+
+После push дождитесь GitHub Actions. Зелёный CI не заменяет печать купонов и аппаратные испытания.
+
+## Проверка архива
+
+Сравните SHA-256 ZIP с отдельным файлом `.sha256`. Внутри проекта `CHECKSUMS_SHA256.txt` проверяет каждый публикуемый файл:
+
+```powershell
+npm.cmd run checksums:check
+```

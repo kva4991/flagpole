@@ -1,13 +1,15 @@
 {
   "project": "Crucian rotating flagpole finial",
-  "version": "0.7.3",
-  "packageType": "cumulative source, generated mechanics, documentation and handoff package",
+  "version": "0.7.4",
+  "packageType": "cumulative source, generated mechanics, drawings, documentation and handoff package",
   "sourceRepository": "https://github.com/kva4991/flagpole",
   "sourceBranchReviewed": "main",
-  "sourceHeadReviewed": "a26a05c3fea657695d94a4d45800ce7832b2b90b",
-  "incomingPackage": "flagpole_v0_7_3_cumulative_github.zip",
-  "fileCount": 334,
-  "totalBytes": 438896110,
+  "sourceHeadReviewed": "fa855630b556a589c14ed3a1e2cbd37820d9f9c3",
+  "outputArchive": "flagpole_v0_7_4_cumulative.zip",
+  "treeMetrics": {
+    "publishedFileCountIncludingManifestAndChecksum": 353,
+    "totalBytesExcludingManifestAndChecksum": 467323229
+  },
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
   "currentMechanicalSource": "mechanical/generate_models_v06.py",
@@ -16,47 +18,95 @@
     "tpu95": "mechanical/stl_tpu95_v06",
     "tpu85": "mechanical/stl_tpu85_v06",
     "coupons": "mechanical/test_coupons_v06",
-    "canonicalComplexMeshes": "mechanical/source_meshes_v073",
-    "validatedStlCount": 37
+    "validatedStlCount": 40,
+    "currentGlbCount": 7,
+    "fullyParametric": true,
+    "archivedTransitionMeshes": "archive/legacy_v073_reference/canonical_meshes"
   },
-  "identitySource": "project_identity.json",
   "currentFlagFiles": [
     "flag_with_attachment_loops_full_size_300x250.svg",
-    "flag_attachment_loop_pattern_A4_1to1.svg"
-  ],
-  "largestFiles": [
-    { "path": "mechanical/flagpole_finial_v0_5_assembly.glb", "bytes": 37855244 },
-    { "path": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb", "bytes": 28353728 },
-    { "path": "mechanical/stl_petg/rotor_half_A_print_flat.stl", "bytes": 23837284 },
-    { "path": "mechanical/stl_petg/rotor_half_B_print_flat.stl", "bytes": 23774884 },
-    { "path": "mechanical/flagpole_finial_v0_6_assembly.glb", "bytes": 19665512 },
-    { "path": "mechanical/flagpole_finial_v0_6_exploded.glb", "bytes": 19551604 },
-    { "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb", "bytes": 14930516 },
-    { "path": "mechanical/stl_petg/service_lid_top_face_down.stl", "bytes": 12572484 },
-    { "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb", "bytes": 12218116 },
-    { "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl", "bytes": 11741484 },
-    { "path": "mechanical/source_meshes_v073/PETG_rotor_half_B_assembly.stl", "bytes": 11741484 },
-    { "path": "archive/legacy_v02_reference/flagpole_finial_v0_2_assembly.glb", "bytes": 11681084 },
-    { "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl", "bytes": 10560484 },
-    { "path": "mechanical/source_meshes_v073/PETG_rotor_half_A_assembly.stl", "bytes": 10560484 },
-    { "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb", "bytes": 9449204 }
+    "flag_attachment_loop_pattern_A4_1to1.svg",
+    "fish_template_clean_A4_landscape.svg",
+    "fish_template_dimensioned_A4_landscape.svg"
   ],
   "validation": {
-    "nodeTests": 34,
-    "markdownFiles": 83,
-    "drawingCards": "26 total: 19 current, 6 historical, 1 reference",
-    "stlTopology": "37/37 watertight, winding consistent, one connected volume after local v0.7.3 regeneration",
-    "androidBuild": "v0.7.3 assembleDebug successful on Windows 2026-08-02",
-    "firmwareBuild": "sources unchanged; prior GitHub Actions build successful on 2026-08-02, new v0.7.3 CI run required",
+    "nodeTests": "35/35 passed locally",
+    "markdownFiles": "92 checked locally",
+    "drawingCards": "26 total: 20 current, 6 historical, 0 reference",
+    "interactiveModels": "10 total: 7 current, 3 historical",
+    "stlTopology": "40/40 watertight, winding consistent and single connected component",
+    "pythonSources": "all current Python generators and validators passed py_compile locally",
+    "androidBuild": "v0.7.4 assembleDebug successful on Windows 2026-08-02; GitHub Actions must repeat after push",
+    "firmwareBuild": "sources unchanged; both PlatformIO builds required in GitHub Actions after push",
     "hardwareBench": "required"
   },
   "notes": [
     "Current structural print material is purchased orange PETG.",
-    "ASA is a future optional reprint and requires all fit coupons again.",
-    "Battery voltage measurement is intentionally omitted.",
-    "Mechanical fits remain measurement- and coupon-driven.",
-    "The twin-wire flag-power route below the lower fastener remains provisional until the actual pigtail is measured and rain-tested.",
-    "Weatherproofing geometry has no claimed IP rating until physical rain, condensation and temperature-cycle tests pass.",
+    "Every current screw joint uses a serviceable captive standard hex nut: 8x M4 and 10x M3.",
+    "The twin-wire rail, 35-degree guide, membrane geometry, electronics carrier and light tunnel remain subject to real-part measurements and coupon tests.",
+    "Weatherproofing geometry has no claimed IP rating until rain, condensation and temperature-cycle tests pass.",
     "No project license has been selected."
+  ],
+  "largestFiles": [
+    {
+      "path": "mechanical/flagpole_finial_v0_5_assembly.glb",
+      "bytes": 37855244
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb",
+      "bytes": 28353728
+    },
+    {
+      "path": "mechanical/stl_petg/rotor_half_A_print_flat.stl",
+      "bytes": 23837284
+    },
+    {
+      "path": "mechanical/stl_petg/rotor_half_B_print_flat.stl",
+      "bytes": 23774884
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_assembly.glb",
+      "bytes": 21181452
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_exploded.glb",
+      "bytes": 21048992
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
+      "bytes": 16068096
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_electronics_layout.glb",
+      "bytes": 13888080
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
+      "bytes": 13397364
+    },
+    {
+      "path": "mechanical/stl_petg/service_lid_top_face_down.stl",
+      "bytes": 12572484
+    },
+    {
+      "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
+      "bytes": 11776284
+    },
+    {
+      "path": "archive/legacy_v073_reference/canonical_meshes/PETG_rotor_half_B_assembly.stl",
+      "bytes": 11741484
+    },
+    {
+      "path": "archive/legacy_v02_reference/flagpole_finial_v0_2_assembly.glb",
+      "bytes": 11681084
+    },
+    {
+      "path": "archive/legacy_v073_reference/canonical_meshes/PETG_rotor_half_A_assembly.stl",
+      "bytes": 10560484
+    },
+    {
+      "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
+      "bytes": 10501884
+    }
   ]
 }

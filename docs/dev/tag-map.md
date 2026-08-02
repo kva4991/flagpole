@@ -22,12 +22,12 @@
 | `§blesec1` | PIN и bond не раскрываются через GATT | `docs/AUDIT_V061_RU.md` |
 | `§fwfail1` | Ошибка датчика и неверная калибровка выключают нагрузку безопасно | `docs/AUDIT_V061_RU.md` |
 | `§env001` | Комбинированный AHT20+BMP280 питается от 3,3 В и измеряет температуру, влажность и давление | `docs/architecture/decisions/0007-combined-aht20-bmp280.ru.md` |
-| `§envmech1` | Нижний карман датчика имеет защищённый пассивный воздухообмен и послепечатное сверление | `mechanical/docs/ENV_SENSOR_POCKET_RU.md` |
+| `§envmech1` | Карман использует мембрану Ø20/Ø10 и семь послепечатных отверстий Ø2 | `mechanical/docs/ENV_SENSOR_POCKET_RU.md` |
 | `§lightwell1` | Окно VEML7700 вырезается из имеющегося прозрачного PET либо имеющегося УФ-стойкого поликарбоната и калибруется после установки | `docs/architecture/decisions/0010-cut-light-well-window.ru.md` |
 | `§flagsew1` | Флаг шьётся УФ-стойкой bonded-полиэстеровой нитью Tex 45; Tex 70 допускается только после пробы машины и ткани | `docs/architecture/decisions/0011-flag-sewing-thread.ru.md` |
 | `§android1` | Android требует воспроизводимой сборки и последовательного GATT | `docs/AUDIT_V061_RU.md` |
-| `§flagpower1` | Кабель питания флага проходит снаружи ниже спицы и входит через единственную TPU95-манжету | `docs/architecture/decisions/0017-external-flag-power-cable-route.ru.md` |
+| `§flagpower1` | Два провода проходят ниже крепежа через направляющую около 35° и единственный TPU95-ввод | `docs/architecture/decisions/0017-external-flag-power-cable-route.ru.md` |
 | `§partid1` | Стабильные ID печатных деталей синхронизируются с реестром, чертежами и STL | `mechanical/docs/PART_IDENTIFIERS_RU.md` |
 | `§weather73` | Крышка, световой тоннель и климатический карман используют независимые обслуживаемые барьеры | `docs/architecture/decisions/0018-multibarrier-weatherproofing.ru.md` |
-| `§flagloop73` | Верхняя и нижняя петли привязаны к краям, остальные распределены равномерно | `docs/architecture/decisions/0019-flag-loop-placement.ru.md` |
-| `§drawstatus73` | Изготовление ведётся только по current-карточкам; сложные сетки v0.7.3 временно канонические | `docs/architecture/decisions/0020-drawing-status-and-canonical-meshes.ru.md` |
+| `§flagloop73` | Верхняя лямка привязана к низу навершия, нижняя — к низу флага | `docs/architecture/decisions/0021-flag-loop-datum-below-finial.ru.md` |
+| `§drawstatus73` | Изготовление ведётся только по current-карточкам; current-механика полностью параметрическая | `docs/architecture/decisions/0025-fully-parametric-current-mechanics.ru.md` |

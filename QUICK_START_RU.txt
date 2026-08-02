@@ -1,11 +1,14 @@
-CRUCIAN v0.6.0 — БЫСТРЫЙ СТАРТ
+CRUCIAN v0.7.4 — БЫСТРЫЙ СТАРТ
 
-1. Прочитайте docs/PROJECT_DECISIONS_RU.md.
-2. Для механики откройте mechanical/flagpole_finial_v0_5_assembly.glb.
-3. Перед полноразмерной печатью напечатайте купоны из mechanical/test_coupons/.
-4. Текущая прошивка: electronics/firmware/esp32_c3_crucian_v06/.
-5. Android-приложение: android/crucian-control/.
-6. Каталог компонентов: catalog/catalog.html.
-7. Перегенерация каталога: npm.cmd run catalog:generate.
-8. Проверка каталога: npm.cmd run catalog:check и npm.cmd test.
-9. Перед публикацией прочитайте GITHUB_PUSH_RU.md и LICENSE_NOT_SELECTED_RU.md.
+1. Прочитайте README.ru.md и docs/NEXT_CHAT_START_HERE_RU.md.
+2. Актуальная механика: mechanical/flagpole_finial_v0_6_assembly.glb; имя файла сохранено для совместимости, содержимое соответствует v0.7.4.
+3. Размещение электроники: mechanical/flagpole_finial_v0_6_electronics_layout.glb и mechanical/electronics_layout_A4_landscape.svg.
+4. Перед полноразмерной печатью напечатайте купоны из mechanical/test_coupons_v06/.
+5. Текущая прошивка: electronics/firmware/esp32_c3_crucian_v06/.
+6. Android-приложение: android/crucian-control/.
+7. Каталог компонентов, чертежей и 3D: catalog/catalog.html.
+8. Перегенерация каталога: npm.cmd run catalog:generate.
+9. Полная локальная проверка: npm.cmd run quality:gate.
+10. Перед push прочитайте GITHUB_PUSH_RU.md и ARCHIVE_CONTENTS_V074_RU.txt.
+
+Физические посадки, герметичность, прочность, работа датчиков, BLE и силовой электроники требуют реального стенда.

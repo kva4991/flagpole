@@ -1,58 +1,44 @@
-# Актуальные и исторические части проекта — v0.7.3
+# Актуальные и исторические части проекта — v0.7.4
 
 ## Главные точки входа
 
-- `AGENTS.md` — обязательные правила следующему агенту;
-- `docs/NEXT_CHAT_START_HERE_RU.md` — полный handoff;
-- `docs/current-implementation-status.ru.md` — что реально реализовано и что требует стенда;
-- `docs/PROJECT_DECISIONS_RU.md` — сводка решений;
-- `docs/DRAWING_AUDIT_V073_RU.md` — актуальность каждого чертежа;
-- `docs/architecture/decisions/` — история ADR;
-- `docs/MECHANICAL_FITS_RU.md` и `MEASUREMENTS_REQUIRED_RU.md` — получение реальных посадок.
+- `AGENTS.md` — правила работы с репозиторием;
+- `docs/current-implementation-status.ru.md` — фактический статус;
+- `UPDATE_REPORT_V074_RU.md` — изменения текущей версии;
+- `docs/DRAWING_AUDIT_V074_RU.md` — проверка актуальности изображений и моделей;
+- `MEASUREMENTS_REQUIRED_RU.md` — размеры, которые нужно получить с реальных деталей;
+- `docs/architecture/decisions/README.ru.md` — история устойчивых решений.
 
-## Актуальная механика
+## Текущая механика
 
-- `mechanical/generate_models_v06.py` — воспроизводимый сборщик геометрии v0.7.3;
-- `mechanical/source_meshes_v073/` — переходные канонические сетки сложных узлов;
-- `mechanical/stl_petg_v06/` — жёсткие детали текущей PETG-сборки;
-- `mechanical/stl_tpu95_v06/` — функциональные мягкие детали;
-- `mechanical/stl_tpu85_v06/` — прокладки;
-- `mechanical/test_coupons_v06/` — обязательные купоны;
-- `mechanical/flagpole_finial_v0_6_*.glb` — интерактивные модели;
-- `mechanical/VALIDATION_REPORT_V06_RU.md` — топологическая проверка STL.
+- `mechanical/generate_models_v06.py` — полностью параметрический источник геометрии v0.7.4;
+- `mechanical/stl_petg_v06/` — 10 текущих жёстких деталей;
+- `mechanical/stl_tpu95_v06/` — 10 функциональных мягких деталей;
+- `mechanical/stl_tpu85_v06/` — 3 статические прокладки;
+- `mechanical/test_coupons_v06/` — 17 купонов;
+- `mechanical/flagpole_finial_v0_6_*.glb` — 7 текущих интерактивных моделей;
+- `mechanical/VALIDATION_REPORT_V06_RU.md` — результат топологической проверки 40 STL.
 
-## Актуальные документы и генераторы v0.7.3
+Переходные сетки v0.7.3 перемещены в `archive/legacy_v073_reference/canonical_meshes/` и не используются генератором.
 
-- `mechanical/docs/HERMETICITY_V073_RU.md`;
-- `mechanical/docs/PHOTO_TUNNEL_AND_VEML_MOUNT_RU.md`;
-- `mechanical/docs/ENV_SENSOR_POCKET_RU.md`;
-- `mechanical/docs/STRUCTURAL_RESERVE_V073_RU.md`;
-- `mechanical/generate_detail_diagrams_v073.py`;
-- `mechanical/generate_hermeticity_diagram_v073.py`;
-- `mechanical/generate_drawing_audit_contact_sheet_v073.py`;
-- `electronics/generate_electronics_diagrams_v073.py`.
+## Текущие генераторы изображений
 
-## Прошивка и Android
-
-- `electronics/firmware/esp32_c3_crucian_v06/` — текущая прошивка;
-- `android/crucian-control/` — текущий Android-клиент;
-- `project_identity.json` — видимое имя приложения и BLE-имя.
-
-## Флаг
-
-- `flag_with_attachment_loops_full_size_300x250.svg` — полный вид с четырьмя петлями;
-- `flag_attachment_loop_pattern_A4_1to1.svg` — выкройка петель 1:1;
-- `mechanical/docs/FLAG_ATTACHMENT_LOOPS_RU.md` — формула и пошив.
+- `mechanical/render_previews_v06.py`;
+- `mechanical/render_part_id_drawings_v06.py`;
+- `mechanical/render_flag_power_route_v06.py`;
+- `mechanical/generate_reference_diagrams_v06.py`;
+- `mechanical/generate_detail_diagrams_v074.py`;
+- `mechanical/generate_hermeticity_diagram_v074.py`;
+- `electronics/generate_electronics_diagrams_v074.py`.
 
 ## Каталог
 
-- `catalog/components.json`, `catalog/drawings.json` — источники;
+- `catalog/components.json` и `catalog/drawings.json` — источники;
 - `scripts/generateComponentCatalog.mjs` — генератор;
-- `catalog/catalog.html` — generated-страница со статическими картинками, статусами `current`/`historical`/`reference` и fullscreen 3D.
+- `catalog/catalog.html` — производная локальная страница.
 
-## Исторические части
+## История
 
-- `mechanical/generate_models_v05.py`, `mechanical/stl_petg/`, `mechanical/stl_tpu/` и v0.5 GLB сохраняются для сравнения;
-- `electronics/firmware/esp32_c3_flag_light/` — историческая прошивка до BLE;
-- `archive/legacy_v02_reference/` — старая компоновка;
-- корневые старые handoff-файлы не имеют приоритета над `docs/NEXT_CHAT_START_HERE_RU.md`.
+- `archive/` — устаревшие справочные материалы;
+- `mechanical/stl_petg/`, `mechanical/stl_tpu/`, `mechanical/test_coupons/` и GLB v0.5 — историческая линия;
+- отчёты `UPDATE_REPORT_V070_RU.md`…`UPDATE_REPORT_V073_RU.md` описывают предыдущие срезы и не задают текущую геометрию.

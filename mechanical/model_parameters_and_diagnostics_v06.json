@@ -1,9 +1,13 @@
 {
-  "version": "0.7.3 PETG+TPU95+TPU85 provisional",
+  "version": "0.7.4 PETG+TPU95+TPU85 provisional",
   "design_status": "Print coupons first; all purchased-part fits remain measurement-driven",
   "parameters_mm": {
     "flag_width": 300.0,
     "flag_height": 250.0,
+    "flag_top_z": 27.0,
+    "finial_lower_edge_z": -8.0,
+    "flag_loop_visible_height": 20.0,
+    "flag_loop_clearance_below_finial": 10.0,
     "pole_outer_diameter": 20.0,
     "pole_inner_diameter_provisional": 16.0,
     "pole_top_z": 58.0,
@@ -56,42 +60,47 @@
     "flag_cable_center_z": 18.0,
     "flag_cable_x_min": -18.0,
     "flag_cable_x_max": -8.0,
-    "external_cable_groove_radius": 3.0,
+    "external_cable_groove_radius": 0.0,
     "external_cable_route_points": [
       [
-        70.0,
-        -12.0,
-        10.0
-      ],
-      [
         58.0,
-        -15.0,
-        8.0
+        -16.2,
+        15.0
       ],
       [
-        39.0,
-        -20.5,
-        3.6
+        49.0,
+        -16.5,
+        12.2
       ],
       [
-        22.0,
-        -22.8,
-        0.88
+        38.0,
+        -17.0,
+        10.8
       ],
       [
-        4.0,
-        -23.0,
-        -1.8
+        28.0,
+        -19.0,
+        7.0
+      ],
+      [
+        21.0,
+        -22.7,
+        2.0
+      ],
+      [
+        5.0,
+        -23.8,
+        -2.0
       ],
       [
         -10.0,
-        -20.0,
+        -20.5,
         1.5
       ],
       [
-        -14.0,
-        -8.0,
-        12.0
+        -15.0,
+        -9.0,
+        11.0
       ],
       [
         -13.0,
@@ -104,7 +113,28 @@
     "wire_rail_height": 2.5,
     "wire_rail_width": 1.6,
     "wire_rail_base_thickness": 1.0,
-    "flag_side_guide_source_name": "TPU95_flag_side_wire_guide_assembly.stl",
+    "wire_rail_base_radius": 2.8,
+    "wire_rail_wall_radius": 1.25,
+    "wire_rail_wall_offset": 3.35,
+    "flag_side_guide_start": [
+      58.0,
+      -16.2,
+      15.0
+    ],
+    "flag_side_guide_end": [
+      72.0,
+      -16.2,
+      5.2
+    ],
+    "flag_side_guide_body_radius": 5.2,
+    "flag_side_guide_channel_diameter": 2.15,
+    "flag_side_guide_channel_offset": 1.1,
+    "flag_side_guide_slit_radius": 0.9,
+    "flag_side_guide_seat_length": 6.0,
+    "flag_side_guide_seat_wall": 1.45,
+    "flag_side_guide_seat_clearance": 0.25,
+    "connector_reference_length": 22.0,
+    "connector_reference_diameter": 10.0,
     "pod_x_min": -72.0,
     "pod_x_max": -10.0,
     "pod_y_half": 20.0,
@@ -115,6 +145,50 @@
     "pod_inner_y_half": 14.0,
     "pod_inner_z_min": 17.0,
     "pod_inner_z_max": 54.0,
+    "carrier_x_min": -65.0,
+    "carrier_x_max": -17.0,
+    "carrier_y_half": 12.2,
+    "carrier_z_min": 17.6,
+    "carrier_z_max": 42.0,
+    "carrier_base_thickness": 1.8,
+    "carrier_frame_thickness": 2.0,
+    "carrier_cradle_nut_y": 11.0,
+    "buck_size": [
+      28.0,
+      22.0,
+      9.0
+    ],
+    "buck_center": [
+      -52.0,
+      0.0,
+      24.3
+    ],
+    "esp_size_vertical": [
+      23.0,
+      3.2,
+      18.0
+    ],
+    "esp_center_vertical": [
+      -29.0,
+      10.3,
+      31.0
+    ],
+    "mosfet_size_vertical": [
+      25.0,
+      3.2,
+      16.0
+    ],
+    "mosfet_center_vertical": [
+      -49.0,
+      -10.3,
+      35.0
+    ],
+    "veml_cradle_center": [
+      -50.0,
+      0.0,
+      42.0
+    ],
+    "veml_board_center_z": 45.4,
     "env_pocket_center_x": -42.0,
     "env_pocket_outer_x_half": 17.0,
     "env_pocket_outer_y_half": 15.0,
@@ -129,17 +203,16 @@
     "env_pocket_screw_diameter": 3.4,
     "env_pocket_board_size": 15.0,
     "env_pocket_drill_skin": 0.8,
-    "env_membrane_recess_x_half": 6.7,
-    "env_membrane_recess_y_half": 6.7,
-    "env_membrane_recess_depth": 0.7,
-    "env_membrane_gasket_thickness": 1.2,
+    "env_membrane_recess_depth": 0.65,
     "env_pocket_gasket_thickness": 1.6,
-    "env_membrane_disc_diameter": 12.0,
-    "env_membrane_recess_diameter": 13.4,
-    "env_membrane_guard_diameter": 18.0,
+    "env_membrane_disc_diameter": 20.0,
+    "env_membrane_active_diameter": 10.0,
+    "env_membrane_recess_diameter": 20.4,
+    "env_membrane_guard_diameter": 23.0,
     "env_membrane_guard_height": 2.5,
-    "env_vent_hole_diameter": 2.5,
-    "env_vent_hole_radius": 3.0,
+    "env_vent_hole_diameter": 2.0,
+    "env_vent_hole_radius": 3.2,
+    "env_vent_hole_count": 7,
     "env_potting_well_diameter": 8.0,
     "env_board_support_z": 6.2,
     "lid_x_min": -74.0,
@@ -156,7 +229,8 @@
     "gasket_center_x": -41.0,
     "photo_tunnel_body_diameter": 11.0,
     "photo_tunnel_flange_diameter": 16.0,
-    "photo_tunnel_height": 18.0,
+    "photo_tunnel_flange_thickness": 2.2,
+    "photo_tunnel_height": 15.0,
     "photo_tunnel_mount_hole_diameter": 11.4,
     "photo_tunnel_center_x": -50.0,
     "photo_window_diameter": 8.0,
@@ -166,6 +240,9 @@
     "photo_window_retainer_inner_diameter": 4.4,
     "photo_window_retainer_thickness": 1.2,
     "photo_window_gasket_thickness": 0.8,
+    "photo_glue_groove_inner_diameter": 12.2,
+    "photo_glue_groove_outer_diameter": 14.2,
+    "photo_glue_groove_depth": 0.45,
     "veml_board_size": 16.5,
     "veml_board_clear_size": 17.1,
     "veml_board_hole_spacing_x": 11.0,
@@ -269,17 +346,25 @@
     "spoke_engagement_length": 51.0,
     "lid_gasket_nominal_compression": 0.5,
     "m4_nut_pocket_clearance_across_flats": 0.2999999999999998,
-    "environment_sensor_board_nominal_size": 15.0,
-    "environment_drill_skin": 0.8
+    "m3_nut_pocket_clearance_across_flats": 0.2999999999999998,
+    "flag_side_guide_angle_down_deg": 34.99,
+    "flag_loop_top_offsets": [
+      45.0,
+      106.66666666666666,
+      168.33333333333331,
+      230.0
+    ],
+    "environment_membrane_open_area_mm2": 21.991148575128552,
+    "photo_tunnel_field_half_angle_deg": 8.34
   },
   "meshes": {
     "rotor_half_A": {
       "watertight": true,
       "winding_consistent": true,
       "euler_number": -14,
-      "volume_mm3": 79308.40046534802,
-      "faces": 211208,
-      "vertices": 105590,
+      "volume_mm3": 76731.63503849668,
+      "faces": 210036,
+      "vertices": 105004,
       "bounds_mm": [
         [
           -75.20002746582031,
@@ -288,7 +373,7 @@
         ],
         [
           71.9991455078125,
-          24.398799896240234,
+          22.998722076416016,
           73.99996948242188
         ]
       ],
@@ -297,18 +382,18 @@
     "rotor_half_B": {
       "watertight": true,
       "winding_consistent": true,
-      "euler_number": -28,
-      "volume_mm3": 81434.525226895,
-      "faces": 234828,
-      "vertices": 117386,
+      "euler_number": -18,
+      "volume_mm3": 78394.25010618313,
+      "faces": 235524,
+      "vertices": 117744,
       "bounds_mm": [
         [
           -75.20002746582031,
-          -26.71775245666504,
+          -26.581584930419922,
           -8.000000953674316
         ],
         [
-          73.9991455078125,
+          71.9991455078125,
           4.38690185546875e-05,
           73.99996948242188
         ]
@@ -318,19 +403,19 @@
     "service_lid": {
       "watertight": true,
       "winding_consistent": true,
-      "euler_number": -50,
-      "volume_mm3": 10851.633567444962,
-      "faces": 128230,
-      "vertices": 64065,
+      "euler_number": -16,
+      "volume_mm3": 9360.19614123459,
+      "faces": 108528,
+      "vertices": 54248,
       "bounds_mm": [
         [
-          -74.16766357421875,
-          -21.667037963867188,
-          46.01918411254883
+          -73.31539916992188,
+          -20.31541633605957,
+          46.07699966430664
         ],
         [
-          -7.832428455352783,
-          21.667457580566406,
+          -8.684425354003906,
+          20.315231323242188,
           54.50004196166992
         ]
       ],
@@ -340,19 +425,19 @@
       "watertight": true,
       "winding_consistent": true,
       "euler_number": 0,
-      "volume_mm3": 1640.2652818793492,
-      "faces": 17336,
-      "vertices": 8668,
+      "volume_mm3": 1308.747587819587,
+      "faces": 16708,
+      "vertices": 8354,
       "bounds_mm": [
         [
-          -7.999600410461426,
-          -7.999600410461426,
-          0.0
+          -7.997973918914795,
+          -7.997973918914795,
+          -2.384185791015625e-07
         ],
         [
-          7.999595642089844,
-          7.999595642089844,
-          17.999998092651367
+          7.9979705810546875,
+          7.9979705810546875,
+          15.599998474121094
         ]
       ],
       "components": 1
@@ -374,6 +459,69 @@
           4.896688461303711,
           4.896688461303711,
           1.2000000476837158
+        ]
+      ],
+      "components": 1
+    },
+    "environment_sensor_pocket": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -2,
+      "volume_mm3": 9233.95811693638,
+      "faces": 82576,
+      "vertices": 41286,
+      "bounds_mm": [
+        [
+          -58.99999237060547,
+          -21.598909378051758,
+          -2.500000476837158
+        ],
+        [
+          -24.99984359741211,
+          21.598899841308594,
+          17.499996185302734
+        ]
+      ],
+      "components": 1
+    },
+    "electronics_carrier": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -12,
+      "volume_mm3": 3224.7788012087944,
+      "faces": 56416,
+      "vertices": 28196,
+      "bounds_mm": [
+        [
+          -66.39997863769531,
+          -15.196941375732422,
+          17.599998474121094
+        ],
+        [
+          -15.499752044677734,
+          15.196937561035156,
+          44.99999237060547
+        ]
+      ],
+      "components": 1
+    },
+    "VEML7700_cradle": {
+      "watertight": true,
+      "winding_consistent": true,
+      "euler_number": -4,
+      "volume_mm3": 1071.147476595277,
+      "faces": 17952,
+      "vertices": 8972,
+      "bounds_mm": [
+        [
+          -12.218094825744629,
+          -13.719982147216797,
+          -1.1920928955078125e-07
+        ],
+        [
+          12.21904182434082,
+          13.720598220825195,
+          4.0
         ]
       ],
       "components": 1
@@ -416,27 +564,6 @@
           16.59823989868164,
           -3.814697265625e-06,
           13.999998092651367
-        ]
-      ],
-      "components": 1
-    },
-    "environment_sensor_pocket": {
-      "watertight": true,
-      "winding_consistent": true,
-      "euler_number": -30,
-      "volume_mm3": 8679.421779736076,
-      "faces": 79252,
-      "vertices": 39596,
-      "bounds_mm": [
-        [
-          -58.999969482421875,
-          -21.599607467651367,
-          0.0
-        ],
-        [
-          -24.999820709228516,
-          21.599597930908203,
-          17.499996185302734
         ]
       ],
       "components": 1
@@ -487,9 +614,9 @@
       "watertight": true,
       "winding_consistent": true,
       "euler_number": 2,
-      "volume_mm3": 448.1584018797766,
-      "faces": 9700,
-      "vertices": 4852,
+      "volume_mm3": 399.6598057645101,
+      "faces": 9068,
+      "vertices": 4536,
       "bounds_mm": [
         [
           -18.0,
@@ -508,9 +635,9 @@
       "watertight": true,
       "winding_consistent": true,
       "euler_number": 2,
-      "volume_mm3": 447.7301697853791,
-      "faces": 9660,
-      "vertices": 4832,
+      "volume_mm3": 399.4952992048015,
+      "faces": 9028,
+      "vertices": 4516,
       "bounds_mm": [
         [
           -18.0,
@@ -528,20 +655,20 @@
     "flag_side_wire_guide": {
       "watertight": true,
       "winding_consistent": true,
-      "euler_number": 0,
-      "volume_mm3": 700.3982466932963,
-      "faces": 13892,
-      "vertices": 6946,
+      "euler_number": -20,
+      "volume_mm3": 1768.2820676771396,
+      "faces": 38044,
+      "vertices": 19002,
       "bounds_mm": [
         [
-          65.5,
-          -18.440868377685547,
-          4.00029993057251
+          51.95849609375,
+          -21.7499942779541,
+          0.0010004043579101562
         ],
         [
-          73.49999237060547,
-          -6.502143859863281,
-          15.999698638916016
+          77.19960021972656,
+          -10.650012016296387,
+          20.893964767456055
         ]
       ],
       "components": 1
@@ -651,27 +778,6 @@
       ],
       "components": 1
     },
-    "environment_membrane_gasket": {
-      "watertight": true,
-      "winding_consistent": true,
-      "euler_number": 0,
-      "volume_mm3": 86.8879667701241,
-      "faces": 4760,
-      "vertices": 2380,
-      "bounds_mm": [
-        [
-          -6.698089122772217,
-          -6.698089122772217,
-          0.0
-        ],
-        [
-          6.698081970214844,
-          6.698081970214844,
-          1.2000000476837158
-        ]
-      ],
-      "components": 1
-    },
     "m125_sleeve": {
       "watertight": true,
       "winding_consistent": true,
@@ -745,6 +851,8 @@
     "stl_petg_v06\\photo_tunnel_upright.stl",
     "stl_petg_v06\\photo_window_retainer_flat.stl",
     "stl_petg_v06\\environment_sensor_pocket_open_side_up.stl",
+    "stl_petg_v06\\electronics_carrier_open_side_up.stl",
+    "stl_petg_v06\\VEML7700_cradle_flat.stl",
     "stl_tpu95_v06\\spoke_liner_A_split_face_down.stl",
     "stl_tpu95_v06\\spoke_liner_B_split_face_down.stl",
     "stl_tpu95_v06\\flag_cable_grommet_A_split_face_down.stl",
@@ -758,7 +866,6 @@
     "stl_tpu85_v06\\lid_gasket_flat.stl",
     "stl_tpu85_v06\\photo_window_gasket_flat.stl",
     "stl_tpu85_v06\\environment_pocket_gasket_flat.stl",
-    "stl_tpu85_v06\\environment_membrane_gasket_flat.stl",
     "test_coupons_v06\\bearing_seat_32.20_half_A.stl",
     "test_coupons_v06\\bearing_seat_32.20_half_B.stl",
     "test_coupons_v06\\bearing_seat_32.35_half_A.stl",
@@ -771,11 +878,14 @@
     "test_coupons_v06\\TPU95_M125_sleeve_OD_15.80.stl",
     "test_coupons_v06\\TPU95_M125_sleeve_OD_16.00.stl",
     "test_coupons_v06\\PETG_M4_captive_nut_trap_coupon.stl",
+    "test_coupons_v06\\PETG_M3_captive_nut_trap_coupon.stl",
     "test_coupons_v06\\PETG_drill_skin_0.6_0.8_1.0_coupon.stl",
     "test_coupons_v06\\PETG_twin_wire_rail_4.2x2.5_coupon.stl",
     "test_coupons_v06\\PETG_VEML7700_cradle_coupon.stl",
+    "test_coupons_v06\\PETG_photo_tunnel_15_18_comparison_coupon.stl",
     "flagpole_finial_v0_6_assembly.glb",
     "flagpole_finial_v0_6_flag_power_route.glb",
+    "flagpole_finial_v0_6_electronics_layout.glb",
     "flagpole_finial_v0_6_exploded.glb",
     "flagpole_finial_v0_6_print_layout_PETG.glb",
     "flagpole_finial_v0_6_print_layout_TPU95.glb",

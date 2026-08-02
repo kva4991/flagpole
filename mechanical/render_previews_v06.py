@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Render current v0.7.4 static previews from the generated GLB models."""
 from pathlib import Path
 import numpy as np
 import matplotlib
@@ -8,13 +9,16 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from matplotlib.colors import to_rgb
 import trimesh
 
-ROOT=Path(__file__).resolve().parent
+from generate_models_v06 import CURRENT_VERSION
 
+ROOT=Path(__file__).resolve().parent
 DEFAULT_COLORS=['#ed7428','#f59443','#9ca6ad','#d95b17','#8a949c','#2d3339','#3e8b66','#455f9c']
+
 
 def transformed_meshes(scene):
     dumped=scene.dump(concatenate=False)
     return [m for m in dumped if isinstance(m,trimesh.Trimesh) and len(m.faces)]
+
 
 def mesh_color(mesh,index):
     try:
@@ -24,10 +28,10 @@ def mesh_color(mesh,index):
     except Exception:
         return np.array(to_rgb(DEFAULT_COLORS[index%len(DEFAULT_COLORS)]))
 
-def add_mesh(ax,mesh,index,max_faces=3000):
+
+def add_mesh(ax,mesh,index,max_faces=4200):
     faces=mesh.faces
     if len(faces)>max_faces:
-        # deterministic sample across the full face array
         idx=np.linspace(0,len(faces)-1,max_faces,dtype=int)
         tri=mesh.vertices[faces[idx]]
         normals=mesh.face_normals[idx]
@@ -44,6 +48,7 @@ def add_mesh(ax,mesh,index,max_faces=3000):
     coll.set_edgecolor('none')
     ax.add_collection3d(coll)
 
+
 def equal_axes(ax,meshes,pad=.08):
     lo=np.min([m.bounds[0] for m in meshes],axis=0)
     hi=np.max([m.bounds[1] for m in meshes],axis=0)
@@ -54,7 +59,8 @@ def equal_axes(ax,meshes,pad=.08):
     ax.set_zlim(c[2]-span/2,c[2]+span/2)
     ax.set_box_aspect((1,1,1))
 
-def render(glb,out,title,elev,azim):
+
+def render(glb,out,title,elev,azim,subtitle=''):
     scene=trimesh.load(ROOT/glb,force='scene')
     meshes=transformed_meshes(scene)
     fig=plt.figure(figsize=(12,8),dpi=120,facecolor='#f2f4f5')
@@ -65,13 +71,18 @@ def render(glb,out,title,elev,azim):
     ax.view_init(elev=elev,azim=azim)
     ax.set_axis_off()
     ax.set_title(title,fontsize=15,pad=15)
-    fig.tight_layout()
+    if subtitle:
+        fig.text(0.5,0.035,subtitle,ha='center',va='center',fontsize=9.5,color='#52616a')
+    fig.tight_layout(rect=(0,0.06 if subtitle else 0,1,1))
     fig.savefig(ROOT/out,bbox_inches='tight',facecolor='#f2f4f5')
     plt.close(fig)
 
+
 if __name__=='__main__':
-    render('flagpole_finial_v0_6_assembly.glb','preview_v06_assembly.png','Общий вид сборки v0.7.3',23,-55)
-    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU.png','Разнесённый вид v0.7.3: PETG, TPU 95A и TPU 85A',25,-57)
-    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG.png','Раскладка деталей PETG v0.7.3',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95.png','Раскладка деталей TPU 95A v0.7.3',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85.png','Раскладка деталей TPU 85A v0.7.3',58,-50)
+    fastener_note='Все винтовые соединения используют обслуживаемые закладные M4/M3; расположение см. на карте крепежа 124.'
+    render('flagpole_finial_v0_6_assembly.glb','preview_v06_assembly.png',f'Общий вид сборки v{CURRENT_VERSION}',23,-55,fastener_note)
+    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU.png',f'Разнесённый вид v{CURRENT_VERSION}: PETG, TPU 95A и TPU 85A',25,-57,fastener_note)
+    render('flagpole_finial_v0_6_electronics_layout.glb','preview_v06_electronics_layout.png',f'Компоновка электроники v{CURRENT_VERSION}',24,-52,'DC-DC лежит снизу; ESP32-C3 и MOSFET стоят на противоположных стенках; VEML7700 крепится двумя M3.')
+    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG.png',f'Раскладка деталей PETG v{CURRENT_VERSION}',58,-50,'Металлические гайки не печатаются; перед полной печатью проверить купоны M4 и M3.')
+    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95.png',f'Раскладка деталей TPU 95A v{CURRENT_VERSION}',58,-50,'#tpu95-10 — сменная направляющая двух проводов под углом около 35° вниз к флагу.')
+    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85.png',f'Раскладка деталей TPU 85A v{CURRENT_VERSION}',58,-50,'Самоклеящаяся мембрана Ø20 мм устанавливается без отдельной TPU-прокладки.')

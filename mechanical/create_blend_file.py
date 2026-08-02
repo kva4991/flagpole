@@ -1,6 +1,6 @@
 """Run from Blender's Scripting workspace.
 
-Imports the current v0.7.3 assembly (stable v0_6 filename retained for
+Imports the current v0.7.4 assembly (stable v0_6 filename retained for
 compatibility) and saves a native .blend next to it.
 """
 from pathlib import Path

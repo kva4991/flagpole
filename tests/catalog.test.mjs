@@ -40,23 +40,25 @@ describe('project catalog', () => {
     assert.match(html, /2RS — резиновые уплотнения с обеих сторон/);
     assert.match(html, /Компоненты/);
     assert.match(html, /Чертежи и 3D/);
-    assert.match(html, /Схема соединений электроники v0\.7\.3 — A4/);
+    assert.match(html, /Схема соединений электроники v0\.7\.4 — A4/);
     assert.match(html, /flagpole_finial_v0_5_assembly\.glb/);
     assert.match(html, /data-src="\.\.\/mechanical\/flagpole_finial_v0_5_assembly\.glb"/);
     assert.match(html, /model-viewer\/4\.2\.0\/model-viewer\.min\.js/);
     assert.match(html, /Загрузить интерактивную 3D-модель/);
-    assert.match(html, /Porex Virtek PMV25 hydrophobic PTFE vent membrane/);
+    assert.match(html, /Self-adhesive hydrophobic vent membrane — Ø20 mm \/ active Ø10 mm/);
     assert.match(html, /MOLYKOTE 111 silicone compound for seals/);
-    assert.match(html, /A2 stainless M3\/M4 screw, washer and nyloc nut kit/);
+    assert.match(html, /A2 stainless M3\/M4 screws, washers and standard hex nuts for captive pockets/);
     assert.match(html, /Flexible silicone power wire kit — 2×0\.75 mm² and AWG20/);
     assert.match(html, /Four-color flexible sensor wire — AWG26–28/);
     assert.match(html, /Cut transparent window for the VEML7700 light well/);
     assert.match(html, /покупать отдельный материал не требуется/);
     assert.match(html, /UV-resistant bonded polyester sewing thread — Tex 45/);
     assert.match(html, /100% polyester\/PES, continuous filament, bonded/);
-    assert.match(html, /Маршрут двух проводов питания флага v0\.7\.3/);
-    assert.match(html, /Таблица идентификаторов печатных деталей v0\.7\.3/);
-    assert.match(html, /актуально · v0\.7\.3/);
+    assert.match(html, /Маршрут двух проводов питания флага v0\.7\.4/);
+    assert.match(html, /Таблица идентификаторов печатных деталей v0\.7\.4/);
+    assert.match(html, /Карта закладных гаек и крепежа v0\.7\.4/);
+    assert.match(html, /Компоновка электроники в боксе v0\.7\.4/);
+    assert.match(html, /актуально · v0\.7\.4/);
     assert.match(html, /история · v0\.5/);
     assert.match(html, /Раздельные очереди печати по материалам/);
     assert.match(html, /Очередь печати PETG/);
@@ -64,7 +66,7 @@ describe('project catalog', () => {
     assert.match(html, /Очередь печати TPU 85A/);
     assert.match(html, /нейлоновой основе/);
     assert.match(html, /320 кд\/\(лк·м²\)/);
-    assert.match(html, /Строительная кровельная или стеновая мембрана для этой детали не выбирается/);
+    assert.match(html, /семь отверстий Ø2 мм/);
     assert.doesNotMatch(html, /\b(?:cmp|drw|mdl)-\d{3}\b/);
   });
 
@@ -72,12 +74,13 @@ describe('project catalog', () => {
     const media = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/drawings.json'), 'utf8'));
     assert.equal(media.schemaVersion, 2);
     assert.equal(media.printSessions.length, 3);
+    assert.equal(media.models.length, 10);
     const all = [...media.drawings, ...media.models, ...media.printSessions];
     assert.equal(new Set(all.map(item => item.id)).size, all.length);
     assert.equal(media.drawings.length, 26);
-    assert.equal(media.drawings.filter(item => item.status === 'current').length, 19);
+    assert.equal(media.drawings.filter(item => item.status === 'current').length, 20);
     assert.equal(media.drawings.filter(item => item.status === 'historical').length, 6);
-    assert.equal(media.drawings.filter(item => item.status === 'reference').length, 1);
+    assert.equal(media.drawings.filter(item => item.status === 'reference').length, 0);
     for (const item of media.drawings) {
       assert.ok(['current', 'historical', 'reference'].includes(item.status));
       assert.ok(item.version);
@@ -92,7 +95,7 @@ describe('project catalog', () => {
     }
     for (const item of media.printSessions) {
       assert.equal(item.status, 'current');
-      assert.equal(item.version, '0.7.3');
+      assert.equal(item.version, '0.7.4');
       assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing print session ${item.file}`);
       assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing print session preview ${item.preview}`);
     }

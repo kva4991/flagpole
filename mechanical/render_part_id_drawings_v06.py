@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render current v0.7.3 technical views with stable printable-part identifiers."""
+"""Render current v0.7.4 technical views with stable printable-part identifiers."""
 from pathlib import Path
 import json
 import numpy as np
@@ -10,19 +10,21 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from mpl_toolkits.mplot3d import proj3d
 import trimesh
 
+from generate_models_v06 import CURRENT_VERSION
+
 ROOT=Path(__file__).resolve().parent
 REGISTRY=json.loads((ROOT/'part_id_registry_v06.json').read_text(encoding='utf-8'))
 PART_IDS={item['name']:item['id'] for group in REGISTRY['groups'].values() for item in group}
 ALIASES={
     'rotor_A':'rotor_half_A','rotor_B':'rotor_half_B','collar_A':'stationary_collar_A','collar_B':'stationary_collar_B',
     'lid':'service_lid','photo_retainer':'photo_window_retainer','env_pocket':'environment_sensor_pocket',
+    'electronics_carrier':'electronics_carrier','veml_cradle':'VEML7700_cradle',
     'spoke_liner_A_split_face_down':'spoke_liner_A','spoke_liner_B_split_face_down':'spoke_liner_B',
     'flag_cable_grommet_A_split_face_down':'flag_cable_grommet_A','flag_cable_grommet_B_split_face_down':'flag_cable_grommet_B',
     'M125_bundle_grommet_A_split_face_down':'M125_bundle_grommet_A','M125_bundle_grommet_B_split_face_down':'M125_bundle_grommet_B',
     'M125_pole_sleeve_upright':'M125_pole_sleeve','pole_collar_liner_A_split_face_down':'pole_collar_liner_A',
     'pole_collar_liner_B_split_face_down':'pole_collar_liner_B','lid_gasket_flat':'lid_gasket',
     'photo_window_gasket_flat':'photo_window_gasket','environment_pocket_gasket_flat':'environment_pocket_gasket',
-    'environment_membrane_gasket_flat':'environment_membrane_gasket',
     'flag_side_wire_guide_slit_up':'flag_side_wire_guide',
 }
 
@@ -35,7 +37,7 @@ def canonical(name):
 
 def color(name):
     value=canonical(name)
-    if value.startswith(('rotor_','stationary_')) or value in ('service_lid','photo_tunnel','photo_window_retainer','environment_sensor_pocket'):
+    if value.startswith(('rotor_','stationary_')) or value in ('service_lid','photo_tunnel','photo_window_retainer','environment_sensor_pocket','electronics_carrier','VEML7700_cradle'):
         return np.array([0.86,0.45,0.17])
     if value.startswith(('spoke_liner','flag_cable_grommet','M125_bundle_grommet','M125_pole_sleeve','pole_collar_liner','flag_side_wire_guide')):
         return np.array([0.38,0.42,0.46])
@@ -105,11 +107,12 @@ def render(glb,output,title,elevation,azimuth):
         occupied.append((fx,fy))
         figure.text(fx,fy,identifier,fontsize=8,color='black',ha='left',va='center',
                     bbox=dict(boxstyle='round,pad=0.22',facecolor='white',edgecolor='#444',alpha=0.95))
+    figure.text(0.5,0.025,'Металлические закладные M4/M3 показаны на карте крепежа 124 и не входят в печатные ID.',ha='center',fontsize=8.5,color='#52616a')
     figure.savefig(ROOT/output,bbox_inches='tight',facecolor='#f2f4f5')
     plt.close(figure)
 
 if __name__=='__main__':
-    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU_ids.png','Разнесённый вид v0.7.3 с ID деталей',25,-57)
-    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG_ids.png','Раскладка деталей PETG v0.7.3 с ID',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95_ids.png','Раскладка деталей TPU 95A v0.7.3 с ID',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85_ids.png','Раскладка деталей TPU 85A v0.7.3 с ID',58,-50)
+    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU_ids.png',f'Разнесённый вид v{CURRENT_VERSION} с ID деталей',25,-57)
+    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG_ids.png',f'Раскладка деталей PETG v{CURRENT_VERSION} с ID',58,-50)
+    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95_ids.png',f'Раскладка деталей TPU 95A v{CURRENT_VERSION} с ID',58,-50)
+    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85_ids.png',f'Раскладка деталей TPU 85A v{CURRENT_VERSION} с ID',58,-50)
