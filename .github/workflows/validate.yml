@@ -24,8 +24,19 @@ jobs:
       - name: Run repository quality gate
         run: npm run quality:gate
 
-      - name: Check v0.6 mechanical Python sources
-        run: python -m py_compile mechanical/generate_models_v06.py mechanical/render_previews_v06.py mechanical/generate_reference_diagrams_v06.py mechanical/render_flag_power_route_v06.py mechanical/render_part_id_drawings_v06.py mechanical/validate_models_v06.py
+      - name: Compile-check project Python sources
+        run: >-
+          python -m py_compile
+          mechanical/generate_models_v06.py
+          mechanical/render_previews_v06.py
+          mechanical/generate_reference_diagrams_v06.py
+          mechanical/render_flag_power_route_v06.py
+          mechanical/render_part_id_drawings_v06.py
+          mechanical/generate_detail_diagrams_v073.py
+          mechanical/generate_hermeticity_diagram_v073.py
+          mechanical/generate_drawing_audit_contact_sheet_v073.py
+          mechanical/validate_models_v06.py
+          electronics/generate_electronics_diagrams_v073.py
 
   mechanical:
     runs-on: ubuntu-latest
@@ -38,16 +49,28 @@ jobs:
           cache: pip
           cache-dependency-path: mechanical/requirements.txt
 
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
       - name: Install mechanical dependencies
         run: python -m pip install --requirement mechanical/requirements.txt
 
-      - name: Regenerate v0.6 mechanics and diagrams
+      - name: Regenerate v0.7.3 mechanics and diagrams
         run: |
           python mechanical/generate_models_v06.py
+          python mechanical/validate_models_v06.py
           python mechanical/render_previews_v06.py
           python mechanical/render_part_id_drawings_v06.py
           python mechanical/render_flag_power_route_v06.py
           python mechanical/generate_reference_diagrams_v06.py
+          python mechanical/generate_detail_diagrams_v073.py
+          python mechanical/generate_hermeticity_diagram_v073.py
+          python electronics/generate_electronics_diagrams_v073.py
+          python mechanical/generate_drawing_audit_contact_sheet_v073.py
+
+      - name: Verify generated catalog after drawing regeneration
+        run: npm run catalog:generate && npm run catalog:check
 
       - name: Validate all generated STL files
         run: python mechanical/validate_models_v06.py

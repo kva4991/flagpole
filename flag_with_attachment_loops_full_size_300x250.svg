@@ -4,18 +4,18 @@
   <rect x="0" y="0" width="300" height="250" fill="#fff3e8" stroke="#c85700" stroke-width="1.2"/>
   <rect x="-72" y="0" width="18" height="250" rx="6" fill="#202020"/>
 
-  <!-- Four orange fabric loops. Their exact length is fitted to Dshaft and gap G. -->
+  <!-- Four orange fabric loops: top edge 10 mm below flag top; bottom edge flush with flag bottom. -->
   <g fill="none" stroke="#f36a00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 11 15 L -48 15 C -82 15 -82 35 -48 35 L 11 35"/>
-    <path d="M 11 80 L -48 80 C -82 80 -82 100 -48 100 L 11 100"/>
-    <path d="M 11 145 L -48 145 C -82 145 -82 165 -48 165 L 11 165"/>
-    <path d="M 11 210 L -48 210 C -82 210 -82 230 -48 230 L 11 230"/>
+    <path d="M 11 10.000 L -48 10.000 C -82 10.000 -82 30.000 -48 30.000 L 11 30.000"/>
+    <path d="M 11 83.333 L -48 83.333 C -82 83.333 -82 103.333 -48 103.333 L 11 103.333"/>
+    <path d="M 11 156.667 L -48 156.667 C -82 156.667 -82 176.667 -48 176.667 L 11 176.667"/>
+    <path d="M 11 230.000 L -48 230.000 C -82 230.000 -82 250.000 -48 250.000 L 11 250.000"/>
   </g>
   <g fill="none" stroke="#9a4b18" stroke-width="0.8" stroke-dasharray="3 2">
-    <rect x="0" y="10" width="16" height="30"/>
-    <rect x="0" y="75" width="16" height="30"/>
-    <rect x="0" y="140" width="16" height="30"/>
-    <rect x="0" y="205" width="16" height="30"/>
+    <rect x="0" y="5.000" width="16" height="30"/>
+    <rect x="0" y="78.333" width="16" height="30"/>
+    <rect x="0" y="151.667" width="16" height="30"/>
+    <rect x="0" y="220.000" width="16" height="30"/>
   </g>
 
   <!-- Standard ichthys LED/neon path, tail left. -->

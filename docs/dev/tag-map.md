@@ -28,3 +28,6 @@
 | `§android1` | Android требует воспроизводимой сборки и последовательного GATT | `docs/AUDIT_V061_RU.md` |
 | `§flagpower1` | Кабель питания флага проходит снаружи ниже спицы и входит через единственную TPU95-манжету | `docs/architecture/decisions/0017-external-flag-power-cable-route.ru.md` |
 | `§partid1` | Стабильные ID печатных деталей синхронизируются с реестром, чертежами и STL | `mechanical/docs/PART_IDENTIFIERS_RU.md` |
+| `§weather73` | Крышка, световой тоннель и климатический карман используют независимые обслуживаемые барьеры | `docs/architecture/decisions/0018-multibarrier-weatherproofing.ru.md` |
+| `§flagloop73` | Верхняя и нижняя петли привязаны к краям, остальные распределены равномерно | `docs/architecture/decisions/0019-flag-loop-placement.ru.md` |
+| `§drawstatus73` | Изготовление ведётся только по current-карточкам; сложные сетки v0.7.3 временно канонические | `docs/architecture/decisions/0020-drawing-status-and-canonical-meshes.ru.md` |

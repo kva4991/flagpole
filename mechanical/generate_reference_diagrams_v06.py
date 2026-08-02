@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the v0.6 part-ID table and flag-power cable route diagrams.
+"""Generate the v0.7.3 part-ID table and twin-wire route diagrams.
 
 Sources of truth:
 - mechanical/part_id_registry_v06.json
@@ -65,7 +65,7 @@ def generate_part_table() -> None:
     svg = [f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="{width}mm" height="{height}mm" viewBox="0 0 {width} {height}">
 <rect width="{width}" height="{height}" fill="#f4f5f6"/>
-<text x="{width/2}" y="16" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="8" font-weight="700" fill="#172126">Таблица идентификаторов печатных деталей v0.6</text>
+<text x="{width/2}" y="16" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="8" font-weight="700" fill="#172126">Таблица идентификаторов печатных деталей v0.7.3</text>
 <text x="{width/2}" y="22" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="4" fill="#52616a">Одинаковая деталь сохраняет один и тот же ID на всех актуальных чертежах</text>
 <rect x="{cols[0]}" y="{header_y}" width="{cols[-1]-cols[0]}" height="9" rx="1.5" fill="#193f46"/>
 ''']
@@ -131,7 +131,7 @@ def generate_cable_route() -> None:
 <svg xmlns="http://www.w3.org/2000/svg" width="{width}mm" height="{height}mm" viewBox="0 0 {width} {height}">
 <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#176b87"/></marker></defs>
 <rect width="{width}" height="{height}" fill="#f4f5f6"/>
-<text x="148.5" y="11" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="6.6" font-weight="700" fill="#172126">Маршрут питания флага под спицей</text>
+<text x="148.5" y="11" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="6.6" font-weight="700" fill="#172126">Маршрут двух проводов питания флага v0.7.3</text>
 <text x="148.5" y="18" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="4.6" fill="#52616a">герморазъём → наружная открытая канавка → TPU95-ввод у электронного бокса</text>
 <text x="77" y="31" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="5" font-weight="700" fill="#1f4c55">Вид сбоку</text>
 <text x="220" y="31" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="5" font-weight="700" fill="#1f4c55">Вид сверху</text>

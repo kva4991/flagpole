@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210"><defs>
+ <style>
+ .title{font:700 6.4px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.sub{font:3.2px 'DejaVu Sans',Arial,sans-serif;fill:#52616a}.h{font:700 4.2px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.t{font:3px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.small{font:2.65px 'DejaVu Sans',Arial,sans-serif;fill:#52616a}.petg{fill:#ee8a3d;stroke:#98521f;stroke-width:.7}.tpu85{fill:#c2c9ce;stroke:#667178;stroke-width:.6}.metal{fill:#606c73;stroke:#222b30;stroke-width:.6}.board{fill:#369662;stroke:#1c5f3d;stroke-width:.6}.window{fill:#92cceb;stroke:#316b8a;stroke-width:.5}.membrane{fill:#d9e6eb;stroke:#647a84;stroke-width:.5}.air{fill:none;stroke:#176b87;stroke-width:.7;stroke-dasharray:2 1}.note{fill:#fff;stroke:#c7d1d5;stroke-width:.45}.cut{fill:#fff6ef;stroke:#bd6b31;stroke-width:.55}
+ </style>
+</defs>
+<rect width="297" height="210" fill="#f5f6f7"/>
+<text x="148.5" y="10" text-anchor="middle" class="title">Герметичность электронного отсека, VEML7700 и климатического кармана</text>
+<text x="148.5" y="16" text-anchor="middle" class="sub">проектные сечения v0.7.3; окончательные посадки подтверждаются купонами, реальными модулями и дождевым стендом</text>
+<rect x="8" y="27" width="90" height="120" rx="4" class="note"/><rect x="103" y="27" width="90" height="120" rx="4" class="note"/><rect x="198" y="27" width="91" height="120" rx="4" class="note"/>
+<text x="12" y="37" class="h">A. Крышка электронного бокса</text><text x="107" y="37" class="h">B. Тоннель и VEML7700</text><text x="202" y="37" class="h">C. Карман AHT20+BMP280</text>
+<!-- lid -->
+<rect x="22" y="58" width="62" height="13" rx="3" class="petg"/><path d="M25 71 V83 H29 V74 H77 V83 H81 V71" fill="none" stroke="#98521f" stroke-width="2"/><rect x="29" y="72" width="48" height="3" class="tpu85"/><rect x="32" y="75" width="42" height="53" class="petg" fill-opacity=".72"/><line x1="31" y1="52" x2="31" y2="83" class="metal"/><line x1="75" y1="52" x2="75" y2="83" class="metal"/><rect x="28" y="70" width="5" height="7" fill="none" stroke="#98521f" stroke-width="1"/><rect x="73" y="70" width="5" height="7" fill="none" stroke="#98521f" stroke-width="1"/>
+<circle cx="53" cy="134" r="6" class="membrane"/><circle cx="53" cy="134" r="1.2" fill="#176b87"/><path d="M48 134 H42 M58 134 H64" class="air"/>
+<text x="15" y="91" class="t">TPU85: 2,0 → 1,5 мм; сжатие 25%</text><text x="15" y="99" class="t">свес + юбка + внутренний язычок</text><text x="15" y="107" class="t">PETG-упоры ограничивают затяжку</text><text x="15" y="115" class="t">винты и гайки вне сухого контура</text><text x="15" y="143" class="small">нижний ePTFE vent Ø8 мм, отдельно от шва</text>
+<!-- tunnel -->
+<rect x="132" y="55" width="18" height="15" class="petg"/><rect x="137" y="42" width="8" height="31" class="petg"/><rect x="134" y="69" width="14" height="3" class="petg"/><rect x="138" y="40" width="6" height="2" class="window"/><rect x="137" y="42" width="8" height="1.4" class="tpu85"/><line x1="141" y1="44" x2="141" y2="70" stroke="#fff" stroke-width="4.2"/><rect x="125" y="81" width="32" height="19" rx="2" class="cut"/><rect x="132" y="86" width="18" height="8" class="board"/><circle cx="136" cy="90" r="1.2" fill="#fff"/><circle cx="146" cy="90" r="1.2" fill="#fff"/><rect x="128" y="78" width="26" height="25" fill="none" stroke="#222" stroke-width="1"/>
+<text x="110" y="113" class="t">длина 18 мм; проход Ø4,2; поле ≈13,3°</text><text x="110" y="121" class="t">одна внутренняя шайба; монтаж изнутри</text><text x="110" y="129" class="t">2 штырька + бортик 17,1 × 17,1 мм</text><text x="110" y="137" class="t">внутренний пояс — матово-чёрный после теста</text>
+<!-- climate pocket -->
+<rect x="215" y="55" width="58" height="61" class="petg"/><rect x="220" y="61" width="48" height="43" class="cut"/><rect x="230" y="72" width="28" height="9" class="board"/><rect x="229" y="81" width="3" height="13" class="petg"/><rect x="256" y="81" width="3" height="13" class="petg"/><rect x="215" y="55" width="58" height="3" class="tpu85"/><circle cx="244" cy="113" r="9" fill="#f2a66e" stroke="#98521f" stroke-width=".7"/><circle cx="244" cy="113" r="6" class="membrane"/><circle cx="240" cy="115" r="1" fill="#176b87"/><circle cx="244" cy="110" r="1" fill="#176b87"/><circle cx="248" cy="115" r="1" fill="#176b87"/><circle cx="265" cy="68" r="6" fill="#f6c39c" stroke="#98521f" stroke-width=".7"/><circle cx="265" cy="68" r="2.5" fill="#fff" stroke="#98521f" stroke-width=".6"/>
+<text x="205" y="127" class="t">корпус ≈34 × 30 × 17,5 мм</text><text x="205" y="135" class="t">3 отверстия Ø2,5 мм + смещённая перегородка</text><text x="205" y="143" class="t">potting-well проводов Ø8 мм; камера не заливается</text>
+<!-- notes -->
+<rect x="8" y="153" width="281" height="47" rx="3" class="note"/>
+<text x="13" y="162" class="t">1. Ни один узел пока не имеет подтверждённого IP-класса: обязательны полив, конденсация, обдув и температурные циклы без питания.</text>
+<text x="13" y="170" class="t">2. Самоклеящаяся PTFE/ePTFE-мембрана клеится на ровную обезжиренную площадку кольцом по периметру; активную область не мазать.</text>
+<text x="13" y="178" class="t">3. Кабель AHT20+BMP280 проходит через отдельный Ø8 мм potting-well; герметик заполняет только колодец, а не камеру датчика.</text>
+<text x="13" y="186" class="t">4. Окно VEML7700 и фланец тоннеля герметизируются непрерывным тонким швом по периметру; оптический канал остаётся чистым.</text>
+<text x="13" y="194" class="t">5. Давление в электронном боксе выравнивается отдельной нижней vent-мембраной, чтобы температурные циклы не прокачивали воду через крышку.</text>
+</svg>

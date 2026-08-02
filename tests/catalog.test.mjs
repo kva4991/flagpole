@@ -40,7 +40,7 @@ describe('project catalog', () => {
     assert.match(html, /2RS — резиновые уплотнения с обеих сторон/);
     assert.match(html, /Компоненты/);
     assert.match(html, /Чертежи и 3D/);
-    assert.match(html, /Схема соединений электроники — A4/);
+    assert.match(html, /Схема соединений электроники v0\.7\.3 — A4/);
     assert.match(html, /flagpole_finial_v0_5_assembly\.glb/);
     assert.match(html, /data-src="\.\.\/mechanical\/flagpole_finial_v0_5_assembly\.glb"/);
     assert.match(html, /model-viewer\/4\.2\.0\/model-viewer\.min\.js/);
@@ -54,8 +54,10 @@ describe('project catalog', () => {
     assert.match(html, /покупать отдельный материал не требуется/);
     assert.match(html, /UV-resistant bonded polyester sewing thread — Tex 45/);
     assert.match(html, /100% polyester\/PES, continuous filament, bonded/);
-    assert.match(html, /Маршрут питания флага под спицей/);
-    assert.match(html, /Таблица идентификаторов печатных деталей v0\.6/);
+    assert.match(html, /Маршрут двух проводов питания флага v0\.7\.3/);
+    assert.match(html, /Таблица идентификаторов печатных деталей v0\.7\.3/);
+    assert.match(html, /актуально · v0\.7\.3/);
+    assert.match(html, /история · v0\.5/);
     assert.match(html, /Раздельные очереди печати по материалам/);
     assert.match(html, /Очередь печати PETG/);
     assert.match(html, /Очередь печати TPU 95A/);
@@ -72,17 +74,64 @@ describe('project catalog', () => {
     assert.equal(media.printSessions.length, 3);
     const all = [...media.drawings, ...media.models, ...media.printSessions];
     assert.equal(new Set(all.map(item => item.id)).size, all.length);
+    assert.equal(media.drawings.length, 26);
+    assert.equal(media.drawings.filter(item => item.status === 'current').length, 19);
+    assert.equal(media.drawings.filter(item => item.status === 'historical').length, 6);
+    assert.equal(media.drawings.filter(item => item.status === 'reference').length, 1);
     for (const item of media.drawings) {
+      assert.ok(['current', 'historical', 'reference'].includes(item.status));
+      assert.ok(item.version);
       assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing drawing ${item.file}`);
       assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing preview ${item.preview}`);
     }
     for (const item of media.models) {
+      assert.ok(['current', 'historical', 'reference'].includes(item.status));
+      assert.ok(item.version);
       assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing model ${item.file}`);
       assert.ok(fs.existsSync(resolve(repoRoot, item.poster)), `missing poster ${item.poster}`);
     }
     for (const item of media.printSessions) {
+      assert.equal(item.status, 'current');
+      assert.equal(item.version, '0.7.3');
       assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing print session ${item.file}`);
       assert.ok(fs.existsSync(resolve(repoRoot, item.preview)), `missing print session preview ${item.preview}`);
     }
+  });
+
+  it('catalogues every working visual artifact outside component images and archive', () => {
+    const media = JSON.parse(fs.readFileSync(resolve(repoRoot, 'catalog/drawings.json'), 'utf8'));
+    const referenced = new Set();
+    for (const item of media.drawings) {
+      referenced.add(item.file.replaceAll('\\', '/'));
+      referenced.add(item.preview.replaceAll('\\', '/'));
+    }
+    for (const item of media.models) {
+      referenced.add(item.file.replaceAll('\\', '/'));
+      referenced.add(item.poster.replaceAll('\\', '/'));
+    }
+    for (const item of media.printSessions) {
+      referenced.add(item.file.replaceAll('\\', '/'));
+      referenced.add(item.preview.replaceAll('\\', '/'));
+    }
+    const allowedGeneratedCopies = new Set([
+      'android/crucian-control/app/src/main/res/drawable-nodpi/ic_crucian_launcher.png',
+    ]);
+    const extensions = new Set(['.png', '.svg', '.glb', '.jpg', '.jpeg']);
+    const found = [];
+    function walk(directory) {
+      for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+        const absolute = resolve(directory, entry.name);
+        const relative = absolute.slice(repoRoot.length + 1).replaceAll('\\', '/');
+        if (entry.isDirectory()) {
+          if (relative === 'catalog/images' || relative.startsWith('catalog/images/') || relative === 'archive' || relative.startsWith('archive/')) continue;
+          walk(absolute);
+        } else if (extensions.has(entry.name.slice(entry.name.lastIndexOf('.')).toLowerCase())) {
+          found.push(relative);
+        }
+      }
+    }
+    walk(repoRoot);
+    const uncatalogued = found.filter(file => !referenced.has(file) && !allowedGeneratedCopies.has(file));
+    assert.deepEqual(uncatalogued, []);
   });
 });

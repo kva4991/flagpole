@@ -3,20 +3,22 @@
 ## Текущая версия
 
 ```text
-0.7.2
+0.7.3
 ```
 
 ## Обязательный порядок чтения
 
-1. `docs/PROJECT_DECISIONS_RU.md`
-2. `docs/MECHANICAL_FITS_RU.md`
-3. `MEASUREMENTS_REQUIRED_RU.md`
-4. `docs/CODE_RATIONALE_RU.md`
-5. `docs/PROJECT_IDENTITY_RU.md`
-6. `mechanical/docs/CAPTIVE_NUT_POCKETS_RU.md`
-7. `mechanical/docs/FLAG_ATTACHMENT_LOOPS_RU.md`
-8. `mechanical/docs/FLAG_POWER_CABLE_ROUTE_RU.md`
-9. `mechanical/docs/PART_IDENTIFIERS_RU.md`
+1. `AGENTS.md`
+2. `docs/current-implementation-status.ru.md`
+3. `docs/PROJECT_DECISIONS_RU.md`
+4. `docs/DRAWING_AUDIT_V073_RU.md`
+5. `docs/MECHANICAL_FITS_RU.md`
+6. `MEASUREMENTS_REQUIRED_RU.md`
+7. `mechanical/docs/HERMETICITY_V073_RU.md`
+8. `mechanical/docs/PHOTO_TUNNEL_AND_VEML_MOUNT_RU.md`
+9. `mechanical/docs/ENV_SENSOR_POCKET_RU.md`
+10. `mechanical/docs/FLAG_POWER_CABLE_ROUTE_RU.md`
+11. `mechanical/docs/PART_IDENTIFIERS_RU.md`
 
 ## Что уже реализовано в файлах
 
@@ -30,7 +32,7 @@
 - закрытие BluetoothGatt;
 - современные write API;
 - полноэкранные интерактивные 3D-модели;
-- генератор механики v0.6;
+- генератор механики v0.7.3 с 37 проверяемыми STL;
 - закладные под M4/M3;
 - карман климатического датчика;
 - окно VEML7700;
@@ -38,6 +40,9 @@
 - PETG/TPU95/TPU85-разделение.
 - наружный маршрут кабеля питания флага ниже спицы и один герметизируемый ввод;
 - стабильные ID печатных деталей и отдельные очереди печати по материалам.
+- многобарьерная крышка, тоннель VEML7700 Ø11 × 18 мм и отдельный мембранный карман AHT20+BMP280;
+- дорожка двух проводов 4,2 × 2,5 мм и направляющая `#tpu95-10`;
+- статусы актуальности для всех чертежей и переходные канонические сетки `source_meshes_v073`.
 
 ## Что остаётся проверить физически
 

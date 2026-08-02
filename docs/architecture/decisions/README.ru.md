@@ -21,3 +21,6 @@
 | [0015](0015-flag-attachment-loops.ru.md) | Принято | Четыре тканевые петли крепления флага к штоку |
 | [0016](0016-android-ble-state-machine.ru.md) | Принято | Android BLE state machine и очередь GATT |
 | [0017](0017-external-flag-power-cable-route.ru.md) | Принято | Наружный маршрут питания флага ниже спицы и один герметизируемый ввод |
+| [0018](0018-multibarrier-weatherproofing.ru.md) | Требует стенда | Независимые барьеры крышки, VEML7700 и климатического кармана |
+| [0019](0019-flag-loop-placement.ru.md) | Принято | Точное расположение четырёх петель флага |
+| [0020](0020-drawing-status-and-canonical-meshes.ru.md) | Переходное | Статусы чертежей и канонические сетки сложной геометрии v0.7.3 |

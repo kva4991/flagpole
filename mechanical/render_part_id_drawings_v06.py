@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render v0.6 technical views with stable printable-part identifiers."""
+"""Render current v0.7.3 technical views with stable printable-part identifiers."""
 from pathlib import Path
 import json
 import numpy as np
@@ -23,6 +23,7 @@ ALIASES={
     'pole_collar_liner_B_split_face_down':'pole_collar_liner_B','lid_gasket_flat':'lid_gasket',
     'photo_window_gasket_flat':'photo_window_gasket','environment_pocket_gasket_flat':'environment_pocket_gasket',
     'environment_membrane_gasket_flat':'environment_membrane_gasket',
+    'flag_side_wire_guide_slit_up':'flag_side_wire_guide',
 }
 
 def canonical(name):
@@ -36,7 +37,7 @@ def color(name):
     value=canonical(name)
     if value.startswith(('rotor_','stationary_')) or value in ('service_lid','photo_tunnel','photo_window_retainer','environment_sensor_pocket'):
         return np.array([0.86,0.45,0.17])
-    if value.startswith(('spoke_liner','flag_cable_grommet','M125_bundle_grommet','M125_pole_sleeve','pole_collar_liner')):
+    if value.startswith(('spoke_liner','flag_cable_grommet','M125_bundle_grommet','M125_pole_sleeve','pole_collar_liner','flag_side_wire_guide')):
         return np.array([0.38,0.42,0.46])
     if value.startswith(('lid_gasket','photo_window_gasket','environment_')):
         return np.array([0.52,0.56,0.60])
@@ -108,7 +109,7 @@ def render(glb,output,title,elevation,azimuth):
     plt.close(figure)
 
 if __name__=='__main__':
-    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU_ids.png','Разнесённый вид v0.6 с ID деталей',25,-57)
-    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG_ids.png','Раскладка деталей PETG v0.6 с ID',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95_ids.png','Раскладка деталей TPU 95A v0.6 с ID',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85_ids.png','Раскладка деталей TPU 85A v0.6 с ID',58,-50)
+    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU_ids.png','Разнесённый вид v0.7.3 с ID деталей',25,-57)
+    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG_ids.png','Раскладка деталей PETG v0.7.3 с ID',58,-50)
+    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95_ids.png','Раскладка деталей TPU 95A v0.7.3 с ID',58,-50)
+    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85_ids.png','Раскладка деталей TPU 85A v0.7.3 с ID',58,-50)

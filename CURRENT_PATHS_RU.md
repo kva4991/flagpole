@@ -1,4 +1,4 @@
-# Актуальные и исторические части проекта — v0.7.2
+# Актуальные и исторические части проекта — v0.7.3
 
 ## Главные точки входа
 
@@ -6,18 +6,31 @@
 - `docs/NEXT_CHAT_START_HERE_RU.md` — полный handoff;
 - `docs/current-implementation-status.ru.md` — что реально реализовано и что требует стенда;
 - `docs/PROJECT_DECISIONS_RU.md` — сводка решений;
+- `docs/DRAWING_AUDIT_V073_RU.md` — актуальность каждого чертежа;
 - `docs/architecture/decisions/` — история ADR;
 - `docs/MECHANICAL_FITS_RU.md` и `MEASUREMENTS_REQUIRED_RU.md` — получение реальных посадок.
 
 ## Актуальная механика
 
-- `mechanical/generate_models_v06.py` — источник геометрии;
+- `mechanical/generate_models_v06.py` — воспроизводимый сборщик геометрии v0.7.3;
+- `mechanical/source_meshes_v073/` — переходные канонические сетки сложных узлов;
 - `mechanical/stl_petg_v06/` — жёсткие детали текущей PETG-сборки;
 - `mechanical/stl_tpu95_v06/` — функциональные мягкие детали;
 - `mechanical/stl_tpu85_v06/` — прокладки;
 - `mechanical/test_coupons_v06/` — обязательные купоны;
 - `mechanical/flagpole_finial_v0_6_*.glb` — интерактивные модели;
 - `mechanical/VALIDATION_REPORT_V06_RU.md` — топологическая проверка STL.
+
+## Актуальные документы и генераторы v0.7.3
+
+- `mechanical/docs/HERMETICITY_V073_RU.md`;
+- `mechanical/docs/PHOTO_TUNNEL_AND_VEML_MOUNT_RU.md`;
+- `mechanical/docs/ENV_SENSOR_POCKET_RU.md`;
+- `mechanical/docs/STRUCTURAL_RESERVE_V073_RU.md`;
+- `mechanical/generate_detail_diagrams_v073.py`;
+- `mechanical/generate_hermeticity_diagram_v073.py`;
+- `mechanical/generate_drawing_audit_contact_sheet_v073.py`;
+- `electronics/generate_electronics_diagrams_v073.py`.
 
 ## Прошивка и Android
 
@@ -35,7 +48,7 @@
 
 - `catalog/components.json`, `catalog/drawings.json` — источники;
 - `scripts/generateComponentCatalog.mjs` — генератор;
-- `catalog/catalog.html` — generated-страница со статическими картинками и fullscreen 3D.
+- `catalog/catalog.html` — generated-страница со статическими картинками, статусами `current`/`historical`/`reference` и fullscreen 3D.
 
 ## Исторические части
 

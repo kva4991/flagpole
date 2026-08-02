@@ -2,7 +2,7 @@
   "name": "crucian-finial-project",
   "private": true,
   "type": "module",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "scripts": {
     "identity:generate": "node scripts/generateProjectIdentity.mjs",
     "identity:check": "node scripts/generateProjectIdentity.mjs --check",

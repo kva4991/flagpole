@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate flagpole finial v0.6 PETG + TPU95A + TPU85A concept models.
+"""Generate the current v0.7.3 flagpole-finial PETG + TPU95A + TPU85A models.
 
 Design status
 -------------
@@ -9,7 +9,7 @@ This is a parametric, printable concept updated for:
 - TPU 85A sealing gaskets and membrane retainers;
 - two 6804-2RS bearings around a provisional 20 mm pole;
 - carbon spoke between the two bearings;
-- M125/M125U miniature slip ring located inside a provisional hollow pole;
+- preferred M125-0205 miniature slip ring located inside a provisional hollow pole;
 - electronics pod on the side opposite the flag;
 - service lid with a captured TPU gasket;
 - external cable groove below the spoke and a split TPU entry grommet at the electronics pod;
@@ -35,7 +35,8 @@ PETG_DIR = ROOT / "stl_petg_v06"
 TPU95_DIR = ROOT / "stl_tpu95_v06"
 TPU85_DIR = ROOT / "stl_tpu85_v06"
 COUPON_DIR = ROOT / "test_coupons_v06"
-for d in (PETG_DIR, TPU95_DIR, TPU85_DIR, COUPON_DIR):
+SOURCE_MESH_DIR = ROOT / "source_meshes_v073"
+for d in (PETG_DIR, TPU95_DIR, TPU85_DIR, COUPON_DIR, SOURCE_MESH_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 
@@ -81,7 +82,7 @@ class Params:
     spoke_visible_length: float = 310.0
 
     # Main PETG rotor envelope
-    body_radius: float = 21.5
+    body_radius: float = 22.6
     body_z_min: float = 0.0
     body_z_max: float = 56.0
     tower_z_min: float = 52.0
@@ -98,7 +99,7 @@ class Params:
     arm_x_max: float = 72.0
     arm_z_min: float = 14.0
     arm_z_max: float = 48.0
-    arm_half_width: float = 12.5
+    arm_half_width: float = 15.0
     arm_corner_radius: float = 4.0
     clamp_gap_total: float = 0.70
     clamp_gap_x_min: float = 24.0
@@ -115,47 +116,65 @@ class Params:
     flag_cable_x_max: float = -8.0
     external_cable_groove_radius: float = 3.0
     external_cable_route_points: Tuple[Tuple[float, float, float], ...] = (
-        (72.0, -12.3, 18.0),
-        (27.0, -12.3, 18.0),
-        (17.0, -19.0, 16.5),
-        (-8.5, -19.0, 15.0),
-        (-8.5, 0.0, 18.0),
+        (70.0, -12.0, 10.0),
+        (58.0, -15.0, 8.0),
+        (39.0, -20.5, 3.6),
+        (22.0, -22.8, 0.88),
+        (4.0, -23.0, -1.8),
+        (-10.0, -20.0, 1.5),
+        (-14.0, -8.0, 12.0),
+        (-13.0, 0.0, 18.0),
     )
+    wire_diameter: float = 2.0
+    twin_wire_clear_width: float = 4.2
+    wire_rail_height: float = 2.5
+    wire_rail_width: float = 1.6
+    wire_rail_base_thickness: float = 1.0
+    flag_side_guide_source_name: str = "TPU95_flag_side_wire_guide_assembly.stl"
+
 
     # Electronics pod opposite the flag
     pod_x_min: float = -72.0
     pod_x_max: float = -10.0
-    pod_y_half: float = 19.0
+    pod_y_half: float = 20.0
     pod_z_min: float = 12.0
     pod_z_max: float = 50.0
     pod_inner_x_min: float = -66.0
     pod_inner_x_max: float = -16.0
-    pod_inner_y_half: float = 14.5
+    pod_inner_y_half: float = 14.0
     pod_inner_z_min: float = 17.0
     pod_inner_z_max: float = 54.0
 
     # Removable AHT20+BMP280 pocket mounted below the electronics pod.
     # Small ventilation and cable holes are deliberately NOT printed through;
     # the model leaves drill skins which are opened after measuring the real part.
-    env_pocket_center_x: float = -45.0
-    env_pocket_outer_x_half: float = 18.0
-    env_pocket_outer_y_half: float = 16.0
+    env_pocket_center_x: float = -42.0
+    env_pocket_outer_x_half: float = 17.0
+    env_pocket_outer_y_half: float = 15.0
     env_pocket_body_z_min: float = 0.0
-    env_pocket_body_z_max: float = 12.0
-    env_pocket_inner_x_half: float = 12.5
-    env_pocket_inner_y_half: float = 10.5
-    env_pocket_inner_z_min: float = 3.6
-    env_pocket_flange_thickness: float = 1.8
-    env_pocket_mount_x: float = -45.0
-    env_pocket_mount_y: float = 13.0
+    env_pocket_body_z_max: float = 17.5
+    env_pocket_inner_x_half: float = 13.5
+    env_pocket_inner_y_half: float = 11.5
+    env_pocket_inner_z_min: float = 3.8
+    env_pocket_flange_thickness: float = 2.0
+    env_pocket_mount_x: float = -42.0
+    env_pocket_mount_y: float = 17.0
     env_pocket_screw_diameter: float = 3.4
     env_pocket_board_size: float = 15.0
     env_pocket_drill_skin: float = 0.8
-    env_membrane_recess_x_half: float = 9.0
-    env_membrane_recess_y_half: float = 6.5
+    env_membrane_recess_x_half: float = 6.7
+    env_membrane_recess_y_half: float = 6.7
     env_membrane_recess_depth: float = 0.7
     env_membrane_gasket_thickness: float = 1.2
-    env_pocket_gasket_thickness: float = 1.4
+    env_pocket_gasket_thickness: float = 1.6
+    env_membrane_disc_diameter: float = 12.0
+    env_membrane_recess_diameter: float = 13.4
+    env_membrane_guard_diameter: float = 18.0
+    env_membrane_guard_height: float = 2.5
+    env_vent_hole_diameter: float = 2.5
+    env_vent_hole_radius: float = 3.0
+    env_potting_well_diameter: float = 8.0
+    env_board_support_z: float = 6.2
 
     # Service lid and TPU gasket
     lid_x_min: float = -74.0
@@ -167,27 +186,34 @@ class Params:
     gasket_outer_y_half: float = 17.0
     gasket_inner_x_half: float = 26.1
     gasket_inner_y_half: float = 14.1
-    gasket_thickness: float = 1.80
-    gasket_groove_depth: float = 1.45
+    gasket_thickness: float = 2.00
+    gasket_groove_depth: float = 1.50
     gasket_center_x: float = -41.0
 
     # Photo-sensor vertical tunnel, separate PETG insert
-    photo_tunnel_body_diameter: float = 10.0
-    photo_tunnel_flange_diameter: float = 15.0
-    photo_tunnel_height: float = 26.0
-    photo_tunnel_mount_hole_diameter: float = 10.6
+    photo_tunnel_body_diameter: float = 11.0
+    photo_tunnel_flange_diameter: float = 16.0
+    photo_tunnel_height: float = 18.0
+    photo_tunnel_mount_hole_diameter: float = 11.4
     photo_tunnel_center_x: float = -50.0
-    photo_window_diameter: float = 12.0
-    photo_window_seat_diameter: float = 12.4
+    photo_window_diameter: float = 8.0
+    photo_window_seat_diameter: float = 8.3
     photo_window_nominal_thickness: float = 1.0
-    photo_window_retainer_outer_diameter: float = 15.0
-    photo_window_retainer_inner_diameter: float = 6.0
-    photo_window_retainer_thickness: float = 1.4
+    photo_window_retainer_outer_diameter: float = 9.8
+    photo_window_retainer_inner_diameter: float = 4.4
+    photo_window_retainer_thickness: float = 1.2
     photo_window_gasket_thickness: float = 0.8
+    veml_board_size: float = 16.5
+    veml_board_clear_size: float = 17.1
+    veml_board_hole_spacing_x: float = 11.0
+    veml_board_hole_y_offset: float = 0.0
+    veml_board_pin_bottom_diameter: float = 1.8
+    veml_board_pin_top_diameter: float = 1.35
+    veml_board_pin_height: float = 2.2
 
     # Fasteners
     body_bolt_clearance_diameter: float = 4.5
-    body_bolt_boss_diameter: float = 13.0
+    body_bolt_boss_diameter: float = 14.4
     body_bolt_boss_half_length: float = 15.6
     body_bolt_positions: Tuple[Tuple[float, float], ...] = (
         (-22.0, 10.0),
@@ -567,7 +593,7 @@ def rotor_half_b_sdf(x,y,z):
     """Negative-Y rotor half with press-in M4 captive nut pockets.
 
     Earlier v0.5 intentionally used ordinary through bolts because the actual
-    fastener set and printer compensation were unknown. v0.6 keeps the through
+    fastener set and printer compensation were unknown. the current line keeps the through
     holes but adds parameterized hex pockets with a small snap entry. Print the
     nut-trap coupon before the full housing.
     """
@@ -883,36 +909,36 @@ def environment_sensor_pocket_sdf(x,y,z):
 
 
 def environment_pocket_gasket_sdf(x,y,z):
+    """TPU85 seal between the removable climate pocket and dry pod floor.
+
+    The gasket forms one closed ring and two integrated screw-eye seals. The
+    screw eyes sit outside the air opening so tightening the M3 screws cannot
+    create a direct water path into the electronics cavity.
+    """
     cx=P.env_pocket_center_x
+    t=P.env_pocket_gasket_thickness
     outer=sd_rounded_box(
-        x,y,z,center=(cx,0,P.env_pocket_gasket_thickness/2),
-        half_size=(P.env_pocket_outer_x_half-1.0,P.env_pocket_outer_y_half-1.0,
-                   P.env_pocket_gasket_thickness/2),radius=2.5)
+        x,y,z,center=(cx,0,t/2),
+        half_size=(16.10,14.20,t/2),radius=2.6)
     inner=sd_rounded_box(
-        x,y,z,center=(cx,0,P.env_pocket_gasket_thickness/2),
-        half_size=(P.env_pocket_inner_x_half+0.8,P.env_pocket_inner_y_half-0.1,
-                   P.env_pocket_gasket_thickness),radius=1.8)
-    holes=[inner]
+        x,y,z,center=(cx,0,t/2),
+        half_size=(14.15,12.25,t),radius=1.8)
+    ring=rounded_ring(outer,inner)
+    ears=[]
+    holes=[]
     for sy in (-P.env_pocket_mount_y,P.env_pocket_mount_y):
-        holes.append(sd_cylinder_z(
-            x-P.env_pocket_mount_x,y-sy,z,P.env_pocket_screw_diameter/2+0.2,
-            -1,P.env_pocket_gasket_thickness+1))
-    return subtract(outer,*holes)
+        ears.append(sd_cylinder_z(x-P.env_pocket_mount_x,y-sy,z,4.2,0,t))
+        holes.append(sd_cylinder_z(x-P.env_pocket_mount_x,y-sy,z,
+                                   P.env_pocket_screw_diameter/2+0.18,-1,t+1))
+    return subtract(union(ring,*ears),*holes)
 
 
 def environment_membrane_gasket_sdf(x,y,z):
-    cx=P.env_pocket_center_x
-    outer=sd_rounded_box(
-        x,y,z,center=(cx,0,P.env_membrane_gasket_thickness/2),
-        half_size=(P.env_membrane_recess_x_half-0.2,
-                   P.env_membrane_recess_y_half-0.2,
-                   P.env_membrane_gasket_thickness/2),radius=1.6)
-    inner=sd_rounded_box(
-        x,y,z,center=(cx,0,P.env_membrane_gasket_thickness/2),
-        half_size=(P.env_membrane_recess_x_half-2.0,
-                   P.env_membrane_recess_y_half-2.0,
-                   P.env_membrane_gasket_thickness),radius=1.0)
-    return rounded_ring(outer,inner)
+    """Local circular TPU85 frame for the replaceable 12 mm vent patch."""
+    t=P.env_membrane_gasket_thickness
+    outer=sd_cylinder_z(x,y,z,6.7,0,t)
+    inner=sd_cylinder_z(x,y,z,4.6,-1,t+1)
+    return subtract(outer,inner)
 
 
 # ---------------------------------------------------------------------------
@@ -966,6 +992,20 @@ def drill_skin_coupon_sdf(x,y,z):
         px=-14+index*14
         holes.append(sd_cylinder_z(x-px,y,z,2.0,skin,5.5))
     return subtract(solid,*holes)
+
+
+def twin_wire_rail_coupon_sdf(x,y,z):
+    """PETG coupon for the 4.2 mm clear twin-wire rail and 2.5 mm side walls."""
+    base=sd_rounded_box(x,y,z,center=(0,0,P.wire_rail_base_thickness/2),
+                         half_size=(28.0,10.0,P.wire_rail_base_thickness/2),radius=1.4)
+    rail_offset=P.twin_wire_clear_width/2+P.wire_rail_width/2
+    rail_a=sd_rounded_box(x,y,z,
+        center=(0,rail_offset,P.wire_rail_base_thickness+P.wire_rail_height/2),
+        half_size=(27.0,P.wire_rail_width/2,P.wire_rail_height/2),radius=0.45)
+    rail_b=sd_rounded_box(x,y,z,
+        center=(0,-rail_offset,P.wire_rail_base_thickness+P.wire_rail_height/2),
+        half_size=(27.0,P.wire_rail_width/2,P.wire_rail_height/2),radius=0.45)
+    return union(base,rail_a,rail_b)
 
 
 # ---------------------------------------------------------------------------
@@ -1024,6 +1064,13 @@ def put_on_bed(mesh: trimesh.Trimesh)->trimesh.Trimesh:
     return out
 
 
+def center_xy_on_bed(mesh: trimesh.Trimesh)->trimesh.Trimesh:
+    out=mesh.copy()
+    center=(out.bounds[0]+out.bounds[1])*0.5
+    out.apply_translation([-float(center[0]),-float(center[1]),-float(out.bounds[0,2])])
+    return out
+
+
 def rot_x(deg: float):
     return trimesh.transformations.rotation_matrix(math.radians(deg),[1,0,0])
 
@@ -1035,6 +1082,26 @@ def rot_y(deg: float):
 def export_stl(mesh: trimesh.Trimesh,path: Path)->Path:
     mesh.export(path)
     return path
+
+
+def load_source_mesh_v073(filename: str, name: str) -> trimesh.Trimesh:
+    """Load a validated v0.7.3 canonical mesh in assembly coordinates.
+
+    The v0.7.3 weatherproofing and cable-rail update was validated as closed
+    meshes. These source meshes are intentionally committed next to the
+    parametric generator so the release remains exactly reproducible while
+    the corresponding SDF features continue to be parameterized after real
+    measurements. Units are millimetres.
+    """
+    path=SOURCE_MESH_DIR/filename
+    if not path.exists():
+        raise FileNotFoundError(path)
+    mesh=trimesh.load(path,force='mesh')
+    mesh.units='mm'
+    mesh.metadata['name']=name
+    mesh.remove_unreferenced_vertices()
+    mesh.fix_normals()
+    return mesh
 
 
 def colored_copy(mesh: trimesh.Trimesh,rgba)->trimesh.Trimesh:
@@ -1058,7 +1125,7 @@ def to_glb_scene(objects_mm: Dict[str,trimesh.Trimesh],title: str)->trimesh.Scen
     for name,m in objects_mm.items():
         mm=m.copy(); mm.apply_scale(0.001); mm.metadata['name']=name
         scene.add_geometry(mm,node_name=name,geom_name=name)
-    scene.metadata.update({'title':title,'units':'metres in GLB; source mm','version':'0.6 PETG+TPU95+TPU85 provisional'})
+    scene.metadata.update({'title':title,'units':'metres in GLB; source mm','version':'0.7.3 PETG+TPU95+TPU85 provisional'})
     return scene
 
 
@@ -1090,36 +1157,17 @@ def cylinder_between(start, end, radius: float, sections: int = 32)->trimesh.Tri
 
 
 def external_flag_cable_reference()->trimesh.Trimesh:
-    """Non-printable reference for the waterproof-connector cable route.
-
-    The cable stays outside the housing in a service groove below the spoke,
-    wraps around the lower negative-Y side, then enters through the split TPU
-    grommet at the flag-facing wall of the electronics pod.
-    """
-    points=[np.array(p,dtype=float) for p in P.external_cable_route_points]
-    # Continue through the entry grommet into the electronics cavity and leave
-    # a short service loop before the terminal/MOSFET wiring.
-    points.extend([
-        np.array([-12.5,0.0,P.flag_cable_center_z],dtype=float),
-        np.array([-22.0,0.0,P.flag_cable_center_z],dtype=float),
-        np.array([-28.0,-5.0,P.flag_cable_center_z+4.0],dtype=float),
-    ])
-    parts=[cylinder_between(a,b,P.flag_cable_inner_diameter/2,28)
-           for a,b in zip(points[:-1],points[1:])]
-    return trimesh.util.concatenate(parts)
+    """Validated two-wire route reference from the v0.7.3 service model."""
+    return load_source_mesh_v073(
+        'REF_flag_power_cable_external_route_assembly.stl',
+        'REF_flag_power_cable_external_route')
 
 
 def waterproof_connector_reference()->trimesh.Trimesh:
-    """Provisional external two-pin connector near the flag, below the spoke."""
-    # Exact bought connector dimensions are not known; this is a visual volume
-    # only and must not be used for the final cradle or fit.
-    body=trimesh.creation.cylinder(radius=5.0,height=18.0,sections=48)
-    body.apply_transform(trimesh.geometry.align_vectors([0,0,1],[1,0,0]))
-    body.apply_translation([81.0,-12.3,P.flag_cable_center_z])
-    strain=trimesh.creation.cylinder(radius=3.3,height=8.0,sections=40)
-    strain.apply_transform(trimesh.geometry.align_vectors([0,0,1],[1,0,0]))
-    strain.apply_translation([70.0,-12.3,P.flag_cable_center_z])
-    return trimesh.util.concatenate([body,strain])
+    """Provisional external 2-pin connector volume from the v0.7.3 service model."""
+    return load_source_mesh_v073(
+        'REF_waterproof_2pin_connector_provisional_assembly.stl',
+        'REF_waterproof_2pin_connector_provisional')
 
 
 def cloth_loop_reference(z_center: float, loop_index: int)->trimesh.Trimesh:
@@ -1192,6 +1240,12 @@ def create_references()->Dict[str,trimesh.Trimesh]:
     refs['REF_buck_12_to_5']=colored_copy(buck,[42,115,73,255])
     mos=trimesh.creation.box(extents=[25,16,8]); mos.apply_translation([-48,-3,41])
     refs['REF_PC817_LR7843_module']=colored_copy(mos,[60,82,160,255])
+    veml=trimesh.creation.box(extents=[P.veml_board_size,P.veml_board_size,2.0])
+    veml.apply_translation([P.photo_tunnel_center_x,0,46.8])
+    refs['REF_VEML7700_board_provisional']=colored_copy(veml,[58,130,80,230])
+    env=trimesh.creation.box(extents=[P.env_pocket_board_size,P.env_pocket_board_size,2.0])
+    env.apply_translation([P.env_pocket_center_x,0,P.env_board_support_z])
+    refs['REF_AHT20_BMP280_board_provisional']=colored_copy(env,[118,78,170,230])
     # Flag reference.
     flag=trimesh.creation.box(extents=[P.flag_width,0.8,P.flag_height])
     flag.apply_translation([P.arm_x_max+P.flag_width/2,2,P.spoke_center_z-P.flag_height/2])
@@ -1199,7 +1253,7 @@ def create_references()->Dict[str,trimesh.Trimesh]:
     # Four orange textile loops connect the flag's left edge to the vertical
     # pole. Their exact strip length is measured on the real assembly; these
     # meshes are references only and are never exported as printable STL.
-    for index,offset_from_top in enumerate((25.0,90.0,155.0,220.0),start=1):
+    for index,offset_from_top in enumerate((20.0,93.333333,166.666667,240.0),start=1):
         zc=P.spoke_center_z-offset_from_top
         refs[f'REF_flag_attachment_loop_{index}']=colored_copy(
             cloth_loop_reference(zc,index),[242,112,24,210])
@@ -1349,13 +1403,13 @@ def main_v05_legacy():
         'rotor_half_A':rotor_a,'rotor_half_B':rotor_b,'service_lid':lid,
         'photo_tunnel':photo,'stationary_collar_A':collar_a,'stationary_collar_B':collar_b,
         'spoke_liner_A':spoke_a,'spoke_liner_B':spoke_b,
-        'flag_cable_grommet_A':cable_a,'flag_cable_grommet_B':cable_b,
+        'flag_cable_grommet_A':cable_a,'flag_cable_grommet_B':cable_b,'flag_side_wire_guide':flag_side_guide,
         'bundle_grommet_A':bundle_a,'bundle_grommet_B':bundle_b,
         'lid_gasket':gasket,'m125_sleeve':sleeve,
         'pole_liner_A':pole_liner_a,'pole_liner_B':pole_liner_b,
     }
     diagnostics={
-        'version':'0.6 PETG+TPU95+TPU85 provisional',
+        'version':'0.7.3 PETG+TPU95+TPU85 provisional',
         'design_status':'Print coupons first; pole OD/ID, carbon rod and purchased modules not yet measured',
         'parameters_mm':asdict(P),
         'derived_mm':{
@@ -1375,7 +1429,7 @@ def main_v05_legacy():
     (ROOT/'model_parameters_and_diagnostics.json').write_text(
         json.dumps(diagnostics,ensure_ascii=False,indent=2),encoding='utf-8')
     (ROOT/'project_manifest.json').write_text(json.dumps({
-        'version':'0.6','materials':{'structural_current':'orange PETG','structural_future_option':'ASA after new fit coupons','functional_soft':'TPU 95A','seals':'TPU 85A'},
+        'version':'0.7.3','materials':{'structural_current':'orange PETG','structural_future_option':'ASA after new fit coupons','functional_soft':'TPU 95A','seals':'TPU 85A'},
         'generated_files':diagnostics['files']
     },ensure_ascii=False,indent=2),encoding='utf-8')
 
@@ -1399,25 +1453,27 @@ def main():
     gasket_bounds=((-74,-8),(-22,22),(-1,4))
     sleeve_bounds=((-11,11),(-11,11),(-1,19))
     pole_liner_bounds=((-14,14),(-14,14),(-1,11))
-    env_pocket_bounds=((-66,-24),(-19,19),(-1,14))
-    env_gasket_bounds=((-66,-24),(-19,19),(-1,4))
+    env_pocket_bounds=((-61,-23),(-23,23),(-1,19))
+    env_gasket_bounds=((-62,-22),(-23,23),(-1,4))
 
-    print('Generating v0.6 PETG rotor halves with captive nut pockets...')
-    rotor_a=make_mesh_from_sdf(rotor_half_a_sdf,rotor_bounds,P.rotor_voxel,'PETG_v06_rotor_half_A')
-    rotor_b=make_mesh_from_sdf(rotor_half_b_sdf,rotor_bounds,P.rotor_voxel,'PETG_v06_rotor_half_B')
-    print('Generating PETG lid, photo system, stationary collar and environment pocket...')
-    lid=make_mesh_from_sdf(lid_sdf,lid_bounds,P.part_voxel,'PETG_v06_service_lid')
-    photo=make_mesh_from_sdf(photo_tunnel_sdf,photo_bounds,P.part_voxel,'PETG_v06_photo_tunnel')
-    photo_retainer=make_mesh_from_sdf(photo_window_retainer_sdf,photo_retainer_bounds,P.part_voxel,'PETG_v06_photo_window_retainer')
-    collar_a=make_mesh_from_sdf(stationary_collar_half_a_sdf,collar_bounds,P.part_voxel,'PETG_v06_stationary_collar_A')
-    collar_b=make_mesh_from_sdf(stationary_collar_half_b_sdf,collar_bounds,P.part_voxel,'PETG_v06_stationary_collar_B')
-    env_pocket=make_mesh_from_sdf(environment_sensor_pocket_sdf,env_pocket_bounds,P.part_voxel,'PETG_v06_environment_sensor_pocket')
+    print('Loading validated v0.7.3 rotor, lid and weatherproofing source meshes...')
+    rotor_a=load_source_mesh_v073('PETG_rotor_half_A_assembly.stl','PETG_v073_rotor_half_A')
+    rotor_b=load_source_mesh_v073('PETG_rotor_half_B_assembly.stl','PETG_v073_rotor_half_B')
+    lid=load_source_mesh_v073('PETG_service_lid_assembly.stl','PETG_v073_service_lid')
+    photo=load_source_mesh_v073('PETG_photo_tunnel_assembly.stl','PETG_v073_photo_tunnel')
+    env_pocket=load_source_mesh_v073('PETG_environment_sensor_pocket_assembly.stl','PETG_v073_environment_sensor_pocket')
+
+    print('Generating unchanged parametric PETG retainers and stationary collar...')
+    photo_retainer=make_mesh_from_sdf(photo_window_retainer_sdf,photo_retainer_bounds,P.part_voxel,'PETG_v073_photo_window_retainer')
+    collar_a=make_mesh_from_sdf(stationary_collar_half_a_sdf,collar_bounds,P.part_voxel,'PETG_v073_stationary_collar_A')
+    collar_b=make_mesh_from_sdf(stationary_collar_half_b_sdf,collar_bounds,P.part_voxel,'PETG_v073_stationary_collar_B')
 
     print('Generating TPU95 functional retained parts...')
     spoke_a=make_mesh_from_sdf(split_positive_y(spoke_liner_full_sdf),spoke_bounds,P.tpu_voxel,'TPU95_spoke_liner_A')
     spoke_b=make_mesh_from_sdf(split_negative_y(spoke_liner_full_sdf),spoke_bounds,P.tpu_voxel,'TPU95_spoke_liner_B')
-    cable_a=make_mesh_from_sdf(split_positive_y(flag_cable_grommet_full_sdf),flag_grommet_bounds,P.tpu_voxel,'TPU95_flag_cable_grommet_A')
-    cable_b=make_mesh_from_sdf(split_negative_y(flag_cable_grommet_full_sdf),flag_grommet_bounds,P.tpu_voxel,'TPU95_flag_cable_grommet_B')
+    cable_a=load_source_mesh_v073('TPU95_flag_cable_grommet_A_assembly.stl','TPU95_flag_cable_grommet_A')
+    cable_b=load_source_mesh_v073('TPU95_flag_cable_grommet_B_assembly.stl','TPU95_flag_cable_grommet_B')
+    flag_side_guide=load_source_mesh_v073(P.flag_side_guide_source_name,'TPU95_flag_side_wire_guide')
     bundle_a=make_mesh_from_sdf(split_positive_y(bundle_grommet_full_sdf),bundle_grommet_bounds,P.tpu_voxel,'TPU95_M125_bundle_grommet_A')
     bundle_b=make_mesh_from_sdf(split_negative_y(bundle_grommet_full_sdf),bundle_grommet_bounds,P.tpu_voxel,'TPU95_M125_bundle_grommet_B')
     sleeve=make_mesh_from_sdf(m125_sleeve_sdf_factory(P.m125_sleeve_outer_diameter),sleeve_bounds,P.tpu_voxel,'TPU95_M125_pole_sleeve_OD15_8')
@@ -1428,7 +1484,7 @@ def main():
     lid_gasket=make_mesh_from_sdf(lid_gasket_sdf,gasket_bounds,P.tpu_voxel,'TPU85_lid_gasket')
     photo_gasket=make_mesh_from_sdf(photo_window_gasket_sdf,photo_retainer_bounds,P.tpu_voxel,'TPU85_photo_window_gasket')
     env_pocket_gasket=make_mesh_from_sdf(environment_pocket_gasket_sdf,env_gasket_bounds,P.tpu_voxel,'TPU85_environment_pocket_gasket')
-    env_membrane_gasket=make_mesh_from_sdf(environment_membrane_gasket_sdf,env_gasket_bounds,P.tpu_voxel,'TPU85_environment_membrane_gasket')
+    env_membrane_gasket=make_mesh_from_sdf(environment_membrane_gasket_sdf,((-8,8),(-8,8),(-1,3)),P.tpu_voxel,'TPU85_environment_membrane_gasket')
 
     petg_print={}
     for name,m,tr in [
@@ -1456,6 +1512,7 @@ def main():
         ('pole_collar_liner_B_split_face_down',pole_liner_b,rot_x(-90)),
     ]:
         o=m.copy(); o.apply_transform(tr); tpu95_print[name]=put_on_bed(o)
+    tpu95_print['flag_side_wire_guide_slit_up']=center_xy_on_bed(flag_side_guide)
 
     tpu85_print={
         'lid_gasket_flat':put_on_bed(lid_gasket),
@@ -1486,13 +1543,16 @@ def main():
         coupon_meshes[f'TPU95_M125_sleeve_OD_{d:.2f}']=put_on_bed(sm)
     coupon_meshes['PETG_M4_captive_nut_trap_coupon']=put_on_bed(make_mesh_from_sdf(nut_trap_coupon_sdf,((-20,20),(-12,12),(-1,10)),P.coupon_voxel,'PETG_M4_nut_trap_coupon'))
     coupon_meshes['PETG_drill_skin_0.6_0.8_1.0_coupon']=put_on_bed(make_mesh_from_sdf(drill_skin_coupon_sdf,((-24,24),(-12,12),(-1,7)),P.coupon_voxel,'PETG_drill_skin_coupon'))
+    coupon_meshes['PETG_twin_wire_rail_4.2x2.5_coupon']=put_on_bed(make_mesh_from_sdf(twin_wire_rail_coupon_sdf,((-31,31),(-13,13),(-1,6)),P.coupon_voxel,'PETG_twin_wire_rail_coupon'))
+    coupon_meshes['PETG_VEML7700_cradle_coupon']=center_xy_on_bed(load_source_mesh_v073('PETG_VEML7700_cradle_coupon.stl','PETG_VEML7700_cradle_coupon'))
     for name,m in coupon_meshes.items(): exported.append(export_stl(m,COUPON_DIR/f'{name}.stl'))
 
     ORANGE_A=[235,116,40,255]; ORANGE_B=[246,145,67,255]
     WHITE95=[145,154,160,255]; WHITE85=[188,196,202,255]
     PETG_DARK=[220,94,28,255]
-    photo_global=[P.photo_tunnel_center_x,0,P.lid_z_max]
-    photo_top=P.lid_z_max+P.photo_tunnel_height
+    # The tunnel is pushed from inside to outside; its single flange stays under the lid.
+    photo_global=[P.photo_tunnel_center_x,0,48.0]
+    photo_top=photo_global[2]+P.photo_tunnel_height
     assembly={
         'PETG_rotor_half_A':colored_copy(rotor_a,ORANGE_A),
         'PETG_rotor_half_B':colored_copy(rotor_b,ORANGE_B),
@@ -1506,19 +1566,20 @@ def main():
         'TPU95_spoke_liner_B':colored_copy(spoke_b,WHITE95),
         'TPU95_flag_cable_grommet_A':colored_copy(cable_a,WHITE95),
         'TPU95_flag_cable_grommet_B':colored_copy(cable_b,WHITE95),
+        'TPU95_flag_side_wire_guide':colored_copy(flag_side_guide,WHITE95),
         'TPU95_M125_bundle_grommet_A':colored_copy(bundle_a,WHITE95),
         'TPU95_M125_bundle_grommet_B':colored_copy(bundle_b,WHITE95),
         'TPU95_M125_pole_sleeve':colored_copy(translate(sleeve,[0,0,42]),WHITE95),
         'TPU95_pole_collar_liner_A':colored_copy(translate(pole_liner_a,[0,0,50]),WHITE95),
         'TPU95_pole_collar_liner_B':colored_copy(translate(pole_liner_b,[0,0,50]),WHITE95),
-        'TPU85_lid_gasket':colored_copy(translate(lid_gasket,[0,0,49.65]),WHITE85),
+        'TPU85_lid_gasket':colored_copy(translate(lid_gasket,[0,0,49.50]),WHITE85),
         'TPU85_photo_window_gasket':colored_copy(translate(photo_gasket,[P.photo_tunnel_center_x,0,photo_top-P.photo_window_nominal_thickness]),WHITE85),
-        'TPU85_environment_pocket_gasket':colored_copy(translate(env_pocket_gasket,[0,0,11.15]),WHITE85),
-        'TPU85_environment_membrane_gasket':colored_copy(translate(env_membrane_gasket,[0,0,-0.35]),WHITE85),
+        'TPU85_environment_pocket_gasket':colored_copy(translate(env_pocket_gasket,[0,0,15.90]),WHITE85),
+        'TPU85_environment_membrane_gasket':colored_copy(translate(env_membrane_gasket,[P.env_pocket_center_x,0,-0.35]),WHITE85),
     }
     assembly.update(create_references())
     assembly_path=ROOT/'flagpole_finial_v0_6_assembly.glb'
-    assembly_path.write_bytes(to_glb_scene(assembly,'Flagpole finial v0.6 PETG + TPU95 + TPU85 assembly').export(file_type='glb'))
+    assembly_path.write_bytes(to_glb_scene(assembly,'Flagpole finial v0.7.3 PETG + TPU95 + TPU85 assembly').export(file_type='glb'))
 
     # Focused service model of the flag-power cable route. It deliberately
     # omits the full flag and long pole so the external groove, waterproof
@@ -1526,7 +1587,7 @@ def main():
     # to inspect in the web viewer.
     route_scene={name:mesh for name,mesh in assembly.items() if name in {
         'PETG_rotor_half_A','PETG_rotor_half_B','PETG_service_lid',
-        'TPU95_flag_cable_grommet_A','TPU95_flag_cable_grommet_B',
+        'TPU95_flag_cable_grommet_A','TPU95_flag_cable_grommet_B','TPU95_flag_side_wire_guide',
         'REF_flag_power_cable_external_route','REF_waterproof_2pin_connector_provisional',
         'REF_ESP32_C3_SuperMini','REF_buck_12_to_5','REF_PC817_LR7843_module'}}
     short_spoke=cylinder_between(
@@ -1544,6 +1605,7 @@ def main():
         'PETG_stationary_collar_A':[0,25,0], 'PETG_stationary_collar_B':[0,-25,0],
         'TPU95_spoke_liner_A':[10,22,0], 'TPU95_spoke_liner_B':[10,-22,0],
         'TPU95_flag_cable_grommet_A':[16,18,0], 'TPU95_flag_cable_grommet_B':[16,-18,0],
+        'TPU95_flag_side_wire_guide':[18,-10,-8],
         'TPU85_lid_gasket':[0,0,18], 'TPU85_environment_pocket_gasket':[0,0,-14],
         'TPU85_environment_membrane_gasket':[0,0,-38],
     }
@@ -1551,7 +1613,7 @@ def main():
         if name.startswith('REF_'): continue
         exploded[name]=translate(m,explode_offsets.get(name,[0,0,0]))
     exploded_path=ROOT/'flagpole_finial_v0_6_exploded.glb'
-    exploded_path.write_bytes(to_glb_scene(exploded,'Flagpole finial v0.6 exploded PETG/TPU').export(file_type='glb'))
+    exploded_path.write_bytes(to_glb_scene(exploded,'Flagpole finial v0.7.3 exploded PETG/TPU').export(file_type='glb'))
 
     def build_layout(parts, positions, title, path, colors):
         scene={}
@@ -1570,13 +1632,13 @@ def main():
         ('photo_retainer','photo_window_retainer_flat',[-125,92,0]),
         ('env_pocket','environment_sensor_pocket_open_side_up',[-145,5,0]),
     ]
-    petg_layout_path=build_layout(petg_print,petg_positions,'PETG print layout v0.6',ROOT/'flagpole_finial_v0_6_print_layout_PETG.glb',[ORANGE_A,ORANGE_B])
+    petg_layout_path=build_layout(petg_print,petg_positions,'PETG print layout v0.7.3',ROOT/'flagpole_finial_v0_6_print_layout_PETG.glb',[ORANGE_A,ORANGE_B])
     tpu95_positions=[]
     for idx,name in enumerate(tpu95_print): tpu95_positions.append((name,name,[(idx%4)*75,(idx//4)*45,0]))
-    tpu95_layout_path=build_layout(tpu95_print,tpu95_positions,'TPU95 print layout v0.6',ROOT/'flagpole_finial_v0_6_print_layout_TPU95.glb',[WHITE95])
+    tpu95_layout_path=build_layout(tpu95_print,tpu95_positions,'TPU95 print layout v0.7.3',ROOT/'flagpole_finial_v0_6_print_layout_TPU95.glb',[WHITE95])
     tpu85_positions=[]
     for idx,name in enumerate(tpu85_print): tpu85_positions.append((name,name,[(idx%4)*75,(idx//4)*45,0]))
-    tpu85_layout_path=build_layout(tpu85_print,tpu85_positions,'TPU85 print layout v0.6',ROOT/'flagpole_finial_v0_6_print_layout_TPU85.glb',[WHITE85])
+    tpu85_layout_path=build_layout(tpu85_print,tpu85_positions,'TPU85 print layout v0.7.3',ROOT/'flagpole_finial_v0_6_print_layout_TPU85.glb',[WHITE85])
 
     meshes={
         'rotor_half_A':rotor_a,'rotor_half_B':rotor_b,'service_lid':lid,
@@ -1584,7 +1646,7 @@ def main():
         'stationary_collar_A':collar_a,'stationary_collar_B':collar_b,
         'environment_sensor_pocket':env_pocket,
         'spoke_liner_A':spoke_a,'spoke_liner_B':spoke_b,
-        'flag_cable_grommet_A':cable_a,'flag_cable_grommet_B':cable_b,
+        'flag_cable_grommet_A':cable_a,'flag_cable_grommet_B':cable_b,'flag_side_wire_guide':flag_side_guide,
         'bundle_grommet_A':bundle_a,'bundle_grommet_B':bundle_b,
         'lid_gasket':lid_gasket,'photo_gasket':photo_gasket,
         'environment_pocket_gasket':env_pocket_gasket,
@@ -1593,7 +1655,7 @@ def main():
     }
     generated_glb=[assembly_path,route_path,exploded_path,petg_layout_path,tpu95_layout_path,tpu85_layout_path]
     diagnostics={
-        'version':'0.6 PETG+TPU95+TPU85 provisional',
+        'version':'0.7.3 PETG+TPU95+TPU85 provisional',
         'design_status':'Print coupons first; all purchased-part fits remain measurement-driven',
         'parameters_mm':asdict(P),
         'derived_mm':{
@@ -1609,7 +1671,7 @@ def main():
     }
     (ROOT/'model_parameters_and_diagnostics_v06.json').write_text(json.dumps(diagnostics,ensure_ascii=False,indent=2),encoding='utf-8')
     (ROOT/'project_manifest_v06.json').write_text(json.dumps({
-        'version':'0.6',
+        'version':'0.7.3',
         'printer':'Bambu Lab X1 Carbon, 0.4 mm nozzle',
         'materials':{
             'structural_current':'orange PETG',
@@ -1620,7 +1682,7 @@ def main():
         'generated_files':diagnostics['files'],
     },ensure_ascii=False,indent=2),encoding='utf-8')
 
-    print('Generated v0.6 files:')
+    print('Generated v0.7.3 files (stable v0_6 paths retained for compatibility):')
     for p in exported+generated_glb: print(' -',p.relative_to(ROOT))
     print(json.dumps(diagnostics['derived_mm'],ensure_ascii=False,indent=2))
 

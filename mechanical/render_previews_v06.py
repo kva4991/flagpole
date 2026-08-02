@@ -70,8 +70,8 @@ def render(glb,out,title,elev,azim):
     plt.close(fig)
 
 if __name__=='__main__':
-    render('flagpole_finial_v0_6_assembly.glb','preview_v06_assembly.png','Общий вид сборки v0.6',23,-55)
-    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU.png','Разнесённый вид v0.6: PETG, TPU 95A и TPU 85A',25,-57)
-    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG.png','Раскладка деталей PETG v0.6',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95.png','Раскладка деталей TPU 95A v0.6',58,-50)
-    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85.png','Раскладка деталей TPU 85A v0.6',58,-50)
+    render('flagpole_finial_v0_6_assembly.glb','preview_v06_assembly.png','Общий вид сборки v0.7.3',23,-55)
+    render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU.png','Разнесённый вид v0.7.3: PETG, TPU 95A и TPU 85A',25,-57)
+    render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG.png','Раскладка деталей PETG v0.7.3',58,-50)
+    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95.png','Раскладка деталей TPU 95A v0.7.3',58,-50)
+    render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85.png','Раскладка деталей TPU 85A v0.7.3',58,-50)

@@ -71,6 +71,10 @@ pio run --project-dir electronics\firmware\esp32_c3_flag_light
 ```powershell
 & "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_models_v06.py
 & "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_reference_diagrams_v06.py
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_detail_diagrams_v073.py
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_hermeticity_diagram_v073.py
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" electronics\generate_electronics_diagrams_v073.py
+& "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\generate_drawing_audit_contact_sheet_v073.py
 & "$env:FLAGPOLE_EXECUTION_ROOT\.mechanical-venv\Scripts\python.exe" mechanical\validate_models_v06.py
 ```
 

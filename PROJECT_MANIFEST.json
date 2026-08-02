@@ -1,13 +1,13 @@
 {
   "project": "Crucian rotating flagpole finial",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "packageType": "cumulative source, generated mechanics, documentation and handoff package",
   "sourceRepository": "https://github.com/kva4991/flagpole",
   "sourceBranchReviewed": "main",
-  "sourceHeadReviewed": "88543ac89b4c70aa0fcb1149a4375a83c48b588e",
-  "incomingPackage": "flagpole_v0_7_2_cumulative_github.zip",
-  "fileCount": 299,
-  "totalBytes": 385789347,
+  "sourceHeadReviewed": "a26a05c3fea657695d94a4d45800ce7832b2b90b",
+  "incomingPackage": "flagpole_v0_7_3_cumulative_github.zip",
+  "fileCount": 334,
+  "totalBytes": 438896110,
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
   "currentMechanicalSource": "mechanical/generate_models_v06.py",
@@ -16,7 +16,8 @@
     "tpu95": "mechanical/stl_tpu95_v06",
     "tpu85": "mechanical/stl_tpu85_v06",
     "coupons": "mechanical/test_coupons_v06",
-    "validatedStlCount": 34
+    "canonicalComplexMeshes": "mechanical/source_meshes_v073",
+    "validatedStlCount": 37
   },
   "identitySource": "project_identity.json",
   "currentFlagFiles": [
@@ -24,96 +25,29 @@
     "flag_attachment_loop_pattern_A4_1to1.svg"
   ],
   "largestFiles": [
-    {
-      "path": "mechanical/flagpole_finial_v0_5_assembly.glb",
-      "bytes": 37855244
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb",
-      "bytes": 28353728
-    },
-    {
-      "path": "mechanical/stl_petg/rotor_half_A_print_flat.stl",
-      "bytes": 23837284
-    },
-    {
-      "path": "mechanical/stl_petg/rotor_half_B_print_flat.stl",
-      "bytes": 23774884
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_assembly.glb",
-      "bytes": 18168508
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_exploded.glb",
-      "bytes": 18084512
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
-      "bytes": 13639212
-    },
-    {
-      "path": "mechanical/stl_petg/service_lid_top_face_down.stl",
-      "bytes": 12572484
-    },
-    {
-      "path": "archive/legacy_v02_reference/flagpole_finial_v0_2_assembly.glb",
-      "bytes": 11681084
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
-      "bytes": 10851420
-    },
-    {
-      "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
-      "bytes": 10483884
-    },
-    {
-      "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
-      "bytes": 10213884
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
-      "bytes": 9449204
-    },
-    {
-      "path": "mechanical/stl_petg_v06/service_lid_top_face_down.stl",
-      "bytes": 5436484
-    },
-    {
-      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_16.00.stl",
-      "bytes": 4794484
-    },
-    {
-      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_15.60.stl",
-      "bytes": 4744884
-    },
-    {
-      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_15.80.stl",
-      "bytes": 4730484
-    },
-    {
-      "path": "mechanical/stl_tpu/M125_pole_sleeve_upright.stl",
-      "bytes": 4730484
-    },
-    {
-      "path": "mechanical/test_coupons/PETG_lid_gasket_groove_coupon.stl",
-      "bytes": 4618684
-    },
-    {
-      "path": "mechanical/stl_petg/stationary_collar_B_print_flat.stl",
-      "bytes": 4133484
-    },
-    {
-      "path": "mechanical/test_coupons/bearing_seat_32.50_half_B.stl",
-      "bytes": 4103484
-    }
+    { "path": "mechanical/flagpole_finial_v0_5_assembly.glb", "bytes": 37855244 },
+    { "path": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb", "bytes": 28353728 },
+    { "path": "mechanical/stl_petg/rotor_half_A_print_flat.stl", "bytes": 23837284 },
+    { "path": "mechanical/stl_petg/rotor_half_B_print_flat.stl", "bytes": 23774884 },
+    { "path": "mechanical/flagpole_finial_v0_6_assembly.glb", "bytes": 19665512 },
+    { "path": "mechanical/flagpole_finial_v0_6_exploded.glb", "bytes": 19551604 },
+    { "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb", "bytes": 14930516 },
+    { "path": "mechanical/stl_petg/service_lid_top_face_down.stl", "bytes": 12572484 },
+    { "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb", "bytes": 12218116 },
+    { "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl", "bytes": 11741484 },
+    { "path": "mechanical/source_meshes_v073/PETG_rotor_half_B_assembly.stl", "bytes": 11741484 },
+    { "path": "archive/legacy_v02_reference/flagpole_finial_v0_2_assembly.glb", "bytes": 11681084 },
+    { "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl", "bytes": 10560484 },
+    { "path": "mechanical/source_meshes_v073/PETG_rotor_half_A_assembly.stl", "bytes": 10560484 },
+    { "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb", "bytes": 9449204 }
   ],
   "validation": {
-    "nodeTests": 33,
-    "stlTopology": "34/34 watertight, winding consistent, one connected volume after local v0.7.2 regeneration",
-    "androidBuild": "v0.7.2 assembleDebug successful on Windows 2026-08-02",
-    "firmwareBuild": "GitHub Actions successful on 2026-08-02 (run 30721115730); local PlatformIO dependency download had stalled",
+    "nodeTests": 34,
+    "markdownFiles": 83,
+    "drawingCards": "26 total: 19 current, 6 historical, 1 reference",
+    "stlTopology": "37/37 watertight, winding consistent, one connected volume after local v0.7.3 regeneration",
+    "androidBuild": "v0.7.3 assembleDebug successful on Windows 2026-08-02",
+    "firmwareBuild": "sources unchanged; prior GitHub Actions build successful on 2026-08-02, new v0.7.3 CI run required",
     "hardwareBench": "required"
   },
   "notes": [
@@ -121,7 +55,8 @@
     "ASA is a future optional reprint and requires all fit coupons again.",
     "Battery voltage measurement is intentionally omitted.",
     "Mechanical fits remain measurement- and coupon-driven.",
-    "The flag-power cable route below the spoke remains provisional until the actual pigtail is measured and rain-tested.",
+    "The twin-wire flag-power route below the lower fastener remains provisional until the actual pigtail is measured and rain-tested.",
+    "Weatherproofing geometry has no claimed IP rating until physical rain, condensation and temperature-cycle tests pass.",
     "No project license has been selected."
   ]
 }

@@ -1,59 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210">
-<defs>
-<style>
-.t1{font:700 7px 'DejaVu Sans',Arial,sans-serif;fill:#111}.t2{font:700 4.5px 'DejaVu Sans',Arial,sans-serif;fill:#111}.t{font:3.6px 'DejaVu Sans',Arial,sans-serif;fill:#111}.s{font:3.1px 'DejaVu Sans',Arial,sans-serif;fill:#333}.box{fill:#f8fafc;stroke:#334155;stroke-width:.7;rx:2}.head{fill:#e2e8f0;stroke:#334155;stroke-width:.7;rx:2}.line{stroke:#64748b;stroke-width:.5}.warn{fill:#fff7ed;stroke:#c2410c;stroke-width:.6;rx:2}.ok{fill:#f0fdf4;stroke:#15803d;stroke-width:.6;rx:2}
-</style>
-</defs>
-<rect width="297" height="210" fill="white"/><rect x="3" y="3" width="291" height="204" fill="none" stroke="#94a3b8" stroke-width=".5"/>
-<text x="10" y="13" class="t1">Таблица соединений и назначение контактов</text>
-<text x="10" y="19" class="s">Дополнение к функциональной схеме. Названия клемм MOSFET-модуля требуется сверить по его фактической маркировке.</text>
+<style>.title{font:700 7px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.sub{font:3.3px 'DejaVu Sans',Arial,sans-serif;fill:#52616a}.th{font:700 3.6px 'DejaVu Sans',Arial,sans-serif;fill:white}.td{font:3.1px 'DejaVu Sans',Arial,sans-serif;fill:#172126}.note{font:3px 'DejaVu Sans',Arial,sans-serif;fill:#172126}</style>
+<rect width="297" height="210" fill="#f5f6f7"/>
+<text x="148.5" y="10" text-anchor="middle" class="title">Crucian v0.7.3 — карта клемм, GPIO и разъёмов</text>
+<text x="148.5" y="16" text-anchor="middle" class="sub">карта функциональная: физические цвета M125, J1 и маркировки китайских модулей подтверждаются прозвонкой</text>
+<rect x="10" y="24" width="277" height="9" rx="2" fill="#234f59"/>
+<text x="14" y="30" class="th">Узел</text><text x="67" y="30" class="th">Контакт</text><text x="116" y="30" class="th">Назначение</text>
 
-<!-- ESP table -->
-<rect x="10" y="28" width="83" height="68" class="box"/><rect x="10" y="28" width="83" height="10" class="head"/>
-<text x="14" y="35" class="t2">ESP32-C3 SuperMini Plus</text>
-<line x1="10" y1="48" x2="93" y2="48" class="line"/><line x1="10" y1="60" x2="93" y2="60" class="line"/><line x1="10" y1="72" x2="93" y2="72" class="line"/><line x1="10" y1="84" x2="93" y2="84" class="line"/>
-<line x1="38" y1="38" x2="38" y2="96" class="line"/>
-<text x="14" y="44" class="t">Контакт</text><text x="42" y="44" class="t">Куда подключить</text>
-<text x="14" y="56" class="t">5V / VBUS</text><text x="42" y="56" class="t">+5 В с выхода DC-DC</text>
-<text x="14" y="68" class="t">GND</text><text x="42" y="68" class="t">GND STAR</text>
-<text x="14" y="80" class="t">GPIO3</text><text x="42" y="80" class="t">IN/SIG MOSFET-модуля</text>
-<text x="14" y="92" class="t">GPIO4 / GPIO5</text><text x="42" y="92" class="t">SDA / SCL VEML7700</text>
-
-<!-- VEML table -->
-<rect x="104" y="28" width="83" height="68" class="box"/><rect x="104" y="28" width="83" height="10" class="head"/>
-<text x="108" y="35" class="t2">VEML7700</text>
-<line x1="104" y1="48" x2="187" y2="48" class="line"/><line x1="104" y1="60" x2="187" y2="60" class="line"/><line x1="104" y1="72" x2="187" y2="72" class="line"/><line x1="104" y1="84" x2="187" y2="84" class="line"/>
-<line x1="132" y1="38" x2="132" y2="96" class="line"/>
-<text x="108" y="44" class="t">Контакт</text><text x="136" y="44" class="t">Куда подключить</text>
-<text x="108" y="56" class="t">VCC / VIN</text><text x="136" y="56" class="t">3V3 платы ESP</text>
-<text x="108" y="68" class="t">GND</text><text x="136" y="68" class="t">GND платы ESP</text>
-<text x="108" y="80" class="t">SDA</text><text x="136" y="80" class="t">GPIO4</text>
-<text x="108" y="92" class="t">SCL</text><text x="136" y="92" class="t">GPIO5</text>
-
-<!-- M12 table -->
-<rect x="198" y="28" width="89" height="68" class="box"/><rect x="198" y="28" width="89" height="10" class="head"/>
-<text x="202" y="35" class="t2">M12 A-coded, 3 pin</text>
-<line x1="198" y1="48" x2="287" y2="48" class="line"/><line x1="198" y1="62" x2="287" y2="62" class="line"/><line x1="198" y1="76" x2="287" y2="76" class="line"/>
-<line x1="224" y1="38" x2="224" y2="96" class="line"/>
-<text x="202" y="44" class="t">Контакт</text><text x="228" y="44" class="t">Назначение</text>
-<text x="202" y="58" class="t">Pin 1</text><text x="228" y="58" class="t">+12 В на неон</text>
-<text x="202" y="72" class="t">Pin 3</text><text x="228" y="72" class="t">коммутируемый GND</text>
-<text x="202" y="86" class="t">Pin 4</text><text x="228" y="86" class="t">резерв, изолировать</text>
-<text x="202" y="92" class="s">Панельная часть на навершии: контакты утоплены.</text>
-
-<!-- MOSF functional map -->
-<rect x="10" y="110" width="177" height="73" class="warn"/><text x="14" y="119" class="t2">PC817 + LR7843: функциональная схема подключения</text>
-<rect x="18" y="129" width="55" height="37" class="box"/><text x="22" y="137" class="t2">Управляющая сторона</text>
-<text x="22" y="145" class="t">IN / SIG ← GPIO3</text><text x="22" y="152" class="t">IN− / GND ← GND ESP</text><text x="22" y="159" class="s">Если есть VCC входа — по</text><text x="22" y="164" class="s">маркировке платы: 3V3 или 5V.</text>
-<rect x="82" y="129" width="95" height="37" class="box"/><text x="86" y="137" class="t2">Силовая сторона, низкобоковой ключ</text>
-<text x="86" y="145" class="t">силовой GND / DC− → GND STAR</text><text x="86" y="152" class="t">LOAD− / OUT− → M12 Pin 3</text><text x="86" y="159" class="t">+12 В ленты не коммутируется:</text><text x="86" y="164" class="t">+12 В STAR → M12 Pin 1 напрямую</text>
-<text x="14" y="176" class="s">Клеммы у разных продавцов подписаны по-разному: сверить маркировку конкретной платы.</text>
-
-<!-- power map -->
-<rect x="198" y="110" width="89" height="73" class="ok"/><text x="202" y="119" class="t2">Питание и земля</text>
-<text x="202" y="129" class="t">+12 В после токосъёмника:</text><text x="206" y="136" class="t">• DC-DC VIN+</text><text x="206" y="143" class="t">• M12 Pin 1</text><text x="206" y="150" class="t">• C1 «+»</text>
-<text x="202" y="159" class="t">GND STAR:</text><text x="206" y="166" class="t">• DC-DC VIN−</text><text x="206" y="173" class="t">• MOSFET силовой GND</text><text x="206" y="180" class="t">• C1 «−»</text>
-
-<text x="10" y="198" class="s">Перед USB-программированием: выключить внешние 12 В либо разомкнуть провод +5 В между DC-DC и ESP.</text>
+<rect x="10" y="33" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="33" x2="63" y2="40.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="33" x2="112" y2="40.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="37.9" class="td">Вход Crucian</text>
+<text x="67" y="37.9" class="td">+12 В</text>
+<text x="116" y="37.9" class="td">стабилизированные 12 В после внешней 6×18650-подсистемы</text>
+<rect x="10" y="40.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="40.5" x2="63" y2="48.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="40.5" x2="112" y2="48.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="45.4" class="td">Вход Crucian</text>
+<text x="67" y="45.4" class="td">GND</text>
+<text x="116" y="45.4" class="td">общий минус; второй канал через M125</text>
+<rect x="10" y="48.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="48.0" x2="63" y2="55.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="48.0" x2="112" y2="55.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="52.9" class="td">M125-0205</text>
+<text x="67" y="52.9" class="td">канал A</text>
+<text x="116" y="52.9" class="td">+12 В; цвет определить прозвонкой</text>
+<rect x="10" y="55.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="55.5" x2="63" y2="63.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="55.5" x2="112" y2="63.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="60.4" class="td">M125-0205</text>
+<text x="67" y="60.4" class="td">канал B</text>
+<text x="116" y="60.4" class="td">GND; цвет определить прозвонкой</text>
+<rect x="10" y="63.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="63.0" x2="63" y2="70.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="63.0" x2="112" y2="70.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="67.9" class="td">DC-DC</text>
+<text x="67" y="67.9" class="td">VIN+ / VIN−</text>
+<text x="116" y="67.9" class="td">+12 В STAR / GND STAR</text>
+<rect x="10" y="70.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="70.5" x2="63" y2="78.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="70.5" x2="112" y2="78.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="75.4" class="td">DC-DC</text>
+<text x="67" y="75.4" class="td">VOUT+ / VOUT−</text>
+<text x="116" y="75.4" class="td">5 В / GND на ESP32-C3</text>
+<rect x="10" y="78.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="78.0" x2="63" y2="85.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="78.0" x2="112" y2="85.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="82.9" class="td">ESP32-C3</text>
+<text x="67" y="82.9" class="td">GPIO3</text>
+<text x="116" y="82.9" class="td">PWM → 100 Ω → Gate LR7843</text>
+<rect x="10" y="85.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="85.5" x2="63" y2="93.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="85.5" x2="112" y2="93.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="90.4" class="td">ESP32-C3</text>
+<text x="67" y="90.4" class="td">GPIO4</text>
+<text x="116" y="90.4" class="td">SDA общей I²C-шины</text>
+<rect x="10" y="93.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="93.0" x2="63" y2="100.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="93.0" x2="112" y2="100.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="97.9" class="td">ESP32-C3</text>
+<text x="67" y="97.9" class="td">GPIO5</text>
+<text x="116" y="97.9" class="td">SCL общей I²C-шины</text>
+<rect x="10" y="100.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="100.5" x2="63" y2="108.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="100.5" x2="112" y2="108.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="105.4" class="td">ESP32-C3</text>
+<text x="67" y="105.4" class="td">3V3</text>
+<text x="116" y="105.4" class="td">питание VEML7700 и AHT20+BMP280</text>
+<rect x="10" y="108.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="108.0" x2="63" y2="115.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="108.0" x2="112" y2="115.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="112.9" class="td">VEML7700</text>
+<text x="67" y="112.9" class="td">VIN/GND/SDA/SCL</text>
+<text x="116" y="112.9" class="td">3,3 В / GND / GPIO4 / GPIO5</text>
+<rect x="10" y="115.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="115.5" x2="63" y2="123.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="115.5" x2="112" y2="123.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="120.4" class="td">AHT20+BMP280</text>
+<text x="67" y="120.4" class="td">VDD/GND/SDA/SCL</text>
+<text x="116" y="120.4" class="td">3,3 В / GND / GPIO4 / GPIO5</text>
+<rect x="10" y="123.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="123.0" x2="63" y2="130.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="123.0" x2="112" y2="130.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="127.9" class="td">LR7843</text>
+<text x="67" y="127.9" class="td">Source</text>
+<text x="116" y="127.9" class="td">GND STAR</text>
+<rect x="10" y="130.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="130.5" x2="63" y2="138.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="130.5" x2="112" y2="138.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="135.4" class="td">LR7843</text>
+<text x="67" y="135.4" class="td">Drain</text>
+<text x="116" y="135.4" class="td">J1 Pin − → минус неона</text>
+<rect x="10" y="138.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="138.0" x2="63" y2="145.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="138.0" x2="112" y2="145.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="142.9" class="td">LR7843</text>
+<text x="67" y="142.9" class="td">Gate</text>
+<text x="116" y="142.9" class="td">GPIO3 через 100 Ω; 100 kΩ на GND</text>
+<rect x="10" y="145.5" width="277" height="7.5" fill="#eaf0f2" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="145.5" x2="63" y2="153.0" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="145.5" x2="112" y2="153.0" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="150.4" class="td">J1 2-pin</text>
+<text x="67" y="150.4" class="td">Pin +</text>
+<text x="116" y="150.4" class="td">+12 В STAR → плюс неона</text>
+<rect x="10" y="153.0" width="277" height="7.5" fill="#ffffff" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="63" y1="153.0" x2="63" y2="160.5" stroke="#ccd5d9" stroke-width=".3"/>
+<line x1="112" y1="153.0" x2="112" y2="160.5" stroke="#ccd5d9" stroke-width=".3"/>
+<text x="14" y="157.9" class="td">J1 2-pin</text>
+<text x="67" y="157.9" class="td">Pin −</text>
+<text x="116" y="157.9" class="td">Drain LR7843 → минус неона</text>
+<rect x="10" y="165.5" width="277" height="31" rx="3" fill="#fff" stroke="#ccd5d9" stroke-width=".5"/>
+<text x="15" y="172.5" class="note">Монтажная проверка: сначала прозвонить M125 и J1; затем проверить DC-DC без ESP; после этого подключать датчики и MOSFET.</text>
+<text x="15" y="177.0" class="note">Герметичный J1 находится снаружи у флага. От него два провода идут по открытой обслуживаемой дорожке ниже спицы.</text>
+<text x="15" y="181.5" class="note">Единственный ввод в сухой электронный бокс — TPU95-манжета #tpu95-3/#tpu95-4; внутри оставить сервисную петлю 30–40 мм.</text>
+<text x="15" y="186.0" class="note">Значения 3,3 В, GPIO3/4/5 и адреса датчиков являются текущей схемой прошивки v0.7.3.</text>
+<text x="15" y="190.5" class="note">Полярность конкретного MOSFET-модуля и возможность прямой пайки к Gate подтвердить по реальной плате.</text>
 </svg>

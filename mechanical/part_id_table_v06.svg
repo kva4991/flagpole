@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
 <rect width="420" height="297" fill="#f4f5f6"/>
-<text x="210.0" y="16" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="8" font-weight="700" fill="#172126">Таблица идентификаторов печатных деталей v0.6</text>
+<text x="210.0" y="16" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="8" font-weight="700" fill="#172126">Таблица идентификаторов печатных деталей v0.7.3</text>
 <text x="210.0" y="22" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="4" fill="#52616a">Одинаковая деталь сохраняет один и тот же ID на всех актуальных чертежах</text>
 <rect x="12" y="29" width="396" height="9" rx="1.5" fill="#193f46"/>
 
@@ -254,13 +254,15 @@
 <line x1="178" y1="209.19999999999993" x2="178" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="302" y1="209.19999999999993" x2="302" y2="219.89999999999992" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="12" y="219.89999999999992" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
-<rect x="46" y="221.0999999999999" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-1</text>
-<text x="53" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка крышки</text>
+<rect x="46" y="221.0999999999999" width="5" height="8.299999999999999" rx="1" fill="#8b949b" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu95-10</text>
+<text x="53" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 95A</text>
+<text x="80" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Направляющая двух проводов у</text>
+<text x="80" y="228.19999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">флага</text>
 <text x="164" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Мягкая замкнутая прокладка сервисной крышки.</text>
-<text x="304" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/lid_gasket_flat.stl</text>
+<text x="180" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Сменная разрезная вставка в PETG-кольце:</text>
+<text x="180" y="228.19999999999993" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">разделяет два провода Ø2 мм и защищает изоляцию</text>
+<text x="304" y="224.39999999999992" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu95_v06/flag_side_wire_guide_slit_up.stl</text>
 <line x1="45" y1="219.89999999999992" x2="45" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="78" y1="219.89999999999992" x2="78" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="160" y1="219.89999999999992" x2="160" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
@@ -268,12 +270,12 @@
 <line x1="302" y1="219.89999999999992" x2="302" y2="230.5999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="12" y="230.5999999999999" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="46" y="231.7999999999999" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-2</text>
+<text x="14" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-1</text>
 <text x="53" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка окна VEML7700</text>
+<text x="80" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка крышки</text>
 <text x="164" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Уплотняет прозрачное окно VEML7700 по периметру.</text>
-<text x="304" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/photo_window_gasket_flat.stl</text>
+<text x="180" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Мягкая замкнутая прокладка сервисной крышки.</text>
+<text x="304" y="235.0999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/lid_gasket_flat.stl</text>
 <line x1="45" y1="230.5999999999999" x2="45" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="78" y1="230.5999999999999" x2="78" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="160" y1="230.5999999999999" x2="160" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
@@ -281,13 +283,12 @@
 <line x1="302" y1="230.5999999999999" x2="302" y2="241.2999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="12" y="241.2999999999999" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="46" y="242.4999999999999" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-3</text>
+<text x="14" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-2</text>
 <text x="53" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка кармана AHT20+BMP280</text>
+<text x="80" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка окна VEML7700</text>
 <text x="164" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Уплотняет съёмный климатический карман</text>
-<text x="180" y="249.5999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">относительно корпуса.</text>
-<text x="304" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/environment_pocket_gasket_flat.stl</text>
+<text x="180" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Уплотняет прозрачное окно VEML7700 по периметру.</text>
+<text x="304" y="245.7999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/photo_window_gasket_flat.stl</text>
 <line x1="45" y1="241.2999999999999" x2="45" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="78" y1="241.2999999999999" x2="78" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="160" y1="241.2999999999999" x2="160" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
@@ -295,18 +296,32 @@
 <line x1="302" y1="241.2999999999999" x2="302" y2="251.9999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="12" y="251.9999999999999" width="396" height="10.7" fill="#ffffff" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="46" y="253.19999999999987" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
-<text x="14" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-4</text>
+<text x="14" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-3</text>
 <text x="53" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
-<text x="80" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка PTFE/ePTFE-мембраны</text>
+<text x="80" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка кармана AHT20+BMP280</text>
 <text x="164" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
-<text x="180" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Прижимает и уплотняет сменную</text>
-<text x="180" y="260.2999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">PTFE/ePTFE-мембрану.</text>
-<text x="304" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/environment_membrane_gasket_flat.stl</text>
+<text x="180" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Уплотняет съёмный климатический карман</text>
+<text x="180" y="260.2999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">относительно корпуса.</text>
+<text x="304" y="256.4999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/environment_pocket_gasket_flat.stl</text>
 <line x1="45" y1="251.9999999999999" x2="45" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="78" y1="251.9999999999999" x2="78" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="160" y1="251.9999999999999" x2="160" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="178" y1="251.9999999999999" x2="178" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="302" y1="251.9999999999999" x2="302" y2="262.6999999999999" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="12" y="262.6999999999999" width="396" height="10.7" fill="#e9edef" stroke="#c7d0d4" stroke-width="0.35"/>
+<rect x="46" y="263.89999999999986" width="5" height="8.299999999999999" rx="1" fill="#b9c1c8" stroke="#6e777d" stroke-width="0.25"/>
+<text x="14" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="700" fill="#172126">#tpu85-4</text>
+<text x="53" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">TPU 85A</text>
+<text x="80" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">Прокладка PTFE/ePTFE-мембраны</text>
+<text x="164" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.6" font-weight="400" fill="#172126">1</text>
+<text x="180" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">Прижимает и уплотняет сменную</text>
+<text x="180" y="270.9999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.0" font-weight="400" fill="#172126">PTFE/ePTFE-мембрану.</text>
+<text x="304" y="267.1999999999999" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.8" font-weight="400" fill="#172126">stl_tpu85_v06/environment_membrane_gasket_flat.stl</text>
+<line x1="45" y1="262.6999999999999" x2="45" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="78" y1="262.6999999999999" x2="78" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="160" y1="262.6999999999999" x2="160" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="178" y1="262.6999999999999" x2="178" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
+<line x1="302" y1="262.6999999999999" x2="302" y2="273.39999999999986" stroke="#c7d0d4" stroke-width="0.35"/>
 <rect x="12" y="282" width="396" height="10" rx="2" fill="#fff" stroke="#c7d0d4" stroke-width="0.4"/>
 <rect x="18" y="284" width="5" height="6" rx="1" fill="#e98638" stroke="#555" stroke-width="0.25"/>
 <text x="25" y="286.2" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.4" font-weight="700" fill="#172126">PETG</text>

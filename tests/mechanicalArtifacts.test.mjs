@@ -25,9 +25,19 @@ const required = [
   'mechanical/part_id_table_v06.png',
   'mechanical/generate_reference_diagrams_v06.py',
   'mechanical/validate_models_v06.py',
+  'mechanical/generate_detail_diagrams_v073.py',
+  'mechanical/generate_hermeticity_diagram_v073.py',
+  'mechanical/generate_drawing_audit_contact_sheet_v073.py',
+  'electronics/generate_electronics_diagrams_v073.py',
+  'mechanical/hermeticity_design_A4_landscape.svg',
+  'mechanical/photo_tunnel_veml_mount_A4_landscape.svg',
+  'mechanical/environment_sensor_pocket_A4_landscape.svg',
+  'mechanical/current_longitudinal_section_v073.svg',
+  'mechanical/test_coupons_v06/PETG_twin_wire_rail_4.2x2.5_coupon.stl',
+  'mechanical/test_coupons_v06/PETG_VEML7700_cradle_coupon.stl',
 ];
 
-test('v0.6 mechanical sources and requested artifacts exist', () => {
+test('current v0.7.3 mechanical sources and requested artifacts exist', () => {
   for (const file of required) {
     assert.ok(fs.existsSync(path.join(root, file)), `missing ${file}`);
   }
@@ -72,11 +82,19 @@ test('part registry uses unique stable IDs and existing STL files', () => {
   }
 });
 
-test('reference diagram generator avoids a native Cairo dependency on Windows', () => {
-  const source = fs.readFileSync(path.join(root, 'mechanical/generate_reference_diagrams_v06.py'), 'utf8');
+test('all current SVG diagram generators avoid a native Cairo dependency on Windows', () => {
+  const generators = [
+    'mechanical/generate_reference_diagrams_v06.py',
+    'mechanical/generate_detail_diagrams_v073.py',
+    'mechanical/generate_hermeticity_diagram_v073.py',
+    'electronics/generate_electronics_diagrams_v073.py',
+  ];
   const requirements = fs.readFileSync(path.join(root, 'mechanical/requirements.txt'), 'utf8');
-  assert.match(source, /from resvg_py import svg_to_bytes/);
-  assert.doesNotMatch(source, /import cairosvg/);
+  for (const generator of generators) {
+    const source = fs.readFileSync(path.join(root, generator), 'utf8');
+    assert.match(source, /from resvg_py import svg_to_bytes/);
+    assert.doesNotMatch(source, /import cairosvg/);
+  }
   assert.match(requirements, /^resvg-py==/m);
 });
 

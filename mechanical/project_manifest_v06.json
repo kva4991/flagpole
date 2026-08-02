@@ -1,5 +1,5 @@
 {
-  "version": "0.6",
+  "version": "0.7.3",
   "printer": "Bambu Lab X1 Carbon, 0.4 mm nozzle",
   "materials": {
     "structural_current": "orange PETG",
@@ -25,6 +25,7 @@
     "stl_tpu95_v06\\M125_pole_sleeve_upright.stl",
     "stl_tpu95_v06\\pole_collar_liner_A_split_face_down.stl",
     "stl_tpu95_v06\\pole_collar_liner_B_split_face_down.stl",
+    "stl_tpu95_v06\\flag_side_wire_guide_slit_up.stl",
     "stl_tpu85_v06\\lid_gasket_flat.stl",
     "stl_tpu85_v06\\photo_window_gasket_flat.stl",
     "stl_tpu85_v06\\environment_pocket_gasket_flat.stl",
@@ -42,6 +43,8 @@
     "test_coupons_v06\\TPU95_M125_sleeve_OD_16.00.stl",
     "test_coupons_v06\\PETG_M4_captive_nut_trap_coupon.stl",
     "test_coupons_v06\\PETG_drill_skin_0.6_0.8_1.0_coupon.stl",
+    "test_coupons_v06\\PETG_twin_wire_rail_4.2x2.5_coupon.stl",
+    "test_coupons_v06\\PETG_VEML7700_cradle_coupon.stl",
     "flagpole_finial_v0_6_assembly.glb",
     "flagpole_finial_v0_6_flag_power_route.glb",
     "flagpole_finial_v0_6_exploded.glb",

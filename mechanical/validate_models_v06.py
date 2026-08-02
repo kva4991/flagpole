@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate printable STL meshes generated for v0.6/v0.7 handoff."""
+"""Validate printable STL meshes generated for the current v0.7.3 handoff."""
 from pathlib import Path
 import json
 import trimesh
@@ -23,7 +23,7 @@ for folder in FOLDERS:
         })
 summary={
     'schemaVersion':1,
-    'version':'0.7.2 cable-route update',
+    'version':'0.7.3 weatherproofing and cable-route update',
     'checkedFiles':len(records),
     'allWatertight':all(r['watertight'] for r in records),
     'allWindingConsistent':all(r['winding_consistent'] for r in records),
@@ -32,7 +32,7 @@ summary={
 }
 (ROOT/'VALIDATION_REPORT_V06.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 lines=[
-    '# Проверка STL v0.6 после обновления кабельного маршрута',
+    '# Проверка STL актуальной механики v0.7.3',
     '',
     f'- Проверено STL: **{summary["checkedFiles"]}**',
     f'- Все замкнуты: **{"да" if summary["allWatertight"] else "нет"}**',
@@ -41,7 +41,7 @@ lines=[
     '',
     'Проверка охватывает PETG, TPU 95A, TPU 85A и тестовые купоны.',
     '',
-    'В этой версии дополнительно проверены заново сгенерированные половины корпуса и TPU-манжета после переноса питания флага под спицу и в наружную канавку.',
+    'В этой версии заново проверены половины корпуса, крышка, укороченный световой тоннель, карман AHT20+BMP280, TPU-манжеты, направляющая двух проводов, прокладки и тестовые купоны.',
     '',
     '> Замкнутая STL-сетка не доказывает правильность физических посадок, прочность, герметичность или печатаемость без поддержек. Эти свойства проверяются купонами и стендом.',
     '',
