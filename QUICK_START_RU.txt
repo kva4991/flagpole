@@ -9,6 +9,6 @@ CRUCIAN v0.7.4 — БЫСТРЫЙ СТАРТ
 7. Каталог компонентов, чертежей и 3D: catalog/catalog.html.
 8. Перегенерация каталога: npm.cmd run catalog:generate.
 9. Полная локальная проверка: npm.cmd run quality:gate.
-10. Перед push прочитайте GITHUB_PUSH_RU.md и ARCHIVE_CONTENTS_V074_RU.txt.
+10. Перед commit/push следуйте AGENTS.md; GITHUB_PUSH_RU.md и ARCHIVE_CONTENTS_V074_RU.txt нужны только для повторного переноса исходного архива v0.7.4.
 
 Физические посадки, герметичность, прочность, работа датчиков, BLE и силовой электроники требуют реального стенда.

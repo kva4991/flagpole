@@ -29,7 +29,7 @@ Crucian — экспериментальный проект вращающего
 ## Актуальные материалы
 
 - `mechanical/generate_models_v06.py` — единственный источник текущей геометрии;
-- `mechanical/stl_petg_v06/`, `stl_tpu95_v06/`, `stl_tpu85_v06/` — текущие детали;
+- `mechanical/stl_petg_v06/`, `mechanical/stl_tpu95_v06/`, `mechanical/stl_tpu85_v06/` — текущие детали;
 - `mechanical/test_coupons_v06/` — обязательные купоны;
 - `mechanical/flagpole_finial_v0_6_*.glb` — семь текущих интерактивных моделей;
 - `catalog/drawings.json` — реестр всех текущих и исторических изображений и моделей;
@@ -37,6 +37,16 @@ Crucian — экспериментальный проект вращающего
 - `mechanical/electronics_layout_A4_landscape.svg` — компоновка электроники.
 
 Имена файлов с `v0_6` сохранены для совместимости ссылок, но их содержимое соответствует v0.7.4.
+
+## Локальный каталог компонентов, чертежей и 3D
+
+Из корня проекта выполните:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\windows\open-component-catalog.ps1
+```
+
+Скрипт запускает сервер только на `127.0.0.1`, открывает `catalog/catalog.html` и оставляет интерактивные GLB доступными для вращения. Остановить сервер можно сочетанием `Ctrl+C`.
 
 ## Проверки
 

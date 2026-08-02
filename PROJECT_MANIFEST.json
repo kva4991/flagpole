@@ -5,10 +5,16 @@
   "sourceRepository": "https://github.com/kva4991/flagpole",
   "sourceBranchReviewed": "main",
   "sourceHeadReviewed": "fa855630b556a589c14ed3a1e2cbd37820d9f9c3",
+  "publication": {
+    "branch": "main",
+    "commit": "a80263a98e1c23e67d2f4f41d046888d272daf37",
+    "githubActionsRun": 30753133808,
+    "conclusion": "success"
+  },
   "outputArchive": "flagpole_v0_7_4_cumulative.zip",
   "treeMetrics": {
     "publishedFileCountIncludingManifestAndChecksum": 353,
-    "totalBytesExcludingManifestAndChecksum": 467323229
+    "totalBytesExcludingManifestAndChecksum": 467325281
   },
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
@@ -36,8 +42,8 @@
     "interactiveModels": "10 total: 7 current, 3 historical",
     "stlTopology": "40/40 watertight, winding consistent and single connected component",
     "pythonSources": "all current Python generators and validators passed py_compile locally",
-    "androidBuild": "v0.7.4 assembleDebug successful on Windows 2026-08-02; GitHub Actions must repeat after push",
-    "firmwareBuild": "sources unchanged; both PlatformIO builds required in GitHub Actions after push",
+    "androidBuild": "v0.7.4 assembleDebug successful locally and in GitHub Actions run 30753133808 for main commit a80263a",
+    "firmwareBuild": "sources unchanged; both PlatformIO projects built successfully in GitHub Actions run 30753133808 for main commit a80263a",
     "hardwareBench": "required"
   },
   "notes": [

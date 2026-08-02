@@ -29,6 +29,16 @@ Rigid parts target the already purchased orange PETG. TPU 95A is used for retain
 
 Stable filenames containing `v0_6` are retained for compatibility, but their current generated content is version 0.7.4.
 
+## Local component, drawing, and 3D catalog
+
+Run from the repository root on Windows:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\windows\open-component-catalog.ps1
+```
+
+The script binds a local server to `127.0.0.1`, opens `catalog/catalog.html`, and enables interactive GLB viewing. Stop it with `Ctrl+C`.
+
 ## Regeneration and checks
 
 ```powershell
