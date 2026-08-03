@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render current v0.7.5 static previews from the generated GLB models."""
+"""Render current v0.7.6 static previews from the generated GLB models."""
 from pathlib import Path
 import numpy as np
 import matplotlib
@@ -84,5 +84,5 @@ if __name__=='__main__':
     render('flagpole_finial_v0_6_exploded.glb','preview_v06_exploded_PETG_TPU.png',f'Разнесённый вид v{CURRENT_VERSION}: PETG, TPU 95A и TPU 85A',25,-57,fastener_note)
     render('flagpole_finial_v0_6_electronics_layout.glb','preview_v06_electronics_layout.png',f'Компоновка электроники v{CURRENT_VERSION}',24,-52,'DC-DC лежит снизу; ESP32-C3 и MOSFET стоят на противоположных стенках; VEML7700 крепится двумя M3.')
     render('flagpole_finial_v0_6_print_layout_PETG.glb','preview_v06_print_PETG.png',f'Раскладка деталей PETG v{CURRENT_VERSION}',58,-50,'Металлические гайки не печатаются; перед полной печатью проверить купоны M4 и M3.')
-    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95.png',f'Раскладка деталей TPU 95A v{CURRENT_VERSION}',58,-50,'#tpu95-10 — сменная направляющая двух проводов под углом около 35° вниз к флагу.')
+    render('flagpole_finial_v0_6_print_layout_TPU95.glb','preview_v06_print_TPU95.png',f'Раскладка деталей TPU 95A v{CURRENT_VERSION}',58,-50,'Сменная направляющая двух проводов ориентирована примерно под 35° вниз к флагу.')
     render('flagpole_finial_v0_6_print_layout_TPU85.glb','preview_v06_print_TPU85.png',f'Раскладка деталей TPU 85A v{CURRENT_VERSION}',58,-50,'Самоклеящаяся мембрана Ø20 мм устанавливается без отдельной TPU-прокладки.')

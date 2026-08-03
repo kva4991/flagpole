@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the current v0.7.5 weatherproofing overview as SVG and PNG."""
+"""Generate the current v0.7.6 weatherproofing overview as SVG and PNG."""
 from pathlib import Path
 import re
 

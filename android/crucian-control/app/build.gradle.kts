@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "ru.quicktickets.crucian"
+    namespace = "ru.superpommelsandflag.crucian"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.quicktickets.crucian"
+        applicationId = "ru.superpommelsandflag.crucian"
         minSdk = 26
         targetSdk = 35
-        versionCode = 4
-        versionName = "0.7.5"
+        versionCode = 5
+        versionName = "0.7.6"
     }
 
     buildTypes {

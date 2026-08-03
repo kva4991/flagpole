@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate current v0.7.5 electronics SVG/PNG diagrams.
+"""Generate current v0.7.6 electronics SVG/PNG diagrams.
 
 The diagrams intentionally start at the stabilized 12 V input boundary. The
 6x18650 topology, BMS and charger remain outside the Crucian finial project.
@@ -10,7 +10,7 @@ import re
 
 from resvg_py import svg_to_bytes
 
-CURRENT_VERSION = '0.7.5'
+CURRENT_VERSION = '0.7.6'
 
 ROOT = Path(__file__).resolve().parent
 
@@ -149,7 +149,7 @@ def terminal_map() -> None:
       "Монтажная проверка: сначала прозвонить M125 и J1; затем проверить DC-DC без ESP; после этого подключать датчики и MOSFET.",
       "Герметичный J1 находится снаружи у флага. От него два провода идут по открытой обслуживаемой дорожке ниже спицы.",
       "Единственный ввод в сухой электронный бокс — TPU95-манжета #tpu95-3/#tpu95-4; внутри оставить сервисную петлю 30–40 мм.",
-      "Значения 3,3 В, GPIO3/4/5 и адреса датчиков являются текущей схемой прошивки v0.7.5.",
+      "Значения 3,3 В, GPIO3/4/5 и адреса датчиков являются текущей схемой прошивки v0.7.6.",
       "Полярность конкретного MOSFET-модуля и возможность прямой пайки к Gate подтвердить по реальной плате.",
       "Механическое крепление модулей и все закладные M3/M4 показаны на чертежах 124 и 125.",
     ]

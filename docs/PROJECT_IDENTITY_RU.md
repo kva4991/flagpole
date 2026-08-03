@@ -10,10 +10,13 @@ project_identity.json
 
 ```json
 {
-  "projectDisplayName": "Crucian",
+  "projectDisplayName": "Super_pommels_and_flag",
   "bluetoothDeviceName": "Crucian"
 }
 ```
+
+
+> В текущем выпуске публичное имя — `Super_pommels_and_flag`, а BLE-имя намеренно остаётся `Crucian`. Android package приведён к публичному имени в допустимом формате без подчёркиваний: `ru.superpommelsandflag.crucian`.
 
 Их смысл:
 
@@ -30,7 +33,7 @@ npm.cmd run catalog:generate
 Генератор обновит:
 
 - `electronics/firmware/esp32_c3_crucian_v06/include/project_identity.h`;
-- `android/crucian-control/app/src/main/java/ru/quicktickets/crucian/ProjectIdentity.kt`;
+- `android/crucian-control/app/src/main/java/ru/superpommelsandflag/crucian/ProjectIdentity.kt`;
 - `android/crucian-control/app/src/main/res/values/strings.xml`;
 - заголовки локальной страницы при следующей генерации каталога.
 
@@ -41,12 +44,12 @@ npm.cmd run identity:check
 npm.cmd run catalog:check
 ```
 
-## Что намеренно не меняется автоматически
+## Android-идентификатор
 
-Android `applicationId` и Kotlin package остаются:
+Android `applicationId`, `namespace` и Kotlin package:
 
 ```text
-ru.quicktickets.crucian
+ru.superpommelsandflag.crucian
 ```
 
-Это технический идентификатор приложения, а не видимое название. Его автоматическое изменение нарушило бы обновление уже установленного APK и потребовало бы переименования каталогов исходников. Другой разработчик может изменить его отдельно, но для обычной смены имени проекта это не требуется.
+Он адаптирован из публичного имени: только нижний регистр и без подчёркиваний. Это новый Android application ID, поэтому он устанавливается отдельно от APK со старым `ru.quicktickets.crucian`; миграции данных между ними автоматически нет.

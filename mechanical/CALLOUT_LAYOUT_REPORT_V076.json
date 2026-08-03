@@ -1,0 +1,1165 @@
+{
+  "schemaVersion": 1,
+  "version": "0.7.6",
+  "purpose": "Deterministic compact placement of drawing ID callouts",
+  "summary": {
+    "drawingCount": 14,
+    "calloutCount": 88,
+    "legacyMeanLeaderLengthNormalized": 0.278102,
+    "resolvedMeanLeaderLengthNormalized": 0.006014,
+    "legacyLeaderCrossings": 34,
+    "resolvedLeaderCrossings": 0
+  },
+  "drawings": [
+    {
+      "id": "101",
+      "preview": "electronics/electronics_wiring_diagram_A4.png",
+      "calloutCount": 7,
+      "legacyMeanLeaderLengthNormalized": 0.204118,
+      "resolvedMeanLeaderLengthNormalized": 0.004913,
+      "legacyMaxLeaderLengthNormalized": 0.344698,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 2,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "001",
+          "target": [
+            0.28,
+            0.35
+          ],
+          "labelCenter": [
+            0.259069,
+            0.330657
+          ]
+        },
+        {
+          "id": "006",
+          "target": [
+            0.25,
+            0.56
+          ],
+          "labelCenter": [
+            0.229069,
+            0.540657
+          ]
+        },
+        {
+          "id": "005",
+          "target": [
+            0.47,
+            0.56
+          ],
+          "labelCenter": [
+            0.440399,
+            0.56
+          ]
+        },
+        {
+          "id": "002",
+          "target": [
+            0.7,
+            0.34
+          ],
+          "labelCenter": [
+            0.7,
+            0.312645
+          ]
+        },
+        {
+          "id": "009",
+          "target": [
+            0.7,
+            0.55
+          ],
+          "labelCenter": [
+            0.720931,
+            0.530657
+          ]
+        },
+        {
+          "id": "003",
+          "target": [
+            0.48,
+            0.27
+          ],
+          "labelCenter": [
+            0.500931,
+            0.289343
+          ]
+        },
+        {
+          "id": "004",
+          "target": [
+            0.83,
+            0.72
+          ],
+          "labelCenter": [
+            0.809069,
+            0.700657
+          ]
+        }
+      ]
+    },
+    {
+      "id": "102",
+      "preview": "electronics/electronics_terminal_map_A4.png",
+      "calloutCount": 6,
+      "legacyMeanLeaderLengthNormalized": 0.220523,
+      "resolvedMeanLeaderLengthNormalized": 0.006618,
+      "legacyMaxLeaderLengthNormalized": 0.385341,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "001",
+          "target": [
+            0.25,
+            0.4
+          ],
+          "labelCenter": [
+            0.220399,
+            0.4
+          ]
+        },
+        {
+          "id": "005",
+          "target": [
+            0.52,
+            0.4
+          ],
+          "labelCenter": [
+            0.490399,
+            0.4
+          ]
+        },
+        {
+          "id": "006",
+          "target": [
+            0.25,
+            0.67
+          ],
+          "labelCenter": [
+            0.229069,
+            0.650657
+          ]
+        },
+        {
+          "id": "002",
+          "target": [
+            0.74,
+            0.35
+          ],
+          "labelCenter": [
+            0.74,
+            0.322645
+          ]
+        },
+        {
+          "id": "009",
+          "target": [
+            0.74,
+            0.58
+          ],
+          "labelCenter": [
+            0.74,
+            0.552645
+          ]
+        },
+        {
+          "id": "003",
+          "target": [
+            0.52,
+            0.69
+          ],
+          "labelCenter": [
+            0.540931,
+            0.670657
+          ]
+        }
+      ]
+    },
+    {
+      "id": "109",
+      "preview": "flag_with_attachment_loops_full_size_300x250.png",
+      "calloutCount": 4,
+      "legacyMeanLeaderLengthNormalized": 0.307968,
+      "resolvedMeanLeaderLengthNormalized": 0.009311,
+      "legacyMaxLeaderLengthNormalized": 0.437849,
+      "resolvedMaxLeaderLengthNormalized": 0.018569,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "013",
+          "target": [
+            0.55,
+            0.48
+          ],
+          "labelCenter": [
+            0.574513,
+            0.460767
+          ]
+        },
+        {
+          "id": "004",
+          "target": [
+            0.63,
+            0.56
+          ],
+          "labelCenter": [
+            0.654513,
+            0.540767
+          ]
+        },
+        {
+          "id": "025",
+          "target": [
+            0.2,
+            0.3
+          ],
+          "labelCenter": [
+            0.232357,
+            0.325388
+          ]
+        },
+        {
+          "id": "014",
+          "target": [
+            0.49,
+            0.5
+          ],
+          "labelCenter": [
+            0.448818,
+            0.532312
+          ]
+        }
+      ]
+    },
+    {
+      "id": "110",
+      "preview": "flag_attachment_loop_pattern_A4_1to1.png",
+      "calloutCount": 2,
+      "legacyMeanLeaderLengthNormalized": 0.343836,
+      "resolvedMeanLeaderLengthNormalized": 0.005872,
+      "legacyMaxLeaderLengthNormalized": 0.401004,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 0,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "013",
+          "target": [
+            0.5,
+            0.48
+          ],
+          "labelCenter": [
+            0.479069,
+            0.460657
+          ]
+        },
+        {
+          "id": "025",
+          "target": [
+            0.65,
+            0.63
+          ],
+          "labelCenter": [
+            0.65,
+            0.602645
+          ]
+        }
+      ]
+    },
+    {
+      "id": "111",
+      "preview": "mechanical/preview_v06_assembly.png",
+      "calloutCount": 8,
+      "legacyMeanLeaderLengthNormalized": 0.323459,
+      "resolvedMeanLeaderLengthNormalized": 0.00778,
+      "legacyMaxLeaderLengthNormalized": 0.488665,
+      "resolvedMaxLeaderLengthNormalized": 0.025434,
+      "legacyLeaderCrossings": 4,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-1",
+          "target": [
+            0.49,
+            0.45
+          ],
+          "labelCenter": [
+            0.430943,
+            0.427418
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "target": [
+            0.55,
+            0.51
+          ],
+          "labelCenter": [
+            0.490943,
+            0.487418
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "target": [
+            0.35,
+            0.24
+          ],
+          "labelCenter": [
+            0.290943,
+            0.262582
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "target": [
+            0.35,
+            0.66
+          ],
+          "labelCenter": [
+            0.290943,
+            0.682582
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "target": [
+            0.48,
+            0.75
+          ],
+          "labelCenter": [
+            0.48,
+            0.718064
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "target": [
+            0.53,
+            0.77
+          ],
+          "labelCenter": [
+            0.629215,
+            0.732062
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "target": [
+            0.35,
+            0.17
+          ],
+          "labelCenter": [
+            0.409057,
+            0.192582
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "target": [
+            0.71,
+            0.55
+          ],
+          "labelCenter": [
+            0.71,
+            0.581936
+          ]
+        }
+      ]
+    },
+    {
+      "id": "116",
+      "preview": "mechanical/flag_power_cable_route_A4_landscape.png",
+      "calloutCount": 7,
+      "legacyMeanLeaderLengthNormalized": 0.247779,
+      "resolvedMeanLeaderLengthNormalized": 0.004849,
+      "legacyMaxLeaderLengthNormalized": 0.363458,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-1",
+          "target": [
+            0.42,
+            0.45
+          ],
+          "labelCenter": [
+            0.384556,
+            0.430657
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "target": [
+            0.45,
+            0.52
+          ],
+          "labelCenter": [
+            0.414556,
+            0.500657
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "target": [
+            0.32,
+            0.49
+          ],
+          "labelCenter": [
+            0.280928,
+            0.470657
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "target": [
+            0.35,
+            0.54
+          ],
+          "labelCenter": [
+            0.294743,
+            0.54
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "target": [
+            0.73,
+            0.54
+          ],
+          "labelCenter": [
+            0.73,
+            0.512645
+          ]
+        },
+        {
+          "id": "022",
+          "target": [
+            0.57,
+            0.5
+          ],
+          "labelCenter": [
+            0.590931,
+            0.480657
+          ]
+        },
+        {
+          "id": "010",
+          "target": [
+            0.84,
+            0.66
+          ],
+          "labelCenter": [
+            0.819069,
+            0.640657
+          ]
+        }
+      ]
+    },
+    {
+      "id": "118",
+      "preview": "mechanical/current_longitudinal_section_v075.png",
+      "calloutCount": 9,
+      "legacyMeanLeaderLengthNormalized": 0.369941,
+      "resolvedMeanLeaderLengthNormalized": 0.003998,
+      "legacyMaxLeaderLengthNormalized": 0.443964,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 8,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-1",
+          "target": [
+            0.48,
+            0.45
+          ],
+          "labelCenter": [
+            0.444556,
+            0.430657
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "target": [
+            0.52,
+            0.5
+          ],
+          "labelCenter": [
+            0.484556,
+            0.480657
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "target": [
+            0.48,
+            0.71
+          ],
+          "labelCenter": [
+            0.444556,
+            0.690657
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "target": [
+            0.52,
+            0.74
+          ],
+          "labelCenter": [
+            0.469875,
+            0.74
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "target": [
+            0.31,
+            0.28
+          ],
+          "labelCenter": [
+            0.345444,
+            0.260657
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "target": [
+            0.31,
+            0.64
+          ],
+          "labelCenter": [
+            0.345444,
+            0.620657
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "target": [
+            0.35,
+            0.45
+          ],
+          "labelCenter": [
+            0.385444,
+            0.469343
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "target": [
+            0.33,
+            0.34
+          ],
+          "labelCenter": [
+            0.369072,
+            0.359343
+          ]
+        },
+        {
+          "id": "#tpu95-10",
+          "target": [
+            0.69,
+            0.54
+          ],
+          "labelCenter": [
+            0.732701,
+            0.559343
+          ]
+        }
+      ]
+    },
+    {
+      "id": "119",
+      "preview": "mechanical/hermeticity_design_A4_landscape.png",
+      "calloutCount": 9,
+      "legacyMeanLeaderLengthNormalized": 0.246408,
+      "resolvedMeanLeaderLengthNormalized": 0.004512,
+      "legacyMaxLeaderLengthNormalized": 0.392958,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-5",
+          "target": [
+            0.25,
+            0.3
+          ],
+          "labelCenter": [
+            0.214556,
+            0.280657
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "target": [
+            0.25,
+            0.38
+          ],
+          "labelCenter": [
+            0.210928,
+            0.360657
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "target": [
+            0.5,
+            0.3
+          ],
+          "labelCenter": [
+            0.464556,
+            0.319343
+          ]
+        },
+        {
+          "id": "#petg-7",
+          "target": [
+            0.5,
+            0.39
+          ],
+          "labelCenter": [
+            0.464556,
+            0.409343
+          ]
+        },
+        {
+          "id": "#tpu85-2",
+          "target": [
+            0.5,
+            0.47
+          ],
+          "labelCenter": [
+            0.539072,
+            0.450657
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "target": [
+            0.75,
+            0.38
+          ],
+          "labelCenter": [
+            0.75,
+            0.352645
+          ]
+        },
+        {
+          "id": "#tpu85-3",
+          "target": [
+            0.75,
+            0.48
+          ],
+          "labelCenter": [
+            0.75,
+            0.452645
+          ]
+        },
+        {
+          "id": "#tpu95-3",
+          "target": [
+            0.35,
+            0.72
+          ],
+          "labelCenter": [
+            0.389072,
+            0.700657
+          ]
+        },
+        {
+          "id": "#tpu95-4",
+          "target": [
+            0.42,
+            0.72
+          ],
+          "labelCenter": [
+            0.459072,
+            0.739343
+          ]
+        }
+      ]
+    },
+    {
+      "id": "120",
+      "preview": "mechanical/photo_tunnel_veml_mount_A4_landscape.png",
+      "calloutCount": 7,
+      "legacyMeanLeaderLengthNormalized": 0.258175,
+      "resolvedMeanLeaderLengthNormalized": 0.007132,
+      "legacyMaxLeaderLengthNormalized": 0.405486,
+      "resolvedMaxLeaderLengthNormalized": 0.018848,
+      "legacyLeaderCrossings": 5,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-5",
+          "target": [
+            0.22,
+            0.48
+          ],
+          "labelCenter": [
+            0.184556,
+            0.460657
+          ]
+        },
+        {
+          "id": "#petg-6",
+          "target": [
+            0.43,
+            0.42
+          ],
+          "labelCenter": [
+            0.383214,
+            0.394468
+          ]
+        },
+        {
+          "id": "#petg-7",
+          "target": [
+            0.52,
+            0.3
+          ],
+          "labelCenter": [
+            0.484556,
+            0.319343
+          ]
+        },
+        {
+          "id": "#tpu85-2",
+          "target": [
+            0.5,
+            0.38
+          ],
+          "labelCenter": [
+            0.539072,
+            0.360657
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "target": [
+            0.7,
+            0.55
+          ],
+          "labelCenter": [
+            0.7,
+            0.504044
+          ]
+        },
+        {
+          "id": "002",
+          "target": [
+            0.69,
+            0.47
+          ],
+          "labelCenter": [
+            0.719601,
+            0.47
+          ]
+        },
+        {
+          "id": "024",
+          "target": [
+            0.5,
+            0.23
+          ],
+          "labelCenter": [
+            0.520931,
+            0.249343
+          ]
+        }
+      ]
+    },
+    {
+      "id": "121",
+      "preview": "mechanical/environment_sensor_pocket_A4_landscape.png",
+      "calloutCount": 5,
+      "legacyMeanLeaderLengthNormalized": 0.265682,
+      "resolvedMeanLeaderLengthNormalized": 0.008001,
+      "legacyMaxLeaderLengthNormalized": 0.420957,
+      "resolvedMaxLeaderLengthNormalized": 0.016816,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-8",
+          "target": [
+            0.48,
+            0.48
+          ],
+          "labelCenter": [
+            0.444556,
+            0.460657
+          ]
+        },
+        {
+          "id": "#tpu85-3",
+          "target": [
+            0.33,
+            0.67
+          ],
+          "labelCenter": [
+            0.290928,
+            0.650657
+          ]
+        },
+        {
+          "id": "009",
+          "target": [
+            0.56,
+            0.52
+          ],
+          "labelCenter": [
+            0.595164,
+            0.487504
+          ]
+        },
+        {
+          "id": "019",
+          "target": [
+            0.49,
+            0.27
+          ],
+          "labelCenter": [
+            0.519601,
+            0.27
+          ]
+        },
+        {
+          "id": "021",
+          "target": [
+            0.7,
+            0.7
+          ],
+          "labelCenter": [
+            0.7,
+            0.672645
+          ]
+        }
+      ]
+    },
+    {
+      "id": "122",
+      "preview": "fish_template_clean_A4_landscape.png",
+      "calloutCount": 4,
+      "legacyMeanLeaderLengthNormalized": 0.293179,
+      "resolvedMeanLeaderLengthNormalized": 0.012467,
+      "legacyMaxLeaderLengthNormalized": 0.396921,
+      "resolvedMaxLeaderLengthNormalized": 0.034493,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "004",
+          "target": [
+            0.53,
+            0.5
+          ],
+          "labelCenter": [
+            0.550931,
+            0.480657
+          ]
+        },
+        {
+          "id": "013",
+          "target": [
+            0.49,
+            0.58
+          ],
+          "labelCenter": [
+            0.510931,
+            0.560657
+          ]
+        },
+        {
+          "id": "014",
+          "target": [
+            0.41,
+            0.52
+          ],
+          "labelCenter": [
+            0.439601,
+            0.52
+          ]
+        },
+        {
+          "id": "025",
+          "target": [
+            0.28,
+            0.5
+          ],
+          "labelCenter": [
+            0.333374,
+            0.549324
+          ]
+        }
+      ]
+    },
+    {
+      "id": "123",
+      "preview": "fish_template_dimensioned_A4_landscape.png",
+      "calloutCount": 3,
+      "legacyMeanLeaderLengthNormalized": 0.276206,
+      "resolvedMeanLeaderLengthNormalized": 0.005126,
+      "legacyMaxLeaderLengthNormalized": 0.287615,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 1,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "004",
+          "target": [
+            0.53,
+            0.5
+          ],
+          "labelCenter": [
+            0.550931,
+            0.480657
+          ]
+        },
+        {
+          "id": "013",
+          "target": [
+            0.48,
+            0.58
+          ],
+          "labelCenter": [
+            0.500931,
+            0.560657
+          ]
+        },
+        {
+          "id": "014",
+          "target": [
+            0.4,
+            0.52
+          ],
+          "labelCenter": [
+            0.429601,
+            0.52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "124",
+      "preview": "mechanical/fastener_captive_nut_map_A4_landscape.png",
+      "calloutCount": 9,
+      "legacyMeanLeaderLengthNormalized": 0.228606,
+      "resolvedMeanLeaderLengthNormalized": 0.005026,
+      "legacyMaxLeaderLengthNormalized": 0.386549,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 2,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-1",
+          "target": [
+            0.25,
+            0.35
+          ],
+          "labelCenter": [
+            0.214556,
+            0.330657
+          ]
+        },
+        {
+          "id": "#petg-2",
+          "target": [
+            0.25,
+            0.48
+          ],
+          "labelCenter": [
+            0.214556,
+            0.460657
+          ]
+        },
+        {
+          "id": "#petg-3",
+          "target": [
+            0.5,
+            0.35
+          ],
+          "labelCenter": [
+            0.464556,
+            0.369343
+          ]
+        },
+        {
+          "id": "#petg-4",
+          "target": [
+            0.5,
+            0.48
+          ],
+          "labelCenter": [
+            0.464556,
+            0.499343
+          ]
+        },
+        {
+          "id": "#petg-5",
+          "target": [
+            0.73,
+            0.31
+          ],
+          "labelCenter": [
+            0.73,
+            0.282645
+          ]
+        },
+        {
+          "id": "#petg-8",
+          "target": [
+            0.73,
+            0.48
+          ],
+          "labelCenter": [
+            0.73,
+            0.452645
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "target": [
+            0.5,
+            0.67
+          ],
+          "labelCenter": [
+            0.535444,
+            0.650657
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "target": [
+            0.72,
+            0.67
+          ],
+          "labelCenter": [
+            0.759072,
+            0.650657
+          ]
+        },
+        {
+          "id": "021",
+          "target": [
+            0.48,
+            0.8
+          ],
+          "labelCenter": [
+            0.509601,
+            0.8
+          ]
+        }
+      ]
+    },
+    {
+      "id": "125",
+      "preview": "mechanical/electronics_layout_A4_landscape.png",
+      "calloutCount": 8,
+      "legacyMeanLeaderLengthNormalized": 0.342227,
+      "resolvedMeanLeaderLengthNormalized": 0.004119,
+      "legacyMaxLeaderLengthNormalized": 0.447068,
+      "resolvedMaxLeaderLengthNormalized": 0.00811,
+      "legacyLeaderCrossings": 6,
+      "resolvedLeaderCrossings": 0,
+      "resolvedPositions": [
+        {
+          "id": "#petg-5",
+          "target": [
+            0.5,
+            0.18
+          ],
+          "labelCenter": [
+            0.464556,
+            0.160657
+          ]
+        },
+        {
+          "id": "#petg-9",
+          "target": [
+            0.5,
+            0.55
+          ],
+          "labelCenter": [
+            0.464556,
+            0.530657
+          ]
+        },
+        {
+          "id": "#petg-10",
+          "target": [
+            0.5,
+            0.35
+          ],
+          "labelCenter": [
+            0.460928,
+            0.369343
+          ]
+        },
+        {
+          "id": "#tpu85-1",
+          "target": [
+            0.5,
+            0.26
+          ],
+          "labelCenter": [
+            0.460928,
+            0.279343
+          ]
+        },
+        {
+          "id": "001",
+          "target": [
+            0.36,
+            0.55
+          ],
+          "labelCenter": [
+            0.389601,
+            0.55
+          ]
+        },
+        {
+          "id": "005",
+          "target": [
+            0.64,
+            0.55
+          ],
+          "labelCenter": [
+            0.660931,
+            0.530657
+          ]
+        },
+        {
+          "id": "006",
+          "target": [
+            0.5,
+            0.68
+          ],
+          "labelCenter": [
+            0.520931,
+            0.660657
+          ]
+        },
+        {
+          "id": "002",
+          "target": [
+            0.5,
+            0.39
+          ],
+          "labelCenter": [
+            0.520931,
+            0.409343
+          ]
+        }
+      ]
+    }
+  ]
+}

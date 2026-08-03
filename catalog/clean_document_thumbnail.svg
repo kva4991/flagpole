@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Чистая миниатюра таблицы деталей</title>
+  <desc id="desc">Нейтральный значок документа без идентификаторов деталей</desc>
+  <rect width="1200" height="800" rx="36" fill="#f2f5f6"/>
+  <rect x="350" y="125" width="500" height="550" rx="28" fill="#ffffff" stroke="#607078" stroke-width="12"/>
+  <path d="M690 125v145h160" fill="#e1ecee" stroke="#607078" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M445 350h310M445 430h310M445 510h220" fill="none" stroke="#087d78" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="445" cy="590" r="17" fill="#087d78"/>
+  <path d="M495 590h170" fill="none" stroke="#607078" stroke-width="20" stroke-linecap="round"/>
+</svg>

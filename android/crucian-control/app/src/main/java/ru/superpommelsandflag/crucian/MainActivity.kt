@@ -1,4 +1,4 @@
-package ru.quicktickets.crucian
+package ru.superpommelsandflag.crucian
 
 import android.Manifest
 import android.content.pm.PackageManager

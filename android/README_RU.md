@@ -14,7 +14,7 @@ project_identity.json
 npm.cmd run identity:generate
 ```
 
-Технический package `ru.quicktickets.crucian` сохраняется отдельно и не влияет на видимое название.
+Технический package — `ru.superpommelsandflag.crucian`: только нижний регистр и без подчёркиваний, чтобы Android application ID оставался корректным.
 
 ## Реализованные функции
 

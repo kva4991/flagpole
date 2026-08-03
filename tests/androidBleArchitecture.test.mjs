@@ -4,8 +4,8 @@ import path from 'node:path';
 import test from 'node:test';
 
 const root = process.cwd();
-const client = fs.readFileSync(path.join(root, 'android/crucian-control/app/src/main/java/ru/quicktickets/crucian/CrucianBleClient.kt'), 'utf8');
-const models = fs.readFileSync(path.join(root, 'android/crucian-control/app/src/main/java/ru/quicktickets/crucian/BleModels.kt'), 'utf8');
+const client = fs.readFileSync(path.join(root, 'android/crucian-control/app/src/main/java/ru/superpommelsandflag/crucian/CrucianBleClient.kt'), 'utf8');
+const models = fs.readFileSync(path.join(root, 'android/crucian-control/app/src/main/java/ru/superpommelsandflag/crucian/BleModels.kt'), 'utf8');
 
 test('Android BLE client has queue, timeouts and lifecycle cleanup', () => {
   assert.match(client, /ArrayDeque<GattOperation>/);

@@ -11,10 +11,10 @@
 - [Архитектура](architecture/README.ru.md) — карта подсистем и принятых решений.
 - [Карта §-тегов](dev/tag-map.md) — стабильные связи между правилами, кодом и проверками.
 
-## Текущие документы v0.7.5
+## Текущие документы v0.7.6
 
 - [Сводка проектных решений](PROJECT_DECISIONS_RU.md)
-- [Отчёт обновления v0.7.5](../UPDATE_REPORT_V075_RU.md)
+- [Отчёт обновления v0.7.6](../UPDATE_REPORT_V076_RU.md)
 - [Политика текущего каталога и подписей](CATALOG_MEDIA_POLICY_RU.md)
 - [Обоснование прошивки и Android](CODE_RATIONALE_RU.md)
 - [Передача следующему чату](NEXT_CHAT_HANDOFF_RU.md)
@@ -24,8 +24,8 @@
 - [Электроника и прошивка v0.6](../electronics/README_V06_RU.md)
 - [Android-прототип](../android/README_RU.md)
 - [Каталог компонентов](../catalog/README_RU.md)
-- [Механическая сборка PETG/TPU v0.7.5](../mechanical/docs/ASSEMBLY_PETG_TPU_RU.md)
-- [Печать PETG/TPU v0.7.5; ASA только как будущая замена](../mechanical/docs/PRINTING_PETG_TPU_RU.md)
+- [Механическая сборка PETG/TPU v0.7.6](../mechanical/docs/ASSEMBLY_PETG_TPU_RU.md)
+- [Печать PETG/TPU v0.7.6; ASA только как будущая замена](../mechanical/docs/PRINTING_PETG_TPU_RU.md)
 - [Обязательные измерения](../MEASUREMENTS_REQUIRED_RU.md)
 
 ## История
@@ -33,4 +33,4 @@
 - [Аудит v0.6.1](AUDIT_V061_RU.md) и [история решений v0.6.1](CHANGELOG_DECISIONS_V061_RU.md) сохраняют состояние соответствующего среза;
 - отчёты v0.5–v0.7.4 и материалы в `archive/` служат происхождением решений.
 
-Исторические документы не переопределяют ADR и текущий статус v0.7.5.
+Исторические документы не переопределяют ADR и текущий статус v0.7.6.

@@ -1,4 +1,4 @@
-package ru.quicktickets.crucian
+package ru.superpommelsandflag.crucian
 
 import android.content.Context
 import androidx.compose.runtime.getValue

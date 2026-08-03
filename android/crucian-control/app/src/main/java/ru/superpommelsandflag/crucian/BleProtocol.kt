@@ -1,4 +1,4 @@
-package ru.quicktickets.crucian
+package ru.superpommelsandflag.crucian
 
 import java.nio.charset.StandardCharsets
 import java.util.UUID

@@ -1,5 +1,5 @@
 {
-  "version": "0.7.5",
+  "version": "0.7.6",
   "printer": "Bambu Lab X1 Carbon, 0.4 mm nozzle",
   "materials": {
     "structural_current": "orange PETG",

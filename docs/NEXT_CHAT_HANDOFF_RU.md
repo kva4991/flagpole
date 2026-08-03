@@ -3,7 +3,7 @@
 ## Текущая версия
 
 ```text
-0.7.5
+0.7.6
 ```
 
 ## Обязательный порядок чтения
@@ -42,7 +42,7 @@
 - 39/39 Node-тестов и 95 Markdown-файлов;
 - 40/40 STL по топологии;
 - семантическая проверка семи current GLB и воспроизводимость 14 подписанных PNG;
-- GitHub Actions run [`30761888122`](https://github.com/kva4991/flagpole/actions/runs/30761888122) для release-коммита `7e5417b`: quality, механика, Android v0.7.5 и обе PlatformIO-сборки успешны.
+- GitHub Actions run [`30761888122`](https://github.com/kva4991/flagpole/actions/runs/30761888122) для release-коммита `7e5417b`: quality, механика, Android v0.7.6 и обе PlatformIO-сборки успешны.
 
 ## Требует стенда
 

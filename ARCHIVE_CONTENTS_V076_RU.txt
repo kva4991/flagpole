@@ -1,0 +1,51 @@
+КУМУЛЯТИВНЫЙ ПАКЕТ ОБНОВЛЕНИЯ Super_pommels_and_flag v0.7.6
+База: main / 14346190d702c292fded598f55fc431dd92b19ad
+Дата: 2026-08-02
+
+В корне пакета:
+- README_FIRST_RU.md — порядок применения
+- UPDATE_REPORT_V076_RU.md — полное обоснование
+- PACKAGE_VALIDATION_V076_RU.txt — выполненные проверки и ограничения
+- APPLY_UPDATE_V076.ps1 — рекомендуемый запуск на Windows
+- APPLY_UPDATE_V076.cmd — CMD-обёртка
+- MANIFEST_SHA256.txt — контрольные суммы update bundle
+- BASE_COMMIT.txt — точная база
+
+Инструменты:
+- tools/apply_update_v076.py — идемпотентное применение, регенерация, проверки и полный ZIP
+
+Полные новые/заменяемые payload-файлы:
+- mechanical/render_catalog_part_callouts_v075.py
+- mechanical/layout_packing.py
+- catalog/clean_document_thumbnail.svg
+- mechanical/docs/BUILD123D_MCP_WORKFLOW_RU.md
+- tools/cad/build123d-mcp.example.json
+- ADR-0027, ADR-0028, ADR-0029
+- tests/catalogPresentationV076.test.mjs
+- tests/printLayoutPolicyV076.test.mjs
+- tests/cadWorkflowV076.test.mjs
+- UPDATE_REPORT_V076_RU.md
+- PACKAGE_VALIDATION_V076_RU.txt
+- ARCHIVE_CONTENTS_V076_RU.txt
+
+Структурные изменения применителя:
+- публичное имя Super_pommels_and_flag при сохранении BLE Crucian;
+- VERSION/package/Android version → 0.7.6;
+- catalog/drawings.json: schema v4, clean thumbnails и новая политика;
+- generateComponentCatalog.mjs: нарисованная кнопка ID, скрытие hotspots в карточках, clean-thumbnail validation;
+- generate_models_v06.py: автоматическая компактная упаковка вместо ручных XYZ;
+- PRINTING_PETG_TPU_RU.md: явное отсутствие канонических PETG-подложек;
+- AGENTS/README/current docs/changelog/ADR index/tag map;
+- честное разделение локальной v0.7.6 проверки и исторического CI v0.7.5;
+- пересчёт tree metrics и largest files в PROJECT_MANIFEST.json;
+- существующие тесты и quality gate;
+- производные PNG/GLB/JSON/HTML/CHECKSUMS после регенерации.
+
+Не включены повторно:
+- неизменённые бинарные STL/GLB/PNG исходного репозитория;
+- .git и история;
+- node_modules, caches, build, .pio.
+
+После обычного запуска создаются:
+- Super_pommels_and_flag_v0.7.6_cumulative_full.zip
+- Super_pommels_and_flag_v0.7.6_cumulative_full.zip.sha256

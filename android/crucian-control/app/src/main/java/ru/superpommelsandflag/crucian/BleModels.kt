@@ -1,4 +1,4 @@
-package ru.quicktickets.crucian
+package ru.superpommelsandflag.crucian
 
 enum class WorkMode { AUTO, ON, OFF }
 

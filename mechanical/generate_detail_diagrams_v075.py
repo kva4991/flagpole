@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate current v0.7.5 mechanical technical diagrams as SVG and PNG."""
+"""Generate current v0.7.6 mechanical technical diagrams as SVG and PNG."""
 from pathlib import Path
 import html
 import re

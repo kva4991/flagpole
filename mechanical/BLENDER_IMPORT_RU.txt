@@ -1,9 +1,9 @@
-BLENDER — АКТУАЛЬНАЯ СБОРКА v0.7.5
+BLENDER — АКТУАЛЬНАЯ СБОРКА v0.7.6
 
 Основной файл:
 mechanical/flagpole_finial_v0_6_assembly.glb
 
-Имя v0_6 сохранено для совместимости, содержимое соответствует v0.7.5.
+Имя v0_6 сохранено для совместимости, содержимое соответствует v0.7.6.
 Дополнительные модели:
 - flagpole_finial_v0_6_exploded.glb
 - flagpole_finial_v0_6_flag_power_route.glb

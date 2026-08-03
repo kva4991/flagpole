@@ -1,20 +1,20 @@
 {
-  "project": "Crucian rotating flagpole finial",
-  "version": "0.7.5",
+  "project": "Super_pommels_and_flag rotating flagpole finial",
+  "version": "0.7.6",
   "packageType": "cumulative source, generated mechanics, drawings, documentation and handoff package",
   "sourceRepository": "https://github.com/kva4991/flagpole",
   "sourceBranchReviewed": "main",
-  "sourceHeadReviewed": "6bff2d717cb6bb6612e14cd612d2b961627c0617",
+  "sourceHeadReviewed": "14346190d702c292fded598f55fc431dd92b19ad",
   "publication": {
-    "branch": "main",
-    "commit": "7e5417bf1b606a35565aaf849fdab96d18b5d7e3",
-    "githubActionsRun": 30761888122,
-    "conclusion": "success"
+    "status": "owner push pending",
+    "baseCommit": "14346190d702c292fded598f55fc431dd92b19ad",
+    "generatedFromLocalCheckout": true,
+    "githubActionsV076": "pending owner push"
   },
-  "outputArchive": "flagpole_v075_cumulative_update_20260802.zip",
+  "outputArchive": "Super_pommels_and_flag_v0.7.6_cumulative_full.zip",
   "treeMetrics": {
-    "publishedFileCountIncludingManifestAndChecksum": 377,
-    "totalBytesExcludingManifestAndChecksum": 471168002
+    "publishedFileCountIncludingManifestAndChecksum": 391,
+    "totalBytesExcludingManifestAndChecksum": 471208464
   },
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
@@ -27,7 +27,15 @@
     "validatedStlCount": 40,
     "currentGlbCount": 7,
     "fullyParametric": true,
-    "archivedTransitionMeshes": "archive/legacy_v073_reference/canonical_meshes"
+    "archivedTransitionMeshes": "archive/legacy_v073_reference/canonical_meshes",
+    "printLayoutPacking": {
+      "algorithm": "deterministic AABB shelf packing",
+      "bedSizeMm": 256,
+      "edgeReserveMm": 8,
+      "petgGapMm": 6,
+      "tpuGapMm": 5,
+      "canonicalBackingGeometry": false
+    }
   },
   "currentFlagFiles": [
     "flag_with_attachment_loops_full_size_300x250.svg",
@@ -36,22 +44,18 @@
     "fish_template_dimensioned_A4_landscape.svg"
   ],
   "validation": {
-    "nodeTests": "39/39 passed in the protected full checkout",
-    "markdownFiles": "95 checked in the protected full checkout",
-    "drawingCards": "19 current, 0 historical",
-    "interactiveModels": "7 current, 0 historical; 3 are print layouts",
-    "stlTopology": "40/40 watertight, winding consistent and single connected component",
-    "pythonSources": "all current Python generators and validators passed py_compile locally",
-    "androidBuild": "v0.7.5 debug APK built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
-    "firmwareBuild": "both PlatformIO projects built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
+    "v0.7.6PackageSelfTests": "passed before delivery",
+    "localQualityGate": "46/46 tests passed; 100 Markdown files, 40 STL and 7 current GLB checked in protected checkout",
+    "androidBuildV076": "pending owner CI",
+    "firmwareBuildV076": "pending owner CI",
     "hardwareBench": "required"
   },
   "notes": [
-    "Current structural print material is purchased orange PETG.",
-    "Every current screw joint uses a serviceable captive standard hex nut: 8x M4 and 10x M3.",
-    "The twin-wire rail, 35-degree guide, membrane geometry, electronics carrier and light tunnel remain subject to real-part measurements and coupon tests.",
-    "Weatherproofing geometry has no claimed IP rating until rain, condensation and temperature-cycle tests pass.",
-    "No project license has been selected."
+    "Public project name is Super_pommels_and_flag; BLE device name Crucian is retained for compatibility.",
+    "Card thumbnails are clean; identifiers are available in full-size drawings and toggleable in fullscreen 3D.",
+    "Print layouts are compacted with explicit AABB clearances and contain no sacrificial PETG backing geometry.",
+    "build123d-mcp is an auxiliary pilot workflow; current SDF/trimesh geometry remains canonical until part-by-part migration.",
+    "Published v0.7.5 CI evidence is preserved in previousValidation and is not relabelled as v0.7.6."
   ],
   "largestFiles": [
     {
@@ -80,15 +84,15 @@
     },
     {
       "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
-      "bytes": 16068096
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_electronics_layout.glb",
-      "bytes": 13888080
+      "bytes": 16068100
     },
     {
       "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
       "bytes": 13397364
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_6_electronics_layout.glb",
+      "bytes": 13236584
     },
     {
       "path": "mechanical/stl_petg/service_lid_top_face_down.stl",
@@ -99,20 +103,37 @@
       "bytes": 11776284
     },
     {
-      "path": "archive/legacy_v073_reference/canonical_meshes/PETG_rotor_half_B_assembly.stl",
-      "bytes": 11741484
-    },
-    {
-      "path": "archive/legacy_v02_reference/flagpole_finial_v0_2_assembly.glb",
-      "bytes": 11681084
-    },
-    {
-      "path": "archive/legacy_v073_reference/canonical_meshes/PETG_rotor_half_A_assembly.stl",
-      "bytes": 10560484
-    },
-    {
       "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
       "bytes": 10501884
+    },
+    {
+      "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
+      "bytes": 9449204
+    },
+    {
+      "path": "mechanical/stl_petg_v06/service_lid_top_face_down.stl",
+      "bytes": 5426484
+    },
+    {
+      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_16.00.stl",
+      "bytes": 4794484
     }
-  ]
+  ],
+  "previousPublication": {
+    "branch": "main",
+    "commit": "7e5417bf1b606a35565aaf849fdab96d18b5d7e3",
+    "githubActionsRun": 30761888122,
+    "conclusion": "success"
+  },
+  "previousValidation": {
+    "nodeTests": "39/39 passed in the protected full checkout",
+    "markdownFiles": "95 checked in the protected full checkout",
+    "drawingCards": "19 current, 0 historical",
+    "interactiveModels": "7 current, 0 historical; 3 are print layouts",
+    "stlTopology": "40/40 watertight, winding consistent and single connected component",
+    "pythonSources": "all current Python generators and validators passed py_compile locally",
+    "androidBuild": "v0.7.5 debug APK built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
+    "firmwareBuild": "both PlatformIO projects built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
+    "hardwareBench": "required"
+  }
 }

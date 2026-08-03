@@ -65,7 +65,7 @@ jobs:
       - name: Install mechanical dependencies
         run: python -m pip install --requirement mechanical/requirements.txt
 
-      - name: Regenerate v0.7.5 mechanics and diagrams
+      - name: Regenerate v0.7.6 mechanics and diagrams
         run: |
           python mechanical/generate_models_v06.py
           python mechanical/validate_models_v06.py

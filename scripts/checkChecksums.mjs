@@ -20,7 +20,9 @@ const textBasenames = new Set(['.gitattributes', '.gitignore', 'gradlew']);
 function walk(root) {
   const files = [];
   for (const entry of readdirSync(root, { withFileTypes: true })) {
-    if (entry.isDirectory() && ignoredDirectories.has(entry.name)) continue;
+    // In a normal clone .git is a directory; in a linked worktree it is a
+    // pointer file. Neither form belongs to the published project manifest.
+    if (ignoredDirectories.has(entry.name)) continue;
     const path = join(root, entry.name);
     if (entry.isDirectory()) files.push(...walk(path));
     else if (resolve(path) !== manifestPath) files.push(path);

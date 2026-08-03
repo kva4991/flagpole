@@ -5,7 +5,7 @@ import process from 'node:process';
 const root = process.cwd();
 const sourcePath = path.join(root, 'project_identity.json');
 const firmwarePath = path.join(root, 'electronics', 'firmware', 'esp32_c3_crucian_v06', 'include', 'project_identity.h');
-const androidPath = path.join(root, 'android', 'crucian-control', 'app', 'src', 'main', 'java', 'ru', 'quicktickets', 'crucian', 'ProjectIdentity.kt');
+const androidPath = path.join(root, 'android', 'crucian-control', 'app', 'src', 'main', 'java', 'ru', 'superpommelsandflag', 'crucian', 'ProjectIdentity.kt');
 const stringsPath = path.join(root, 'android', 'crucian-control', 'app', 'src', 'main', 'res', 'values', 'strings.xml');
 
 const source = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
@@ -26,7 +26,7 @@ const xmlEscape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;'
 
 const firmware = `#pragma once\n\n// Сгенерировано из project_identity.json. Вручную не редактировать.\nnamespace project_identity {\ninline constexpr char PROJECT_DISPLAY_NAME[] = "${cppEscape(source.projectDisplayName)}";\ninline constexpr char BLE_DEVICE_NAME[] = "${cppEscape(source.bluetoothDeviceName)}";\n}\n`;
 
-const android = `package ru.quicktickets.crucian\n\n/** Сгенерировано из project_identity.json. Вручную не редактировать. */\nobject ProjectIdentity {\n    const val PROJECT_DISPLAY_NAME: String = "${cppEscape(source.projectDisplayName)}"\n    const val BLE_DEVICE_NAME: String = "${cppEscape(source.bluetoothDeviceName)}"\n}\n`;
+const android = `package ru.superpommelsandflag.crucian\n\n/** Сгенерировано из project_identity.json. Вручную не редактировать. */\nobject ProjectIdentity {\n    const val PROJECT_DISPLAY_NAME: String = "${cppEscape(source.projectDisplayName)}"\n    const val BLE_DEVICE_NAME: String = "${cppEscape(source.bluetoothDeviceName)}"\n}\n`;
 
 const strings = `<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <!-- Сгенерировано из project_identity.json. Вручную не редактировать. -->\n    <string name="app_name">${xmlEscape(source.projectDisplayName)}</string>\n</resources>\n`;
 

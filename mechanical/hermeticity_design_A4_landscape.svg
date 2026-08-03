@@ -6,7 +6,7 @@
 </defs>
 <rect width="297" height="210" fill="#f5f6f7"/>
 <text x="148.5" y="10" text-anchor="middle" class="title">Герметичность электронного отсека, VEML7700 и климатического кармана</text>
-<text x="148.5" y="16" text-anchor="middle" class="sub">проектные сечения v0.7.5; независимые барьеры обслуживаются отдельно, подтверждённый IP-класс не заявляется</text>
+<text x="148.5" y="16" text-anchor="middle" class="sub">проектные сечения v0.7.6; независимые барьеры обслуживаются отдельно, подтверждённый IP-класс не заявляется</text>
 <rect x="8" y="27" width="90" height="121" rx="4" class="note"/><rect x="103" y="27" width="90" height="121" rx="4" class="note"/><rect x="198" y="27" width="91" height="121" rx="4" class="note"/>
 <text x="12" y="37" class="h">A. Крышка электронного бокса</text><text x="107" y="37" class="h">B. Тоннель и VEML7700</text><text x="202" y="37" class="h">C. Карман AHT20+BMP280</text>
 <!-- lid -->

@@ -34,15 +34,17 @@ const required = [
   'mechanical/generate_hermeticity_diagram_v075.py',
   'electronics/generate_electronics_diagrams_v075.py',
   'mechanical/validate_models_v06.py',
+  'mechanical/layout_packing.py',
+  'mechanical/CALLOUT_LAYOUT_REPORT_V076.json',
 ];
 
-test('current v0.7.5 mechanical sources and requested artifacts exist', () => {
+test('current v0.7.6 mechanical sources and requested artifacts exist', () => {
   for (const file of required) assert.ok(fs.existsSync(path.join(root, file)), `missing ${file}`);
 });
 
 test('current generator is parametric and includes all requested features', () => {
   const source = fs.readFileSync(path.join(root, 'mechanical/generate_models_v06.py'), 'utf8');
-  assert.match(source, /CURRENT_VERSION = "0\.7\.5"/);
+  assert.match(source, /CURRENT_VERSION = "0\.7\.6"/);
   assert.match(source, /m4_nut_pocket_across_flats/);
   assert.match(source, /m3_nut_pocket_across_flats/);
   assert.match(source, /flag_side_wire_guide_sdf/);
@@ -66,7 +68,7 @@ test('electronics service view creates exactly one canonical lid', () => {
 test('flag cable route reaches the owner point below fasteners through the angled guide', () => {
   const diagnostics = JSON.parse(fs.readFileSync(path.join(root, 'mechanical/model_parameters_and_diagnostics_v06.json'), 'utf8'));
   const p = diagnostics.parameters_mm;
-  assert.equal(diagnostics.version.startsWith('0.7.5'), true);
+  assert.equal(diagnostics.version.startsWith('0.7.6'), true);
   assert.ok(p.flag_cable_center_z < p.spoke_center_z);
   assert.equal(p.twin_wire_clear_width, 4.2);
   assert.equal(p.wire_rail_height, 2.5);
@@ -80,7 +82,7 @@ test('flag cable route reaches the owner point below fasteners through the angle
   assert.match(document, /#tpu95-4/);
 });
 
-test('flag loop datum, membrane, tunnel and captive nuts match v0.7.5', () => {
+test('flag loop datum, membrane, tunnel and captive nuts match v0.7.6', () => {
   const diagnostics = JSON.parse(fs.readFileSync(path.join(root, 'mechanical/model_parameters_and_diagnostics_v06.json'), 'utf8'));
   assert.deepEqual(diagnostics.derived_mm.flag_loop_top_offsets.map(v => Math.round(v * 100) / 100), [45, 106.67, 168.33, 230]);
   assert.ok(Math.abs(diagnostics.derived_mm.environment_membrane_open_area_mm2 - 21.9911) < 0.01);

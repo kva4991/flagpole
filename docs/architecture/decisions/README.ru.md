@@ -30,3 +30,6 @@
 | [0024](0024-removable-electronics-carrier.ru.md) | Принято | Съёмный двухуровневый каркас электроники |
 | [0025](0025-fully-parametric-current-mechanics.ru.md) | Принято | Полностью параметрическая current-механика |
 | [0026](0026-current-only-catalog-and-part-id-callouts.ru.md) | Принято | Только актуальные карточки и обязательные ID-выноски вне раскладок печати |
+- [ADR-0027: чистые миниатюры и управляемые ID-метки](0027-clean-thumbnails-and-controllable-id-callouts.ru.md)
+- [ADR-0028: компактные одно-материальные раскладки](0028-compact-single-material-print-layouts.ru.md)
+- [ADR-0029: build123d-mcp как вспомогательный CAD-контур](0029-build123d-mcp-pilot.ru.md)

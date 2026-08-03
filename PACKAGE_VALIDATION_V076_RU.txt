@@ -1,0 +1,72 @@
+ПРОВЕРКА КУМУЛЯТИВНОГО ПАКЕТА v0.7.6
+Дата: 2026-08-02
+База: kva4991/flagpole main / 14346190d702c292fded598f55fc431dd92b19ad
+
+ВЫПОЛНЕНО ДО УПАКОВКИ:
+- python py_compile: apply_update_v076.py — PASS
+- python py_compile: render_catalog_part_callouts_v075.py — PASS
+- python py_compile: layout_packing.py — PASS
+- layout_packing.py --self-test — PASS
+  * стол 256 мм, край 8 мм;
+  * минимальный тестовый AABB-зазор 6 мм;
+  * backing geometry = false;
+  * все тестовые детали стоят на Z=0.
+- render_catalog_part_callouts_v075.py --self-test — PASS
+  * рамки в границах изображения;
+  * рамки не перекрываются;
+  * линии короче legacy-позиций;
+  * тестовый набор без пересечений.
+- apply_update_v076.py --self-test — PASS
+  * публичное имя изменено;
+  * BLE-имя сохранено;
+  * исторические результаты v0.7.5 не переименовываются в v0.7.6;
+  * current/validation status формируется отдельно и идемпотентно;
+  * повторное применение identity/package изменений идемпотентно.
+- patch_catalog_generator на fixture текущих фрагментов — PASS
+- patch_model_generator на fixture текущего блока ручных координат — PASS
+- синтаксическая компиляция результата model-generator fixture — PASS
+- catalog schema v4 и обязательные clean-thumbnail поля — PASS
+- полное синтетическое применение `--skip-regeneration` с созданием ZIP — PASS
+  * первый запуск: 41 изменённый путь;
+  * второй запуск: 0 изменённых путей;
+  * хэши всех 61 файлов checkout полностью совпали;
+  * полный ZIP и SHA-256 воспроизводимо пересозданы.
+- внутренний MANIFEST_SHA256.txt update bundle — сформирован и проверен;
+- детерминированный update ZIP распакован в отдельную папку; self-test из распакованного пакета — PASS;
+- внешний SHA-256 sidecar update ZIP — проверен.
+
+ЧТО ЗАПУСКАЕТСЯ ПРИ ПРИМЕНЕНИИ К ПОЛНОМУ CHECKOUT:
+- npm run identity:generate
+- mechanical/generate_models_v06.py
+- validate_models_v06.py
+- validate_catalog_model_semantics_v075.py
+- все текущие генераторы превью/схем
+- npm run catalog:generate
+- npm run checksums:update
+- npm run quality:gate
+- git diff --check
+- повторный checksums/quality gate и `git diff --check` после обновления status/PROJECT_MANIFEST.json
+- создание полного ZIP и SHA-256
+
+НЕ ВЫПОЛНЕНО ВНУТРИ UPDATE BUNDLE ДО ПРИМЕНЕНИЯ:
+- полная регенерация реальных 40 STL и 7 GLB;
+- сравнение реальных PNG из полного checkout;
+- Android/PlatformIO build;
+- физическая печать, измерение, дождевой/тепловой тест.
+
+Причина: пакет не дублирует сотни мегабайт неизменённых бинарных файлов. Полная проверка выполняется применителем в локальном checkout и затем повторяется CI после push владельца.
+
+ОБНАРУЖЕНО ПРИ ИНТЕГРАЦИИ В ПОЛНЫЙ CHECKOUT:
+- первый запуск в Windows остановился на выводе символа Unicode `→`, потому что применитель не задавал UTF-8 для дочерних Python-процессов; повторная проверка выполняется с `PYTHONUTF8=1` и `PYTHONIOENCODING=utf-8`;
+- ADR-0027…0029 не содержали обязательных разделов проекта и были дополнены;
+- два существующих теста v0.7.5 не были синхронизированы с v0.7.6 и были исправлены;
+- исходный пакет оставлял `ru.quicktickets.crucian`; по требованию владельца application ID, namespace, Kotlin package и путь исходников согласованно изменены на `ru.superpommelsandflag.crucian`.
+
+ИТОГ ЛОКАЛЬНОЙ ИНТЕГРАЦИИ:
+- полный quality gate защищённого checkout: PASS;
+- Node-тесты: 46/46;
+- документация: 100 Markdown-файлов;
+- механика: 40/40 STL топологически корректны, 7 current GLB и единственная сервисная крышка подтверждены;
+- каталог: 14 подписанных полноразмерных изображений воспроизводятся, миниатюры чистые, пересечения выносок сокращены с 34 до 0;
+- Android и обе прошивки ожидают подтверждения GitHub Actions review-ветки;
+- физические испытания не выполнялись.

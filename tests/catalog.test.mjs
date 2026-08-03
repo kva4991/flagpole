@@ -1,4 +1,4 @@
-/* Политика рабочего каталога v0.7.5: только current и обязательные ID-выноски. §catalog */
+/* Политика рабочего каталога v0.7.6: только current и обязательные ID-выноски. §catalog */
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,9 +34,9 @@ describe('project catalog', () => {
   });
 
   it('publishes only the current version and never historical v0.5 cards', () => {
-    assert.equal(currentVersion, '0.7.5');
+    assert.equal(currentVersion, '0.7.6');
     const media = readJson('catalog/drawings.json');
-    assert.equal(media.schemaVersion, 3);
+    assert.equal(media.schemaVersion, 4);
     assert.equal(media.catalogPolicy.visibility, 'current-only');
     assert.equal(media.catalogPolicy.currentVersion, currentVersion);
     assert.equal(media.catalogPolicy.partIdCallouts, 'required-for-all-drawings-and-models-except-print-layouts');
@@ -122,7 +122,7 @@ describe('project catalog', () => {
     for (const heading of ['ID', 'Картинка', 'Возможные названия компонента', 'Зачем он нужен', 'Описание или покупка']) {
       assert.match(html, new RegExp(`<th>${heading}</th>`));
     }
-    assert.match(html, /только актуальных чертежей\/3D версии v0\.7\.5/i);
+    assert.match(html, /только актуальных чертежей\/3D версии v0\.7\.6/i);
     assert.match(html, /catalog\/annotated\/101_electronics_wiring_diagram_A4_ids\.png/);
     assert.match(html, /class="model-hotspot"/);
     assert.match(html, /slot="hotspot-210-/);
@@ -131,7 +131,7 @@ describe('project catalog', () => {
     assert.match(html, /раскладки печати намеренно не содержат выносок/i);
     assert.match(html, /model-viewer\/4\.2\.0\/model-viewer\.min\.js/);
     assert.match(html, /copyHotspots/);
-    assert.match(html, /Компоновка электроники v0\.7\.5 — интерактивно/);
+    assert.match(html, /Компоновка электроники v0\.7\.6 — интерактивно/);
     assert.match(html, /одна поднятая крышка/i);
     assert.doesNotMatch(html, /актуально · v0\.7\.4/);
   });

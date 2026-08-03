@@ -70,4 +70,5 @@ test("checksum manifest normalizes text line endings across Windows and Linux", 
   assert.match(checker, /textBasenames/);
   assert.match(checker, /'\.cache'/);
   assert.match(checker, /'__pycache__'/);
+  assert.match(checker, /if \(ignoredDirectories\.has\(entry\.name\)\) continue/);
 });

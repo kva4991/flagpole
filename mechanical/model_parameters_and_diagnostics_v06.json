@@ -1,5 +1,5 @@
 {
-  "version": "0.7.5 PETG+TPU95+TPU85 provisional",
+  "version": "0.7.6 PETG+TPU95+TPU85 provisional",
   "design_status": "Print coupons first; all purchased-part fits remain measurement-driven",
   "parameters_mm": {
     "flag_width": 300.0,
@@ -840,6 +840,457 @@
         ]
       ],
       "components": 1
+    }
+  },
+  "printLayouts": {
+    "flagpole_finial_v0_6_print_layout_PETG.glb": {
+      "bedSizeMm": 256.0,
+      "edgeReserveMm": 8.0,
+      "requestedGapMm": 6.0,
+      "partCount": 10,
+      "shelfCount": 3,
+      "usedBoundsOnBedMm": [
+        [
+          8.0,
+          8.0,
+          0.0
+        ],
+        [
+          247.6324,
+          214.3938,
+          27.4
+        ]
+      ],
+      "usedWidthMm": 239.6324,
+      "usedDepthMm": 206.3938,
+      "minimumAabbClearanceMm": 6.0,
+      "aabbOccupancyRatio": 0.643781,
+      "containsCanonicalBackingGeometry": false,
+      "note": "Brim/raft is a slicer setting; no sacrificial PETG backing is part of the canonical STL/GLB layout.",
+      "items": [
+        {
+          "name": "collar_A",
+          "sourceKey": "stationary_collar_A_print_flat",
+          "boundsOnBedMm": [
+            [
+              64.9002,
+              183.9999,
+              0.0
+            ],
+            [
+              98.0967,
+              199.5999,
+              17.0
+            ]
+          ]
+        },
+        {
+          "name": "collar_B",
+          "sourceKey": "stationary_collar_B_print_flat",
+          "boundsOnBedMm": [
+            [
+              104.0967,
+              183.9999,
+              0.0
+            ],
+            [
+              137.2932,
+              199.5999,
+              17.0
+            ]
+          ]
+        },
+        {
+          "name": "electronics_carrier",
+          "sourceKey": "electronics_carrier_open_side_up",
+          "boundsOnBedMm": [
+            [
+              8.0,
+              183.9999,
+              0.0
+            ],
+            [
+              58.9002,
+              214.3938,
+              27.4
+            ]
+          ]
+        },
+        {
+          "name": "env_pocket",
+          "sourceKey": "environment_sensor_pocket_open_side_up",
+          "boundsOnBedMm": [
+            [
+              161.1992,
+              8.0,
+              0.0
+            ],
+            [
+              195.1993,
+              51.1978,
+              20.0
+            ]
+          ]
+        },
+        {
+          "name": "lid",
+          "sourceKey": "service_lid_top_face_down",
+          "boundsOnBedMm": [
+            [
+              161.1992,
+              96.0,
+              0.0
+            ],
+            [
+              225.8301,
+              136.6306,
+              8.423
+            ]
+          ]
+        },
+        {
+          "name": "photo_retainer",
+          "sourceKey": "photo_window_retainer_flat",
+          "boundsOnBedMm": [
+            [
+              231.8301,
+              96.0,
+              0.0
+            ],
+            [
+              241.6235,
+              105.7933,
+              1.2
+            ]
+          ]
+        },
+        {
+          "name": "photo_tunnel",
+          "sourceKey": "photo_tunnel_upright",
+          "boundsOnBedMm": [
+            [
+              231.6365,
+              8.0,
+              0.0
+            ],
+            [
+              247.6324,
+              23.9959,
+              15.6
+            ]
+          ]
+        },
+        {
+          "name": "rotor_A",
+          "sourceKey": "rotor_half_A_print_flat",
+          "boundsOnBedMm": [
+            [
+              8.0,
+              8.0,
+              0.0
+            ],
+            [
+              155.1992,
+              90.0,
+              22.9987
+            ]
+          ]
+        },
+        {
+          "name": "rotor_B",
+          "sourceKey": "rotor_half_B_print_flat",
+          "boundsOnBedMm": [
+            [
+              8.0,
+              96.0,
+              0.0
+            ],
+            [
+              155.1992,
+              177.9999,
+              26.5816
+            ]
+          ]
+        },
+        {
+          "name": "veml_cradle",
+          "sourceKey": "VEML7700_cradle_flat",
+          "boundsOnBedMm": [
+            [
+              201.1993,
+              8.0,
+              0.0
+            ],
+            [
+              225.6365,
+              35.4406,
+              4.0
+            ]
+          ]
+        }
+      ]
+    },
+    "flagpole_finial_v0_6_print_layout_TPU95.glb": {
+      "bedSizeMm": 256.0,
+      "edgeReserveMm": 8.0,
+      "requestedGapMm": 5.0,
+      "partCount": 10,
+      "shelfCount": 2,
+      "usedBoundsOnBedMm": [
+        [
+          8.0,
+          8.0,
+          0.0
+        ],
+        [
+          231.2065,
+          40.7985,
+          20.893
+        ]
+      ],
+      "usedWidthMm": 223.2065,
+      "usedDepthMm": 32.7985,
+      "minimumAabbClearanceMm": 5.0,
+      "aabbOccupancyRatio": 0.334625,
+      "containsCanonicalBackingGeometry": false,
+      "note": "Brim/raft is a slicer setting; no sacrificial PETG backing is part of the canonical STL/GLB layout.",
+      "items": [
+        {
+          "name": "M125_bundle_grommet_A_split_face_down",
+          "sourceKey": "M125_bundle_grommet_A_split_face_down",
+          "boundsOnBedMm": [
+            [
+              92.2066,
+              8.0,
+              0.0
+            ],
+            [
+              103.2066,
+              18.5937,
+              5.2981
+            ]
+          ]
+        },
+        {
+          "name": "M125_bundle_grommet_B_split_face_down",
+          "sourceKey": "M125_bundle_grommet_B_split_face_down",
+          "boundsOnBedMm": [
+            [
+              108.2066,
+              8.0,
+              0.0
+            ],
+            [
+              119.2066,
+              18.5899,
+              5.2981
+            ]
+          ]
+        },
+        {
+          "name": "M125_pole_sleeve_upright",
+          "sourceKey": "M125_pole_sleeve_upright",
+          "boundsOnBedMm": [
+            [
+              8.0,
+              8.0,
+              0.0
+            ],
+            [
+              26.9655,
+              26.9985,
+              17.0
+            ]
+          ]
+        },
+        {
+          "name": "flag_cable_grommet_A_split_face_down",
+          "sourceKey": "flag_cable_grommet_A_split_face_down",
+          "boundsOnBedMm": [
+            [
+              31.9655,
+              8.0,
+              0.0
+            ],
+            [
+              41.9655,
+              19.9957,
+              5.9979
+            ]
+          ]
+        },
+        {
+          "name": "flag_cable_grommet_B_split_face_down",
+          "sourceKey": "flag_cable_grommet_B_split_face_down",
+          "boundsOnBedMm": [
+            [
+              46.9655,
+              8.0,
+              0.0
+            ],
+            [
+              56.9655,
+              19.9946,
+              5.9979
+            ]
+          ]
+        },
+        {
+          "name": "flag_side_wire_guide_slit_up",
+          "sourceKey": "flag_side_wire_guide_slit_up",
+          "boundsOnBedMm": [
+            [
+              61.9655,
+              8.0,
+              0.0
+            ],
+            [
+              87.2066,
+              19.1,
+              20.893
+            ]
+          ]
+        },
+        {
+          "name": "pole_collar_liner_A_split_face_down",
+          "sourceKey": "pole_collar_liner_A_split_face_down",
+          "boundsOnBedMm": [
+            [
+              8.0,
+              31.9985,
+              0.0
+            ],
+            [
+              31.9935,
+              40.7985,
+              11.9998
+            ]
+          ]
+        },
+        {
+          "name": "pole_collar_liner_B_split_face_down",
+          "sourceKey": "pole_collar_liner_B_split_face_down",
+          "boundsOnBedMm": [
+            [
+              36.9935,
+              31.9985,
+              0.0
+            ],
+            [
+              60.9866,
+              40.7985,
+              11.9998
+            ]
+          ]
+        },
+        {
+          "name": "spoke_liner_A_split_face_down",
+          "sourceKey": "spoke_liner_A_split_face_down",
+          "boundsOnBedMm": [
+            [
+              180.2065,
+              8.0,
+              0.0
+            ],
+            [
+              231.2065,
+              16.9486,
+              5.85
+            ]
+          ]
+        },
+        {
+          "name": "spoke_liner_B_split_face_down",
+          "sourceKey": "spoke_liner_B_split_face_down",
+          "boundsOnBedMm": [
+            [
+              124.2066,
+              8.0,
+              0.0
+            ],
+            [
+              175.2065,
+              16.9738,
+              5.85
+            ]
+          ]
+        }
+      ]
+    },
+    "flagpole_finial_v0_6_print_layout_TPU85.glb": {
+      "bedSizeMm": 256.0,
+      "edgeReserveMm": 8.0,
+      "requestedGapMm": 5.0,
+      "partCount": 3,
+      "shelfCount": 1,
+      "usedBoundsOnBedMm": [
+        [
+          8.0,
+          8.0,
+          0.0
+        ],
+        [
+          119.939,
+          50.3991,
+          2.0
+        ]
+      ],
+      "usedWidthMm": 111.939,
+      "usedDepthMm": 42.3991,
+      "minimumAabbClearanceMm": 5.0,
+      "aabbOccupancyRatio": 0.812655,
+      "containsCanonicalBackingGeometry": false,
+      "note": "Brim/raft is a slicer setting; no sacrificial PETG backing is part of the canonical STL/GLB layout.",
+      "items": [
+        {
+          "name": "environment_pocket_gasket_flat",
+          "sourceKey": "environment_pocket_gasket_flat",
+          "boundsOnBedMm": [
+            [
+              8.0,
+              8.0,
+              0.0
+            ],
+            [
+              38.5447,
+              50.3991,
+              1.6
+            ]
+          ]
+        },
+        {
+          "name": "lid_gasket_flat",
+          "sourceKey": "lid_gasket_flat",
+          "boundsOnBedMm": [
+            [
+              43.5447,
+              8.0,
+              0.0
+            ],
+            [
+              106.9454,
+              47.4,
+              2.0
+            ]
+          ]
+        },
+        {
+          "name": "photo_window_gasket_flat",
+          "sourceKey": "photo_window_gasket_flat",
+          "boundsOnBedMm": [
+            [
+              111.9454,
+              8.0,
+              0.0
+            ],
+            [
+              119.939,
+              15.9936,
+              0.8
+            ]
+          ]
+        }
+      ]
     }
   },
   "files": [
