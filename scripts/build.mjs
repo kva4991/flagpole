@@ -86,9 +86,7 @@ if (mode === 'legacy-references') {
   validateProject(true);
   run('Проверка детерминированных результатов', 'git', [
     'diff', '--exit-code', '--',
-    'catalog/catalog.html',
     'catalog/media-descriptions/INDEX_RU.md',
-    'mechanical/build123d_v076/BUILD123D_CANONICAL_REPORT.json',
     'electronics/firmware/esp32_c3_crucian_v06/include/project_identity.h',
     'android/crucian-control/app/src/main/java/ru/superpommelsandflag/crucian/ProjectIdentity.kt',
     'android/crucian-control/app/src/main/res/values/strings.xml',

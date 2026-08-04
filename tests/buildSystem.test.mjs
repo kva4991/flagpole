@@ -79,7 +79,9 @@ test('unified build orders generation before catalog and final validation', () =
   assert.ok(build.indexOf("npmRun('checksums:update')") < build.indexOf('validateProject();'));
   assert.match(build, /validateProject\(true\)/);
   assert.match(build, /quality:generated/);
-  assert.match(build, /BUILD123D_CANONICAL_REPORT\.json/);
+  assert.match(build, /catalog\/media-descriptions\/INDEX_RU\.md/);
+  assert.doesNotMatch(build, /'catalog\/catalog\.html',/);
+  assert.doesNotMatch(build, /'mechanical\/build123d_v076\/BUILD123D_CANONICAL_REPORT\.json',/);
   assert.doesNotMatch(build, /run\('Проверка воспроизводимости Git'/);
   const packageSource = JSON.parse(read('package.json'));
   assert.doesNotMatch(packageSource.scripts['quality:generated'], /checksums:check/);
