@@ -38,7 +38,7 @@ function python(script, ...args) {
 }
 
 function cadPython(script, ...args) {
-  const cad = process.env.FLAGPOLE_CAD_PYTHON;
+  const cad = process.env.FLAGPOLE_CAD_PYTHON ?? (process.platform === 'win32' ? null : 'python');
   if (!cad) {
     console.error('FLAGPOLE_CAD_PYTHON не задан. Запустите tools/windows/setup-cad.ps1 -Install.');
     process.exit(1);

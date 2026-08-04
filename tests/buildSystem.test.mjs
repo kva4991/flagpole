@@ -72,6 +72,7 @@ test('unified build orders generation before catalog and final validation', () =
   assert.ok(build.indexOf("cadPython('mechanical/generate_build123d_canonical_v076.py')") < build.indexOf("npmRun('catalog:generate')"));
   assert.match(build, /function generateLegacyReferencesOnExplicitRequest/);
   assert.match(build, /mode === 'legacy-references'/);
+  assert.match(build, /process\.platform === 'win32' \? null : 'python'/);
   assert.ok(build.indexOf("npmRun('checksums:update')") < build.indexOf('validateProject();'));
   assert.match(read('build.cmd'), /tools\\windows\\build\.ps1/);
   assert.match(read('tools/windows/build.ps1'), /FLAGPOLE_PYTHON/);
