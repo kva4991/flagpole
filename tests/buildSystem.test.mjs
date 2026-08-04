@@ -5,7 +5,7 @@ import path from 'node:path';
 import test from 'node:test';
 
 import { classify } from '../scripts/classifyCiChanges.mjs';
-import { readLfsPointer } from '../scripts/lfsPointer.mjs';
+import { readLfsPointer, readPortableFileSize } from '../scripts/lfsPointer.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), 'utf8');
@@ -42,11 +42,20 @@ test('LFS pointer reader exposes the original content hash and byte size', () =>
   fs.rmSync(folder, { recursive: true, force: true });
 });
 
+test('catalog file sizes are stable across Git line-ending conversion', () => {
+  const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'flagpole-size-'));
+  const lfFile = path.join(folder, 'drawing-lf.svg');
+  const crlfFile = path.join(folder, 'drawing-crlf.svg');
+  fs.writeFileSync(lfFile, '<svg>\n<text>рыба</text>\n</svg>\n');
+  fs.writeFileSync(crlfFile, '<svg>\r\n<text>рыба</text>\r\n</svg>\r\n');
+  assert.equal(readPortableFileSize(lfFile), readPortableFileSize(crlfFile));
+  fs.rmSync(folder, { recursive: true, force: true });
+});
+
 test('checksum and catalog generators understand LFS pointers without downloading assets', () => {
   assert.match(read('scripts/checkChecksums.mjs'), /readLfsPointer/);
   assert.match(read('scripts/checkChecksums.mjs'), /lfsPointer\.oid/);
-  assert.match(read('scripts/generateComponentCatalog.mjs'), /readLfsPointer/);
-  assert.match(read('scripts/generateComponentCatalog.mjs'), /\?\.size/);
+  assert.match(read('scripts/generateComponentCatalog.mjs'), /readPortableFileSize/);
 });
 
 test('LFS policy tracks STL and GLB but keeps PNG in ordinary Git', () => {

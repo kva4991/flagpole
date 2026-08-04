@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { readLfsPointer } from './lfsPointer.mjs';
+import { readPortableFileSize } from './lfsPointer.mjs';
 import { loadAndValidateMediaDescriptions } from './mediaDescriptions.mjs';
 import process from 'node:process';
 
@@ -286,8 +286,7 @@ const formatFileSize = bytes => {
 };
 const fileSize = file => {
   const absolutePath = path.join(root, file);
-  const bytes = readLfsPointer(absolutePath)?.size ?? fs.statSync(absolutePath).size;
-  return formatFileSize(bytes);
+  return formatFileSize(readPortableFileSize(absolutePath));
 };
 const projectName = identity.projectDisplayName;
 const componentNames = new Map(source.components.map(item => [item.id, item.name]));
