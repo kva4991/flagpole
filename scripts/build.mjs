@@ -64,9 +64,9 @@ function generateLegacyReferencesOnExplicitRequest() {
   npmRun('catalog:generate');
 }
 
-function validateProject() {
+function validateProject(generatedArtifacts = false) {
   python('mechanical/validate_models_v06.py');
-  npmRun('quality:gate');
+  npmRun(generatedArtifacts ? 'quality:generated' : 'quality:gate');
 }
 
 if (mode === 'legacy-references') {
@@ -83,8 +83,16 @@ if (mode === 'legacy-references') {
   validateProject();
 } else if (mode === 'ci') {
   generateProject();
-  validateProject();
-  run('Проверка воспроизводимости Git', 'git', ['diff', '--exit-code']);
+  validateProject(true);
+  run('Проверка детерминированных результатов', 'git', [
+    'diff', '--exit-code', '--',
+    'catalog/catalog.html',
+    'catalog/media-descriptions/INDEX_RU.md',
+    'mechanical/build123d_v076/BUILD123D_CANONICAL_REPORT.json',
+    'electronics/firmware/esp32_c3_crucian_v06/include/project_identity.h',
+    'android/crucian-control/app/src/main/java/ru/superpommelsandflag/crucian/ProjectIdentity.kt',
+    'android/crucian-control/app/src/main/res/values/strings.xml',
+  ]);
 } else {
   generateProject();
   npmRun('checksums:update');

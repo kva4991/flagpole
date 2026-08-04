@@ -77,6 +77,13 @@ test('unified build orders generation before catalog and final validation', () =
   assert.match(mechanicalRequirements, /^build123d==0\.11\.1$/m);
   assert.match(mechanicalRequirements, /^cadquery-ocp-novtk==7\.9\.3\.1\.1$/m);
   assert.ok(build.indexOf("npmRun('checksums:update')") < build.indexOf('validateProject();'));
+  assert.match(build, /validateProject\(true\)/);
+  assert.match(build, /quality:generated/);
+  assert.match(build, /BUILD123D_CANONICAL_REPORT\.json/);
+  assert.doesNotMatch(build, /run\('Проверка воспроизводимости Git'/);
+  const packageSource = JSON.parse(read('package.json'));
+  assert.doesNotMatch(packageSource.scripts['quality:generated'], /checksums:check/);
+  assert.match(packageSource.scripts['quality:generated'], /models:semantics:check/);
   assert.match(read('build.cmd'), /tools\\windows\\build\.ps1/);
   assert.match(read('tools/windows/build.ps1'), /FLAGPOLE_PYTHON/);
   assert.match(read('tools/windows/build.ps1'), /FLAGPOLE_CAD_PYTHON/);

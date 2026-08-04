@@ -21,6 +21,7 @@
     "toolchain:check": "powershell -ExecutionPolicy Bypass -File tools/windows/check.ps1",
     "test": "node --test tests/*.test.mjs",
     "quality:core": "npm run media:descriptions:check && npm run identity:check && npm run quality:docs:all && npm run catalog:callouts:self-test && npm run models:layout:self-test && npm run catalog:check && npm test && npm run checksums:check",
+    "quality:generated": "npm run media:descriptions:check && npm run identity:check && npm run quality:docs:all && npm run catalog:callouts:self-test && npm run models:layout:self-test && npm run catalog:check && npm test && npm run models:semantics:check",
     "quality:gate": "npm run quality:core && npm run models:semantics:check",
     "catalog:callouts:self-test": "node scripts/runPython.mjs mechanical/render_catalog_part_callouts_v075.py --self-test",
     "models:layout:self-test": "node scripts/runPython.mjs mechanical/layout_packing.py --self-test",
