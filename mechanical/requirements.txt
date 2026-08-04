@@ -5,3 +5,5 @@ scikit-image==0.26.0
 matplotlib==3.11.1
 Pillow==12.3.0
 resvg-py==0.3.3
+build123d==0.11.1
+cadquery-ocp-novtk==7.9.3.1.1
