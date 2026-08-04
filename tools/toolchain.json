@@ -56,6 +56,23 @@
       "electronics/firmware/esp32_c3_flag_light"
     ]
   },
+  "cad": {
+    "pythonVersion": "3.12",
+    "venvDirectory": ".venv-build123d",
+    "build123dVersion": "0.11.1",
+    "ocpPackage": "cadquery-ocp-novtk==7.9.3.1.1",
+    "glbPackage": "trimesh==5.0.0",
+    "windowsPackages": [
+      {
+        "name": "FreeCAD",
+        "wingetId": "FreeCAD.FreeCAD"
+      },
+      {
+        "name": "OpenSCAD",
+        "wingetId": "OpenSCAD.OpenSCAD"
+      }
+    ]
+  },
   "gradleWrapperVersion": "8.10.2",
   "androidProject": "android/crucian-control",
   "androidSdk": {

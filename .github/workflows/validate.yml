@@ -7,19 +7,54 @@ on:
     branches:
       - main
       - 'agent/**'
+      - 'review/**'
 
 permissions:
   contents: read
 
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality:
     runs-on: ubuntu-latest
+    outputs:
+      mechanical: ${{ steps.changes.outputs.mechanical }}
+      android: ${{ steps.changes.outputs.android }}
+      firmware: ${{ steps.changes.outputs.firmware }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+          lfs: false
 
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
+
+      - name: Classify changed project areas
+        id: changes
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$RUNNER_TEMP/flagpole-changed-files.txt"
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            printf '%s\n' '__all__' > "$changed"
+          else
+            base="$BEFORE_SHA"
+            if [[ "$EVENT_NAME" == "pull_request" ]]; then base="$BASE_SHA"; fi
+            if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
+              printf '%s\n' '__all__' > "$changed"
+            else
+              git fetch --no-tags --depth=1 origin "$base"
+              git diff --name-only "$base" "$GITHUB_SHA" > "$changed"
+            fi
+          fi
+          node scripts/classifyCiChanges.mjs "$changed" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v6
         with:
@@ -31,7 +66,7 @@ jobs:
         run: python -m pip install --requirement mechanical/requirements.txt
 
       - name: Run repository quality gate
-        run: npm run quality:gate
+        run: npm run quality:core
 
       - name: Compile-check project Python sources
         run: >-
@@ -48,9 +83,16 @@ jobs:
           electronics/generate_electronics_diagrams_v075.py
 
   mechanical:
+    needs: quality
+    if: needs.quality.outputs.mechanical == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: false
+
+      - name: Download only mechanical LFS objects
+        run: git lfs pull --include="*.glb,*.stl" --exclude=""
 
       - uses: actions/setup-python@v6
         with:
@@ -65,31 +107,17 @@ jobs:
       - name: Install mechanical dependencies
         run: python -m pip install --requirement mechanical/requirements.txt
 
-      - name: Regenerate v0.7.6 mechanics and diagrams
-        run: |
-          python mechanical/generate_models_v06.py
-          python mechanical/validate_models_v06.py
-          python mechanical/validate_catalog_model_semantics_v075.py
-          python mechanical/render_previews_v06.py
-          python mechanical/render_flag_power_route_v06.py
-          python mechanical/generate_reference_diagrams_v06.py
-          python mechanical/generate_detail_diagrams_v075.py
-          python mechanical/generate_hermeticity_diagram_v075.py
-          python electronics/generate_electronics_diagrams_v075.py
-          python mechanical/render_catalog_part_callouts_v075.py
-
-      - name: Verify generated catalog after drawing regeneration
-        run: npm run catalog:generate && npm run catalog:check
-
-      - name: Validate all generated STL files and model semantics
-        run: |
-          python mechanical/validate_models_v06.py
-          python mechanical/validate_catalog_model_semantics_v075.py
+      - name: Run unified reproducible build
+        run: npm run build:ci
 
   android:
+    needs: quality
+    if: needs.quality.outputs.android == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: false
 
       - uses: actions/setup-java@v5
         with:
@@ -112,6 +140,8 @@ jobs:
           if-no-files-found: error
 
   firmware:
+    needs: quality
+    if: needs.quality.outputs.firmware == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -125,6 +155,8 @@ jobs:
             artifact: flag-light-legacy-firmware
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: false
 
       - uses: actions/setup-python@v6
         with:

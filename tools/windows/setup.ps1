@@ -124,6 +124,11 @@ function Configure-Java {
     Add-UserPathEntry (Join-Path $javaHome 'bin')
 }
 
+function Configure-GitLfs {
+    & git lfs install --skip-repo
+    if ($LASTEXITCODE -ne 0) { throw 'Git LFS initialization failed.' }
+}
+
 function Install-AndroidCommandLineTools {
     $sdkManager = Join-Path $AndroidSdkRoot 'cmdline-tools\latest\bin\sdkmanager.bat'
     if (Test-Path -LiteralPath $sdkManager) { return $sdkManager }
@@ -212,7 +217,7 @@ function Sync-ExecutionWorktree {
     }
     New-Item -ItemType Directory -Path $resolvedTarget -Force | Out-Null
     Write-Host "Synchronizing disposable build copy: $resolvedTarget" -ForegroundColor Cyan
-    & robocopy $repoRoot $resolvedTarget /E /PURGE /R:2 /W:2 /XD .git .gradle .kotlin .pio build node_modules .cache /XF *.log *.tmp | Out-Host
+    & robocopy $repoRoot $resolvedTarget /E /PURGE /R:2 /W:2 /XD .git .gradle .kotlin .pio build node_modules .cache /XF .git *.log *.tmp | Out-Host
     if ($LASTEXITCODE -gt 7) { throw "robocopy failed with code $LASTEXITCODE." }
     return $resolvedTarget
 }
@@ -250,10 +255,12 @@ Refresh-ProcessPath
 Initialize-ExecutionRoot
 Add-KnownPaths
 Install-WindowsPackages
+Configure-GitLfs
 Configure-Java
 Install-AndroidSdk
 Install-PlatformIO
 Install-MechanicalPythonEnvironment
+& (Join-Path $PSScriptRoot 'setup-cad.ps1') -Install -ExecutionRoot $ExecutionRoot
 $buildRoot = Sync-ExecutionWorktree
 Warm-Toolchains -BuildRoot $buildRoot
 Write-Host ''

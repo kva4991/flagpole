@@ -38,6 +38,8 @@ describe('documentation contract', () => {
       'Когда обязательно обновлять чертежи и 3D на странице',
       'catalog/components.json',
       'catalog/drawings.json',
+      'catalog/media-descriptions/<ID>.md',
+      'npm.cmd run media:descriptions:check',
       'npm.cmd run catalog:generate',
       'npm.cmd run catalog:check',
       'GitHub Pages-сайт пока не настроен',

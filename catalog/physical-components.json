@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "tag": "§physicalcomponents1",
+  "policy": {
+    "singleSourceOfTruth": true,
+    "componentCatalog": "catalog/components.json",
+    "publicView": "catalog/catalog.html#component-<ID>",
+    "statuses": [
+      "measured",
+      "calculated",
+      "standard",
+      "seller",
+      "seller-image",
+      "provisional"
+    ]
+  },
+  "components": [
+    {
+      "id": "001",
+      "anchor": "component-001",
+      "measurements": [
+        { "key": "board-outline", "label": "Габариты платы", "value": "18 × 22", "unit": "мм", "numeric": { "width": 18, "height": 22 }, "status": "seller-image", "source": "component-listing" }
+      ],
+      "needs": ["Измерить плату, отверстия, USB-C, кнопки и максимальную высоту компонентов."]
+    },
+    {
+      "id": "002",
+      "anchor": "component-002",
+      "measurements": [
+        { "key": "board-outline", "label": "Габариты платы", "value": "16,5 × 16,5", "unit": "мм", "numeric": { "width": 16.5, "height": 16.5 }, "status": "seller-image", "source": "component-listing" }
+      ],
+      "needs": ["Измерить плату, толщину, отверстия, чувствительный элемент и высоту компонентов."]
+    },
+    {
+      "id": "003",
+      "anchor": "component-003",
+      "measurements": [
+        { "key": "body-diameter", "label": "Наружный диаметр корпуса", "value": "12,5", "unit": "мм", "numeric": { "diameter": 12.5 }, "status": "seller", "source": "component-listing" },
+        { "key": "wire-length", "label": "Стандартная длина проводов", "value": "150", "unit": "мм", "numeric": { "length": 150 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Измерить корпус, фланец, ротор, пучки проводов и общую длину экземпляра."]
+    },
+    {
+      "id": "004",
+      "anchor": "component-004",
+      "measurements": [
+        { "key": "tube-diameter", "label": "Наружный диаметр круглого неона", "value": "16", "unit": "мм", "numeric": { "diameter": 16 }, "status": "seller", "source": "component-listing" },
+        { "key": "wire-tail", "label": "Длина хвоста провода", "value": "около 200", "unit": "мм", "numeric": { "length": 200 }, "status": "seller-image", "source": "component-listing" }
+      ],
+      "needs": ["Измерить фактический диаметр, минимальный радиус изгиба и длину хвоста выбранного отрезка."]
+    },
+    {
+      "id": "005",
+      "anchor": "component-005",
+      "measurements": [
+        { "key": "board-outline", "label": "Габариты платы", "value": "32,9 × 16,2", "unit": "мм", "numeric": { "length": 32.9, "width": 16.2 }, "status": "seller-image", "source": "component-listing" }
+      ],
+      "needs": ["Измерить плату, отверстия, клеммники и максимальную высоту."]
+    },
+    {
+      "id": "006",
+      "anchor": "component-006",
+      "measurements": [
+        { "key": "board-envelope", "label": "Габаритный объём модуля", "value": "27,5 × 22 × 9", "unit": "мм", "numeric": { "length": 27.5, "width": 22, "height": 9 }, "status": "seller", "source": "component-listing" },
+        { "key": "mass", "label": "Масса", "value": "5", "unit": "г", "numeric": { "mass": 5 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Измерить плату, дроссель, конденсаторы, контактные площадки и максимальную высоту."]
+    },
+    {
+      "id": "007",
+      "anchor": "component-007",
+      "measurements": [
+        { "key": "rod-diameter", "label": "Наружный диаметр", "value": "5", "unit": "мм", "numeric": { "diameter": 5 }, "status": "seller", "source": "component-listing" },
+        { "key": "rod-length", "label": "Длина", "value": "100", "unit": "мм", "numeric": { "length": 100 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Проверить, является ли заготовка сплошным прутком или трубкой, и измерить её в нескольких местах."]
+    },
+    {
+      "id": "008",
+      "anchor": "component-008",
+      "selection": "selected-candidate",
+      "measurements": [
+        { "key": "bore-diameter", "label": "Внутренний диаметр d", "value": "30", "unit": "мм", "numeric": { "diameter": 30 }, "status": "standard", "source": "JTEKT 6806-2RS" },
+        { "key": "outer-diameter", "label": "Наружный диаметр D", "value": "42", "unit": "мм", "numeric": { "diameter": 42 }, "status": "standard", "source": "JTEKT 6806-2RS" },
+        { "key": "width", "label": "Ширина B", "value": "7", "unit": "мм", "numeric": { "width": 7 }, "status": "standard", "source": "JTEKT 6806-2RS" },
+        { "key": "minimum-chamfer", "label": "Минимальная фаска r", "value": "0,3", "unit": "мм", "numeric": { "radius": 0.3 }, "status": "standard", "source": "JTEKT 6806-2RS" },
+        { "key": "mass", "label": "Справочная масса одного подшипника", "value": "26", "unit": "г", "numeric": { "mass": 26 }, "status": "standard", "source": "JTEKT 6806-2RS" }
+      ],
+      "needs": ["Купить два одинаковых 6806-2RS с нормальным зазором CN и измерить оба экземпляра."]
+    },
+    {
+      "id": "009",
+      "anchor": "component-009",
+      "measurements": [
+        { "key": "board-outline", "label": "Габариты платы", "value": "15 × 15", "unit": "мм", "numeric": { "width": 15, "height": 15 }, "status": "measured", "source": "owner-measurement" }
+      ],
+      "needs": ["Измерить толщину, максимальную высоту, координаты чувствительной кромки и отверстий."]
+    },
+    {
+      "id": "010",
+      "anchor": "component-010",
+      "measurements": [
+        { "key": "wire-length-each-side", "label": "Длина провода с каждой стороны", "value": "около 53,8", "unit": "мм", "numeric": { "length": 53.8 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Измерить корпус, сопряжённую пару, провод и защёлку."]
+    },
+    {
+      "id": "011",
+      "anchor": "component-011",
+      "measurements": [
+        { "key": "case-envelope", "label": "Габариты корпуса", "value": "примерно 87 × 65 × 45", "unit": "мм", "numeric": { "length": 87, "width": 65, "height": 45 }, "status": "seller", "source": "component-listing" },
+        { "key": "mass", "label": "Масса пустого корпуса", "value": "около 200", "unit": "г", "numeric": { "mass": 200 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Измерить полученный корпус, разъёмы и ремешок; массу уточнить без аккумуляторов."]
+    },
+    {
+      "id": "012",
+      "anchor": "component-012",
+      "measurements": [
+        { "key": "filament-diameter", "label": "Диаметр филамента", "value": "1,75", "unit": "мм", "numeric": { "diameter": 1.75 }, "status": "seller", "source": "package-label" },
+        { "key": "spool-net-mass", "label": "Масса филамента", "value": "1000", "unit": "г", "numeric": { "mass": 1000 }, "status": "seller", "source": "package-label" }
+      ],
+      "needs": ["Проверить диаметр в нескольких местах и массу остатка перед большой печатью."]
+    },
+    {
+      "id": "013",
+      "anchor": "component-013",
+      "measurements": [
+        { "key": "fabric-width", "label": "Ширина полотна", "value": "1500", "unit": "мм", "numeric": { "width": 1500 }, "status": "seller", "source": "component-listing" },
+        { "key": "areal-density", "label": "Поверхностная плотность", "value": "100", "unit": "г/м²", "numeric": { "arealDensity": 100 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Измерить толщину и массу фактического отреза."]
+    },
+    {
+      "id": "014",
+      "anchor": "component-014",
+      "measurements": [],
+      "needs": ["Нужны ширина, длина, толщина и масса фактического отреза; значение плотности продавца пока не имеет подтверждённой единицы."]
+    },
+    {
+      "id": "015",
+      "anchor": "component-015",
+      "measurements": [
+        { "key": "pole-outer-diameter", "label": "Наружный диаметр верхней секции в середине трубы", "value": "24,9", "unit": "мм", "numeric": { "diameter": 24.9 }, "status": "measured", "source": "owner-measurement-2026-08-04" },
+        { "key": "pole-inner-diameter", "label": "Внутренний диаметр в том же рабочем сечении", "value": "24,3", "unit": "мм", "numeric": { "diameter": 24.3 }, "status": "measured", "source": "owner-measurement-2026-08-04" },
+        { "key": "target-segment-inner-diameter", "label": "Внутренний диаметр по всей длине нужной секции", "value": "24,3", "unit": "мм", "numeric": { "diameter": 24.3 }, "status": "measured", "source": "owner-confirmation-2026-08-04" },
+        { "key": "calculated-wall-thickness", "label": "Расчётная толщина стенки", "value": "0,3", "unit": "мм", "numeric": { "thickness": 0.3 }, "status": "calculated", "source": "(24,9 − 24,3) / 2" },
+        { "key": "maximum-height", "label": "Максимальная высота флагштока", "value": "примерно 3000", "unit": "мм", "numeric": { "height": 3000 }, "status": "seller", "source": "component-listing" },
+        { "key": "assembly-mass", "label": "Масса комплекта", "value": "примерно 1620", "unit": "г", "numeric": { "mass": 1620 }, "status": "seller", "source": "component-listing" }
+      ],
+      "needs": ["Для текущей посадки овальность отдельно не учитывать: внутреннюю посадку жёсткой PETG-втулки подтвердить пробниками #40101–#40103; для нижней разгрузки #402 проверить только свободную глубину и устройство стыка секций — Ø24,3 мм подтверждён по всей нужной секции."]
+    },
+    {
+      "id": "016",
+      "anchor": "component-016",
+      "measurements": [],
+      "needs": ["Подтвердить диаметр филамента, массу катушки и выбранный цвет по этикетке."]
+    },
+    {
+      "id": "017",
+      "anchor": "component-017",
+      "measurements": [],
+      "needs": ["Измерить корпус PPTC, шаг и диаметр выводов."]
+    },
+    {
+      "id": "018",
+      "anchor": "component-018",
+      "measurements": [],
+      "needs": ["После выбора катушки записать диаметр, массу, производителя и допуск."]
+    },
+    {
+      "id": "019",
+      "anchor": "component-019",
+      "measurements": [
+        { "key": "membrane-outer-diameter", "label": "Наружный диаметр диска", "value": "20", "unit": "мм", "numeric": { "diameter": 20 }, "status": "measured", "source": "owner-measurement" },
+        { "key": "active-zone-diameter", "label": "Диаметр функциональной центральной зоны", "value": "10", "unit": "мм", "numeric": { "diameter": 10 }, "status": "measured", "source": "owner-measurement" }
+      ],
+      "needs": ["Измерить толщину, ширину клеевого кольца и подтвердить материал мембраны."]
+    },
+    {
+      "id": "020",
+      "anchor": "component-020",
+      "measurements": [],
+      "needs": ["После выбора упаковки записать массу или объём и габариты тары."]
+    },
+    {
+      "id": "021",
+      "anchor": "component-021",
+      "measurements": [
+        { "key": "thread-sizes", "label": "Номинальные размеры резьбы", "value": "M3 и M4", "unit": "", "status": "standard", "source": "project-fastener-selection" }
+      ],
+      "needs": ["Измерить гайки по граням и толщине, головки и длины фактических винтов, плоские шайбы, а также подобрать наружный/внутренний диаметр и толщину четырёх EPDM/силиконовых либо металл-резиновых уплотнительных шайб крышки."]
+    },
+    {
+      "id": "022",
+      "anchor": "component-022",
+      "measurements": [
+        { "key": "main-cable-area", "label": "Номинальное сечение каждой жилы основного кабеля", "value": "0,75", "unit": "мм²", "numeric": { "area": 0.75 }, "status": "provisional", "source": "project-selection" },
+        { "key": "internal-wire-area", "label": "Номинальное сечение AWG20", "value": "около 0,52", "unit": "мм²", "numeric": { "area": 0.52 }, "status": "standard", "source": "AWG20" },
+        { "key": "external-wire-diameter", "label": "Принятый наружный диаметр каждой из двух отдельных жил", "value": "2", "unit": "мм", "numeric": { "diameter": 2 }, "status": "provisional", "source": "owner-assumption-2026-08-04" },
+        { "key": "internal-wire-pair-width", "label": "Принятый общий габарит двух соседних жил", "value": "4", "unit": "мм", "numeric": { "width": 4 }, "status": "provisional", "source": "owner-assumption-2026-08-04" }
+      ],
+      "needs": ["Подтвердить штангенциркулем принятые Ø2 мм каждой жилы и габарит пары 4 мм; проверить пробники #40204–#40206 и готовые соединения."]
+    },
+    {
+      "id": "023",
+      "anchor": "component-023",
+      "measurements": [
+        { "key": "wire-gauge", "label": "Номинальный диапазон сечения", "value": "AWG26–28", "unit": "", "status": "provisional", "source": "project-selection" },
+        { "key": "branch-length", "label": "Предварительная длина каждого ответвления", "value": "150–200", "unit": "мм", "numeric": { "minimum": 150, "maximum": 200 }, "status": "provisional", "source": "current-layout-assumption" }
+      ],
+      "needs": ["Выбрать провод и измерить наружный диаметр, длины ветвей и разъёмы."]
+    },
+    {
+      "id": "024",
+      "anchor": "component-024",
+      "measurements": [],
+      "needs": ["Измерить толщину и доступный размер найденного прозрачного куска."]
+    },
+    {
+      "id": "025",
+      "anchor": "component-025",
+      "measurements": [
+        { "key": "thread-linear-density", "label": "Основная линейная плотность нити", "value": "Tex 45", "unit": "", "status": "provisional", "source": "project-selection" },
+        { "key": "heavy-thread-linear-density", "label": "Усиленный вариант", "value": "Tex 70 / V69", "unit": "", "status": "provisional", "source": "project-selection" }
+      ],
+      "needs": ["Подтвердить фактическую катушку, диаметр нити и совместимую иглу на пробном шве."]
+    }
+  ]
+}

@@ -11,8 +11,8 @@
 ## Результат применения к этому checkout
 
 - После исправления дефектов архива полный защищённый checkout прошёл регенерацию и локальный quality gate: **PASS**.
-- 46/46 Node-тестов, 100 Markdown-файлов, 40/40 STL и 7 current GLB проверены.
-- Android application ID и namespace согласованы как `ru.superpommelsandflag.crucian`; сборку APK подтверждает CI review-ветки после push.
+- После добавления единой сборки и экономного LFS-профиля: 53/53 Node-теста, 101 Markdown-файл, 40/40 STL и 7 current GLB проверены.
+- Android application ID и namespace согласованы как `ru.superpommelsandflag.crucian`; APK и обе прошивки собраны в review-ветке.
 
 Обычный запуск применителя пересобирает механические STL/GLB, превью, схемы, слой ID, HTML-каталог и контрольные суммы, затем запускает `quality:gate` и `git diff --check`.
 
@@ -21,11 +21,13 @@
 - GitHub Actions run [`30761888122`](https://github.com/kva4991/flagpole/actions/runs/30761888122), commit `7e5417b`, успешно собрал Android debug APK и обе PlatformIO-линии;
 - эти результаты намеренно не переименовываются в v0.7.6.
 
-## Ожидает подтверждения после push владельца
+## Подтверждено для опубликованной review-ветки v0.7.6
 
-- GitHub Actions для v0.7.6;
+- GitHub Actions run [`30791048730`](https://github.com/kva4991/flagpole/actions/runs/30791048730), commit `dd511f0`;
 - Android `assembleDebug` с `versionCode = 5`, `versionName = "0.7.6"`;
-- обе PlatformIO-сборки на новом commit.
+- обе PlatformIO-сборки.
+
+Новая миграция Git LFS и единый build-интерфейс пока проверены локально и ожидают отдельного разрешения владельца на commit/push.
 
 ## Не проверено аппаратно
 

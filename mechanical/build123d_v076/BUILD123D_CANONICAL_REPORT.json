@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 2,
+  "version": "0.7.6",
+  "status": "canonical-build123d",
+  "build123dVersion": "0.11.1",
+  "geometryNodes": 23,
+  "nativeBuild123dNodes": 23,
+  "legacyMeshNodes": 0,
+  "wireGuide": "closed twin through-channels; no service slit",
+  "guideStartMm": [
+    15.2,
+    -17.2,
+    4.8
+  ],
+  "guideEndMm": [
+    29.2,
+    -17.2,
+    -5.0
+  ],
+  "guideAngleDownDeg": 34.992,
+  "spokeBore": "continuous split bore opens through flag-side end face in both rotor halves",
+  "environmentDripLipMm": {
+    "outerDiameter": 22.0,
+    "innerDiameter": 20.8,
+    "height": 1.0,
+    "drainGaps": 4
+  },
+  "vemlCradleCentre": "solid support; no unjustified central through-hole",
+  "electronicsEnclosure": {
+    "centreXmm": -60.0,
+    "outerMm": [
+      72.0,
+      42.0,
+      40.0
+    ],
+    "innerMm": [
+      64.0,
+      34.0,
+      36.0
+    ],
+    "lidOuterMm": [
+      74.0,
+      44.0,
+      3.6
+    ],
+    "towerToLidClearanceMm": 0.4,
+    "lidCollisionVolumeMm3": 0.0,
+    "gasketScrewOverlapVolumeMm3": 0.0,
+    "locatingSkirtClearancePerSideMm": 0.4,
+    "dryOpeningMm": [
+      54.0,
+      31.6
+    ],
+    "carrierOpeningClearancePerSideMm": [
+      1.8,
+      0.6
+    ],
+    "carrierOutsideOpeningVolumeMm3": 0.0,
+    "gasketFreeHeightMm": 2.0,
+    "gasketWorkingHeightMm": 1.5,
+    "gasketCompressionPercent": 25.0,
+    "seal": "continuous inner shelf and lid groove; all four screw holes stay outside the dry gasket contour"
+  },
+  "legacyReferenceGeneratorsRun": false,
+  "outputGlb": "flagpole_finial_v0_6_exploded.glb",
+  "outputSha256": "33bb2bc1e41010fee2c63c7d5d56d54ce79a221f0300f78485e59030e63142c7",
+  "hardwareOverlayGlb": "flagpole_finial_v0_6_exploded_with_fasteners.glb",
+  "hardwareOverlaySha256": "c27ae56cbebf91738e67d09f205dc0ce7c65996902305a50bab06538d236d432",
+  "simplifiedFastenerNodes": 18,
+  "printLayouts": {
+    "flagpole_finial_v0_6_print_layout_PETG.glb": 10,
+    "flagpole_finial_v0_6_print_layout_TPU95.glb": 10,
+    "flagpole_finial_v0_6_print_layout_TPU85.glb": 3
+  },
+  "parts": [
+    {
+      "node": "PETG_rotor_half_A",
+      "step": "build123d_v076/petg-1_rotor_half_A.step",
+      "stl": "stl_petg_v06/rotor_half_A_print_flat.stl",
+      "volumeMm3": 85556.569,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_rotor_half_B",
+      "step": "build123d_v076/petg-2_rotor_half_B.step",
+      "stl": "stl_petg_v06/rotor_half_B_print_flat.stl",
+      "volumeMm3": 85540.767,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_stationary_collar_A",
+      "step": "build123d_v076/petg-3_stationary_collar_A.step",
+      "stl": "stl_petg_v06/stationary_collar_A_print_flat.stl",
+      "volumeMm3": 2239.202,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_stationary_collar_B",
+      "step": "build123d_v076/petg-4_stationary_collar_B.step",
+      "stl": "stl_petg_v06/stationary_collar_B_print_flat.stl",
+      "volumeMm3": 2237.815,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_service_lid",
+      "step": "build123d_v076/petg-5_service_lid.step",
+      "stl": "stl_petg_v06/service_lid_top_face_down.stl",
+      "volumeMm3": 11352.246,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_photo_tunnel",
+      "step": "build123d_v076/petg-6_photo_tunnel.step",
+      "stl": "stl_petg_v06/photo_tunnel_upright.stl",
+      "volumeMm3": 1303.296,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_photo_window_retainer",
+      "step": "build123d_v076/petg-7_photo_window_retainer.step",
+      "stl": "stl_petg_v06/photo_window_retainer_flat.stl",
+      "volumeMm3": 72.269,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_environment_sensor_pocket",
+      "step": "build123d_v076/petg-8_environment_sensor_pocket.step",
+      "stl": "stl_petg_v06/environment_sensor_pocket_open_side_up.stl",
+      "volumeMm3": 9405.318,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_electronics_carrier",
+      "step": "build123d_v076/petg-9_electronics_carrier.step",
+      "stl": "stl_petg_v06/electronics_carrier_open_side_up.stl",
+      "volumeMm3": 3227.681,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "PETG_VEML7700_cradle",
+      "step": "build123d_v076/petg-10_VEML7700_cradle.step",
+      "stl": "stl_petg_v06/VEML7700_cradle_flat.stl",
+      "volumeMm3": 1232.631,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_spoke_liner_A",
+      "step": "build123d_v076/tpu95-1_spoke_liner_A.step",
+      "stl": "stl_tpu95_v06/spoke_liner_A_split_face_down.stl",
+      "volumeMm3": 708.068,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_spoke_liner_B",
+      "step": "build123d_v076/tpu95-2_spoke_liner_B.step",
+      "stl": "stl_tpu95_v06/spoke_liner_B_split_face_down.stl",
+      "volumeMm3": 708.068,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_flag_cable_grommet_A",
+      "step": "build123d_v076/tpu95-3_flag_cable_grommet_A.step",
+      "stl": "stl_tpu95_v06/flag_cable_grommet_A_split_face_down.stl",
+      "volumeMm3": 367.101,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_flag_cable_grommet_B",
+      "step": "build123d_v076/tpu95-4_flag_cable_grommet_B.step",
+      "stl": "stl_tpu95_v06/flag_cable_grommet_B_split_face_down.stl",
+      "volumeMm3": 367.101,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_M125_bundle_grommet_A",
+      "step": "build123d_v076/tpu95-5_M125_bundle_grommet_A.step",
+      "stl": "stl_tpu95_v06/M125_bundle_grommet_A_split_face_down.stl",
+      "volumeMm3": 277.013,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_M125_bundle_grommet_B",
+      "step": "build123d_v076/tpu95-6_M125_bundle_grommet_B.step",
+      "stl": "stl_tpu95_v06/M125_bundle_grommet_B_split_face_down.stl",
+      "volumeMm3": 277.013,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_M125_pole_sleeve",
+      "step": "build123d_v076/tpu95-7_M125_pole_sleeve.step",
+      "stl": "stl_tpu95_v06/M125_pole_sleeve_upright.stl",
+      "volumeMm3": 1249.734,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_pole_collar_liner_A",
+      "step": "build123d_v076/tpu95-8_pole_collar_liner_A.step",
+      "stl": "stl_tpu95_v06/pole_collar_liner_A_split_face_down.stl",
+      "volumeMm3": 316.311,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_pole_collar_liner_B",
+      "step": "build123d_v076/tpu95-9_pole_collar_liner_B.step",
+      "stl": "stl_tpu95_v06/pole_collar_liner_B_split_face_down.stl",
+      "volumeMm3": 316.311,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU95_flag_side_wire_guide",
+      "step": "build123d_v076/tpu95-10_flag_side_wire_guide_closed.step",
+      "stl": "stl_tpu95_v06/flag_side_wire_guide_closed.stl",
+      "volumeMm3": 1434.013,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU85_lid_gasket",
+      "step": "build123d_v076/tpu85-1_lid_gasket.step",
+      "stl": "stl_tpu85_v06/lid_gasket_flat.stl",
+      "volumeMm3": 786.75,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU85_photo_window_gasket",
+      "step": "build123d_v076/tpu85-2_photo_window_gasket.step",
+      "stl": "stl_tpu85_v06/photo_window_gasket_flat.stl",
+      "volumeMm3": 28.048,
+      "watertight": true,
+      "connectedBodies": 1
+    },
+    {
+      "node": "TPU85_environment_pocket_gasket",
+      "step": "build123d_v076/tpu85-3_environment_pocket_gasket.step",
+      "stl": "stl_tpu85_v06/environment_pocket_gasket_flat.stl",
+      "volumeMm3": 348.973,
+      "watertight": true,
+      "connectedBodies": 1
+    }
+  ],
+  "limitations": [
+    "Physical fits, nut retention, sealing and printed strength remain unverified."
+  ]
+}

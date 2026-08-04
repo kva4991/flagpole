@@ -13,6 +13,9 @@
 | `§toolwin` | Windows toolchain и изолированная исполняемая зона | `tools/README.ru.md` |
 | `§checksum` | SHA-256 manifest публикуемого дерева | `docs/DOCUMENTATION_WORKFLOW_RU.md` |
 | `§catalog` | JSON — источник HTML-каталога | `catalog/README_RU.md` |
+| `§physicalcomponents1` | Физические размеры покупных компонентов редактируются один раз и доступны по стабильным ссылкам карточек | `catalog/physical-components.json`; `catalog/README_RU.md`; ADR-0034 |
+| `§bearingadapter1` | Два 6806 получают жёсткие PETG-втулки без TPU; независимые пробники посадок строятся из одного файла размеров | `mechanical/cad_drafts/petg_6806_adapter_v076.json`; `mechanical/docs/PETG_6806_BEARING_ADAPTER_RU.md`; ADR-0035 |
+| `§lowercablestrain1` | Нижний торец секции получает закрытую TPU85-разгрузку с двумя каналами Ø2 мм, гибким хвостом и обязательным свободным запасом провода | `mechanical/cad_drafts/tpu85_lower_pole_strain_relief_v076.json`; `mechanical/docs/LOWER_POLE_CABLE_STRAIN_RELIEF_RU.md`; ADR-0036 |
 | `§meas001` | Геометрия меняется только по реальным измерениям | `MEASUREMENTS_REQUIRED_RU.md` |
 | `§mech001` | Спица между подшипниками, токосъёмник не несущий | `docs/architecture/decisions/0003-structural-material-boundaries.ru.md` |
 | `§mat0001` | Купленный оранжевый PETG используется сейчас; ASA возможна позднее после повторной проверки посадок | `docs/architecture/decisions/0012-petg-now-asa-later.ru.md` |
@@ -31,4 +34,9 @@
 | `§weather73` | Крышка, световой тоннель и климатический карман используют независимые обслуживаемые барьеры | `docs/architecture/decisions/0018-multibarrier-weatherproofing.ru.md` |
 | `§flagloop73` | Верхняя лямка привязана к низу навершия, нижняя — к низу флага | `docs/architecture/decisions/0021-flag-loop-datum-below-finial.ru.md` |
 | `§drawstatus73` | Изготовление ведётся только по current-карточкам; current-механика полностью параметрическая | `docs/architecture/decisions/0025-fully-parametric-current-mechanics.ru.md` |
-- `§cadworkflow` — `mechanical/docs/BUILD123D_MCP_WORKFLOW_RU.md`; ADR-0029.
+| `§cadworkflow` | Пилотный точный CAD-контур build123d-mcp | `mechanical/docs/BUILD123D_MCP_WORKFLOW_RU.md`; ADR-0029 |
+| `§build01` | Единая сборка и экономная загрузка Git LFS в CI | `docs/architecture/decisions/0030-git-lfs-and-unified-build.ru.md` |
+| `§prunegen1` | Устаревшие бинарные генерации не дублируются в текущем дереве и доступны через историю Git | `docs/architecture/decisions/0037-prune-superseded-generated-binaries.ru.md` |
+| `§license01` | Аппаратный источник использует CERN-OHL-S-2.0, собственное ПО — MIT, сторонние материалы сохраняют исходные условия | `LICENSE.md`; ADR-0031 |
+| `§mediarationale1` | Для каждого рисунка, 3D-модели и очереди печати существует один одноимённый подробный Markdown-файл, обновляемый вместе с медиа | `catalog/media-descriptions/README_RU.md`; ADR-0032 |
+| `§mediacontract1` | Каждый медиа-ID начинается с краткого проверяемого контракта: сохранить, запрещено, проверить | `catalog/media-descriptions/README_RU.md`; ADR-0033 |

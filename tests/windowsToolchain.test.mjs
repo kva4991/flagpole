@@ -32,12 +32,49 @@ test("Windows setup uses isolated official PlatformIO installer and repository G
   assert.match(setup, /gradlew\.bat/);
   assert.match(setup, /Sync-ExecutionWorktree/);
   assert.match(setup, /robocopy.+\/PURGE/);
+  assert.match(setup, /\/XF \.git \*\.log \*\.tmp/);
   assert.match(setup, /crucian-control-debug\.apk/);
   assert.match(setup, /crucian-v06-firmware\.bin/);
   assert.match(setup, /Install-MechanicalPythonEnvironment/);
   assert.match(setup, /mechanical\\requirements\.txt/);
   assert.match(setup, /\.mechanical-venv/);
+  assert.match(setup, /git lfs install --skip-repo/);
+  assert.match(setup, /setup-cad\.ps1/);
   assert.doesNotMatch(setup, /pip install.+platformio/i);
+});
+
+test("Windows CAD setup pins build123d/OCP and installs desktop CAD normally", () => {
+  const manifest = JSON.parse(read("tools/toolchain.json"));
+  const setupCad = read("tools/windows/setup-cad.ps1");
+  const check = read("tools/windows/check.ps1");
+
+  assert.equal(manifest.cad.build123dVersion, "0.11.1");
+  assert.equal(manifest.cad.ocpPackage, "cadquery-ocp-novtk==7.9.3.1.1");
+  assert.equal(manifest.cad.glbPackage, "trimesh==5.0.0");
+  assert.equal(manifest.cad.venvDirectory, ".venv-build123d");
+  assert.deepEqual(manifest.cad.windowsPackages.map(({ wingetId }) => wingetId), [
+    "FreeCAD.FreeCAD",
+    "OpenSCAD.OpenSCAD",
+  ]);
+  assert.match(setupCad, /winget install/);
+  assert.match(setupCad, /import build123d, OCP/);
+  assert.match(check, /build123d\/OCP environment/);
+  assert.match(check, /freecadcmd\.exe/i);
+  assert.match(check, /openscad\.exe/i);
+});
+
+test("agent guidance requires Python execution from the protected Windows copy", () => {
+  const agents = read("AGENTS.md");
+  const fastStart = read("docs/agent-fast-start.ru.md");
+  const toolsReadme = read("tools/README.ru.md");
+
+  for (const document of [agents, fastStart, toolsReadme]) {
+    assert.match(document, /pesochnica\\flagpole\\worktree/);
+    assert.match(document, /spawnSync py EPERM/);
+  }
+  assert.match(agents, /Пробный Python-запуск из исходного Git-worktree запрещён/);
+  assert.match(fastStart, /не запускать Python.+из исходного Git-worktree/s);
+  assert.match(toolsReadme, /не запускать Python.+из исходного Git-worktree/s);
 });
 
 test("Android Kotlin 2 project applies matching Compose compiler plugin and wrapper", () => {
@@ -59,8 +96,9 @@ test("GitHub Actions builds Android and both PlatformIO projects", () => {
   assert.match(workflow, /actions\/checkout@v7/);
   assert.match(workflow, /actions\/upload-artifact@v7/);
   assert.match(workflow, /mechanical\/requirements\.txt/);
-  assert.match(workflow, /generate_models_v06\.py/);
-  assert.match(workflow, /validate_models_v06\.py/);
+  assert.match(workflow, /npm run build:ci/);
+  assert.match(workflow, /git lfs pull --include="\*\.glb,\*\.stl"/);
+  assert.match(workflow, /needs\.quality\.outputs\.mechanical/);
 });
 
 test("checksum manifest normalizes text line endings across Windows and Linux", () => {
@@ -71,4 +109,13 @@ test("checksum manifest normalizes text line endings across Windows and Linux", 
   assert.match(checker, /'\.cache'/);
   assert.match(checker, /'__pycache__'/);
   assert.match(checker, /if \(ignoredDirectories\.has\(entry\.name\)\) continue/);
+});
+
+test("component catalog launcher supports an explicit Firefox browser", () => {
+  const launcher = read("tools/windows/open-component-catalog.ps1");
+  assert.match(launcher, /\[ValidateSet\('Default', 'Firefox'\)\]/);
+  assert.match(launcher, /Get-Command firefox\.exe/);
+  assert.match(launcher, /Mozilla Firefox\\firefox\.exe/);
+  assert.match(launcher, /Start-Process -FilePath \$firefoxPath -ArgumentList \$url/);
+  assert.match(launcher, /\[switch\]\$NoBrowser/);
 });

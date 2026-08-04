@@ -289,9 +289,9 @@
 <text x="80" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">Направляющая двух проводов у</text>
 <text x="80" y="231.80000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">флага</text>
 <text x="164" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="3.45" font-weight="400" fill="#172126">1</text>
-<text x="180" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Сменная разрезная направляющая двух проводов Ø2</text>
-<text x="180" y="231.80000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">мм; устанавливается под углом около 35° вниз к</text>
-<text x="304" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/flag_side_wire_guide_slit_up.stl</text>
+<text x="180" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">Цельная направляющая, два закрытых канала Ø2 мм;</text>
+<text x="180" y="231.80000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.85" font-weight="400" fill="#172126">на нижнем скруглении #petg-2, около 35° вниз</text>
+<text x="304" y="228.30000000000007" font-family="DejaVu Sans,Arial,sans-serif" font-size="2.65" font-weight="400" fill="#172126">stl_tpu95_v06/flag_side_wire_guide_closed.stl</text>
 <line x1="45" y1="224.20000000000007" x2="45" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="78" y1="224.20000000000007" x2="78" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>
 <line x1="160" y1="224.20000000000007" x2="160" y2="234.00000000000009" stroke="#c7d0d4" stroke-width="0.35"/>

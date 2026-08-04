@@ -1,24 +1,24 @@
 {
   "project": "Super_pommels_and_flag rotating flagpole finial",
   "version": "0.7.6",
-  "packageType": "cumulative source, generated mechanics, drawings, documentation and handoff package",
+  "packageType": "cumulative full working tree with media rationale, generated catalog, legacy CAD audit, documentation and recovery metadata",
   "sourceRepository": "https://github.com/kva4991/flagpole",
-  "sourceBranchReviewed": "main",
-  "sourceHeadReviewed": "14346190d702c292fded598f55fc431dd92b19ad",
+  "sourceBranchReviewed": "review/v0.7.6",
+  "sourceHeadReviewed": "dd511f0ec087b405a1a0a9b99d186d0555c49a79",
   "publication": {
-    "status": "owner push pending",
+    "status": "review branch prepared as a main-merge candidate after cleanup and local validation",
     "baseCommit": "14346190d702c292fded598f55fc431dd92b19ad",
     "generatedFromLocalCheckout": true,
-    "githubActionsV076": "pending owner push"
+    "githubActionsV076": "passed in run 30791048730 for dd511f0"
   },
-  "outputArchive": "Super_pommels_and_flag_v0.7.6_cumulative_full.zip",
+  "outputArchive": "flagpole_v0_7_6_media_rationale_cumulative_20260804.zip",
   "treeMetrics": {
-    "publishedFileCountIncludingManifestAndChecksum": 391,
-    "totalBytesExcludingManifestAndChecksum": 471208464
+    "publishedFileCountIncludingManifestAndChecksum": 447,
+    "totalBytesExcludingManifestAndChecksum": 126078879
   },
   "currentFirmware": "electronics/firmware/esp32_c3_crucian_v06",
   "currentAndroidProject": "android/crucian-control",
-  "currentMechanicalSource": "mechanical/generate_models_v06.py",
+  "currentMechanicalSource": "mechanical/generate_build123d_canonical_v076.py",
   "currentMechanicalArtifacts": {
     "petg": "mechanical/stl_petg_v06",
     "tpu95": "mechanical/stl_tpu95_v06",
@@ -27,7 +27,6 @@
     "validatedStlCount": 40,
     "currentGlbCount": 7,
     "fullyParametric": true,
-    "archivedTransitionMeshes": "archive/legacy_v073_reference/canonical_meshes",
     "printLayoutPacking": {
       "algorithm": "deterministic AABB shelf packing",
       "bedSizeMm": 256,
@@ -35,6 +34,13 @@
       "petgGapMm": 6,
       "tpuGapMm": 5,
       "canonicalBackingGeometry": false
+    },
+    "legacyRegenerationAudit": {
+      "report": "docs/LEGACY_CAD_REGENERATION_AUDIT_RU.md",
+      "machineReport": "mechanical/LEGACY_REGENERATION_AUDIT_V076.json",
+      "comparisonScript": "mechanical/audit_legacy_regeneration_v076.py",
+      "checkedFiles": 49,
+      "equivalentFiles": 49
     }
   },
   "currentFlagFiles": [
@@ -44,47 +50,36 @@
     "fish_template_dimensioned_A4_landscape.svg"
   ],
   "validation": {
-    "v0.7.6PackageSelfTests": "passed before delivery",
-    "localQualityGate": "46/46 tests passed; 100 Markdown files, 40 STL and 7 current GLB checked in protected checkout",
-    "androidBuildV076": "pending owner CI",
-    "firmwareBuildV076": "pending owner CI",
-    "hardwareBench": "required"
+    "v0.7.6PackageSelfTests": "passed before cumulative delivery",
+    "localQualityGate": "72/72 Node tests passed; 143 Markdown files, catalog, 29/29 media descriptions and checksums passed; 40/40 current STL passed protected-copy topology validation; superseded generated binaries were removed",
+    "androidBuildV076": "passed in GitHub Actions run 30791048730",
+    "firmwareBuildV076": "both projects passed in GitHub Actions run 30791048730",
+    "hardwareBench": "required",
+    "mediaDescriptions": "29/29 records, no duplicate editable rationale found outside ID directory",
+    "legacyCadRegeneration": "40 STL + 7 GLB + 2 JSON = 49/49 geometrically or semantically equivalent",
+    "build123dFullLine": "complete canonical printable line: 23 native build123d/OCP STEP/STL nodes, 0 legacy mesh nodes in model #204"
+  },
+  "licensing": {
+    "hardware": "CERN-OHL-S-2.0",
+    "software": "MIT",
+    "map": "LICENSE.md",
+    "thirdPartyMaterials": "retain their original terms and are not relicensed"
   },
   "notes": [
     "Public project name is Super_pommels_and_flag; BLE device name Crucian is retained for compatibility.",
     "Card thumbnails are clean; identifiers are available in full-size drawings and toggleable in fullscreen 3D.",
     "Print layouts are compacted with explicit AABB clearances and contain no sacrificial PETG backing geometry.",
-    "build123d-mcp is an auxiliary pilot workflow; current SDF/trimesh geometry remains canonical until part-by-part migration.",
-    "Published v0.7.5 CI evidence is preserved in previousValidation and is not relabelled as v0.7.6."
+    "Canonical model #204 contains all 23 native build123d/OCP printable parts; the experimental pilot and all superseded generated binaries were removed from the working tree and remain available in Git history.",
+    "STL and GLB are assigned to Git LFS for the next commit; PNG stays in regular Git and CI has only one conditional LFS download.",
+    "Project-authored hardware source uses CERN-OHL-S-2.0 and project-authored software uses MIT; third-party materials keep their original terms.",
+    "Published v0.7.5 CI evidence is preserved in previousValidation and is not relabelled as v0.7.6.",
+    "Every current drawing, interactive model and print session has one detailed same-ID Markdown rationale file; catalog JSON stores only descriptionFile references.",
+    "Legacy reference drawings and non-print interactive scenes retain their established generators and are regenerated only by explicit owner request."
   ],
   "largestFiles": [
     {
-      "path": "mechanical/flagpole_finial_v0_5_assembly.glb",
-      "bytes": 37855244
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_5_print_layout_PETG.glb",
-      "bytes": 28353728
-    },
-    {
-      "path": "mechanical/stl_petg/rotor_half_A_print_flat.stl",
-      "bytes": 23837284
-    },
-    {
-      "path": "mechanical/stl_petg/rotor_half_B_print_flat.stl",
-      "bytes": 23774884
-    },
-    {
       "path": "mechanical/flagpole_finial_v0_6_assembly.glb",
       "bytes": 21181452
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_exploded.glb",
-      "bytes": 21048992
-    },
-    {
-      "path": "mechanical/flagpole_finial_v0_6_print_layout_PETG.glb",
-      "bytes": 16068100
     },
     {
       "path": "mechanical/flagpole_finial_v0_6_flag_power_route.glb",
@@ -95,28 +90,28 @@
       "bytes": 13236584
     },
     {
-      "path": "mechanical/stl_petg/service_lid_top_face_down.stl",
-      "bytes": 12572484
+      "path": "mechanical/test_coupons_v06/PETG_photo_tunnel_15_18_comparison_coupon.stl",
+      "bytes": 4090084
     },
     {
-      "path": "mechanical/stl_petg_v06/rotor_half_B_print_flat.stl",
-      "bytes": 11776284
+      "path": "mechanical/test_coupons_v06/PETG_lid_gasket_groove_coupon.stl",
+      "bytes": 3292684
     },
     {
-      "path": "mechanical/stl_petg_v06/rotor_half_A_print_flat.stl",
-      "bytes": 10501884
+      "path": "mechanical/test_coupons_v06/bearing_seat_32.50_half_A.stl",
+      "bytes": 2831084
     },
     {
-      "path": "mechanical/flagpole_finial_v0_5_print_layout_TPU.glb",
-      "bytes": 9449204
+      "path": "mechanical/test_coupons_v06/bearing_seat_32.35_half_A.stl",
+      "bytes": 2830084
     },
     {
-      "path": "mechanical/stl_petg_v06/service_lid_top_face_down.stl",
-      "bytes": 5426484
+      "path": "mechanical/test_coupons_v06/bearing_seat_32.50_half_B.stl",
+      "bytes": 2828084
     },
     {
-      "path": "mechanical/test_coupons/TPU_M125_sleeve_OD_16.00.stl",
-      "bytes": 4794484
+      "path": "mechanical/test_coupons_v06/bearing_seat_32.20_half_A.stl",
+      "bytes": 2821684
     }
   ],
   "previousPublication": {
@@ -135,5 +130,16 @@
     "androidBuild": "v0.7.5 debug APK built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
     "firmwareBuild": "both PlatformIO projects built successfully in GitHub Actions run 30761888122 for main commit 7e5417b",
     "hardwareBench": "required"
+  },
+  "catalogMediaDescriptions": {
+    "directory": "catalog/media-descriptions",
+    "recordCount": 29,
+    "drawingCount": 19,
+    "interactiveModelCount": 7,
+    "printSessionCount": 3,
+    "jsonSchemaVersion": 5,
+    "oneFilePerMediaId": true,
+    "duplicateEditableRationaleAllowed": false,
+    "validationCommand": "npm run media:descriptions:check"
   }
 }

@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readLfsPointer } from './lfsPointer.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifestPath = resolve(repoRoot, 'CHECKSUMS_SHA256.txt');
@@ -36,6 +37,8 @@ function manifest() {
     .sort((left, right) => (left < right ? -1 : left > right ? 1 : 0))
     .map((path) => {
       const absolutePath = resolve(repoRoot, path);
+      const lfsPointer = readLfsPointer(absolutePath);
+      if (lfsPointer) return `${lfsPointer.oid}  ${path}`;
       const extension = path.slice(path.lastIndexOf('.')).toLowerCase();
       const basename = path.split('/').at(-1);
       const content = textExtensions.has(extension) || textBasenames.has(basename)

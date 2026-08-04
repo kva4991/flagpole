@@ -72,6 +72,9 @@ foreach ($package in $manifest.windowsPackages) {
 $bash = Get-CommandLine -Command 'bash' -Arguments @('--version')
 if ($bash) { Add-Result 'OK' 'Git Bash' $bash.Text } else { Add-Result 'MISSING' 'Git Bash' 'bash not found in PATH' }
 
+$gitLfs = Get-CommandLine -Command 'git' -Arguments @('lfs', 'version')
+if ($gitLfs) { Add-Result 'OK' 'Git LFS' $gitLfs.Text } else { Add-Result 'MISSING' 'Git LFS' 'git lfs was not found' }
+
 $platformIoCandidates = @(
     (Join-Path $ExecutionRoot '.platformio\penv\Scripts\pio.exe'),
     (Join-Path $ExecutionRoot '.platformio\penv\Scripts\platformio.exe')
@@ -90,6 +93,28 @@ if (Test-Path -LiteralPath $mechanicalPython) {
     else { Add-Result 'MISSING' 'Mechanical Python environment' 'Environment exists, but required imports fail' }
 }
 else { Add-Result 'MISSING' 'Mechanical Python environment' $mechanicalPython }
+
+$cadPython = Join-Path $ExecutionRoot '.venv-build123d\Scripts\python.exe'
+if (Test-Path -LiteralPath $cadPython) {
+    $cadVersion = (& $cadPython -c 'import build123d, OCP, trimesh; print(build123d.__version__)' 2>$null | Select-Object -First 1) -as [string]
+    if ($cadVersion -and $cadVersion.Trim() -eq [string]$manifest.cad.build123dVersion) { Add-Result 'OK' 'build123d/OCP environment' "$cadVersion ($cadPython)" }
+    else { Add-Result 'MISSING' 'build123d/OCP environment' 'Environment exists, but required imports/version fail' }
+}
+else { Add-Result 'MISSING' 'build123d/OCP environment' $cadPython }
+
+$freeCadCandidates = @(
+    (Join-Path $env:LOCALAPPDATA 'Programs\FreeCAD 1.1\bin\freecadcmd.exe'),
+    (Join-Path $env:ProgramFiles 'FreeCAD 1.1\bin\freecadcmd.exe')
+)
+$freeCad = $freeCadCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if ($freeCad) { Add-Result 'OK' 'FreeCAD' $freeCad } else { Add-Result 'MISSING' 'FreeCAD' 'freecadcmd.exe not found' }
+
+$openScadCandidates = @(
+    (Join-Path $env:ProgramFiles 'OpenSCAD\openscad.exe'),
+    (Join-Path $env:LOCALAPPDATA 'Programs\OpenSCAD\openscad.exe')
+)
+$openScad = $openScadCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if ($openScad) { Add-Result 'OK' 'OpenSCAD' $openScad } else { Add-Result 'MISSING' 'OpenSCAD' 'openscad.exe not found' }
 
 if (Test-Path -LiteralPath $ExecutionRoot) { Add-Result 'OK' 'Execution root' $ExecutionRoot }
 else { Add-Result 'MISSING' 'Execution root' $ExecutionRoot }
@@ -114,7 +139,7 @@ if ((Test-Path -LiteralPath $wrapper) -and (Test-Path -LiteralPath $wrapperJar))
 else { Add-Result 'MISSING' 'Gradle Wrapper' 'gradlew.bat or gradle-wrapper.jar is missing' }
 
 Write-Host ''
-Write-Host 'Crucian Windows toolchain'
+Write-Host 'Super_pommels_and_flag Windows toolchain'
 $rows | Format-Table -AutoSize -Wrap
 Write-Host ''
 if ($missingRequired -gt 0) {

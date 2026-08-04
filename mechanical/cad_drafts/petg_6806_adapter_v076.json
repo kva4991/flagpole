@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "draftType": "bearing-adapter",
+  "id": "401",
+  "tag": "§bearingadapter1",
+  "version": "0.7.6",
+  "status": "source-only-not-generated",
+  "title": "Переходные втулки PETG для 6806-2RS и посадочные пробники",
+  "summary": "Параметрическая заготовка двух жёстких втулок между древком и внутренними кольцами 6806-2RS; STL, STEP и 3D-превью намеренно ещё не создавались.",
+  "material": "PETG",
+  "sourceFile": "mechanical/generate_petg_6806_adapter_coupons_v076.py",
+  "documentation": "mechanical/docs/PETG_6806_BEARING_ADAPTER_RU.md",
+  "physicalDependencies": [
+    {
+      "componentId": "008",
+      "role": "Подшипник 6806-2RS: внутреннее кольцо задаёт наружную посадку втулки."
+    },
+    {
+      "componentId": "015",
+      "role": "Флагшток: наружная поверхность задаёт внутреннюю посадку втулки."
+    }
+  ],
+  "finalPart": {
+    "partId": "#petg-11",
+    "name": "Жёсткая переходная втулка древко → внутреннее кольцо 6806",
+    "quantity": 2,
+    "release": "provisional-until-coupons",
+    "dimensions": [
+      {
+        "key": "pole-bore-diameter",
+        "label": "Предварительный внутренний диаметр",
+        "value": 25.2,
+        "unit": "мм",
+        "status": "provisional",
+        "reason": "Рабочий стартовый зазор относительно измеренного древка; окончательное число выбирается по серии P."
+      },
+      {
+        "key": "bearing-seat-diameter",
+        "label": "Предварительный наружный диаметр",
+        "value": 30.0,
+        "unit": "мм",
+        "status": "provisional",
+        "reason": "Номинал отверстия внутреннего кольца; окончательное число выбирается по серии B."
+      },
+      {
+        "key": "axial-width",
+        "label": "Рабочая осевая ширина",
+        "value": 7.0,
+        "unit": "мм",
+        "status": "standard-derived",
+        "reason": "Совпадает с шириной внутреннего кольца выбранного подшипника."
+      },
+      {
+        "key": "nominal-radial-wall",
+        "label": "Расчётная радиальная стенка при стартовых диаметрах",
+        "value": 2.4,
+        "unit": "мм",
+        "status": "calculated",
+        "reason": "(30,0 − 25,2) / 2."
+      }
+    ],
+    "assemblyRules": [
+      "Втулка полностью жёсткая, без слоя TPU между PETG и металлическим древком.",
+      "Две одинаковые втулки устанавливаются по одной под внутреннее кольцо каждого подшипника.",
+      "Не забивать подшипник и не использовать его для выправления тонкой трубы.",
+      "Осевое удержание проектируется отдельными жёсткими упорами; нельзя рассчитывать только на трение PETG по металлу."
+    ]
+  },
+  "couponSets": [
+    {
+      "id": "pole",
+      "label": "Посадка на древко",
+      "purpose": "Отдельно выбрать внутреннюю посадку PETG на фактическое древко; наружный диаметр уменьшен, поэтому подшипник этой серией не проверяется.",
+      "common": {
+        "outerDiameterMm": 29.5,
+        "heightMm": 7.0
+      },
+      "variants": [
+        { "id": "40101", "code": "P1", "boreDiameterMm": 25.0 },
+        { "id": "40102", "code": "P2", "boreDiameterMm": 25.2 },
+        { "id": "40103", "code": "P3", "boreDiameterMm": 25.4 }
+      ]
+    },
+    {
+      "id": "bearing",
+      "label": "Посадка во внутреннее кольцо подшипника",
+      "purpose": "Отдельно выбрать наружную посадку PETG во внутреннем кольце 6806; увеличенное отверстие облегчает снятие и не проверяет древко.",
+      "common": {
+        "boreDiameterMm": 26.0,
+        "heightMm": 7.0
+      },
+      "variants": [
+        { "id": "40104", "code": "B1", "outerDiameterMm": 29.8 },
+        { "id": "40105", "code": "B2", "outerDiameterMm": 30.0 },
+        { "id": "40106", "code": "B3", "outerDiameterMm": 30.2 }
+      ]
+    }
+  ],
+  "acceptance": [
+    "Серия P надевается рукой без сдавливания древка, заметного люфта и растрескивания по слоям.",
+    "Серия B входит во внутреннее кольцо равномерным ручным усилием, снимается без повреждения и не качается.",
+    "Выбранные независимо размеры P и B переносятся в finalPart только после записи результата физической примерки.",
+    "До испытания купонов #petg-11 имеет статус заготовки и не входит в канонические 23 печатные детали."
+  ],
+  "plannedOutputs": [
+    "mechanical/test_coupons_v06/PETG_6806_pole_fit_P1.stl",
+    "mechanical/test_coupons_v06/PETG_6806_pole_fit_P2.stl",
+    "mechanical/test_coupons_v06/PETG_6806_pole_fit_P3.stl",
+    "mechanical/test_coupons_v06/PETG_6806_bearing_fit_B1.stl",
+    "mechanical/test_coupons_v06/PETG_6806_bearing_fit_B2.stl",
+    "mechanical/test_coupons_v06/PETG_6806_bearing_fit_B3.stl",
+    "mechanical/stl_petg_v06/PETG_6806_pole_adapter.stl",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_pole_fit_P1.step",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_pole_fit_P2.step",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_pole_fit_P3.step",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_bearing_fit_B1.step",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_bearing_fit_B2.step",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_bearing_fit_B3.step",
+    "mechanical/build123d_v076/draft_6806_adapter/PETG_6806_pole_adapter.step"
+  ]
+}

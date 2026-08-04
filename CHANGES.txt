@@ -1,0 +1,8 @@
+Hardware design modification record for CERN-OHL-S-2.0
+
+Do not remove existing entries. Add the date, author or organisation, and a
+brief description whenever modified hardware design source is conveyed.
+
+2026-08-03 — kva4991: The existing Super_pommels_and_flag design through
+version 0.7.6 was first released under CERN-OHL-S-2.0. Detailed earlier project
+history remains available in CHANGELOG.md and the repository commit history.

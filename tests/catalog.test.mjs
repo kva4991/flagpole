@@ -11,12 +11,19 @@ const readJson = path => JSON.parse(fs.readFileSync(resolve(repoRoot, path), 'ut
 const currentVersion = fs.readFileSync(resolve(repoRoot, 'VERSION.txt'), 'utf8').trim();
 
 describe('project catalog', () => {
-  it('matches its JSON sources and generated callout images', () => {
-    const render = spawnSync(process.execPath, ['scripts/runPython.mjs', 'mechanical/render_catalog_part_callouts_v075.py', '--check'], {
-      cwd: repoRoot,
-      encoding: 'utf8',
-    });
-    assert.equal(render.status, 0, render.stderr || render.stdout);
+  it('matches its JSON sources and generated callout images', t => {
+    const executionRoot = process.env.FLAGPOLE_EXECUTION_ROOT ? resolve(process.env.FLAGPOLE_EXECUTION_ROOT) : null;
+    const protectedWindowsCopy = process.platform !== 'win32' || (executionRoot && repoRoot.toLowerCase().startsWith(`${executionRoot.toLowerCase()}\\`));
+    if (protectedWindowsCopy) {
+      const render = spawnSync(process.execPath, ['scripts/runPython.mjs', 'mechanical/render_catalog_part_callouts_v075.py', '--check'], {
+        cwd: repoRoot,
+        encoding: 'utf8',
+        env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' },
+      });
+      assert.equal(render.status, 0, render.stderr || render.stdout);
+    } else {
+      t.diagnostic('Python callout check deferred to the synchronized pesochnica worktree.');
+    }
 
     const catalog = spawnSync(process.execPath, ['scripts/generateComponentCatalog.mjs', '--check'], {
       cwd: repoRoot,
@@ -33,19 +40,125 @@ describe('project catalog', () => {
     assert.equal(source.components.filter(item => item.name.includes('AHT20 + BMP280')).length, 1);
   });
 
+  it('keeps physical dimensions in one registry and selects the 6806 bearing candidate', () => {
+    const source = readJson('catalog/components.json');
+    const physical = readJson('catalog/physical-components.json');
+    const componentIds = source.components.map(item => item.id).sort();
+    const physicalIds = physical.components.map(item => item.id).sort();
+    const bearing = physical.components.find(item => item.id === '008');
+    const pole = physical.components.find(item => item.id === '015');
+    const wire = physical.components.find(item => item.id === '022');
+    const valuesFor = item => new Map(item.measurements.map(measurement => [measurement.key, measurement.value]));
+
+    assert.deepEqual(physicalIds, componentIds);
+    assert.equal(physical.tag, '§physicalcomponents1');
+    assert.equal(bearing.selection, 'selected-candidate');
+    assert.equal(valuesFor(bearing).get('bore-diameter'), '30');
+    assert.equal(valuesFor(bearing).get('outer-diameter'), '42');
+    assert.equal(valuesFor(bearing).get('width'), '7');
+    assert.equal(valuesFor(pole).get('pole-outer-diameter'), '24,9');
+    assert.equal(valuesFor(pole).get('pole-inner-diameter'), '24,3');
+    assert.equal(valuesFor(pole).get('target-segment-inner-diameter'), '24,3');
+    assert.equal(valuesFor(pole).get('calculated-wall-thickness'), '0,3');
+    assert.equal(valuesFor(pole).has('pole-ovality'), false);
+    assert.equal(valuesFor(wire).get('external-wire-diameter'), '2');
+    assert.equal(valuesFor(wire).get('internal-wire-pair-width'), '4');
+    assert.match(source.components.find(item => item.id === '008').name, /6806-2RS/);
+    assert.doesNotMatch(JSON.stringify(source.components.find(item => item.id === '015')), /24,9 мм|24,3 мм|0,3 мм/);
+  });
+
+  it('publishes a stable anchor for every physical component and links every model rationale', () => {
+    const source = readJson('catalog/components.json');
+    const media = readJson('catalog/drawings.json');
+    const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
+
+    for (const item of source.components) assert.match(html, new RegExp(`id="component-${item.id}"`));
+    for (const item of media.models) {
+      const description = fs.readFileSync(resolve(repoRoot, item.descriptionFile), 'utf8');
+      assert.match(description, /§physicalcomponents1/);
+      assert.match(description, /\.\.\/catalog\.html#component-\d{3}/);
+    }
+  });
+
+  it('publishes the source-only PETG 6806 adapter draft without generated artifacts', () => {
+    const media = readJson('catalog/drawings.json');
+    const draftPath = 'mechanical/cad_drafts/petg_6806_adapter_v076.json';
+    const draft = readJson(draftPath);
+    const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
+    const dimensions = new Map(draft.finalPart.dimensions.map(item => [item.key, item.value]));
+    const couponIds = draft.couponSets.flatMap(set => set.variants.map(item => item.id));
+
+    assert.equal(media.catalogPolicy.cadDraftSources.includes(draftPath), true);
+    assert.equal(draft.id, '401');
+    assert.equal(draft.status, 'source-only-not-generated');
+    assert.equal(draft.material, 'PETG');
+    assert.equal(draft.finalPart.partId, '#petg-11');
+    assert.equal(draft.finalPart.quantity, 2);
+    assert.equal(dimensions.get('pole-bore-diameter'), 25.2);
+    assert.equal(dimensions.get('bearing-seat-diameter'), 30.0);
+    assert.equal(dimensions.get('axial-width'), 7.0);
+    assert.equal(dimensions.get('nominal-radial-wall'), 2.4);
+    assert.deepEqual(couponIds, ['40101', '40102', '40103', '40104', '40105', '40106']);
+    for (const output of draft.plannedOutputs) assert.equal(fs.existsSync(resolve(repoRoot, output)), false, `${output} must not exist before generation approval`);
+    assert.match(fs.readFileSync(resolve(repoRoot, draft.sourceFile), 'utf8'), /def adapter_ring\(|--generate-coupons|--generate-final/);
+    assert.match(html, /id="cad-draft-401"/);
+    assert.match(html, /CAD-заготовки без генерации/);
+    assert.match(html, /#40101/);
+    assert.match(html, /STL, STEP, GLB и изображение отсутствуют намеренно/);
+  });
+
+  it('publishes the source-only flexible lower-pole strain relief with two wire channels', () => {
+    const media = readJson('catalog/drawings.json');
+    const draftPath = 'mechanical/cad_drafts/tpu85_lower_pole_strain_relief_v076.json';
+    const draft = readJson(draftPath);
+    const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
+    const dimensions = new Map(draft.finalPart.dimensions.map(item => [item.key, item.value]));
+    const couponIds = draft.couponSets.flatMap(set => set.variants.map(item => item.id));
+
+    assert.equal(media.catalogPolicy.cadDraftSources.includes(draftPath), true);
+    assert.equal(draft.id, '402');
+    assert.equal(draft.draftType, 'flexible-cable-strain-relief');
+    assert.equal(draft.tag, '§lowercablestrain1');
+    assert.equal(draft.status, 'source-only-not-generated');
+    assert.equal(draft.material, 'TPU 85A');
+    assert.equal(draft.finalPart.partId, '#tpu85-4');
+    assert.equal(dimensions.get('wire-channel-diameter'), 2.0);
+    assert.equal(dimensions.get('wire-channel-pair-span'), 4.0);
+    assert.equal(dimensions.get('seat-core-diameter'), 24.0);
+    assert.equal(dimensions.get('retention-rib-outer-diameter'), 24.7);
+    assert.equal(dimensions.get('retention-rib-count'), 6);
+    assert.deepEqual(couponIds, ['40201', '40202', '40203', '40204', '40205', '40206']);
+    for (const output of draft.plannedOutputs) assert.equal(fs.existsSync(resolve(repoRoot, output)), false, `${output} must not exist before generation approval`);
+    const source = fs.readFileSync(resolve(repoRoot, draft.sourceFile), 'utf8');
+    assert.match(source, /def paired_wire_coupon\(|def strain_relief\(/);
+    assert.match(source, /--generate-coupons|--generate-final/);
+    assert.match(html, /id="cad-draft-402"/);
+    assert.match(html, /2 × Ø2 мм/);
+    assert.match(html, /6 рёбер · Ø24,7 мм/);
+    assert.match(html, /#40204/);
+  });
+
   it('publishes only the current version and never historical v0.5 cards', () => {
     assert.equal(currentVersion, '0.7.6');
     const media = readJson('catalog/drawings.json');
-    assert.equal(media.schemaVersion, 4);
+    assert.equal(media.schemaVersion, 6);
     assert.equal(media.catalogPolicy.visibility, 'current-only');
     assert.equal(media.catalogPolicy.currentVersion, currentVersion);
     assert.equal(media.catalogPolicy.partIdCallouts, 'required-for-all-drawings-and-models-except-print-layouts');
     assert.equal(media.catalogPolicy.sourceDrawingsRemainClean, true);
+    assert.equal(media.catalogPolicy.physicalMeasurements, 'catalog/physical-components.json');
+    assert.equal(media.catalogPolicy.componentPermalinks, 'catalog/catalog.html#component-<ID>');
+    assert.deepEqual(media.catalogPolicy.cadDraftSources, [
+      'mechanical/cad_drafts/petg_6806_adapter_v076.json',
+      'mechanical/cad_drafts/tpu85_lower_pole_strain_relief_v076.json',
+    ]);
 
-    const all = [...media.drawings, ...media.models, ...media.printSessions];
+    const canonical = [...media.drawings, ...media.models, ...media.printSessions];
+    const all = [...canonical, ...media.experimentalModels];
     assert.equal(new Set(all.map(item => item.id)).size, all.length);
     assert.ok(all.length > 0);
-    assert.equal(all.every(item => item.status === 'current'), true);
+    assert.equal(canonical.every(item => item.status === 'current'), true);
+    assert.equal(media.experimentalModels.every(item => item.status === 'experimental'), true);
     assert.equal(all.every(item => item.version === currentVersion), true);
     assert.equal(all.some(item => item.version === '0.5' || item.status === 'historical'), false);
 
@@ -69,10 +182,12 @@ describe('project catalog', () => {
   it('requires callouts on every non-print drawing and model', () => {
     const media = readJson('catalog/drawings.json');
     const registry = readJson('mechanical/part_id_registry_v06.json');
+    const featureRegistry = readJson('mechanical/feature_id_registry_v076.json');
     const components = readJson('catalog/components.json');
     const allowedIds = new Set([
       ...components.components.map(item => item.id),
       ...Object.values(registry.groups).flat().map(item => item.id),
+      ...featureRegistry.features.map(item => item.id),
     ]);
 
     for (const item of media.drawings) {
@@ -115,6 +230,15 @@ describe('project catalog', () => {
         }
       }
     }
+
+    for (const item of media.experimentalModels) {
+      assert.ok(fs.existsSync(resolve(repoRoot, item.file)), `missing experimental model ${item.file}`);
+      assert.ok(fs.existsSync(resolve(repoRoot, item.poster)), `missing experimental poster ${item.poster}`);
+      assert.equal(item.calloutMode, 'hotspots');
+      const source = media.models.find(model => model.id === item.calloutsFrom);
+      assert.ok(source, `missing callout source ${item.calloutsFrom}`);
+      assert.ok(source.callouts.length > 0);
+    }
   });
 
   it('renders current-only wording, annotated drawings and 3D hotspots', () => {
@@ -134,6 +258,21 @@ describe('project catalog', () => {
     assert.match(html, /Компоновка электроники v0\.7\.6 — интерактивно/);
     assert.match(html, /одна поднятая крышка/i);
     assert.doesNotMatch(html, /актуально · v0\.7\.4/);
+  });
+
+  it('shows an automatically calculated file size for every image and model card', () => {
+    const html = fs.readFileSync(resolve(repoRoot, 'catalog/catalog.html'), 'utf8');
+    const media = readJson('catalog/drawings.json');
+    const components = readJson('catalog/components.json');
+    const componentImageCount = components.components.reduce((count, item) => count + 1 + (item.additionalImages?.length ?? 0), 0);
+    const mediaCardCount = media.drawings.length + media.models.length + media.printSessions.length;
+
+    assert.equal((html.match(/class="asset-size"/g) ?? []).length, componentImageCount);
+    assert.equal((html.match(/class="asset-sizes"/g) ?? []).length, mediaCardCount);
+    assert.match(html, /<strong>Постер:<\/strong> [\d,]+ (?:КБ|МБ)/);
+    assert.match(html, /<strong>GLB:<\/strong> [\d,]+ МБ/);
+    assert.match(html, /<strong>Миниатюра:<\/strong> [\d,]+ (?:КБ|МБ)/);
+    assert.match(html, /<strong>Изображение с ID:<\/strong> [\d,]+ (?:КБ|МБ)/);
   });
 
   it('keeps print layouts clean in both 2D and 3D', () => {
